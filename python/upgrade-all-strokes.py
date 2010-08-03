@@ -1,0 +1,7 @@
+#!/usr/bin/python
+# Filename: upgrade-all-strokes.py
+from stroke_compression import decompress_all_strokes_in_current_directory, compress_all_strokes_in_current_directory
+
+if __name__ == '__main__':
+    decompress_all_strokes_in_current_directory(remove_old=False)
+    compress_all_strokes_in_current_directory()

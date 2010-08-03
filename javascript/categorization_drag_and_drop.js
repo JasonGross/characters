@@ -13,10 +13,14 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       //console.log('target = ' + this);
       if (!eval(dt.getData("text/x-function-name"))(this))
         return false;
+      if (!this.classCount) this.classCount = {};
+      if (!this.classCount['dragover'] || this.classCount['dragover'] < 0) this.classCount['dragover'] = 0;
+      this.classCount['dragover']++;
       $(this).addClass('dragover');
       console.log('dragenter ' + (this != ev.target));
       console.log(this);
       console.log('ev.target = ' + ev.target.name);
+      console.log('');
       return this != ev.target;
     })
     
@@ -25,11 +29,16 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       var dt = ev.originalEvent.dataTransfer;
       //console.log('Drag leave target:' + this);
       if (!eval(dt.getData("text/x-function-name"))(this))
-        return false;
-      $(this).removeClass('dragover');
+          return false;
+      if (!this.classCount) this.classCount = {};
+      if (!this.classCount['dragover']) this.classCount['dragover'] = 1;
+      this.classCount['dragover']--;
+      if (this.classCount['dragover'] <= 0)
+          $(this).removeClass('dragover');
       console.log('dragleave ' + (this != ev.target));
       console.log('this = ' + this.name);
       console.log('ev.target = ' + ev.target.name);
+      console.log('');
       return this != ev.target;
     })
     
@@ -45,6 +54,8 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       if (!eval(dt.getData("text/x-function-name"))(this)) // ev.target
         return false;
       //console.log(setAlphabetChoice);
+      this.classCount['dragover'] = 0;
+      $(this).removeClass('dragover');
       setAlphabetChoice(document.getElementById(dt.getData("text/x-object-id")), getAlphabetNumber(this));
       return false;
     });
@@ -65,7 +76,10 @@ function makeTestCharacterDraggable(image, isValidTarget, formSelect) {
     // Handle the start of dragging to initialize.
     .bind('dragstart', function(ev) {
       var dt = ev.originalEvent.dataTransfer;
+      //alert(dt);
+      //alert(dt.setData);
       dt.setData("text/x-object-id", $(formSelect).attr('id'));
+      //alert(dt.getData("text/x-object-id"));
       //alert(dt);
       //alert(isValidTarget);
       //alert(dt.constructor);

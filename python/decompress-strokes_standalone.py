@@ -72,6 +72,7 @@ def uint_decode(number):
 
 def compress_stroke(stroke, version=2, safe=True):
     # lower bits are xs, upper bits are ys
+    original_stroke = stroke
     stroke_list = stroke_to_list(stroke)
     xs, ys, ts = [], [], []
     if version >= 1:
@@ -84,8 +85,8 @@ def compress_stroke(stroke, version=2, safe=True):
         else:
             ts.append([])
             for point in stroke_part:
-                if last_t > int(point['t']): return compress_stroke(stroke, version=0, safe=safe)
-                if version >= 2 and last_t == int(point['t']) and last_t > 0: return compress_stroke(stroke, version=1, safe=safe)
+                if last_t > int(point['t']): return compress_stroke(original_stroke, version=0, safe=safe)
+                if version >= 2 and last_t == int(point['t']) and last_t > 0: return compress_stroke(original_stroke, version=1, safe=safe)
                 ts[-1].append((int(point['t']) - last_t) + 1)
                 last_t = int(point['t'])
 
@@ -105,7 +106,7 @@ def compress_stroke(stroke, version=2, safe=True):
             mins[key], maxes[key] = 1, maxes[key] - mins[key] + 1
 
         if version < 2 or key == 'ts':
-            bits[key] = int(1 + math.floor(math.log(maxes[key]) / math.log(2)))
+            bits[key] = int(1 + math.floor(math.log(max((1, maxes[key]))) / math.log(2)))
 
     
     if version >= 2:
@@ -118,8 +119,8 @@ def compress_stroke(stroke, version=2, safe=True):
                         stroke[point_i] = sint_encode_to_uint(stroke[point_i])
             maxes[key] = max(map(max, strokes[key]))
             mins[key] = min(map(min, strokes[key]))
-            bits[key] = int(1 + math.floor(math.log(maxes[key]) / math.log(2)))
-        if bits['xs'] + bits['ys'] <= 8: return compress_stroke(stroke, version=1, safe=safe)
+            bits[key] = int(1 + math.floor(math.log(max((1, maxes[key]))) / math.log(2)))
+        if bits['xs'] + bits['ys'] <= 8: return compress_stroke(original_stroke, version=1, safe=safe)
             
                 
     def default_make_first_line(bits, version, points):
@@ -235,7 +236,7 @@ def compress_stroke(stroke, version=2, safe=True):
                 stroke_maxes = {}
                 for key in ('xs', 'ys'):
                     stroke_maxes[key] = max(rest[key])
-                    stroke_bits[key] = int(1 + math.floor(math.log(stroke_maxes[key]) / math.log(2)))
+                    stroke_bits[key] = int(1 + math.floor(math.log(max((1, maxes[key]))) / math.log(2)))
             if rest['xs'] and stroke_bits['xs'] + stroke_bits['ys'] <= 8:
                 rtn.append(default_encode_point_by_scheme((stroke_bits['xs'], stroke_bits['ys'], 0)))
                 rtn.append(default_encode_point_by_scheme((first['xs'], first['ys'], first['ts'])))

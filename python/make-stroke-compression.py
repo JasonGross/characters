@@ -12,7 +12,8 @@ IMPORTS = tuple('import ' + s for s in ('os', 'math', 'glob', 're'))
 FIRST_FILES = ('alphabetsutil.py', 'stroke_compression.py')
 SHARED_CONSTS = ('BIG_BYTE_PLUS_ONE',)
 SHARED_METHODS = ('stroke_to_list', 'uint_encode', 'uint_decode',
-                  'compress_stroke', 'decompress_stroke')
+                  'compress_stroke', 'decompress_stroke', 'sint_encode_to_uint',
+                  'sint_decode_from_uint')
 
 COMPRESSION_METHODS = ('compress_all_strokes_in_current_directory',)
 DECOMPRESSION_METHODS = ('decompress_all_strokes_in_current_directory',)

@@ -2,7 +2,8 @@
 function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabetChoice) {
   if (getAlphabetNumber === undefined) getAlphabetNumber = _defaultGetAlphabetNumber;
   if (setAlphabetChoice === undefined) setAlphabetChoice = _defaultSetAlphabetChoice;
-  console.log($(dropTarget)[0].childNodes);
+  if (console && console.log)
+    console.log($(dropTarget)[0].childNodes);
   
   $(dropTarget)
     // Highlight on drag entering drop zone.
@@ -14,12 +15,13 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       if (!eval(dt.getData("text/x-function-name"))(this))
         return false;
       if (!this.classCount) this.classCount = {};
-      if (!this.classCount['dragover'] || this.classCount['dragover'] < 0) this.classCount['dragover'] = 0;
+      if (!this.classCount['dragover'] || this.classCount['dragover'] < 0 || this == ev.target)
+        this.classCount['dragover'] = 0;
       this.classCount['dragover']++;
       $(this).addClass('dragover');
       console.log('dragenter ' + (this != ev.target));
-      console.log(this);
       console.log('ev.target = ' + ev.target.name);
+      console.log('dragover count = ' + this.classCount['dragover']);
       console.log('');
       return this != ev.target;
     })
@@ -31,13 +33,14 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       if (!eval(dt.getData("text/x-function-name"))(this))
           return false;
       if (!this.classCount) this.classCount = {};
-      if (!this.classCount['dragover']) this.classCount['dragover'] = 1;
+      if (!this.classCount['dragover'] || this.classCount['dragover'] < 1)
+        this.classCount['dragover'] = 1;
       this.classCount['dragover']--;
-      if (this.classCount['dragover'] <= 0)
+      if (this.classCount['dragover'] == 0)
           $(this).removeClass('dragover');
       console.log('dragleave ' + (this != ev.target));
-      console.log('this = ' + this.name);
       console.log('ev.target = ' + ev.target.name);
+      console.log('dragover count = ' + this.classCount['dragover']);
       console.log('');
       return this != ev.target;
     })
@@ -45,6 +48,10 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
     // Decide whether the thing dragged in is welcome.
     .bind('dragover', function(ev) {
       var dt = ev.originalEvent.dataTransfer;
+      if (eval(dt.getData("text/x-function-name"))(this)) {
+        this.classCount['dragover'] = 1;
+        //$(this).addClass('dragover');
+      }
       return !eval(dt.getData("text/x-function-name"))(this);
     })
     

@@ -109,8 +109,13 @@ function _defaultGetAlphabetNumber(target) {
 }
 
 function _defaultSetAlphabetChoice(select, number) {
-  select.selectedIndex = number;}
-
+  var len = select.options.length;
+  for (var i = 0; i < len; i++) {
+    if (select[i].value == number)
+      select.selectedIndex = i;
+  }
+}
+  
 function makeIsValidTarget(className) {
   return function(target) { return $(target).hasClass(className); };
 }

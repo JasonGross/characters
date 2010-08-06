@@ -1,6 +1,6 @@
 
 function makeInputs(data) {
-  var alphabetsContainer = $('all-alphabets');
+  var alphabetsContainer = $('#all-alphabets');
   var alphabetGlobalNum = 0;
   jQuery.each(data, function(groupNum, group) {
     var curAlphabetSet = $(document.createElement('div'))
@@ -15,13 +15,14 @@ function makeInputs(data) {
     // Making questions
     var askImages = group['ask_for'];
     var questionCount = askImages.length;
-    var curAlphabetSetQuestions = $(''); // empty jQuery list, hopefully?
-    var curAlphabetSetQuestionSelects = $('');
+    var curAlphabetSetQuestions;
+    var curAlphabetSetQuestionSelects;
     for (var questionNum = 0; questionNum < questionCount; questionNum++) {
       var curAlphabetSetQuestion = $(document.createElement('div'))
         .attr('id', 'alphabet-group-' + groupNum + '-question-box-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-question-box-' + questionNum)
-        .addClass('alphabet-set');
+        .addClass('alphabet-set alphabet-question');
+      var questionCenter = $(document.createElement('center'));
       var curAlphabetSetDropDownHolder = $(document.createElement('span'))
         .attr('id', 'alphabet-group-' + groupNum + '-drop-down-holder-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-drop-down-holder-' + questionNum);
@@ -33,71 +34,34 @@ function makeInputs(data) {
       var questionImage = $(document.createElement('img'))
         .attr('id', 'alphabet-group-' + groupNum + '-image-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-image-' + questionNum)
+        .attr('src', '../' + askImages[questionNum])
         .attr('align', 'absmiddle')
         .attr('alt', 'Test image ' + (questionNum + 1) + ' for alphabet group ' + (groupNum + 1) + '.');
       var questionSelect = $(document.createElement('select'))
         .attr('name', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
-        .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum);
-      curAlphabetSetQuestionSelects.add(questionSelect);
+        .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
+        .append($(document.createElement('option')).attr('value', -1).append('(select an alphabet number)'));
+      if (curAlphabetSetQuestionSelects)
+        curAlphabetSetQuestionSelects.add(questionSelect);
+      else
+        curAlphabetSetQuestionSelects = questionSelect;
+      
       
       questionImageHolder.append(questionImage);
-      curLabel
-      curAlphabetSetQuestions.add(curAlphabetSetQuestion);
-    }
-    curAlphabetSetQuestionSelects
+      curLabel.append('I think ').append(questionImageHolder).append(' is most likely to be from alphabet ')
+        .append(questionSelect).append('.');
+      curAlphabetSetDropDownHolder.append(curLabel);
+      questionCenter.append(curAlphabetSetDropDownHolder);
+      curAlphabetSetQuestion.append(questionCenter);
+      if (curAlphabetSetQuestions)
+        curAlphabetSetQuestions.add(curAlphabetSetQuestion);
+      else
+        curAlphabetSetQuestions = curAlphabetSetQuestion;
       
-    // Making questions
-    
-    var curAlphabetSetDropDownLabel
-               name="alphabet-group-0-drop-down-holder"><label>I think <span id="alphabet-group-0-image-holder"
-                name="alphabet-group-0-image-holder"
-                class="alphabet-group-0-draggable"><img src="../results/accepted-images/cyrillic/cyrillic_04_a3stxecewj2ykp.png"
-               alt="Test image 1 for alphabet group 0."
-               id="alphabet-group-0-image"
-               name="alphabet-group-0-image"
-               align="absmiddle" /></span> is most likely to be from alphabet <select name="alphabet_group_0_number"
-                  id="alphabet_group_0_number">
-            <option value="0">
-              1
-            </option>
-
-            <option value="1">
-              2
-            </option>
-
-            <option value="2">
-              3
-            </option>
-
-            <option value="3">
-              4
-            </option>
-
-            <option value="4">
-              5
-            </option>
-
-            <option value="5">
-              6
-            </option>
-
-            <option value="6">
-              7
-            </option>
-
-            <option value="7">
-              8
-            </option>
-
-            <option value="8">
-              9
-            </option>
-
-            <option value="9">
-              10
-            </option>
-          </select> .</label></span>
-        </div>
+      makeTestCharacterDraggable(questionImage, 
+        makeIsValidTarget('alphabet-group-' + groupNum + '-droppable'),
+        questionSelect);
+    }
 
     
     // Making training      
@@ -127,24 +91,34 @@ function makeInputs(data) {
         .addClass('alphabet-image-holder dragoverable')
         .addClass('alphabet-group-' + groupNum + '-droppable');
       for (var imageNum = 0; imageNum < imagesList.length; imageNum++) {
-        var image = $(document.createElement('img')
+        var image = $(document.createElement('img'))
           .attr('src', '../' + imagesList[imageNum])
           .attr('alt', 'Training image ' + (imageNum + 1) + ' for alphabet ' + alphabetGlobalNum + ' in group ' + (groupNum + 1) + '.');
         imageHolder.append(image);
       }
       tableMainCell.append(imageHolder);
       tableMainRow.append(tableMainCell);
+      curAlphabetSetQuestionSelects.append($(document.createElement('option'))
+        .attr('value', (alphabetGlobalNum - 1))
+        .append(alphabetGlobalNum)
+      );
     }
     tableBody.append(tableMainRow);
     tableHead.append(tableHeadRow);
     alphabetTable.append(tableHead).append(tableBody);
     centerElement.append(alphabetTable);
     curAlphabetSetTraining.append(centerElement);
-    curAlphabetSet.append(curAlphabetSetTraining).append(curAlphabetSetQuestions);
-    
-    
-    
+    curAlphabetSet.append(curAlphabetSetTraining)
+      .append($(document.createElement('br')))
+      .append(curAlphabetSetQuestions)
+      .append($(document.createElement('br')))
+      .append($(document.createElement('br')))
+      .append($(document.createElement('br')))
+      .append($(document.createElement('hr')))
+      .append($(document.createElement('br')));
     alphabetsContainer.append(curAlphabetSet);
+    
+    makeTrainingAlphabetDroppable('.alphabet-group-' + groupNum + '-droppable');
   });
 }
 

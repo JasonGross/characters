@@ -50,7 +50,7 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       var dt = ev.originalEvent.dataTransfer;
       if (eval(dt.getData("text/x-function-name"))(this)) {
         this.classCount['dragover'] = 1;
-        $(this).addClass('dragover');
+        //$(this).addClass('dragover');
       }
       return !eval(dt.getData("text/x-function-name"))(this);
     })

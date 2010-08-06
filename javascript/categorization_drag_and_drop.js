@@ -1,4 +1,4 @@
-﻿
+
 function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabetChoice) {
   if (getAlphabetNumber === undefined) getAlphabetNumber = _defaultGetAlphabetNumber;
   if (setAlphabetChoice === undefined) setAlphabetChoice = _defaultSetAlphabetChoice;
@@ -12,7 +12,7 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
       //console.log('Drag enter: ' + dt);
       //console.log('this = ' + this);
       //console.log('target = ' + this);
-      if (!eval(dt.getData("text/x-function-name"))(this))
+      if (!eval(dt.getData("text/x-function-name"))(this) || !dt.getData("text/x-boolean-droppable"))
         return false;
       if (!this.classCount) this.classCount = {};
       if (!this.classCount['dragover'] || this.classCount['dragover'] < 0 || this == ev.target)
@@ -30,7 +30,7 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
     .bind('dragleave', function(ev) {
       var dt = ev.originalEvent.dataTransfer;
       //console.log('Drag leave target:' + this);
-      if (!eval(dt.getData("text/x-function-name"))(this))
+      if (!eval(dt.getData("text/x-function-name"))(this) || !dt.getData("text/x-boolean-droppable"))
           return false;
       if (!this.classCount) this.classCount = {};
       if (!this.classCount['dragover'] || this.classCount['dragover'] < 1)
@@ -58,7 +58,7 @@ function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabe
     // Handle the final drop...
     .bind('drop', function(ev) {
       var dt = ev.originalEvent.dataTransfer;
-      if (!eval(dt.getData("text/x-function-name"))(this)) // ev.target
+      if (!eval(dt.getData("text/x-function-name"))(this) || !dt.getData("text/x-boolean-droppable")) // ev.target
         return false;
       //console.log(setAlphabetChoice);
       this.classCount['dragover'] = 0;
@@ -91,12 +91,15 @@ function makeTestCharacterDraggable(image, isValidTarget, formSelect) {
       //alert(isValidTarget);
       //alert(dt.constructor);
       dt.setData("text/x-function-name", isValidTarget);
+      dt.setData("text/x-boolean-droppable", true);
       console.log('Drag started: ' + dt);
       return true;
     })
     
     // Handle the end of dragging.
     .bind('dragend', function(ev) {
+      var dt = ev.originalEvent.dataTransfer;
+      dt.clearData("text/x-boolean-droppable");
       console.log('Drag ended');
       return false;
     });
@@ -111,8 +114,10 @@ function _defaultGetAlphabetNumber(target) {
 function _defaultSetAlphabetChoice(select, number) {
   var len = select.options.length;
   for (var i = 0; i < len; i++) {
-    if (select[i].value == number)
+    if (select[i].value == number) {
       select.selectedIndex = i;
+      $(select).change();
+    }
   }
 }
   

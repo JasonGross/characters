@@ -39,8 +39,22 @@ function makeInputs(data) {
         .attr('alt', 'Test image ' + (questionNum + 1) + ' for alphabet group ' + (groupNum + 1) + '.');
       var questionSelect = $(document.createElement('select'))
         .attr('name', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
-        .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
-        .append($(document.createElement('option')).attr('value', -1).append('(select an alphabet number)'));
+        .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum);
+      var defaultOption = $(document.createElement('option'))
+        .attr('id', 'default-option')
+        .attr('value', -1)
+        .append('(select an alphabet number)')
+      questionSelect.append(defaultOption)
+        .change(function () { 
+          var len = this.options.length;
+          for (var i = 0; i < len; i++) {
+            if (this[i].value < 0) {
+              this.remove(i);
+              break;
+            }
+          }
+        });
+    
       if (curAlphabetSetQuestionSelects)
         curAlphabetSetQuestionSelects.add(questionSelect);
       else

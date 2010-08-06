@@ -6,6 +6,10 @@ import sys
 import re
 import urllib
 import python2to3patch
+try:
+    from python3lib import relpath
+except SyntaxError:
+    from python25lib import relpath
 
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',
@@ -98,19 +102,8 @@ _ALPHABET_NAMES_FILE = os.path.join(RESULTS_PATH, 'alphabet-names.txt')
 
 _dir_stack = []
 
-_RELPATH_ERROR_REG = re.compile(r'path is on drive [A-Z]:, start on drive [A-Z]:')
-def relpath(path, start='.'):
-    """
-    Return a relative version of a path.  If the paths are on
-    different drives, return the absolute path.
-    """
-    try:
-        return os.path.relpath(path, start)
-    except ValueError as ex:
-        if _RELPATH_ERROR_REG.match(ex.message):
-            return os.path.abspath(path)
-        else:
-            raise ex
+
+    
 
 def push_dir(new_dir, make_dirs=True):
     _dir_stack.append(os.getcwd())

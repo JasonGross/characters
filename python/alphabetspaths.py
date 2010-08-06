@@ -14,7 +14,8 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'CHARACTER_REQUEST_URL', 'PUBLIC_DATASET_PATHS', 'PUBLIC_DATASET_BETA_PATHS', 'FORM_SUBMISSION_URL',
            'MATLAB_MAT_FILE_NAME', 'MATLAB_DOWNSAMPLE_MAT_FILE_NAME', 'MATLAB_NO_STROKES_MAT_FILE_NAME', 'MATLAB_DOWNSAMPLE_NO_STROKES_MAT_FILE_NAME',
            'ACCEPTED_JAVASCRIPT_PATH', 'REJECTED_JAVASCRIPT_PATH', 'SCRIPTS_PATH', 'JAVASCRIPT_PATH', 'TURK_POST_EXTRA_LIST_PATH',
-           'RESULTS_PATH', 'get_alphabet_name', 'get_alphabet_id_from_file_name']
+           'RESULTS_PATH', 'get_alphabet_name', 'get_alphabet_id_from_file_name',
+           'STORED_ALPHABET_IMAGES_LIST_PATH']
  
 _paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
           'ACCEPTED': (lambda s: 'accepted-%s' % s),
@@ -52,6 +53,8 @@ RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_UNREVIEWED_PATH)
 
 TURK_POST_EXTRA_LIST_PATH = os.path.join(RESULTS_PATH, 'turk-bad-submissions.txt')
+
+STORED_ALPHABET_IMAGES_LIST_PATH = os.path.join(RESULTS_PATH, 'alphabets-images-list.txt')
 
 for _path in _paths:
     for name_part, path_part in (('IMAGES', 'images'),
@@ -103,7 +106,7 @@ def relpath(path, start='.'):
     """
     try:
         return os.path.relpath(path, start)
-    except ValueError, ex:
+    except ValueError as ex:
         if _RELPATH_ERROR_REG.match(ex.message):
             return os.path.abspath(path)
         else:

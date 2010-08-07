@@ -41,6 +41,11 @@
         .attr('id', 'default-option')
         .attr('value', -1)
         .append('(select an alphabet number)')
+      var questionTimeInput = $(document.createElement('input'))
+        .attr('type', 'hidden')
+        .attr('value', '')
+        .attr('id', 'alphabet-group-' + groupNum + '-image-' + questionNum + '-time-of-selection')
+        .attr('value', '');
       questionSelect.append(defaultOption)
         .one('change', function () { 
           var len = this.options.length;
@@ -50,8 +55,11 @@
               break;
             }
           }
+        })
+        .change(function () {
+          questionTimeInput.attr('value', dateUTC(new Date()));
         });
-    
+      
       if (curAlphabetSetQuestionSelects)
         curAlphabetSetQuestionSelects.add(questionSelect);
       else
@@ -60,7 +68,13 @@
       
       questionImageHolder.append(makeBoxForImage(questionImage));
       curLabel.append('I think ').append(questionImageHolder).append(' is most likely to be from alphabet ')
-        .append(questionSelect).append('.');
+        .append(questionSelect).append('.').append(questionTimeInput)
+        .append($(document.createElement('input'))
+            .attr('type', 'hidden')
+            .attr('id', 'question_' + questionNum + '-group_' + groupNum +
+              '-questionImagePath')
+            .attr('value', askImages[questionNum])
+          );
       curAlphabetSetDropDownHolder.append(curLabel);
       curAlphabetSetQuestion.append(curAlphabetSetDropDownHolder);
       if (curAlphabetSetQuestions)
@@ -117,7 +131,14 @@
           .attr('alt', 'Training image ' + (imageNum + 1) + ' for alphabet ' + alphabetGlobalNum + ' in group ' + (groupNum + 1) + '.')
           .attr('draggable', 'false')
           .bind('dragstart', function() { return false; });
-        curCell.append(makeBoxForImage(image));
+        curCell.append(makeBoxForImage(image))
+          .append($(document.createElement('input'))
+            .attr('type', 'hidden')
+            .attr('id', 'alphabet_' + imageNum + '-group_' + groupNum + '-alphabetGlobalNum_' + (alphabetGlobalNum - 1) + 
+              '-imagePath')
+            .attr('value', imagesList[imageNum])
+          );
+        
       }
       
       if (questionSelects.length == 1)

@@ -19,23 +19,32 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'MATLAB_MAT_FILE_NAME', 'MATLAB_DOWNSAMPLE_MAT_FILE_NAME', 'MATLAB_NO_STROKES_MAT_FILE_NAME', 'MATLAB_DOWNSAMPLE_NO_STROKES_MAT_FILE_NAME',
            'ACCEPTED_JAVASCRIPT_PATH', 'REJECTED_JAVASCRIPT_PATH', 'SCRIPTS_PATH', 'JAVASCRIPT_PATH', 'TURK_POST_EXTRA_LIST_PATH',
            'RESULTS_PATH', 'get_alphabet_name', 'get_alphabet_id_from_file_name',
-           'STORED_ALPHABET_IMAGES_LIST_PATH']
+           'STORED_ALPHABET_IMAGES_LIST_PATH',
+           'CATEGORIZATION_RESULTS_PATH',
+           'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL']
  
 _paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
-          'ACCEPTED': (lambda s: 'accepted-%s' % s),
-          'REJECTED': (lambda s: 'rejected-%s' % s),
-          'TURK': (lambda s: 'turk-%s' % s),
-          'TURK_REJECTED': (lambda s: 'turk-rejected-%s' % s),
-          'TURK_ACCEPTED': (lambda s: 'turk-accepted-%s' % s),
-          'EXTRA': (lambda s: 'extra-%s' % s)}
+          'ACCEPTED': (lambda s: ('accepted-%s' % s) if s != 'information' else None),
+          'REJECTED': (lambda s: ('rejected-%s' % s) if s != 'information' else None),
+          'TURK': (lambda s: ('turk-%s' % s) if s != 'information' else None),
+          'TURK_REJECTED': (lambda s: ('turk-rejected-%s' % s) if s != 'information' else None),
+          'TURK_ACCEPTED': (lambda s: ('turk-accepted-%s' % s) if s != 'information' else None),
+          'EXTRA': (lambda s: ('extra-%s' % s) if s != 'information' else None),
+          'CATEGORIZATION_ACCEPTED': (lambda s: ('categorization/accepted-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_REJECTED': (lambda s: ('categorization/rejected-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_TURK': (lambda s: ('categorization/turk-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_TURK_REJECTED': (lambda s: ('categorization/turk-rejected-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_TURK_ACCEPTED': (lambda s: ('categorization/turk-accepted-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_EXTRA': (lambda s: ('categorization/extra-%s' % s) if s == 'information' else None)}
 
-_image_stroke_dicts_names = ['unreviewed'] + list(map(str.lower, sorted(_paths.keys())))
+_image_stroke_dicts_names = ['unreviewed'] + [key.lower() for key in sorted(_paths.keys()) if 'CATEGORIZATION_' not in key]
 
 FILE_NAME_REGEX = '(.*?)_([0-9]+)_([^._]+)'
 FILE_NAME_REGEX_COMPILED = re.compile(FILE_NAME_REGEX)
 
 _normal_path_names = [] + \
-                     [_path for _path in sorted(_paths.keys()) if _path not in ('ORIGINAL', 'UNREVIEWED')]
+                     [_path for _path in sorted(_paths.keys()) \
+                      if _path not in ('ORIGINAL', 'UNREVIEWED') and 'CATEGORIZATION_' not in _path]
 
 BASE_PATH = os.path.join(os.path.expanduser('~'), 'web_scripts', 'alphabets')
 BASE_URL = 'http://scripts.mit.edu/~jgross/alphabets/'
@@ -50,11 +59,20 @@ REJECTED_JAVASCRIPT_PATH = os.path.join(JAVASCRIPT_PATH, 'rejected_alphabets.js'
 _RELATIVE_RESULTS_PATH = 'results'
 _RELATIVE_UNREVIEWED_PATH = os.path.join(_RELATIVE_RESULTS_PATH, 'unreviewed')
 
+_RELATIVE_CATEGORIZATION_RESULTS_PATH = 'results/categorization'
+_RELATIVE_CATEGORIZATION_UNREVIEWED_PATH = os.path.join(_RELATIVE_CATEGORIZATION_RESULTS_PATH, 'unreviewed')
+
 RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
 
-RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_RESULTS_PATH)
-UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_UNREVIEWED_PATH)
+CATEGORIZATION_RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
+CATEGORIZATION_UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
+
+RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
+UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
+
+CATEGORIZATION_RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
+CATEGORIZATION_UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
 
 TURK_POST_EXTRA_LIST_PATH = os.path.join(RESULTS_PATH, 'turk-bad-submissions.txt')
 
@@ -63,7 +81,8 @@ STORED_ALPHABET_IMAGES_LIST_PATH = os.path.join(RESULTS_PATH, 'alphabets-images-
 for _path in _paths:
     for name_part, path_part in (('IMAGES', 'images'),
                                  ('STROKES', 'strokes'),
-                                 ('EXTRA_INFO', 'extra-information')):
+                                 ('EXTRA_INFO', 'extra-information'),
+                                 ('INFO', 'information')):
         if _paths[_path](path_part):
             setattr(_self, '_RELATIVE_%s_%s_PATH' % (_path, name_part),
                     os.path.join(_RELATIVE_RESULTS_PATH, _paths[_path](path_part)))
@@ -257,7 +276,6 @@ get_unreviewed_image_list = make_get_optional_id_list(reg_string=FILE_NAME_REGEX
 get_unreviewed_ids = make_get_ids(get_unreviewed_image_list)
 get_unreviewed_stroke_list = make_get_optional_id_list(reg_string=FILE_NAME_REGEX+'.c?stroke',
                                                        default_from_path=UNREVIEWED_PATH, use_dict=_unreviewed_strokes_dict)
-
 
 def get_unreviewed_extra_info_file_name(alphabet_id=None, id_=None, from_path=UNREVIEWED_PATH):
     images = get_unreviewed_image_list(alphabet_id=alphabet_id, id_=id_, from_path=from_path)

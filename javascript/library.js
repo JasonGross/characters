@@ -243,3 +243,58 @@ function quote(s, safe) {// maybe just use escape()?
     return res.join('');
 }
 //=============================================================
+
+
+//=============================================================
+// From http://www.electrictoolbox.com/pad-number-zeroes-javascript/
+function pad(number, length) {
+   
+  var str = '' + number;
+  while (str.length < length) {
+    str = '0' + str;
+  }
+ 
+  return str;
+}
+//=============================================================
+
+
+function timeDelta(startTime, endTime) {
+  var rtn = {};
+  rtn.totalMilliseconds = endTime.valueOf() - startTime.valueOf();
+  rtn.milliseconds = rtn.totalMilliseconds % 1000;
+  rtn.totalSeconds = Math.floor(rtn.totalMilliseconds / 1000);
+  rtn.seconds = rtn.totalSeconds % 60;
+  rtn.totalMinutes = Math.floor(rtn.totalSeconds / 60);
+  rtn.minutes = rtn.totalMinutes % 60;
+  rtn.totalHours = Math.floor(rtn.totalMinutes / 60);
+  rtn.hours = rtn.totalHours % 24;
+  rtn.totalDays = Math.floor(rtn.totalHours / 24);
+  rtn.days = rtn.totalDays % 365;
+  rtn.totalYears = Math.floor(rtn.totalDats / 365);
+  rtn.years = rtn.totalYears;
+  return rtn;
+}
+
+function dateUTC(d) {
+  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(),                          
+    d.getUTCDay(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(),             
+    d.getUTCMilliseconds());
+}
+
+function convertDateToDateTimeInputString(date) {
+  // Spec from http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#dates-and-times
+  var rtn = '';
+  var yearString = pad(date.getFullYear(), 4);
+  var monthString = pad(date.getMonth(), 2);
+  var dayString = pad(date.getDay(), 2);
+  var hourString = pad(date.getHours(), 2);
+  var minuteString = pad(date.getMinutes(), 2);
+  var secondString = pad(date.getSeconds(), 2);
+  var millisecondString = pad(date.getMilliseconds(), 3);
+  var offsetSign = (date.getTimezoneOffset() > 0 ? '+' : '-');
+  var offsetHours = pad(Math.abs(date.getTimezoneOffset()) / 60, 2);
+  var offsetMinutes = pad(Math.abs(date.getTimezoneOffset()) % 60, 2);
+  return yearString + '-' + monthString + '-' + dayString + 'T' + hourString + ':' + minuteString + ':' + secondString +
+    '.' + millisecondString + offsetSign + offsetHours + ':' + offsetMinutes;
+}

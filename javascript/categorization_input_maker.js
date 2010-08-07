@@ -1,19 +1,17 @@
-
-function makeInputs(data) {
-  var alphabetsContainer = $('#all-alphabets');
+(function () {
   var alphabetGlobalNum = 0;
-  jQuery.each(data, function(groupNum, group) {
-    var curAlphabetSet = $(document.createElement('div'))
-      .attr('id', 'alphabet-set-' + groupNum)
-      .attr('name', 'alphabet-set-' + groupNum)
-      .addClass('alphabet-set');
-    var curAlphabetSetTraining = $(document.createElement('div'))
-      .attr('id', 'alphabet-set-training' + groupNum)
-      .attr('name', 'alphabet-set-training' + groupNum)
-      .addClass('alphabet-set');
-      
-    // Making questions
-    var askImages = group['ask_for'];
+    
+  function makeBoxForImage(image) {
+    var imageBox = $(document.createElement('div'))
+      .addClass('image-box image-holder');
+    var imageHolder = $(document.createElement('span'))
+      .addClass('wraptocenter image-holder');
+    imageHolder.append(image);
+    imageBox.append(imageHolder);
+    return imageBox;
+  }
+  
+  function makeAlphabetQuestions(groupNum, askImages) {
     var questionCount = askImages.length;
     var curAlphabetSetQuestions;
     var curAlphabetSetQuestionSelects;
@@ -22,7 +20,6 @@ function makeInputs(data) {
         .attr('id', 'alphabet-group-' + groupNum + '-question-box-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-question-box-' + questionNum)
         .addClass('alphabet-set alphabet-question');
-      var questionCenter = $(document.createElement('center'));
       var curAlphabetSetDropDownHolder = $(document.createElement('span'))
         .attr('id', 'alphabet-group-' + groupNum + '-drop-down-holder-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-drop-down-holder-' + questionNum);
@@ -45,7 +42,7 @@ function makeInputs(data) {
         .attr('value', -1)
         .append('(select an alphabet number)')
       questionSelect.append(defaultOption)
-        .change(function () { 
+        .one('change', function () { 
           var len = this.options.length;
           for (var i = 0; i < len; i++) {
             if (this[i].value < 0) {
@@ -61,12 +58,11 @@ function makeInputs(data) {
         curAlphabetSetQuestionSelects = questionSelect;
       
       
-      questionImageHolder.append(questionImage);
+      questionImageHolder.append(makeBoxForImage(questionImage));
       curLabel.append('I think ').append(questionImageHolder).append(' is most likely to be from alphabet ')
         .append(questionSelect).append('.');
       curAlphabetSetDropDownHolder.append(curLabel);
-      questionCenter.append(curAlphabetSetDropDownHolder);
-      curAlphabetSetQuestion.append(questionCenter);
+      curAlphabetSetQuestion.append(curAlphabetSetDropDownHolder);
       if (curAlphabetSetQuestions)
         curAlphabetSetQuestions.add(curAlphabetSetQuestion);
       else
@@ -76,66 +72,132 @@ function makeInputs(data) {
         makeIsValidTarget('alphabet-group-' + groupNum + '-droppable'),
         questionSelect);
     }
-
-    
-    // Making training      
-      
-    var centerElement = $(document.createElement('center'));
-    var alphabetTable = $(document.createElement('table'))
+    return {
+            'selects': curAlphabetSetQuestionSelects,
+            'dom-element': curAlphabetSetQuestions
+           };
+  }
+  function makeAlphabetGroupClickable(alphabetNumber, curCol, questionSelects) {
+    curCol.click(function () { _defaultSetAlphabetChoice(questionSelects.context, alphabetNumber); });
+  }
+  
+  function makeTrainingTable(groupNum, alphabets, questionSelects) {
+    var alphabetTableHolderHolder = $(document.createElement('div'))
+      .css('text-align', 'center')
+      .css('display', 'block');
+    var alphabetTableHolder = $(document.createElement('div'))
+      .css('text-align', 'center')
+      .css('display', 'inline');
+    var alphabetTable = $(document.createElement('div'))
       .attr('id', 'alphabet-table-' + groupNum)
       .attr('name', 'alphabet-table-' + groupNum)
-      .attr('border', 1);
-    var tableHead = $(document.createElement('thead'))
-    var tableHeadRow = $(document.createElement('tr'));
-    var tableBody = $(document.createElement('tbody'));
-    var tableMainRow = $(document.createElement('tr'));
+      .addClass('table alphabet-table');
     
-    var alphabetIds = group['alphabets'].keys();
+    var alphabetIds = alphabets.keys();
     var alphabetGroupLength = alphabetIds.length;
     var alphabet; 
     for (var alphabetNum = 0; alphabetNum < alphabetGroupLength; alphabetNum++) {
       alphabetGlobalNum++;
       alphabetId = alphabetIds[alphabetNum];
-      imagesList = group['alphabets'][alphabetId];
-      tableHeadRow.append($(document.createElement('th')).append('Alphabet ' + alphabetGlobalNum));
-      var tableMainCell = $(document.createElement('td'));
-      var imageHolder = $(document.createElement('div'))
+      imagesList = alphabets[alphabetId];
+      var curCol = $(document.createElement('div'))
         .attr('id', 'alphabet-' + (alphabetGlobalNum - 1) + '-col')
         .attr('name', 'alphabet-' + (alphabetGlobalNum - 1) + '-col')
         .addClass('alphabet-image-holder dragoverable')
-        .addClass('alphabet-group-' + groupNum + '-droppable');
+        .addClass('alphabet-group-' + groupNum + '-droppable')
+        .addClass('table-col alphabet-table-col');
+      var curHeader = $(document.createElement('div'))
+        .addClass('table-header table-cell alphabet-table-header alphabet-table-cell')
+        .append('Alphabet ' + alphabetGlobalNum);
+      var curCell = $(document.createElement('div'))
+        .addClass('table-cell alphabet-table-cell');
       for (var imageNum = 0; imageNum < imagesList.length; imageNum++) {
         var image = $(document.createElement('img'))
           .attr('src', '../' + imagesList[imageNum])
-          .attr('alt', 'Training image ' + (imageNum + 1) + ' for alphabet ' + alphabetGlobalNum + ' in group ' + (groupNum + 1) + '.');
-        imageHolder.append(image);
+          .attr('alt', 'Training image ' + (imageNum + 1) + ' for alphabet ' + alphabetGlobalNum + ' in group ' + (groupNum + 1) + '.')
+          .attr('draggable', 'false')
+          .bind('dragstart', function() { return false; });
+        curCell.append(makeBoxForImage(image));
       }
-      tableMainCell.append(imageHolder);
-      tableMainRow.append(tableMainCell);
-      curAlphabetSetQuestionSelects.append($(document.createElement('option'))
+      
+      if (questionSelects.length == 1)
+        makeAlphabetGroupClickable(alphabetGlobalNum - 1, curCol, questionSelects);
+      
+      curCol.append(curHeader).append(curCell);
+      alphabetTable.append(curCol);
+      questionSelects.append($(document.createElement('option'))
         .attr('value', (alphabetGlobalNum - 1))
         .append(alphabetGlobalNum)
       );
     }
-    tableBody.append(tableMainRow);
-    tableHead.append(tableHeadRow);
-    alphabetTable.append(tableHead).append(tableBody);
-    centerElement.append(alphabetTable);
-    curAlphabetSetTraining.append(centerElement);
-    curAlphabetSet.append(curAlphabetSetTraining)
-      .append($(document.createElement('br')))
-      .append(curAlphabetSetQuestions)
-      .append($(document.createElement('hr')))
-      .append($(document.createElement('br')))
-      .append($(document.createElement('br')))
-      .append($(document.createElement('br')))
-      .append($(document.createElement('br')));
-    alphabetsContainer.append(curAlphabetSet);
+    alphabetTableHolder.append(alphabetTable);
+    alphabetTableHolderHolder.append(alphabetTableHolder)
     
-    makeTrainingAlphabetDroppable('.alphabet-group-' + groupNum + '-droppable');
-  });
-}
-
-$(function () {
-    $.getJSON("../scripts/python/alphabets.py", makeInputs);
-  });
+    return alphabetTableHolderHolder;
+  }
+  
+  function makeInputs(data) {
+    
+    var alphabetsContainer = $('#all-alphabets');
+    jQuery.each(data, function(groupNum, group) {
+      var curAlphabetSet = $(document.createElement('fieldset'))
+        .attr('id', 'alphabet-set-' + groupNum)
+        .attr('name', 'alphabet-set-' + groupNum)
+        .addClass('alphabet-set')
+        .append($(document.createElement('legend'))
+          .append('Alphabet Group ' + (groupNum + 1))
+        );
+      var curAlphabetSetTraining = $(document.createElement('div'))
+        .attr('id', 'alphabet-set-training' + groupNum)
+        .attr('name', 'alphabet-set-training' + groupNum)
+        .addClass('alphabet-set');
+        
+      // Making questions
+      var alphabetQuestions = makeAlphabetQuestions(groupNum, group['ask_for']);
+      var questionSelects = alphabetQuestions['selects'];
+      var curAlphabetSetQuestions = alphabetQuestions['dom-element'];
+  
+      
+      // Making training      
+      var trainingTable = makeTrainingTable(groupNum, group['alphabets'], questionSelects);
+      
+      curAlphabetSetTraining.append(trainingTable);
+      curAlphabetSet.append(curAlphabetSetTraining)
+        .append($(document.createElement('br')))
+        .append(curAlphabetSetQuestions);
+      alphabetsContainer.append(curAlphabetSet);
+      
+      makeTrainingAlphabetDroppable('.alphabet-group-' + groupNum + '-droppable');
+      
+    });
+    
+    function fixPadding() {
+      if (this.width > this.height) {
+        this.width = 75;
+        //this.style.paddingBottom = this.style.paddingTop = (this.width - this.height) / 2 + _image_padding + 'px';
+        //this.style.paddingRight = this.style.paddingLeft = _image_padding + 'px';
+      } else if (this.height > this.width) {
+        this.height = 75;
+        //this.style.paddingRight = this.style.paddingLeft = (this.height - this.width) / 2 + _image_padding + 'px';
+        //this.style.paddingBottom = this.style.paddingTop = _image_padding + 'px';
+      } else if (this.height && this.width) {
+        this.height = 75;
+        //this.style.padding = _image_padding + 'px';
+      }
+      this.style.backgroundColor = 'white';
+      //this.style.border = 'thin solid gray';
+      doneLoading(this);
+    }
+    $('img').each(function () {
+      //if (this.height <= 26) // Empty text?
+      notYetLoaded(this);
+      $(this).load(fixPadding);
+    });
+    doneLoading(this);
+  }
+  
+  notYetLoaded(this);
+  $(function () {
+      $.getJSON("../scripts/python/alphabets.py", makeInputs);
+    });
+})();

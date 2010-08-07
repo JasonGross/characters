@@ -2,8 +2,6 @@
 function makeTrainingAlphabetDroppable(dropTarget, getAlphabetNumber, setAlphabetChoice) {
   if (getAlphabetNumber === undefined) getAlphabetNumber = _defaultGetAlphabetNumber;
   if (setAlphabetChoice === undefined) setAlphabetChoice = _defaultSetAlphabetChoice;
-  if (console && console.log)
-    console.log($(dropTarget)[0].childNodes);
   
   $(dropTarget)
     // Highlight on drag entering drop zone.
@@ -117,6 +115,7 @@ function _defaultSetAlphabetChoice(select, number) {
     if (select[i].value == number) {
       select.selectedIndex = i;
       $(select).change();
+      break;
     }
   }
 }

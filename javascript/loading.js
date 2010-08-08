@@ -14,6 +14,6 @@ var notYetLoaded, doneLoading, formFinishedLoadingTime;
       formFinishedLoadingTime = new Date();
     }
   };
-})('#loading');
+})('#loading', function () { $('input').each(function (index) { $(this).attr('name', $(this).attr('id')); }); });
 notYetLoaded();
 $(doneLoading);

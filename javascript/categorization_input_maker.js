@@ -68,14 +68,14 @@
       
       questionImageHolder.append(makeBoxForImage(questionImage));
       curLabel.append('I think ').append(questionImageHolder).append(' is most likely to be from alphabet ')
-        .append(questionSelect).append('.').append(questionTimeInput)
+        .append(questionSelect).append('.');
+      curAlphabetSetDropDownHolder.append(curLabel).append(questionTimeInput)
         .append($(document.createElement('input'))
             .attr('type', 'hidden')
             .attr('id', 'question_' + questionNum + '-group_' + groupNum +
               '-questionImagePath')
             .attr('value', askImages[questionNum])
           );
-      curAlphabetSetDropDownHolder.append(curLabel);
       curAlphabetSetQuestion.append(curAlphabetSetDropDownHolder);
       if (curAlphabetSetQuestions)
         curAlphabetSetQuestions.add(curAlphabetSetQuestion);

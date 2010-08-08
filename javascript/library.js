@@ -271,7 +271,7 @@ function timeDelta(startTime, endTime) {
   rtn.hours = rtn.totalHours % 24;
   rtn.totalDays = Math.floor(rtn.totalHours / 24);
   rtn.days = rtn.totalDays % 365;
-  rtn.totalYears = Math.floor(rtn.totalDats / 365);
+  rtn.totalYears = Math.floor(rtn.totalDays / 365);
   rtn.years = rtn.totalYears;
   return rtn;
 }

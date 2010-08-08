@@ -65,11 +65,11 @@ _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH = os.path.join(_RELATIVE_CATEGORIZATION
 RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
 
-CATEGORIZATION_RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
-CATEGORIZATION_UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
+CATEGORIZATION_RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
+CATEGORIZATION_UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
 
-RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
-UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
+RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_RESULTS_PATH)
+UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_UNREVIEWED_PATH)
 
 CATEGORIZATION_RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
 CATEGORIZATION_UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
@@ -147,9 +147,9 @@ def get_alphabet_name(alphabet_id):
         with open(_ALPHABET_NAMES_FILE, 'r') as f:
             for line in f:
                 a_id, name = line.replace('\n', '').split(': ')
-                _alphabets_names_dict[a_id] = name
-    if alphabet_id in _alphabets_names_dict:
-        return _alphabets_names_dict[alphabet_id]
+                _alphabets_names_dict[a_id.lower()] = name
+    if alphabet_id.lower() in _alphabets_names_dict:
+        return _alphabets_names_dict[alphabet_id.lower()]
 
 
 def get_alphabet_id_from_file_name(file_name):

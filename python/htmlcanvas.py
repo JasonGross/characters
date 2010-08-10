@@ -1,107 +1,115 @@
 from __future__ import with_statement
-##from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw
 import math
 from glob import glob
 import os
-import cairo
-from PIL import Image
-from alphabetspaths import *
 from alphabetsutil import decompress_stroke, compress_stroke, stroke_to_list
 
-_LINE_CAPS = {'butt':cairo.LINE_CAP_BUTT,
-              'round':cairo.LINE_CAP_ROUND,
-              'square':cairo.LINE_CAP_SQUARE
-              }
-_LINE_JOINS = {'miter':cairo.LINE_JOIN_MITER,
-               'round':cairo.LINE_CAP_ROUND,
-               'bevel':cairo.LINE_JOIN_BEVEL
-               }
-
-def paint_image_with_strokes(strokes, line_width=5, line_cap='round', image=None, size=None, line_join='miter',
-                             scale_factor=(0,0), offset=(0,0), tuple_to_dict=(lambda (x, y): {'x':x, 'y':y})):
+def paint_image_with_strokes(strokes, line_width=1, line_cap='round', image=None, size=None, line_join='miter'):
     if isinstance(strokes, str):
         strokes = stroke_to_list(strokes, parsed_to_int=True)
     line_color = 'black'
 
-    if isinstance(scale_factor, int): scale_factor = (scale_factor, scale_factor)
-    if isinstance(offset, int): offset = (offset, offset)
-
-    if not isinstance(scale_factor, dict):
-        scale_factor = tuple_to_dict(tuple(scale_factor))
-    if not isinstance(offset, dict):
-        offset = tuple_to_dict(tuple(offset))
-    if not isinstance(size, dict):
-        size = tuple_to_dict(tuple(size))
-
-    strokes = [[{'x':point['x']*scale_factor['x']+offset['x'], 'y':point['y']*scale_factor['y'] + offset['y']} \
-                for point in stroke] for stroke in strokes]
-
     if size is None: 
         x_max = max(max(point['x'] for point in stroke) for stroke in strokes)
         y_max = max(max(point['y'] for point in stroke) for stroke in strokes)
-        size = {'x':x_max+20+line_width, 'y':y_max+20+line_width}
+        size = (x_max+20+line_width, y_max+20+line_width)
     
     if not image:
-        image = cairo.ImageSurface(cairo.FORMAT_RGB24, size['x'], size['y'])
-    ctx = cairo.Context(image)
-    ctx.set_line_cap(_LINE_CAPS[line_cap])
-    ctx.set_line_join(_LINE_JOINS[line_join])
-    ctx.set_line_width(line_width)
+        image = Image.new(mode='1', size=size, color='white')
+    draw = ImageDraw.Draw(image)
+    
+    if line_cap == 'butt':
+        def do_line_end(x, y, *args, **kargs):
+            pass
+    elif line_cap == 'round':
+        def do_line_end(x, y, *args, **kargs):
+            draw.ellipse((x - float(line_width) / 2, y - float(line_width) / 2,
+                          x + float(line_width) / 2, y + float(line_width) / 2),
+                         fill=line_color)
+    elif line_cap == 'square':
+        def do_line_end(x, y, last_x=None, last_y=None, *args, **kargs):
+            if last_x is None and last_y is None:
+                draw.rectangle((x - float(line_width) / 2, y - float(line_width) / 2,
+                                x + float(line_width) / 2, y + float(line_width) / 2),
+                               fill=line_color)
+            elif last_x is None or last_y is None:
+                raise ValueError
+            elif x == last_x:
+                direction = (1 if y > last_y else -1)
+                draw.line((x, y,
+                           x, y + direction*float(line_width)/2),
+                          fill=line_color, width=line_width)
+            elif y == last_y:
+                direction = (1 if x > last_x else -1)
+                draw.line((x, y,
+                           x + direction*float(line_width)/2, y),
+                          fill=line_color, width=line_width)
+            else:
+                x_direction = (1 if x > last_x else -1)
+                y_direction = (1 if y > last_y else -1)
+                dx = abs(math.sqrt((float(line_width) / 2) ** 2 / (1 + slope) ** 2))
+                dy = abs(slope * dx)
+                draw.line((x, y,
+                           x + x_direction*dx, y + y_direction*dy),
+                          fill=line_color, width=line_width)
+    else:
+        raise ValueError
+    
+    if line_join == 'bevel':
+        NotImplemented
+    elif line_join == 'round':
+        NotImplemented
+    elif line_join == 'miter':
+        NotImplemented
+    else:
+        raise ValueError
+  
+    draw.rectangle((0, 0) + image.size, fill='white')
     for stroke in strokes:
         x, y = stroke[0]['x'], stroke[0]['y']
 
-        ctx.rectangle(x - line_width / 2.0, y - line_width / 2.0, line_width, line_width)
-        ctx.move_to(x, y)
+        draw.rectangle((x - float(line_width) / 2, y - float(line_width) / 2,
+                        x + float(line_width) / 2, y + float(line_width) / 2),
+                       fill=line_color)
+
+##        do_line_end
         for point in stroke:
+            last_x, last_y = x, y
             x, y = point['x'], point['y']
-            ctx.line_to(x, y)
-        ctx.stroke()
-    return image, ctx
+            draw.line((last_x, last_y, x, y), fill='black', width=line_width)
+    return image
 
-def strokes_to_image(strokes, fobj, line_width=5, line_cap='round', size=None, line_join='miter',
-                             scale_factor=(0,0), offset=(0,0), tuple_to_dict=(lambda (x, y): {'x':x, 'y':y})):
-    image, ctx = paint_image_with_strokes(strokes, line_width=line_width, line_cap=line_cap,
-                                          size=size, line_join=line_join, scale_factor=scale_factor,
-                                          offset=offset, tuple_to_dict=tuple_to_dict)
-    image.write_to_png(fobj)
+def strokes_to_image(strokes, file_name, line_width=1, format=None):
+    image = paint_image_with_strokes(strokes, line_width=line_width)
+    if format:
+        image.save(file_name, format=format)
+    else:
+        image.save(file_name)
 
-def get_image_size(file_name):
-    """
-    Returns the size of the image at the location on disk specified
-    by file_name, as (width, height).
-    """
-    return Image.open(file_name).size
-
-
-def convert_all_strokes_to_images(strokes=get_accepted_stroke_list(), original_images=get_accepted_image_list(),
-                                  dest_images=get_accepted_image_list(),
-                                  line_width=5, uncompressed_ext='.stroke', compressed_ext='.cstroke',
-                                  verbose=True, resize=True, new_max_dimen=100):
-    for alphabet in strokes:
-        if verbose: print("Alphabet: %s" % alphabet)
-        for uid in stroke_list[alphabet]:
-            if verbose: print("  Id: %s" % uid)
-            for stroke_name, original_image, new_image in zip(stroke_list[alphabet][uid],
-                                                              original_images[alphabet][uid],
-                                                              dest_images[alphabet][uid]):
-                if stroke_name[-len(uncompressed_ext):].lower() == uncompressed_ext.lower():
-                    with open(stroke_name, 'r') as f:
-                        stroke = f.read().strip()
-                elif stroke_name[-len(compressed_ext):].lower() == compressed_ext.lower():
-                    with open(stroke_name, 'rb') as f:
-                        cstroke = f.read()
-                    stroke = decompress_stroke(cstroke, to_string=False)
-                else:
-                    print('Malformed file name: ' + stroke_name)
-                    continue
-                size = None
-                if resize:
-                    width, height = get_image_size(original_image)
-                    if width > height:
-                        width, height = new_max_dimen, float(height) * new_max_dimen / width
-                    elif width < height:
-                        width, height = float(width) * new_max_dimen / height, new_max_dimen
-                    else:
-                        width, height = new_max_dimen, new_max_dimen
-                    size = {'x':width, 'y':height}
-                strokes_to_image(stroke, new_image, size=size, line_width=line_width)
+def convert_all_strokes_to_images(src='.', dest='.', format=None, line_width=1,
+                                  uncompressed_ext='.stroke', compressed_ext='.cstroke', glob_name='*.*stroke',
+                                  verbose=True, new_ext='.png'):
+    if isinstance(src, str): src = [src]
+    if isinstance(dest, str): dest = [dest]
+    if len(dest) != 1 and len(dest) != len(src):
+        raise ValueError("Argument `dest' has an invalid number of entries.")
+    if len(dest) == 1 and len(src) > 1:
+        dest = [dest[0] for i in src]
+    paths = zip(src, dest)
+    for src, dest in paths:
+        print("I'm in %s" % src)
+        for file_name in glob(os.path.join(src, glob_name)):
+            if verbose: print("I'm saving " + file_name)
+            if file_name[-len(uncompressed_ext):].lower() == uncompressed_ext.lower():
+                with open(file_name, 'r') as f:
+                    stroke = f.read().strip()
+            elif file_name[-len(compressed_ext):].lower() == compressed_ext.lower():
+                with open(file_name, 'rb') as f:
+                    cstroke = f.read()
+                stroke = decompress_stroke(cstroke)
+            else:
+                print('Malformed file name: ' + file_name)
+                continue
+            new_file_name = os.path.join(dest, os.path.splitext(os.path.split(file_name)[-1])[0] + new_ext)
+            strokes_to_image(strokes=stroke, file_name=new_file_name, format=format, line_width=line_width)

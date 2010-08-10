@@ -148,9 +148,14 @@ def make_uid(form_dict):
 
 alphabet_id = None
 
-def record_submission(form_dict, many_dirs=False, path=UNREVIEWED_PATH,
+def record_submission(form_dict, names=('get_unreviewed_image_list', 'get_unreviewed_stroke_list'),
+                      many_dirs=False, path=UNREVIEWED_PATH,
                       images_path=TURK_IMAGES_PATH, strokes_path=TURK_STROKES_PATH, extra_info_path=TURK_EXTRA_INFO_PATH,
                       verbose=True, pseudo=False):
+    if names:
+        for name in names:
+            if os.path.exists(get_object_file_name(name)):
+                os.remove(get_object_file_name(name))
     if verbose: print('Hashing IP address...')
     uid = make_uid(form_dict)
     if many_dirs:

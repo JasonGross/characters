@@ -88,11 +88,11 @@ def get_image_size(file_name):
     """
     return Image.open(file_name).size
 
-def convert_strokes_to_images(stroke_list, dest_images, original_images=None, 
+def convert_strokes_to_images(stroke_list, dest_images, original_image_sizes=None, 
                               line_width=5, uncompressed_ext='.stroke', compressed_ext='.cstroke',
-                              verbose=True, resize=True, new_max_dimen=100, pad=10):
+                              verbose=True, auto_resize=False, new_max_dimen=100, pad=10, scale_factor=1, **kargs):
     if original_images is None: original_images = [None for i in stroke_list]
-    for stroke_name, original_image, new_image in zip(stroke_list, original_images, dest_images):
+    for stroke_name, original_image_size, new_image in zip(stroke_list, original_image_sizes, dest_images):
         if verbose: print("I'm saving %s..." % stroke_name)
         if stroke_name[-len(uncompressed_ext):].lower() == uncompressed_ext.lower():
             with open(stroke_name, 'r') as f:
@@ -106,12 +106,12 @@ def convert_strokes_to_images(stroke_list, dest_images, original_images=None,
             continue
         size = None
         offset = None
-        if resize and original_image:
-            width, height = get_image_size(original_image)
-            if width > height:
-                scale_factor = float(height) / new_max_dimen
+        if auto_resize and original_image_size:
+            original_width, original_height = original_image_size
+            if original_width > original_height:
+                scale_factor = float(original_height) / new_max_dimen
             else:
-                scale_factor = float(width) / new_max_dimen
+                scale_factor = float(original_width) / new_max_dimen
             width, height = new_max_dimen, new_max_dimen
             if pad:
                 width += 2 * pad
@@ -121,16 +121,32 @@ def convert_strokes_to_images(stroke_list, dest_images, original_images=None,
         strokes_to_image(stroke, new_image, size=size, line_width=line_width, scale_factor=scale_factor, offset=offset)
 
 
-def convert_all_alphabet_strokes_to_images(strokes=None, original_images=None, dest_images=None, verbose=True, **kargs):
-    if strokes is None: strokes = get_accepted_stroke_list()
-    if original_images is None: original_images = get_accepted_image_list()
-    if dest_images is None: dest_images = get_accepted_image_list()
+def convert_all_alphabet_strokes_to_images(strokes=None, original_images=None, dest_images=None, verbose=True,
+                                           auto_resize=True, new_max_dimen=100, **kargs):
+    if strokes is None or dest_images is None or original_images is None:
+        if verbose: print('Getting list of alphabets, images, and strokes...')
+        if strokes is None:
+            if verbose: print('Getting list of accepted strokes...')
+            strokes = get_accepted_stroke_list(from_path='.')
+        if dest_images is None: 
+            if verbose: print('Getting list of accepted images...')
+            dest_images = get_accepted_image_list(from_path='.')
+        if original_images is None: 
+            if verbose: print('Getting list of original images...')
+            actual_original_images = get_original_image_list(from_path='.')
+        if verbose: print('Done getting list of alphabets, images, and strokes.')
     for alphabet in strokes:
         if verbose: print("Alphabet: %s" % alphabet)
-        for uid in stroke_list[alphabet]:
+        for uid in strokes[alphabet]:
             if verbose: print(" Id: %s" % uid)
-            convert_strokes_to_images(stroke_list[alphabet][uid], dest_images[alphabet][uid], original_images[alphabet][uid],
-                                      verbose=verbose, **kargs)
+            if original_images is None:
+                cur_original_image_sizes = [Image.open(image).size for image in actual_original_images[alphabet]]
+                cur_original_image_sizes = [(width * 100.0 / height, 100) for width, height in cur_original_image_sizes]
+            else:
+                cur_original_image_sizes = original_image_sizes[alphabet][uid]
+            raw_input(cur_original_image_sizes)
+            convert_strokes_to_images(stroke_list[alphabet][uid], dest_images[alphabet][uid], original_image_sizes=cur_original_image_sizes,
+                                      verbose=verbose, auto_resize=auto_resize, new_max_dimen=new_max_dimen, **kargs)
 
 def convert_all_strokes_to_images(src='.', dest='.',
                                   uncompressed_ext='.stroke', compressed_ext='.cstroke', glob_name='*.*stroke',

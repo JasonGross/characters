@@ -82,7 +82,9 @@ def get_submission_paths(submission_dict):
     else:
         return TURK_IMAGES_PATH, TURK_STROKES_PATH, TURK_EXTRA_INFO_PATH
 
-def convert_hit(hit, line_sep='\n', data_sep='\t', pseudo=False):
+def convert_hit(hit, names=('get_turk_accepted_image_list', 'get_turk_accepted_stroke_list', 'get_turk_image_list',
+                            'get_turk_stroke_list', 'get_turk_rejected_image_list', 'get_turk_rejected_stroke_list'),
+                line_sep='\n', data_sep='\t', pseudo=False):
     table = [line.split(data_sep) for line in hit.split(line_sep) if line.strip()]
     data = _parse_table(table)
 ##    check = map((lambda d: (get_alphabet_name(d), hash(d['ipAddress']), d['ipAddress'], d['reject'], d['viewhit'], d['workerid'])), data)
@@ -97,7 +99,7 @@ def convert_hit(hit, line_sep='\n', data_sep='\t', pseudo=False):
                                        repr(submission_dict['workerid'])))
         images_path, strokes_path, extra_info_path = get_submission_paths(submission_dict)
         try:
-            record_submission(submission_dict, many_dirs=False, pseudo=pseudo,
+            record_submission(submission_dict, names=names, many_dirs=False, pseudo=pseudo,
                               images_path=images_path, strokes_path=strokes_path, extra_info_path=extra_info_path)
         except AttributeError, ex:
             note_bad_hit(submission_dict, ex)

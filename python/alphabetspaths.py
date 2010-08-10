@@ -6,6 +6,7 @@ import sys
 import re
 import urllib
 import python2to3patch
+import cPickle
 try:
     from python3lib import relpath
 except SyntaxError:
@@ -21,7 +22,8 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'RESULTS_PATH', 'get_alphabet_name', 'get_alphabet_id_from_file_name',
            'STORED_ALPHABET_IMAGES_LIST_PATH',
            'CATEGORIZATION_RESULTS_PATH',
-           'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL']
+           'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL',
+           'get_object', 'get_object_file_name']
  
 _paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
           'ACCEPTED': (lambda s: ('accepted-%s' % s) if s != 'information' else None),
@@ -140,6 +142,25 @@ for _name in _image_stroke_dicts_names:
     setattr(_self, '_%s_strokes_dict' % _name, {})
 
 
+OBJECT_STORAGE_DIRECTORY = os.path.join(BASE_PATH, 'object-storage')
+def get_object(name, object_maker, is_old=None, protocol=0):
+    if os.path.exists(get_object_file_name(name)):
+        try:
+            with open(get_object_file_name(name), 'rb') as f:
+                obj = cPickle.load(f)
+            if is_old is None or not is_old(obj):
+                return obj
+        except (IOError,): # add more as needed
+            pass
+    obj = object_maker()
+    with open(get_object_file_name(name), 'wb') as f:
+        cPickle.dump(obj, f, protocol=protocol)
+    return obj
+
+def get_object_file_name(name):
+    return os.path.join(OBJECT_STORAGE_DIRECTORY, name + '.obj')
+
+
 def get_alphabet_name(alphabet_id):
     global _alphabets_names_dict
     if not _alphabets_names_dict:
@@ -159,18 +180,23 @@ def get_alphabet_id_from_file_name(file_name):
         raise ValueError("Invalid file name paseed for id: %s" % repr(file_name))
     return match.groups()[0]
 
-def make_get_list(reg_string, default_from_path, use_dict):
+def make_get_list(reg_string, default_from_path, use_dict, name):
     def get_list(alphabet_id=None, from_path=default_from_path):
         reg = re.compile(reg_string)
         if not use_dict:
-            for base, dirs, files in os.walk(default_from_path):
-                for file_name in files:
-                    match = reg.match(file_name)
-                    if match:
-                        name = match.groups()[0]
-                        if name not in use_dict:
-                            use_dict[name] = []
-                        use_dict[name].append(os.path.join(default_from_path, file_name))
+            def make_dict():
+                use_dict = {}
+                for base, dirs, files in os.walk(default_from_path):
+                    print(base)
+                    for file_name in sorted(files):
+                        match = reg.match(file_name)
+                        if match:
+                            name = match.groups()[0]
+                            if name not in use_dict:
+                                use_dict[name] = []
+                            use_dict[name].append(os.path.join(default_from_path, file_name))
+                return use_dict
+            use_dict.update(get_object(name, make_dict))
         if alphabet_id is None:
             return use_dict.copy()
         if alphabet_id not in use_dict:
@@ -178,20 +204,25 @@ def make_get_list(reg_string, default_from_path, use_dict):
         return [relpath(i, from_path) for i in use_dict[alphabet_id]]
     return get_list
 
-def make_get_optional_id_list(reg_string, default_from_path, use_dict, base_dir=None):
+def make_get_optional_id_list(reg_string, default_from_path, use_dict, name, base_dir=None):
     if base_dir is None: base_dir = default_from_path
     reg = re.compile(reg_string)
     def get_list(alphabet_id=None, id_=None, from_path=default_from_path):
         if not use_dict:
-            for base, dirs, files in os.walk(base_dir):
-                for file_name in sorted(files):
-                    match = reg.match(file_name)
-                    if match:
-                        name, number, cur_id = match.groups()
-                        name = name
-                        if name not in use_dict: use_dict[name] = {}
-                        if cur_id not in use_dict[name]: use_dict[name][cur_id] = []
-                        use_dict[name][cur_id].append(os.path.join(base, file_name))
+            def make_dict():
+                use_dict = {}
+                for base, dirs, files in os.walk(base_dir):
+                    print(base)
+                    for file_name in sorted(files):
+                        match = reg.match(file_name)
+                        if match:
+                            name, number, cur_id = match.groups()
+                            name = name
+                            if name not in use_dict: use_dict[name] = {}
+                            if cur_id not in use_dict[name]: use_dict[name][cur_id] = []
+                            use_dict[name][cur_id].append(os.path.join(base, file_name))
+                return use_dict
+            use_dict.update(get_object(name, make_dict))
         if alphabet_id is None:
             rtn = {}
             if id_ is None:
@@ -269,13 +300,16 @@ def make_get_extra_info_file_name(get_ids, location_path, default_from_path=RESU
     return get_extra_info_file_name
 
 get_original_image_list = make_get_list(reg_string='(.*?)_[Pp]age_([0-9]+).png',
-                                        default_from_path=ORIGINAL_IMAGES_PATH, use_dict=_original_images_dict)
+                                        default_from_path=ORIGINAL_IMAGES_PATH, use_dict=_original_images_dict,
+                                        name='get_original_image_list')
 
 get_unreviewed_image_list = make_get_optional_id_list(reg_string=FILE_NAME_REGEX+'.png',
-                                                      default_from_path=UNREVIEWED_PATH, use_dict=_unreviewed_images_dict)
+                                                      default_from_path=UNREVIEWED_PATH, use_dict=_unreviewed_images_dict,
+                                                      name='get_unreviewed_image_list')
 get_unreviewed_ids = make_get_ids(get_unreviewed_image_list)
 get_unreviewed_stroke_list = make_get_optional_id_list(reg_string=FILE_NAME_REGEX+'.c?stroke',
-                                                       default_from_path=UNREVIEWED_PATH, use_dict=_unreviewed_strokes_dict)
+                                                       default_from_path=UNREVIEWED_PATH, use_dict=_unreviewed_strokes_dict,
+                                                       name='get_unreviewed_stroke_list')
 
 def get_unreviewed_extra_info_file_name(alphabet_id=None, id_=None, from_path=UNREVIEWED_PATH):
     images = get_unreviewed_image_list(alphabet_id=alphabet_id, id_=id_, from_path=from_path)
@@ -311,7 +345,8 @@ for _name in _normal_path_names:
     setattr(_self, 'get_%s_image_list' % _name.lower(),
             make_get_optional_id_list(reg_string=FILE_NAME_REGEX+'.png',
                                       default_from_path=getattr(_self, '%s_IMAGES_PATH' % _name.upper()),
-                                      use_dict=getattr(_self, '_%s_images_dict' % _name.lower())))
+                                      use_dict=getattr(_self, '_%s_images_dict' % _name.lower()),
+                                      name=('get_%s_image_list' % _name.lower())))
     __all__.append('get_%s_image_list' % _name.lower())
     setattr(_self, 'get_%s_ids' % _name.lower(),
             make_get_ids(getattr(_self, 'get_%s_image_list' % _name.lower())))
@@ -323,7 +358,8 @@ for _name in _normal_path_names:
     setattr(_self, 'get_%s_stroke_list' % _name.lower(),
             make_get_optional_id_list(reg_string=FILE_NAME_REGEX+'.c?stroke',
                                       default_from_path=getattr(_self, '%s_STROKES_PATH' % _name.upper()),
-                                      use_dict=getattr(_self, '_%s_strokes_dict' % _name.lower())))
+                                      use_dict=getattr(_self, '_%s_strokes_dict' % _name.lower()),
+                                      name=('get_%s_image_list' % _name.lower())))
     __all__.append('get_%s_stroke_list' % _name.lower())
     
 

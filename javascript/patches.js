@@ -27,7 +27,7 @@
           if (format in this.__patch_data_object)
             delete this.__patch_data_object[format];
         } else {
-          var keys = this.__patch_data_object.keys();
+          var keys = keys(this.__patch_data_object);
           for (var keyI = 0; keyI < keys.length; keyI++)
             delete this.__patch_data_object[keys[keyI]];
         }

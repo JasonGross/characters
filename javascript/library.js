@@ -2,26 +2,32 @@
 
 //=============================================================
 // From http://my.opera.com/GreyWyvern/blog/show.dml/1725165
-Object.prototype.clone = function() {
-  var newObj = (this instanceof Array) ? [] : {};
-  for (i in this) {
-    if (i == 'clone') continue;
+// Warning: this fails if obj contains it self.
+function clone (obj, alreadySeen) {
+  var newObj = (obj instanceof Array) ? [] : {};
+  if (alreadySeen === undefined)
+    alreadySeen = {obj:newObj};
+  for (var i in obj) {
     if (this[i] && typeof this[i] == "object") {
-      newObj[i] = this[i].clone();
-    } else newObj[i] = this[i]
-  } return newObj;
+      if (!(i in alreadySeen))
+	alreadySeen[i] = clone(this[i], alreadySeen);
+      newObj[i] = alreadySeen[i];
+    } else 
+      newObj[i] = this[i]
+  }
+  return newObj;
 };
 //=============================================================
 
-Object.prototype.keys = function() {
+function keys(obj) {
   var rtn = [];
-  if (this instanceof Array) {
-    for (var i = 0; i < this.length; i++)
-      if (!(this[i] === undefined))
+  if (obj instanceof Array) {
+    for (var i = 0; i < obj.length; i++)
+      if (!(obj[i] === undefined))
         rtn.push(i);
   } else {
-    for (var i in this)
-      if (!(i in this.constructor.prototype))
+    for (var i in obj)
+      if (obj.hasOwnProperty(i)) //(!(i in this.constructor.prototype))
         rtn.push(i);
   }
   return rtn;

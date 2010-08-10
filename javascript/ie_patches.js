@@ -5,7 +5,7 @@ DataTransfer.prototype.clearData = function (format) {
     if (format in _ie_patch_data_transfer_data_object)
       delete _ie_patch_data_transfer_data_object[format];
   } else {
-    var keys = _ie_patch_data_transfer_data_object.keys();
+    var keys = keys(_ie_patch_data_transfer_data_object);
     for (var keyI = 0; keyI < keys.length; keyI++)
       delete _ie_patch_data_transfer_data_object[keys[keyI]];
   }

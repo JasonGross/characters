@@ -36,8 +36,7 @@
         .attr('alt', 'Test image ' + (questionNum + 1) + ' for alphabet group ' + (groupNum + 1) + '.');
       var questionSelect = $(document.createElement('select'))
         .attr('name', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
-        .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
-	.addClass('alphabet-question');
+        .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum);
       var defaultOption = $(document.createElement('option'))
         .attr('id', 'default-option')
         .attr('value', -1)
@@ -117,7 +116,7 @@
       .attr('name', 'alphabet-table-' + groupNum)
       .addClass('table alphabet-table');
     
-    var alphabetIds = keys(alphabets);
+    var alphabetIds = alphabets.keys();
     var alphabetGroupLength = alphabetIds.length;
     var alphabet; 
     for (var alphabetNum = 0; alphabetNum < alphabetGroupLength; alphabetNum++) {
@@ -229,7 +228,7 @@
   
   notYetLoaded(this);
   $(function () {
-      $.getJSON("../scripts/python/alphabets.py", {'trainingCharactersPerAlphabet':getTrainingCharactersPerAlphabet()},
+      $.getJSON("../scripts/python/alphabets.py", {},//'trainingCharactersPerAlphabet':'2'},
         makeInputs);
     });
 })();

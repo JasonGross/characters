@@ -359,7 +359,7 @@ for _name in _normal_path_names:
             make_get_optional_id_list(reg_string=FILE_NAME_REGEX+'.c?stroke',
                                       default_from_path=getattr(_self, '%s_STROKES_PATH' % _name.upper()),
                                       use_dict=getattr(_self, '_%s_strokes_dict' % _name.lower()),
-                                      name=('get_%s_image_list' % _name.lower())))
+                                      name=('get_%s_stroke_list' % _name.lower())))
     __all__.append('get_%s_stroke_list' % _name.lower())
     
 

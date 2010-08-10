@@ -15,7 +15,7 @@ def png_to_uri(name):
         png = f.read()
     return 'data:image/png;base64,' + base64.b64encode(png)
 
-def compress_images(folder=None, image_list=None, image_magick=True, big_size=2000):
+def compress_images(folder=None, image_list=None, image_magick=True, big_size=2000, do_color_change=True):
     submission_log_path = SUBMISSION_LOG_PATH
     mogrify_path = MOGRIFY_PATH
     if folder: push_dir(folder)
@@ -24,7 +24,7 @@ def compress_images(folder=None, image_list=None, image_magick=True, big_size=20
 ##    print(MOGRIFY_PATH + ' -background "#FFFFFF" -flatten *.png<br>') # because if I use white, it gives lt-mogrify: UnableToOpenConfigureFile `colors.xml' @ warning/configure.c/GetConfigureOptions/589.
 ##    print(MOGRIFY_PATH + ' -threshold 50% *.png<br>')
     image_list_str = ' '.join(image_list)
-    if image_magick:
+    if image_magick and do_color_change:
         os.system('%(mogrify_path)s -background "#FFFFFF" -flatten %(image_list_str)s >> %(submission_log_path)s' % locals()) # because if I use white, it gives lt-mogrify: UnableToOpenConfigureFile `colors.xml' @ warning/configure.c/GetConfigureOptions/589.
         os.system('%(mogrify_path)s -threshold 50%% %(image_list_str)s >> %(submission_log_path)s' % locals())
 ##    else:
@@ -33,13 +33,13 @@ def compress_images(folder=None, image_list=None, image_magick=True, big_size=20
 ##        os.system('mogrify -format png %(image_list_xbm_str)s >> %(submission_log_path)s' % locals())
 ##        os.system('rm %(image_list_xbm_str)s >> %(submission_log_path)s' % locals())
     for image in image_list:
-        if not image_magick:
+        if not image_magick and do_color_change:
 ##            image_pbm = image.replace('.png', '.pbm')
             os.system('convert %(image)s -size %(big_size)s xc:white %(image)s -flatten -threshold 50%% %(image)s >> %(submission_log_path)s' % locals())
             os.system('convert %(image)s -size %(big_size)s xc:white %(image)s -flatten -threshold 50%% %(image)s >> %(submission_log_path)s' % locals())
-        for params in ('',):# '-c0 -f0', '-c0 -f5', '-c3 -f0', '-c3 -f5'):
+        for params in ('-c0 -f0',):# '-c0 -f0', '-c0 -f5', '-c3 -f0', '-c3 -f5'):
 ##            print('<br>before: %d - %s %s -v "%s"<br>' % (os.path.getsize(image), PNGOUT_PATH, params, image))
-            os.system(('%s %s -v "%s" >> ' + SUBMISSION_LOG_PATH) % (PNGOUT_PATH, params, image))
+            os.system(('%s %s "%s" > /dev/null') % (PNGOUT_PATH, params, image))
     if folder: pop_dir()
 
 ##        for x_len in (1,2,3):

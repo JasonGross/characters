@@ -1,48 +1,48 @@
+function makeBoxForImage(image) {
+  var imageBox = $('<div>')
+    .addClass('image-box image-holder');
+  var imageHolder = $('<span>')
+    .addClass('wraptocenter image-holder');
+  imageHolder.append(image);
+  imageBox.append(imageHolder);
+  return imageBox;
+}
+
 (function () {
   var alphabetGlobalNum = 0;
-    
-  function makeBoxForImage(image) {
-    var imageBox = $(document.createElement('div'))
-      .addClass('image-box image-holder');
-    var imageHolder = $(document.createElement('span'))
-      .addClass('wraptocenter image-holder');
-    imageHolder.append(image);
-    imageBox.append(imageHolder);
-    return imageBox;
-  }
   
+  function getQuestionFromSelect(select) {
+    var id = $(select).attr('id').replace(/alphabet_group_/, 'alphabet-group-').replace(/_number_test_/, '-question-');
+    return $('#' + id);
+  }
+
   function makeAlphabetQuestions(groupNum, askImages) {
     var questionCount = askImages.length;
     var curAlphabetSetQuestions;
     var curAlphabetSetQuestionSelects;
+    
     for (var questionNum = 0; questionNum < questionCount; questionNum++) {
-      var curAlphabetSetQuestion = $(document.createElement('div'))
-        .attr('id', 'alphabet-group-' + groupNum + '-question-box-' + questionNum)
-        .attr('name', 'alphabet-group-' + groupNum + '-question-box-' + questionNum)
+      var curAlphabetSetQuestion = $('<div>')
+        .attr('id', 'alphabet-group-' + groupNum + '-question-' + questionNum)
         .addClass('alphabet-set alphabet-question');
-      var curAlphabetSetDropDownHolder = $(document.createElement('span'))
-        .attr('id', 'alphabet-group-' + groupNum + '-drop-down-holder-' + questionNum)
-        .attr('name', 'alphabet-group-' + groupNum + '-drop-down-holder-' + questionNum);
-      var curLabel = $(document.createElement('label'));
-      var questionImageHolder = $(document.createElement('span'))
-        .attr('id', 'alphabet-group-' + groupNum + '-image-holder-' + questionNum)
-        .attr('name', 'alphabet-group-' + groupNum + '-image-holder-' + questionNum)
+      var curAlphabetSetDropDownHolder = $('<span>');
+      var curLabel = $('<label>');
+      var questionImageHolder = $('<span>')
         .addClass('alphabet-group-' + groupNum + '-draggable');
-      var questionImage = $(document.createElement('img'))
+      var questionImage = $('<img>')
         .attr('id', 'alphabet-group-' + groupNum + '-image-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-image-' + questionNum)
         .attr('src', '../' + askImages[questionNum])
         .attr('align', 'absmiddle')
         .attr('alt', 'Test image ' + (questionNum + 1) + ' for alphabet group ' + (groupNum + 1) + '.');
-      var questionSelect = $(document.createElement('select'))
-        .attr('name', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
+      var questionSelect = $('<select>')
         .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
 	.addClass('alphabet-question');
-      var defaultOption = $(document.createElement('option'))
+      var defaultOption = $('<option>')
         .attr('id', 'default-option')
         .attr('value', -1)
         .append('(select an alphabet number)')
-      var questionTimeInput = $(document.createElement('input'))
+      var questionTimeInput = $('<input>')
         .attr('type', 'hidden')
         .attr('value', '')
         .attr('id', 'alphabet-group-' + groupNum + '-image-' + questionNum + '-time-of-selection')
@@ -62,7 +62,7 @@
         });
       
       if (curAlphabetSetQuestionSelects)
-        curAlphabetSetQuestionSelects.add(questionSelect);
+        curAlphabetSetQuestionSelects = curAlphabetSetQuestionSelects.add(questionSelect);
       else
         curAlphabetSetQuestionSelects = questionSelect;
       
@@ -73,8 +73,7 @@
       curAlphabetSetDropDownHolder.append(curLabel).append(questionTimeInput)
         .append($(document.createElement('input'))
             .attr('type', 'hidden')
-            .attr('id', 'question_' + questionNum + '-group_' + groupNum +
-              '-questionImagePath')
+            .attr('id', 'question_' + questionNum + '-group_' + groupNum + '-questionImagePath')
             .attr('value', askImages[questionNum])
           );
       curAlphabetSetQuestion.append(curAlphabetSetDropDownHolder);
@@ -89,22 +88,21 @@
     }
     return {
             'selects': curAlphabetSetQuestionSelects,
-            'dom-element': curAlphabetSetQuestions
+            'dom-element': curAlphabetSetQuestions,
+	    'getQuestionFromSelect':getQuestionFromSelect
            };
   }
-  function makeAlphabetGroupClickable(alphabetNumber, curCol, questionSelects) {
-    var select = questionSelects.context;
-    questionSelects.change(function () {
-      if (select[select.selectedIndex].value == alphabetNumber)
-        curCol.addClass('selected');
-      else
-        curCol.removeClass('selected');
-    });
-    curCol.click(function () { _defaultSetAlphabetChoice(questionSelects.context, alphabetNumber); });
-    curCol.mouseover(function () { curCol.addClass('mouseover-select'); });
-    curCol.mouseleave(function () { curCol.removeClass('mouseover-select'); });
-  }
   
+  function selectTargetForQuestion(target, questionSelect) {
+    var alphabetNum = $(target).attr('id').replace(/alphabet-/, '').replace(/-col/, '');
+    _defaultSetAlphabetChoice(questionSelect, alphabetNum);
+  }
+
+  function isTargetCurrentlySelectedForQuestion(target, questionSelect) {
+    var alphabetNum = $(target).attr('id').replace(/alphabet-/, '').replace(/-col/, '');
+    return questionSelect[questionSelect.selectedIndex].value == alphabetNum;
+  }
+
   function makeTrainingTable(groupNum, alphabets, questionSelects) {
     var alphabetTableHolderHolder = $(document.createElement('div'))
       .css('text-align', 'center')
@@ -120,6 +118,7 @@
     var alphabetIds = keys(alphabets);
     var alphabetGroupLength = alphabetIds.length;
     var alphabet; 
+    var cols;
     for (var alphabetNum = 0; alphabetNum < alphabetGroupLength; alphabetNum++) {
       alphabetGlobalNum++;
       alphabetId = alphabetIds[alphabetNum];
@@ -150,9 +149,11 @@
           );
         
       }
-      
-      if (questionSelects.length == 1)
-        makeAlphabetGroupClickable(alphabetGlobalNum - 1, curCol, questionSelects);
+	
+      if (cols)
+        cols = cols.add(curCol);
+      else
+        cols = curCol;
       
       curCol.append(curHeader).append(curCell);
       alphabetTable.append(curCol);
@@ -164,7 +165,10 @@
     alphabetTableHolder.append(alphabetTable);
     alphabetTableHolderHolder.append(alphabetTableHolder)
     
-    return alphabetTableHolderHolder;
+    return {
+	    'dom-element':alphabetTableHolderHolder,
+	    'cols':cols
+	   };
   }
   
   function makeInputs(data) {
@@ -190,7 +194,9 @@
   
       
       // Making training      
-      var trainingTable = makeTrainingTable(groupNum, group['alphabets'], questionSelects);
+      var training = makeTrainingTable(groupNum, group['alphabets'], questionSelects);
+      var trainingTable = training['dom-element'];
+      var curGroupColumns = training['cols'];
       
       curAlphabetSetTraining.append(trainingTable);
       curAlphabetSet.append(curAlphabetSetTraining)
@@ -199,6 +205,8 @@
       alphabetsContainer.append(curAlphabetSet);
       
       makeTrainingAlphabetDroppable('.alphabet-group-' + groupNum + '-droppable');
+      makeAlphabetGroupClickable(groupNum, curGroupColumns, curAlphabetSetQuestions, questionSelects,	    
+                                 selectTargetForQuestion, isTargetCurrentlySelectedForQuestion, getQuestionFromSelect);
       
     });
     

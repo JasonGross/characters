@@ -87,6 +87,7 @@ def is_nested_type(obj, *types):
 def create_first_task(form, images):
     GROUP_COUNT = 5
     ALPHABETS_PER_GROUP = 10
+    QUESTION_COUNT = 1
     alphabet_ids = tuple(_random.sample(images.keys(), GROUP_COUNT * ALPHABETS_PER_GROUP))
     TRAINING_CHARACTERS_PER_ALPHABET = int(form.getvalue('trainingCharactersPerAlphabet', 2))
     groups = [{'alphabets':dict((alphabet_id, []) for alphabet_id in alphabet_ids[ALPHABETS_PER_GROUP*i:ALPHABETS_PER_GROUP*(i+1)])} for i in range(GROUP_COUNT)]
@@ -100,11 +101,9 @@ def create_first_task(form, images):
             group['alphabets'][alphabet_id] = [images[alphabet_id][uid][image_num] for uid, image_num in zip(use_uids, use_image_numbers)]
             if alphabet_id == asking_alphabet_id:
                 uid, image_num = None, None
-                while uid is None or uid in use_uids:
-                    uid = _random.choice(uids)
-                while image_num is None or image_num in use_image_numbers:
-                    image_num = _random.choice(image_numbers)
-                group['ask_for'] = [images[alphabet_id][uid][image_num]]
+                question_uids = _random.sample([uid for uid in uids if uid not in use_uids], QUESTION_COUNT)
+                question_image_nums = _random.sample([image_num for image_num in image_numbers if image_num not in use_image_numbers], QUESTION_COUNT)
+                group['ask_for'] = [images[alphabet_id][uid][image_num] for uid, image_num in zip(question_uids, question_image_nums)]
     return groups
     
     

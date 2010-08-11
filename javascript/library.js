@@ -1,8 +1,7 @@
 ﻿String.prototype.trim = function() { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); }
 
 //=============================================================
-// From http://my.opera.com/GreyWyvern/blog/show.dml/1725165
-// Warning: this fails if obj contains it self.
+// From http://my.opera.com/GreyWyvern/blog/show.dml/1725165.
 function clone (obj, alreadySeen) {
   var newObj = (obj instanceof Array) ? [] : {};
   if (alreadySeen === undefined)
@@ -304,3 +303,51 @@ function convertDateToDateTimeInputString(date) {
   return yearString + '-' + monthString + '-' + dayString + 'T' + hourString + ':' + minuteString + ':' + secondString +
     '.' + millisecondString + offsetSign + offsetHours + ':' + offsetMinutes;
 }
+
+//=============================================================
+// From http://www.shawnolson.net/a/503/altering-css-class-attributes-with-javascript.html.
+if (this['changecss'] === undefined)
+  changecss = function (theClass, element, value, onError) {
+    // Last Updated by original author on June 23, 2009
+    // documentation for this script at
+    // http://www.shawnolson.net/a/503/altering-css-class-attributes-with-javascript.html
+    var cssRules;
+
+    var added = false;
+
+    var s;
+
+    for (s = 0; s < document.styleSheets.length; s++) {
+      if (document.styleSheets[s]['rules'])
+	cssRules = document.styleSheets[s]['rules'];
+      else if (document.styleSheets[s]['cssRules'])
+	cssRules = document.styleSheets[s]['cssRules'];
+      else { // no rules found... browser unknown
+	if (onError !== undefined)
+	  onError();
+	continue;
+      }
+      
+      for (var r = 0; r < cssRules.length; r++) {
+	if (cssRules[r].selectorText == theClass) {
+	  if (cssRules[r].style[element]) {
+	    cssRules[r].style[element] = value;
+	    added=true;
+	    break;
+	  }
+	}
+      }
+    }
+    
+    s = document.styleSheets.length - 1;
+    if (!added) {
+      if (document.styleSheets[s].insertRule) {
+	document.styleSheets[s].insertRule(theClass + ' { ' + element + ': ' +
+	  value + '; }', cssRules.length);
+      } else if (document.styleSheets[s].addRule) {
+	document.styleSheets[s].addRule(theClass, element+': '+value+';');
+      }
+    }
+  } 
+//=============================================================
+

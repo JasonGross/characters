@@ -4,6 +4,7 @@ import math
 from glob import glob
 import os
 import cairo
+from warnings import warn
 from alphabetspaths import *
 from alphabetsutil import decompress_stroke, compress_stroke, stroke_to_list, compress_images
 
@@ -22,7 +23,7 @@ def average(seq):
 
 def paint_image_with_strokes_cairo(strokes, line_width=5, line_cap='round', image=None, size=None, line_join='miter',
                                    scale_factor=1, offset=None, tuple_to_dict=(lambda (x, y): {'x':x, 'y':y}),
-                                   smooth=2):
+                                   smooth=2, name=None):
 ##    import cPickle
 ##    print(list(map(repr, [strokes, line_width, line_cap, image, size, line_join, scale_factor, offset])))
 ##    cPickle.dump('paint_image_with_strokes_cairo' + repr((strokes, line_width, line_cap, image, size, line_join, scale_factor, offset)),
@@ -43,22 +44,33 @@ def paint_image_with_strokes_cairo(strokes, line_width=5, line_cap='round', imag
     
     if offset is None:
         offset = {'x':math.ceil(line_width / 2.0), 'y':math.ceil(line_width / 2.0)}
-    
+
     strokes = [[{'x':point['x']*scale_factor['x'] + offset['x'], 'y':point['y']*scale_factor['y'] + offset['y']} \
                 for point in stroke] for stroke in strokes]
+    
+    x_max = max(max(point['x'] for point in stroke) for stroke in strokes)
+    y_max = max(max(point['y'] for point in stroke) for stroke in strokes)
+    if size is None:
+        size = {'x':x_max + 1 + math.ceil(line_width / 2.0), 'y':y_max + 1 + math.ceil(line_width / 2.0)}
+    elif size['x'] < x_max or size['y'] < y_max:
+        os.system('echo %s: Image size %s too small for stroke size %s.  Scale factor is %s. >> %s/image_warnings.log' % \
+                  (name, size, (x_max, y_max), scale_factor, RESULTS_PATH))
+        warn('Image size %s too small for stroke size %s.  Scale factor is %s.' % (size, (x_max, y_max), scale_factor))
+##        raw_input('Press enter to adjust the scale factor...')
+        scale_factor = max((size['x'], size['y'])) / float(max((x_max, y_max)))
+        strokes = [[{'x':(point['x'] - offset['x']) * scale_factor + offset['x'],
+                     'y':(point['y'] - offset['y']) * scale_factor + offset['y']} \
+                    for point in stroke] for stroke in strokes]
 
     if smooth:
-        strokes = [[{'x':average(pt['x'] for pt in stroke[i:i+smooth]),
-                     'y':average(pt['y'] for pt in stroke[i:i+smooth])} for i in range(len(stroke))] for stroke in strokes]
-    
-    if size is None: 
-        x_max = max(max(point['x'] for point in stroke) for stroke in strokes)
-        y_max = max(max(point['y'] for point in stroke) for stroke in strokes)
-        size = {'x':x_max + 1 + math.ceil(line_width), 'y':y_max + 1 + math.ceil(line_width)}
+        strokes = [[stroke[0]] + \
+                   [{'x':average(pt['x'] for pt in stroke[i:i+smooth]),
+                     'y':average(pt['y'] for pt in stroke[i:i+smooth])} for i in range(len(stroke) - smooth)] + \
+                   [stroke[-1]] for stroke in strokes]
 ##    import cPickle
 ##    cPickle.dump(strokes, open(os.path.expanduser('~/Desktop/temp.strokes'), 'wb'))
     
-    width, height = size['x'], size['y']
+    width, height = int(math.ceil(size['x'])), int(math.ceil(size['y']))
     
     if not image:
         image = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
@@ -127,16 +139,25 @@ def convert_strokes_to_images(stroke_list, dest_images, original_image_sizes=Non
         if auto_resize and original_image_size:
             original_width, original_height = original_image_size
             if original_width > original_height:
-                scale_factor = float(original_height) / new_max_dimen
+                scale_factor = new_max_dimen / float(original_width)
+                width, height = new_max_dimen, original_height * scale_factor
             else:
-                scale_factor = float(original_width) / new_max_dimen
-            width, height = new_max_dimen, new_max_dimen
+                scale_factor = new_max_dimen / float(original_height)
+                width, height = original_width * scale_factor, new_max_dimen
             if pad:
                 width += math.ceil(2 * pad)
                 height += math.ceil(2 * pad)
                 offset = pad
+            if width != height:
+                offset = [offset, offset]
+            if width > height:
+                offset[1] += (width - height) / 2.0
+                height = width
+            elif height > width:
+                offset[0] += (height - width) / 2.0
+                width = height
             size = {'x':width, 'y':height}
-        strokes_to_image(stroke, new_image, size=size, line_width=line_width, scale_factor=scale_factor, offset=offset)
+        strokes_to_image(stroke, new_image, size=size, line_width=line_width, scale_factor=scale_factor, offset=offset, name=stroke_name)
 
 
 def convert_all_alphabet_strokes_to_images(strokes=None, original_images=None, dest_images=None, verbose=True,
@@ -159,7 +180,7 @@ def convert_all_alphabet_strokes_to_images(strokes=None, original_images=None, d
             if verbose: print(" Id: %s" % uid)
             if original_images is None:
                 cur_original_image_sizes = [Image.open(image).size for image in actual_original_images[alphabet]]
-                cur_original_image_sizes = [(width * 100.0 / height, 100) for width, height in cur_original_image_sizes]
+                cur_original_image_sizes = [(int(math.ceil(width * 100.0 / height)), 100) for width, height in cur_original_image_sizes]
             else:
                 cur_original_image_sizes = original_image_sizes[alphabet][uid]
             convert_strokes_to_images(strokes[alphabet][uid], dest_images[alphabet][uid], original_image_sizes=cur_original_image_sizes,
@@ -191,9 +212,9 @@ def convert_all_strokes_to_images(src='.', dest='.',
 
 ##im,ctx=paint_image_with_strokes_cairo([[{'y': 40, 'x': 35, 't': 0}, {'y': 40, 'x': 35, 't': 20}, {'y': 41, 'x': 35, 't': 61}, {'y': 42, 'x': 35, 't': 74}, {'y': 43, 'x': 35, 't': 86}, {'y': 45, 'x': 35, 't': 97}, {'y': 48, 'x': 35, 't': 107}, {'y': 52, 'x': 35, 't': 118}, {'y': 57, 'x': 33, 't': 129}, {'y': 59, 'x': 33, 't': 139}, {'y': 64, 'x': 31, 't': 149}, {'y': 68, 'x': 28, 't': 160}, {'y': 71, 'x': 28, 't': 171}, {'y': 71, 'x': 29, 't': 182}, {'y': 72, 'x': 30, 't': 191}, {'y': 73, 'x': 28, 't': 231}, {'y': 74, 'x': 27, 't': 315}], [{'y': 37, 'x': 40, 't': 1746}, {'y': 38, 'x': 41, 't': 1877}, {'y': 39, 'x': 42, 't': 1888}, {'y': 41, 'x': 44, 't': 1898}, {'y': 42, 'x': 45, 't': 1908}, {'y': 45, 'x': 47, 't': 1919}, {'y': 46, 'x': 48, 't': 1930}, {'y': 46, 'x': 49, 't': 1940}, {'y': 47, 'x': 49, 't': 1969}, {'y': 48, 'x': 49, 't': 1981}, {'y': 48, 'x': 50, 't': 1992}, {'y': 49, 'x': 51, 't': 2011}, {'y': 50, 'x': 51, 't': 2022}, {'y': 51, 'x': 51, 't': 2031}, {'y': 53, 'x': 52, 't': 2042}, {'y': 55, 'x': 54, 't': 2053}, {'y': 56, 'x': 54, 't': 2064}, {'y': 57, 'x': 54, 't': 2097}, {'y': 58, 'x': 55, 't': 2108}, {'y': 59, 'x': 56, 't': 2187}, {'y': 60, 'x': 57, 't': 2335}, {'y': 62, 'x': 58, 't': 2454}, {'y': 63, 'x': 58, 't': 2468}, {'y': 63, 'x': 59, 't': 2479}, {'y': 65, 'x': 61, 't': 2489}, {'y': 66, 'x': 62, 't': 2629}]], 0.01, 'round', None, {'y': 120, 'x': 120}, 'miter', 0.91946308724832226, 10)
 
-import cProfile
-strokes = get_accepted_stroke_list(from_path='.')
-dest_images = get_accepted_image_list(from_path='.')
-use_strokes = {'ulog':strokes['ulog'], 'katakana':strokes['katakana']}
+##import cProfile
+##strokes = get_accepted_stroke_list(from_path='.')
+##dest_images = get_accepted_image_list(from_path='.')
+##use_strokes = {'earlyaramaic':strokes['earlyaramaic']}
 ##convert_all_alphabet_strokes_to_images(use_strokes, dest_images=dest_images)
-cProfile.run('convert_all_alphabet_strokes_to_images(use_strokes, dest_images=dest_images)')
+##cProfile.run('convert_all_alphabet_strokes_to_images(use_strokes, dest_images=dest_images)')

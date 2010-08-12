@@ -37,6 +37,7 @@ function makeBoxForImage(image) {
         .attr('alt', 'Test image ' + (questionNum + 1) + ' for alphabet group ' + (groupNum + 1) + '.');
       var questionSelect = $('<select>')
         .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
+        .attr('name', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
 	.addClass('alphabet-question');
       var defaultOption = $('<option>')
         .attr('id', 'default-option')

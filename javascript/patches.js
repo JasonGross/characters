@@ -1,3 +1,4 @@
+var fixFormat;
 (function () {
 
   if (!window.console) {
@@ -6,7 +7,7 @@
       };
   }
   
-  function fixFormat(format) {
+  fixFormat = function (format) {
     if (!(format instanceof String))
       return format;
     format = format.toLowerCase();

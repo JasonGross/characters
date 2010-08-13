@@ -1,8 +1,12 @@
 function makeBoxForImage(image) {
   var imageBox = $('<div>')
-    .addClass('image-box image-holder');
+    .addClass('image-box image-holder')
+    .attr('id', 'image-box-for-' + image.attr('id'))
+    .attr('name', 'image-box-for-' + image.attr('name'));
   var imageHolder = $('<span>')
-    .addClass('wraptocenter image-holder');
+    .addClass('wraptocenter image-holder')
+    .attr('id', 'image-holder-for-' + image.attr('id'))
+    .attr('name', 'image-holder-for' + image.attr('name'));
   imageHolder.append(image);
   imageBox.append(imageHolder);
   return imageBox;
@@ -106,9 +110,13 @@ function makeBoxForImage(image) {
 
   function makeTrainingTable(groupNum, alphabets, questionSelects) {
     var alphabetTableHolderHolder = $(document.createElement('div'))
+      .attr('id', 'alphabet-table-holder-holder-' + groupNum)
+      .attr('name', 'alphabet-table-holder-holder-' + groupNum)
       .css('text-align', 'center')
       .css('display', 'block');
     var alphabetTableHolder = $(document.createElement('div'))
+      .attr('id', 'alphabet-table-holder-' + groupNum)
+      .attr('name', 'alphabet-table-holder-' + groupNum)
       .css('text-align', 'center')
       .css('display', 'inline');
     var alphabetTable = $(document.createElement('div'))
@@ -132,11 +140,17 @@ function makeBoxForImage(image) {
         .addClass('table-col alphabet-table-col');
       var curHeader = $(document.createElement('div'))
         .addClass('table-header table-cell alphabet-table-header alphabet-table-cell')
+        .attr('id', 'alphabet-header-' + (alphabetGlobalNum - 1))
+        .attr('name', 'alphabet-header-' + (alphabetGlobalNum - 1))
         .append('Alphabet ' + alphabetGlobalNum);
       var curCell = $(document.createElement('div'))
+        .attr('id', 'alphabet-table-cell-' + (alphabetGlobalNum - 1))
+        .attr('name', 'alphabet-table-cell' + (alphabetGlobalNum - 1))
         .addClass('table-cell alphabet-table-cell');
       for (var imageNum = 0; imageNum < imagesList.length; imageNum++) {
         var image = $(document.createElement('img'))
+          .attr('id', 'alphabet-' + (alphabetGlobalNum - 1) + '-image-' + imageNum)
+          .attr('name', 'alphabet-' + (alphabetGlobalNum - 1) + '-image-' + imageNum)
           .attr('src', '../' + imagesList[imageNum])
           .attr('alt', 'Training image ' + (imageNum + 1) + ' for alphabet ' + alphabetGlobalNum + ' in group ' + (groupNum + 1) + '.')
           .attr('draggable', 'false')
@@ -213,14 +227,17 @@ function makeBoxForImage(image) {
     
     function fixPadding() {
       if (this.width > this.height) {
+        this.height *= 75.0 / this.width;
         this.width = 75;
         //this.style.paddingBottom = this.style.paddingTop = (this.width - this.height) / 2 + _image_padding + 'px';
         //this.style.paddingRight = this.style.paddingLeft = _image_padding + 'px';
       } else if (this.height > this.width) {
+        this.width *= 75.0 / this.height;
         this.height = 75;
         //this.style.paddingRight = this.style.paddingLeft = (this.height - this.width) / 2 + _image_padding + 'px';
         //this.style.paddingBottom = this.style.paddingTop = _image_padding + 'px';
       } else if (this.height && this.width) {
+        this.width = 75;
         this.height = 75;
         //this.style.padding = _image_padding + 'px';
       }

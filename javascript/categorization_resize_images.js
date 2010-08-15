@@ -1,12 +1,13 @@
 ﻿(function () {
+  var baseSize = 100, offset = 15;
   var calcNewColSize = function (width) {
-    return ((width / 10 < 105) ? ((width / 10) - 5) : 100);
+    return ((width / 10 < baseSize + offset) ? ((width / 10) - offset) : baseSize);
   };
   var calcNewHolderSize = function (width) {
-    return ((width / 10 < 105) ? ((width / 10) - 25) : 100);
+    return ((width / 10 < baseSize + offset) ? ((width / 10) - offset) : baseSize) - 20;
   };
   var calcNewImageSize = function (width) {
-    return ((width / 10 < 105) ? ((width / 10) - 25) : 100);
+    return ((width / 10 < baseSize + offset) ? ((width / 10) - offset) : baseSize) - 25;
   };
   (function (checkBoxId, calcNewHolderSize, calcNewImageSize,
              calcNewColSize, calcNewImageBoxMargin) {

@@ -42,7 +42,7 @@ var fixFormat;
         return this.__patch_data_object[format];
       };
   
-  } 
+  }
   
   /*var testInput = document.createElement("input");
   testInput.setAttribute("type", "datetime");

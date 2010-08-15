@@ -9,6 +9,7 @@ var makeTrainingAlphabetDroppable, makeTestCharacterDraggable;
     $(dropTarget)
       // Highlight on drag entering drop zone.
       .bind('dragenter', function(ev) {
+        console.log('dragenter');
         if (!(dragData['isValidDropTarget'] && dragData['isValidDropTarget'](this)) || !dragData['isDroppable']) {
 	  if (dragData['lastTargetId'])
 	    $('#' + dragData['lastTargetId']).removeClass('dragover');
@@ -49,6 +50,7 @@ var makeTrainingAlphabetDroppable, makeTestCharacterDraggable;
     
       // Decide whether the thing dragged in is welcome.
       .bind('dragover', function(ev) {
+        console.log('dragover');
         if (dragData['isValidDropTarget'](this)) {
           //dragData['lastTargetId'] = this.id;
 	  $(this).addClass('dragover');
@@ -79,11 +81,13 @@ var makeTrainingAlphabetDroppable, makeTestCharacterDraggable;
       // Handle the start of dragging to initialize.
       .bind('dragstart', function(ev) {
         var dt = ev.originalEvent.dataTransfer;
+        
         dt.setData("text/x-object-id", $(formSelect).attr('id'));
         dragData['isValidDropTarget'] = isValidTarget;
         dragData['isDroppable'] = true;
         console.log('Drag started: ' + dragData);
-        dt.setDragImage(this, 0, 0);
+        if (dt.setDragImage)
+          dt.setDragImage(this, 0, 0);
 	return true;
       })
     

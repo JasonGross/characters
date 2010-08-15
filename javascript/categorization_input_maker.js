@@ -3,12 +3,15 @@ function makeBoxForImage(image) {
     .addClass('image-box image-holder')
     .attr('id', 'image-box-for-' + image.attr('id'))
     .attr('name', 'image-box-for-' + image.attr('name'));
+//  var imageInnerBox = $('<div>')
+//    .addClass('image-inner-box image-holder');
   var imageHolder = $('<span>')
     .addClass('wraptocenter image-holder')
     .attr('id', 'image-holder-for-' + image.attr('id'))
     .attr('name', 'image-holder-for' + image.attr('name'));
   imageHolder.append(image);
   imageBox.append(imageHolder);
+  //imageOuterBox.append(imageInnerBox);
   return imageBox;
 }
 
@@ -72,7 +75,7 @@ function makeBoxForImage(image) {
         curAlphabetSetQuestionSelects = questionSelect;
       
       
-      questionImageHolder.append(makeBoxForImage(questionImage));
+      questionImageHolder.append(makeBoxForImage(questionImage, true));
       curLabel.append('I think ').append(questionImageHolder).append(' is most likely to be from alphabet ')
         .append(questionSelect).append('.');
       curAlphabetSetDropDownHolder.append(curLabel).append(questionTimeInput)

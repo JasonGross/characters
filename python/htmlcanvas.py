@@ -22,7 +22,7 @@ def average(seq):
     return float(sum(seq)) / len(seq)
 
 def paint_image_with_strokes_cairo(strokes, line_width=5, line_cap='round', image=None, size=None, line_join='miter',
-                                   scale_factor=1, offset=None, tuple_to_dict=(lambda (x, y): {'x':x, 'y':y}),
+                                   scale_factor=1, offset=None, tuple_to_dict=(lambda t: {'x':t[0], 'y':t[1]}),
                                    smooth=2, name=None):
 ##    import cPickle
 ##    print(list(map(repr, [strokes, line_width, line_cap, image, size, line_join, scale_factor, offset])))

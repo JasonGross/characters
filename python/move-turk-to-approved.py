@@ -48,6 +48,8 @@ for cur_dict in dict_list:
     for name in (get_object_file_name(cur_dict['obj name']), get_object_file_name(cur_dict['obj name'].replace('_turk_', '_'))):
         if os.path.exists(name):
             os.remove(name)
+        else:
+            raw_input('%s does not exist, so I cannot remove it.' % name)
     for alphabet_id in cur_list:
         for id_ in cur_list[alphabet_id]:
             if isinstance(cur_list[alphabet_id][id_], str):

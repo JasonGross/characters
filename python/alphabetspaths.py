@@ -6,7 +6,10 @@ import sys
 import re
 import urllib
 import python2to3patch
-import cPickle
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 try:
     from python3lib import relpath
 except SyntaxError:
@@ -23,7 +26,9 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'STORED_ALPHABET_IMAGES_LIST_PATH',
            'CATEGORIZATION_RESULTS_PATH',
            'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL',
-           'get_object', 'get_object_file_name']
+           'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
+           'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
+           'get_object', 'get_object_file_name', 'save_object']
  
 _paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
           'ACCEPTED': (lambda s: ('accepted-%s' % s) if s != 'information' else None),
@@ -64,6 +69,9 @@ _RELATIVE_UNREVIEWED_PATH = os.path.join(_RELATIVE_RESULTS_PATH, 'unreviewed')
 _RELATIVE_CATEGORIZATION_RESULTS_PATH = 'results/categorization'
 _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH = os.path.join(_RELATIVE_CATEGORIZATION_RESULTS_PATH, 'unreviewed')
 
+_RELATIVE_LOCAL_TEMP_PATH = 'tmp'
+_RELATIVE_ANONYMOUS_IMAGES_PATH = 'anonymous-images'
+
 RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
 
@@ -79,6 +87,12 @@ CATEGORIZATION_UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGOR
 TURK_POST_EXTRA_LIST_PATH = os.path.join(RESULTS_PATH, 'turk-bad-submissions.txt')
 
 STORED_ALPHABET_IMAGES_LIST_PATH = os.path.join(RESULTS_PATH, 'alphabets-images-list.txt')
+
+LOCAL_TEMP_PATH = os.path.join(BASE_PATH, _RELATIVE_LOCAL_TEMP_PATH)
+LOCAL_TEMP_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_LOCAL_TEMP_PATH)
+
+ANONYMOUS_IMAGES_PATH = os.path.join(BASE_PATH, _RELATIVE_ANONYMOUS_IMAGES_PATH)
+ANONYMOUS_IMAGES_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_ANONYMOUS_IMAGES_PATH)
 
 for _path in _paths:
     for name_part, path_part in (('IMAGES', 'images'),
@@ -153,6 +167,11 @@ def get_object(name, object_maker, is_old=None, protocol=0):
         except (IOError,): # add more as needed
             pass
     obj = object_maker()
+    with open(get_object_file_name(name), 'wb') as f:
+        cPickle.dump(obj, f, protocol=protocol)
+    return obj
+
+def save_object(name, obj, protocol=0):
     with open(get_object_file_name(name), 'wb') as f:
         cPickle.dump(obj, f, protocol=protocol)
     return obj

@@ -1,4 +1,5 @@
 var fixFormat;
+var isMSIE = /*@cc_on!@*/false;
 (function () {
 
   if (!window.console) {
@@ -19,7 +20,7 @@ var fixFormat;
   }
   
   
-  if (jQuery.browser.webkit) {
+  /*if (jQuery.browser.webkit) {
     Clipboard.prototype.__patch_data_object = {};
     
     Clipboard.prototype.clearData = function (format) {
@@ -42,7 +43,7 @@ var fixFormat;
         return this.__patch_data_object[format];
       };
   
-  }
+  }*/
   
   /*var testInput = document.createElement("input");
   testInput.setAttribute("type", "datetime");

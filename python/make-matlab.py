@@ -627,25 +627,26 @@ def remove_strokes_from_matlab_file(original_file_name, new_file_name, delete_af
 #todo: make files without strokes, with imresize to 28x28
 
 if __name__ == '__main__':
+    do_all = False
     try:
-        raw_input('Press enter to continue making initial matlab files...')
+        do_all = do_all or 'a' == raw_input('Press enter to continue making initial matlab files...').lower()
         file_names = make_split_matlab_files()
     except KeyboardInterrupt:
         print('')
         file_names = sorted([i for i in glob.glob('*.mat') if '_28x28' not in i and '_no-strokes' not in i])
     for file_name in file_names:
         try:
-            raw_input('Press enter to continue for 28x28 for %s...' % file_name)
+            do_all = do_all or 'a' == raw_input('Press enter to continue for 28x28 for %s...' % file_name).lower()
             padd_and_resize_images(file_name, file_name.replace('.mat', '_28x28.mat'))
         except KeyboardInterrupt:
             print('')
         try:
-            raw_input('Press enter to continue for no-strokes for %s...' % file_name)
+            do_all = do_all or 'a' == raw_input('Press enter to continue for no-strokes for %s...' % file_name).lower()
             remove_strokes_from_matlab_file(file_name, file_name.replace('.mat', '_no-strokes.mat'))
         except KeyboardInterrupt:
             print('')
         try:
-            raw_input('Press enter to continue for 28x28 no-strokes for %s...' % file_name)
+            do_all = do_all or 'a' == raw_input('Press enter to continue for 28x28 no-strokes for %s...' % file_name).lower()
             remove_strokes_from_matlab_file(file_name.replace('.mat', '_28x28.mat'), file_name.replace('.mat', '_28x28.mat').replace('.mat', '_no-strokes.mat'))
         except KeyboardInterrupt:
             print('')

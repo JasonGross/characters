@@ -129,7 +129,7 @@ def record_categorization_submission(form_dict, many_dirs=False, path=CATEGORIZA
     if verbose: print('Hashing IP address...')
     uid = make_uid(form_dict)
     if many_dirs:
-        if verbose: print('Done<br>Making folder for your submission...')
+        if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % str(uid).replace('-', 'm'))
         path = _make_folder_for_submission(uid, path=path)
     if verbose: print('Done<br>Storing your responses...')
     _put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)

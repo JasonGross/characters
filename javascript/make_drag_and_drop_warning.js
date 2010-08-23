@@ -1,5 +1,5 @@
-(function (warningDivId) {
-  if (document.createElement('div').ondragstart === undefined) {
+(function (warningDivId, showIfDragAndDropClass) {
+  if ((document.createElement('div').ondragstart === undefined && !jQuery.broswer.mozilla) || (document.createElement('div').draggable === undefined && !jQuery.browser.msie)) {
     var heading = '';
     var message = $('<p>').append('The drag-and-drop functionality ' + 
       'will not work.  If you want it to be able to use drag-and-drop ' +
@@ -21,8 +21,12 @@
         .append(heading)
         .append(message)
         .append(postMessage);
+      if (showIfDragAndDropClass)
+        $('.' + showIfDragAndDropClass).remove();
     });
   } else {
-    $(function () { $('#' + warningDivId).remove(); });
+    $(function () { 
+      $('#' + warningDivId).remove();
+    });
   }    
-})("drag-and-drop-warnings");
+})("drag-and-drop-warnings", "show-if-drag-and-drop");

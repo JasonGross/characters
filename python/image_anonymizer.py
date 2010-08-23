@@ -1,15 +1,28 @@
 #!/usr/bin/python
-# Filename: alphabets.py
+# Filename: image_anonymizer.py
 from __future__ import with_statement
-import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
+import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil
 cgitb.enable()
 try:
     import cPickle as pickle
 except ImportError:
     import pickle
 from alphabetspaths import *
-from alphabetsutil import png_to_uri
 
+images_dict = get_object('image_anonymizer_iamges_dict', (lambda: {}))
+
+def deanonymize_image(key_file_name, from_path=BASE_PATH):
+    key_file_name = os.path.split(key_file_name)[-1]
+    return os.path.relpath(images_dict[key_file_name]['original'], from_path)
+
+
+def get_image_path(key_file_name, from_path=BASE_PATH):
+    key_file_name = os.path.split(key_file_name)[-1]
+    return os.path.relpath(images_dict[key_file_name]['new path'], from_path)
+
+def anonymize_image(original_file_name, new_from_path=BASE_PATH, old_from_path=BASE_PATH):
+    with tempfile.NamedTemporaryFile(suffix='.png', dir=LOCAL_TEMP_PATH, delete=False) as f:
+        pass #new_name = f.
 
 FROM_PATH = BASE_PATH
 
@@ -89,7 +102,6 @@ def create_first_task(form, images):
     GROUP_COUNT = 5
     ALPHABETS_PER_GROUP = 10
     QUESTION_COUNT = 1
-    MAKE_DATA_URI = True
     alphabet_ids = tuple(_random.sample(images.keys(), GROUP_COUNT * ALPHABETS_PER_GROUP))
     TRAINING_CHARACTERS_PER_ALPHABET = int(form.getvalue('trainingCharactersPerAlphabet', 2))
     groups = [{'alphabets':dict((alphabet_id, []) for alphabet_id in alphabet_ids[ALPHABETS_PER_GROUP*i:ALPHABETS_PER_GROUP*(i+1)])} for i in range(GROUP_COUNT)]
@@ -101,18 +113,11 @@ def create_first_task(form, images):
             use_uids = _random.sample(uids, TRAINING_CHARACTERS_PER_ALPHABET)
             use_image_numbers = _random.sample(image_numbers, TRAINING_CHARACTERS_PER_ALPHABET)
             group['alphabets'][alphabet_id] = [images[alphabet_id][uid][image_num] for uid, image_num in zip(use_uids, use_image_numbers)]
-            if MAKE_DATA_URI:
-                group['alphabets'][alphabet_id] = [{'url':urllib.parse.urljoin(urllib.parse.urljoin(BASE_URL, os.path.relpath(BASE_PATH, FROM_PATH)), image),
-                                                    'data_uri':png_to_uri(os.path.join(FROM_PATH, image))} for image in group['alphabets'][alphabet_id]]
             if alphabet_id == asking_alphabet_id:
                 uid, image_num = None, None
                 question_uids = _random.sample([uid for uid in uids if uid not in use_uids], QUESTION_COUNT)
                 question_image_nums = _random.sample([image_num for image_num in image_numbers if image_num not in use_image_numbers], QUESTION_COUNT)
                 group['ask_for'] = [images[alphabet_id][uid][image_num] for uid, image_num in zip(question_uids, question_image_nums)]
-                if MAKE_DATA_URI:
-                    group['ask_for'] = [{'url':urllib.parse.urljoin(urllib.parse.urljoin(BASE_URL, os.path.relpath(BASE_PATH, FROM_PATH)), image),
-                                         'data_uri':png_to_uri(os.path.join(FROM_PATH, image))} for image in group['ask_for']]
-    
     return groups
     
     

@@ -66,7 +66,7 @@ var makeTrainingAlphabetDroppable, makeTestCharacterDraggable;
         if (dragData['lastTargetId'])
           $('#' + dragData['lastTargetId']).removeClass('dragover');
         $(this).removeClass('dragover');
-        setAlphabetChoice(document.getElementById(dt.getData("text/x-object-id")), getAlphabetNumber(this));
+        setAlphabetChoice(document.getElementById(dt.getData("Text")), getAlphabetNumber(this));
         console.log('Drop');
         return false;
       });
@@ -81,14 +81,15 @@ var makeTrainingAlphabetDroppable, makeTestCharacterDraggable;
       // Handle the start of dragging to initialize.
       .bind('dragstart', function(ev) {
         var dt = ev.originalEvent.dataTransfer;
+        dt.effectAllowed = 'copy';
         
-        dt.setData("text/x-object-id", $(formSelect).attr('id'));
+        dt.setData("Text", $(formSelect).attr('id'));
         dragData['isValidDropTarget'] = isValidTarget;
         dragData['isDroppable'] = true;
-        console.log('Drag started: ' + dragData);
         if (dt.setDragImage)
           dt.setDragImage(this, 0, 0);
-	return true;
+        console.log('Drag started: ' + dragData);
+	      return true;
       })
     
       // Handle the end of dragging.

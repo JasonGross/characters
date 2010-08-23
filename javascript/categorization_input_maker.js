@@ -39,13 +39,13 @@ function makeBoxForImage(image) {
       var questionImage = $('<img>')
         .attr('id', 'alphabet-group-' + groupNum + '-image-' + questionNum)
         .attr('name', 'alphabet-group-' + groupNum + '-image-' + questionNum)
-        .attr('src', '../' + askImages[questionNum])
+        .attr('src', (isMSIE ? askImages[questionNum]['url'] : askImages[questionNum]['data_uri']))
         .attr('align', 'absmiddle')
         .attr('alt', 'Test image ' + (questionNum + 1) + ' for alphabet group ' + (groupNum + 1) + '.');
       var questionSelect = $('<select>')
         .attr('id', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
         .attr('name', 'alphabet_group_' + groupNum + '_number_test_' + questionNum)
-	.addClass('alphabet-question');
+	      .addClass('alphabet-question');
       var defaultOption = $('<option>')
         .attr('id', 'default-option')
         .attr('value', -1)
@@ -54,7 +54,7 @@ function makeBoxForImage(image) {
         .attr('type', 'hidden')
         .attr('value', '')
         .attr('id', 'alphabet-group-' + groupNum + '-image-' + questionNum + '-time-of-selection')
-        .attr('value', '');
+        .attr('name', 'alphabet-group-' + groupNum + '-image-' + questionNum + '-time-of-selection');
       questionSelect.append(defaultOption)
         .one('change', function () { 
           var len = this.options.length;
@@ -82,7 +82,8 @@ function makeBoxForImage(image) {
         .append($(document.createElement('input'))
             .attr('type', 'hidden')
             .attr('id', 'question_' + questionNum + '-group_' + groupNum + '-questionImagePath')
-            .attr('value', askImages[questionNum])
+            .attr('name', 'question_' + questionNum + '-group_' + groupNum + '-questionImagePath')
+            .attr('value', askImages[questionNum]['url'])
           );
       curAlphabetSetQuestion.append(curAlphabetSetDropDownHolder);
       if (curAlphabetSetQuestions)
@@ -97,7 +98,7 @@ function makeBoxForImage(image) {
     return {
             'selects': curAlphabetSetQuestionSelects,
             'dom-element': curAlphabetSetQuestions,
-	    'getQuestionFromSelect':getQuestionFromSelect
+            'getQuestionFromSelect':getQuestionFromSelect
            };
   }
   
@@ -154,7 +155,7 @@ function makeBoxForImage(image) {
         var image = $(document.createElement('img'))
           .attr('id', 'alphabet-' + (alphabetGlobalNum - 1) + '-image-' + imageNum)
           .attr('name', 'alphabet-' + (alphabetGlobalNum - 1) + '-image-' + imageNum)
-          .attr('src', '../' + imagesList[imageNum])
+          .attr('src', (isMSIE ? imagesList[imageNum]['url'] : imagesList[imageNum]['data_uri']))
           .attr('alt', 'Training image ' + (imageNum + 1) + ' for alphabet ' + alphabetGlobalNum + ' in group ' + (groupNum + 1) + '.')
           .attr('draggable', 'false')
           .bind('dragstart', function() { return false; });
@@ -163,9 +164,10 @@ function makeBoxForImage(image) {
             .attr('type', 'hidden')
             .attr('id', 'alphabet_' + imageNum + '-group_' + groupNum + '-alphabetGlobalNum_' + (alphabetGlobalNum - 1) + 
               '-imagePath')
-            .attr('value', imagesList[imageNum])
-          );
-        
+            .attr('name', 'alphabet_' + imageNum + '-group_' + groupNum + '-alphabetGlobalNum_' + (alphabetGlobalNum - 1) + 
+              '-imagePath')
+            .attr('value', imagesList[imageNum]['url'])
+          );        
       }
 	
       if (cols)

@@ -28,7 +28,8 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL',
            'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
            'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
-           'get_object', 'get_object_file_name', 'save_object']
+           'get_object', 'get_object_file_name', 'save_object',
+           'get_hashed_images_dict']
  
 _paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
           'ACCEPTED': (lambda s: ('accepted-%s' % s) if s != 'information' else None),
@@ -157,23 +158,32 @@ for _name in _image_stroke_dicts_names:
 
 
 OBJECT_STORAGE_DIRECTORY = os.path.join(BASE_PATH, 'object-storage')
+_save_object_call_backs = {}
+def register_save_object_callback(name, method):
+    if name not in _save_object_call_backs:
+        _save_object_call_backs[name] = []
+    _save_object_call_backs[name].append(method)
+
 def get_object(name, object_maker, is_old=None, protocol=0):
     if os.path.exists(get_object_file_name(name)):
         try:
             with open(get_object_file_name(name), 'rb') as f:
-                obj = cPickle.load(f)
+                obj = pickle.load(f)
             if is_old is None or not is_old(obj):
                 return obj
         except (IOError,): # add more as needed
             pass
     obj = object_maker()
     with open(get_object_file_name(name), 'wb') as f:
-        cPickle.dump(obj, f, protocol=protocol)
+        pickle.dump(obj, f, protocol=protocol)
     return obj
 
 def save_object(name, obj, protocol=0):
     with open(get_object_file_name(name), 'wb') as f:
-        cPickle.dump(obj, f, protocol=protocol)
+        pickle.dump(obj, f, protocol=protocol)
+    if name in _save_object_call_backs:
+        for method in _save_object_call_backs[name]:
+            _save_object_call_backs[name]()
     return obj
 
 def get_object_file_name(name):
@@ -382,5 +392,19 @@ for _name in _normal_path_names:
     __all__.append('get_%s_stroke_list' % _name.lower())
     
 
-    
 
+def _make_hashed_images_dict():
+    rtn = {}
+    images = get_accepted_image_list()
+    for alphabet in images:
+        for id_ in images[alphabet]:
+            for image in images[alphabet][id_]:
+                rtn[hash(image)] = image
+    return rtn
+def _remake_hashed_images_dict():
+    rtn = _make_hashed_images_dict()
+    save_object('get_hashed_images_dict', rtn)
+    return rtn
+register_save_object_callback('get_accepted_image_list', _remake_hashed_images_dict)
+def get_hashed_images_dict():
+    return get_object('get_hashed_images_dict', _make_hashed_images_dict)

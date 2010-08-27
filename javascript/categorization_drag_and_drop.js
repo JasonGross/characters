@@ -1,4 +1,3 @@
-var a;
 var makeTrainingAlphabetDroppable, makeTestCharacterDraggable;
 (function () {
   var dragData = {};

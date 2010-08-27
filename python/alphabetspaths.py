@@ -14,6 +14,7 @@ try:
     from python3lib import relpath
 except SyntaxError:
     from python25lib import relpath
+import objectstorage
 
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',
@@ -28,8 +29,8 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL',
            'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
            'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
-           'get_object', 'get_object_file_name', 'save_object',
-           'get_hashed_images_dict']
+##           'get_object', 'get_object_file_name', 'save_object',
+           'get_hashed_images_dict', 'raise_object_changed']
  
 _paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
           'ACCEPTED': (lambda s: ('accepted-%s' % s) if s != 'information' else None),
@@ -157,38 +158,9 @@ for _name in _image_stroke_dicts_names:
     setattr(_self, '_%s_strokes_dict' % _name, {})
 
 
-OBJECT_STORAGE_DIRECTORY = os.path.join(BASE_PATH, 'object-storage')
-_save_object_call_backs = {}
-def register_save_object_callback(name, method):
-    if name not in _save_object_call_backs:
-        _save_object_call_backs[name] = []
-    _save_object_call_backs[name].append(method)
+objectstorage.set_default_object_directory(os.path.join(BASE_PATH, 'object-storage'))
 
-def get_object(name, object_maker, is_old=None, protocol=0):
-    if os.path.exists(get_object_file_name(name)):
-        try:
-            with open(get_object_file_name(name), 'rb') as f:
-                obj = pickle.load(f)
-            if is_old is None or not is_old(obj):
-                return obj
-        except (IOError,): # add more as needed
-            pass
-    obj = object_maker()
-    with open(get_object_file_name(name), 'wb') as f:
-        pickle.dump(obj, f, protocol=protocol)
-    return obj
-
-def save_object(name, obj, protocol=0):
-    with open(get_object_file_name(name), 'wb') as f:
-        pickle.dump(obj, f, protocol=protocol)
-    if name in _save_object_call_backs:
-        for method in _save_object_call_backs[name]:
-            _save_object_call_backs[name]()
-    return obj
-
-def get_object_file_name(name):
-    return os.path.join(OBJECT_STORAGE_DIRECTORY, name + '.obj')
-
+_object_storage_lookup = {}
 
 def get_alphabet_name(alphabet_id):
     global _alphabets_names_dict
@@ -225,12 +197,20 @@ def make_get_list(reg_string, default_from_path, use_dict, name):
                                 use_dict[name] = []
                             use_dict[name].append(os.path.join(default_from_path, file_name))
                 return use_dict
-            use_dict.update(get_object(name, make_dict))
+            use_dict.update(objectstorage.get_object(name, make_dict, timestamp_dir=default_from_path))
         if alphabet_id is None:
             return use_dict.copy()
         if alphabet_id not in use_dict:
             return []
-        return [relpath(i, from_path) for i in use_dict[alphabet_id]]
+        if from_path == default_from_path:
+            return list(use_dict[alphabet_id])
+        else:
+            return [relpath(i, from_path) for i in use_dict[alphabet_id]]
+    _object_storage_lookup[default_from_path] = _object_storage_lookup[name] = _object_storage_lookup[get_list] = {
+        'path':default_from_path,
+        'name':name,
+        'getter':get_list
+        }
     return get_list
 
 def make_get_optional_id_list(reg_string, default_from_path, use_dict, name, base_dir=None):
@@ -251,30 +231,39 @@ def make_get_optional_id_list(reg_string, default_from_path, use_dict, name, bas
                             if cur_id not in use_dict[name]: use_dict[name][cur_id] = []
                             use_dict[name][cur_id].append(os.path.join(base, file_name))
                 return use_dict
-            use_dict.update(get_object(name, make_dict))
+            use_dict.update(objectstorage.get_object(name, make_dict, timestamp_dir=default_from_path))
+        if default_from_path == from_path:
+            def fix_path(path): return path
+        else:
+            def fix_path(path): return relpath(path, from_path)
         if alphabet_id is None:
             rtn = {}
             if id_ is None:
                 for alphabet_id in use_dict:
                     rtn[alphabet_id] = {}
                     for id_ in use_dict[alphabet_id]:
-                        rtn[alphabet_id][id_] = [relpath(i, from_path) for i in use_dict[alphabet_id][id_]]
+                        rtn[alphabet_id][id_] = [fix_path(i) for i in use_dict[alphabet_id][id_]]
             else:
                 rtn = {}
                 for alphabet_id in use_dict:
                     if id_ in use_dict[alphabet_id]:
-                        rtn[alphabet_id] = [relpath(i, from_path) for i in use_dict[alphabet_id][id_]]
+                        rtn[alphabet_id] = [fix_path(i) for i in use_dict[alphabet_id][id_]]
             return rtn
         else:
             if id_ is None:
                 if alphabet_id not in use_dict: return {}
                 rtn = {}
                 for cur_id in use_dict[alphabet_id]:
-                    rtn[cur_id] = [relpath(i, from_path) for i in use_dict[alphabet_id][cur_id]]
+                    rtn[cur_id] = [fix_path(i) for i in use_dict[alphabet_id][cur_id]]
                 return rtn
             else:
                 if alphabet_id not in use_dict: return []
                 return [relpath(i, from_path) for i in use_dict[alphabet_id][id_]]
+    _object_storage_lookup[default_from_path] = _object_storage_lookup[name] = _object_storage_lookup[get_list] = {
+        'path':default_from_path,
+        'name':name,
+        'getter':get_list
+        }
     return get_list
 
 def make_get_ids(get_image_list):
@@ -299,6 +288,10 @@ def make_get_ids(get_image_list):
 
 def make_get_extra_info_file_name(get_ids, location_path, default_from_path=RESULTS_PATH):
     def get_extra_info_file_name(alphabet_id=None, id_=None, from_path=default_from_path):
+        if default_from_path == from_path:
+            def fix_path(path): return path
+        else:
+            def fix_path(path): return relpath(path, from_path)
         ids = get_ids(alphabet_id=alphabet_id, id_=id_)
         if alphabet_id is None:
             rtn = {}
@@ -307,25 +300,21 @@ def make_get_extra_info_file_name(get_ids, location_path, default_from_path=RESU
                     if alphabet_id not in rtn:
                         rtn[alphabet_id] = {}
                     for id_ in ids[alphabet_id]: # ids[alphabet_id] is a list of ids
-                        rtn[alphabet_id][id_] = relpath(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_)),
-                                                                from_path)
+                        rtn[alphabet_id][id_] = fix_path(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_)))
             else:
                 for alphabet_id in ids:
                     if ids[alphabet_id]:
                         for id_ in ids[alphabet_id]: # ids[alphabet_id] is a list of ids
-                            rtn[alphabet_id] = relpath(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_)),
-                                                               from_path)
+                            rtn[alphabet_id] = fix_path(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_)))
             return rtn
         else:
             if id_ is None:
                 rtn = {}
                 for id_ in ids:
-                    rtn[id_] = relpath(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_)),
-                                               from_path)
+                    rtn[id_] = fix_path(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_)))
                 return rtn
             else:
-                return (relpath(from_path,
-                                        os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_))) if ids else None)
+                return (fix_path(os.path.join(location_path, '%s_%s.results.txt' % (alphabet_id, id_))) if ids else None)
     return get_extra_info_file_name
 
 get_original_image_list = make_get_list(reg_string='(.*?)_[Pp]age_([0-9]+).png',
@@ -403,8 +392,20 @@ def _make_hashed_images_dict():
     return rtn
 def _remake_hashed_images_dict():
     rtn = _make_hashed_images_dict()
-    save_object('get_hashed_images_dict', rtn)
+    objectstorage.save_object('get_hashed_images_dict', rtn, timestamp_dir=ACCEPTED_IMAGES_PATH)
     return rtn
-register_save_object_callback('get_accepted_image_list', _remake_hashed_images_dict)
+objectstorage.register_save_object_callback('get_accepted_image_list', _remake_hashed_images_dict)
 def get_hashed_images_dict():
-    return get_object('get_hashed_images_dict', _make_hashed_images_dict)
+    return objectstorage.get_object('get_hashed_images_dict', _make_hashed_images_dict, timestamp_dir=ACCEPTED_IMAGES_PATH)
+
+_object_storage_lookup[ACCEPTED_IMAGES_PATH] = _object_storage_lookup['get_hashed_images_dict'] = _object_storage_lookup[get_hashed_images_dict] = {
+    'path':ACCEPTED_IMAGES_PATH,
+    'name':'get_hashed_images_dict',
+    'getter':get_hashed_images_dict
+    }
+
+def raise_object_changed(object_id):
+    if object_id not in _object_storage_lookup: return False
+    if not os.path.exists(_object_storage_lookup[object_id]['path']):
+        os.makedirs(_object_storage_lookup[object_id]['path'])
+    objectstorage.timestamp_object(_object_storage_lookup[object_id]['name'], timestamp_dir=_object_storage_lookup[object_id]['path'])

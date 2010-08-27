@@ -53,7 +53,7 @@ def paint_image_with_strokes_cairo(strokes, line_width=5, line_cap='round', imag
     if size is None:
         size = {'x':x_max + 1 + math.ceil(line_width / 2.0), 'y':y_max + 1 + math.ceil(line_width / 2.0)}
     elif size['x'] < x_max or size['y'] < y_max:
-        os.system('echo "%s: Image size %s too small for stroke size %s.  Scale factor is %s." >> %s/image_warnings.log' % \
+        os.system('echo %s: Image size %s too small for stroke size %s.  Scale factor is %s. >> %s/image_warnings.log' % \
                   (name, size, (x_max, y_max), scale_factor, RESULTS_PATH))
         warn('Image size %s too small for stroke size %s.  Scale factor is %s.' % (size, (x_max, y_max), scale_factor))
 ##        raw_input('Press enter to adjust the scale factor...')

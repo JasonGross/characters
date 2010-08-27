@@ -86,12 +86,12 @@ def is_nested_type(obj, *types):
             return False
 
 def create_first_task(form, images):
-    GROUP_COUNT = 5
-    ALPHABETS_PER_GROUP = 10
-    QUESTION_COUNT = 1
+    GROUP_COUNT = int(form.getfirst('numberOfGroups', 5))
+    ALPHABETS_PER_GROUP = int(form.getfirst('alphabetsPerGroup', 10))
+    QUESTION_COUNT = int(form.getfirst('questionsPerGroup', 1))
     MAKE_DATA_URI = True
     alphabet_ids = tuple(_random.sample(images.keys(), GROUP_COUNT * ALPHABETS_PER_GROUP))
-    TRAINING_CHARACTERS_PER_ALPHABET = int(form.getvalue('trainingCharactersPerAlphabet', 2))
+    TRAINING_CHARACTERS_PER_ALPHABET = int(form.getfirst('trainingCharactersPerAlphabet', 2))
     groups = [{'alphabets':dict((alphabet_id, []) for alphabet_id in alphabet_ids[ALPHABETS_PER_GROUP*i:ALPHABETS_PER_GROUP*(i+1)])} for i in range(GROUP_COUNT)]
     for group in groups:
         asking_alphabet_id = _random.choice(list(group['alphabets'].keys()))

@@ -54,7 +54,7 @@ def anonymize_image(image_url):
     alphabet, number, uid = _image_reg.match(name).groups()
     first, second, third = alphabet[:3]
     uid_first, uid_second, uid_third, uid_rest = uid[:2], uid[2:4], uid[4:6], uid[6:]
-        print('RewriteRule ^results/accepted-images/(..)%(first)s(..)%(second)s(..)%(third)s([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/%(alphabet)s/%(alphabet)s_$4_$1$2$3$5.png' % locals())
+    print('RewriteRule ^results/accepted-images/(..)%(first)s(..)%(second)s(..)%(third)s([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/%(alphabet)s/%(alphabet)s_$4_$1$2$3$5.png' % locals())
     return {'hash':hash(name),
             'anonymous url':urllib.parse.urljoin(ACCEPTED_IMAGES_URL, '%(uid_first)s%(first)s%(uid_second)s%(second)s%(uid_third)s%(third)%(number)s%(uid_rest)s' % locals())
             }

@@ -10,24 +10,24 @@ from alphabetsutil import stroke_to_list, compress_images
 
 
 import warnings
-
-def deprecated(func):
-    """This is a decorator which can be used to mark functions
-    as deprecated. It will result in a warning being emmitted
-    when the function is used."""
-    def newFunc(*args, **kwargs):
-        warnings.warn("Call to deprecated function %s." % func.__name__,
-                      category=DeprecationWarning)
-        return func(*args, **kwargs)
-    newFunc.__name__ = func.__name__
-    newFunc.__doc__ = func.__doc__
-    newFunc.__dict__.update(func.__dict__)
-    return newFunc
-
-@deprecated #???
-def get_alphabet_name(form_dict, id_reg='^character([0-9]+)Id'):
-    return get_alphabet_id_from_dict(form_dict, id_reg=id_reg)
-#deprecated(get_alphabet_name)
+##
+##def deprecated(func):
+##    """This is a decorator which can be used to mark functions
+##    as deprecated. It will result in a warning being emmitted
+##    when the function is used."""
+##    def newFunc(*args, **kwargs):
+##        warnings.warn("Call to deprecated function %s." % func.__name__,
+##                      category=DeprecationWarning)
+##        return func(*args, **kwargs)
+##    newFunc.__name__ = func.__name__
+##    newFunc.__doc__ = func.__doc__
+##    newFunc.__dict__.update(func.__dict__)
+##    return newFunc
+##
+##@deprecated #???
+##def get_alphabet_name(form_dict, id_reg='^character([0-9]+)Id'):
+##    return get_alphabet_id_from_dict(form_dict, id_reg=id_reg)
+###deprecated(get_alphabet_name)
 
 def _make_folder_for_submission(uid, path=UNREVIEWED_PATH):
     if not isinstance(uid, str):
@@ -108,6 +108,8 @@ def _fix_strokes(stroke_string):
     return '[' + ','.join('[' + ','.join("{'x':%(x)s,'y':%(y)s,'t':%(t)d}" % point for point in stroke) + ']' for stroke in rtn) + ']'
 
 def _save_images(image_dict_list, uid, images_path, strokes_path, make_base_file_name=None):
+    raise_object_changed(images_path)
+    raise_object_changed(strokes_path)
     if not make_base_file_name:
         def make_base_file_name(image_name, uid):
             return image_name + '_' + uid

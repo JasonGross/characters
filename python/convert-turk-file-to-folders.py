@@ -101,6 +101,8 @@ def convert_hit(hit, names=('get_turk_accepted_image_list', 'get_turk_accepted_s
         try:
             record_submission(submission_dict, names=names, many_dirs=False, pseudo=pseudo,
                               images_path=images_path, strokes_path=strokes_path, extra_info_path=extra_info_path)
+            raise_object_changed(images_path)
+            raise_object_changed(strokes_path)
         except AttributeError, ex:
             note_bad_hit(submission_dict, ex)
 

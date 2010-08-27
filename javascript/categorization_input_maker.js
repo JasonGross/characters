@@ -260,7 +260,13 @@ function makeBoxForImage(image) {
   
   notYetLoaded(this);
   $(function () {
-      $.getJSON("../scripts/python/alphabets.py", {'trainingCharactersPerAlphabet':getTrainingCharactersPerAlphabet()},
+      $.getJSON("../scripts/python/alphabets.py", 
+        {
+          'trainingCharactersPerAlphabet':getTrainingCharactersPerAlphabet(),
+          'numberOfGroups':getNumberOfGroups(),
+          'alphabetsPerGroup':getAlphabetsPerGroup(),
+          'questionsPerGroup':getQuestionsPerGroup()
+        },
         makeInputs);
     });
 })();

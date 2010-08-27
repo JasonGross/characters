@@ -228,13 +228,10 @@ def main():
         objects = dict((name,
                         (globals()[name] if name in globals() else non_existant_variable)) \
                        for name in form.getlist('getObject'))
-        print('Content-type: text/json\n')
         print(json.dumps(objects))
     else:
         images = get_alphabets()
-        rtn = create_first_task(form, images)
-        print('Content-type: text/json\n')
-        print(json.dumps(rtn))
+        print(json.dumps(create_first_task(form, images)))
         #print(json.dumps(images))
 
 if __name__ == '__main__':

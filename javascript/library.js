@@ -34,16 +34,15 @@ function keys(obj) {
 
 //=============================================================
 // From http://www.netlobo.com/url_query_string_javascript.html
-function getURLParameter(name, ignoreCase, nullValue)
+function getURLParameter( name, ignoreCase)
 {
   if (ignoreCase === undefined) ignoreCase = true;
-  if (nullValue === undefined) nullValue = '';
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp( regexS, (ignoreCase ? 'i' : ''));
   var results = regex.exec( window.location.href );
   if( results == null )
-    return nullValue;
+    return '';
   else
     return results[1];
 }
@@ -58,19 +57,6 @@ function hasURLParameter( name, ignoreCase )
 }
 
 //=============================================================
-
-
-
-function toBool(value, nullValue)
-{
-  if (nullValue === undefined) nullValue = null;
-  if (value === true || value === false) return value;
-  value = value.toLowerCase();
-  value = value.trim();
-  if (value.charAt(0) == 'f' || value.charAt(0) == '0' || value.charAt(0) == 'n') return false;
-  if (value.charAt(0) == 't' || value.charAt(0) == '1' || value.charAt(0) == 'y') return true;
-  return nullValue;
-}
 
 
 //=============================================================

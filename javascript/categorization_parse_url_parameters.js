@@ -31,6 +31,18 @@ function setQuestionsPerGroup(newCount) { questionsPerGroup = parseInt(newCount)
 function getQuestionsPerGroup() { return questionsPerGroup; }
 
 
+function toBool(value, nullValue)
+{
+  if (nullValue === undefined) nullValue = null;
+  if (value === true || value === false) return value;
+  value = value.toLowerCase();
+  value = value.trim();
+  if (value.charAt(0) == 'f' || value.charAt(0) == '0' || value.charAt(0) == 'n') return false;
+  if (value.charAt(0) == 't' || value.charAt(0) == '1' || value.charAt(0) == 'y') return true;
+  return nullValue;
+}
+
+
 if (getURLParameter('trainingCharactersPerAlphabet') != '')
   setTrainingCharactersPerAlphabet(getURLParameter('trainingCharactersPerAlphabet'));
 

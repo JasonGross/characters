@@ -223,16 +223,17 @@ def create_first_task(form, images):
 def main():
     form = cgi.FieldStorage()
     non_existant_variable = form.getvalue('variableDoesNotExistString')
-    print('Content-type: text/json\n')
     if 'getObject' in form:
         objects = dict((name,
                         (globals()[name] if name in globals() else non_existant_variable)) \
                        for name in form.getlist('getObject'))
+        print('Content-type: text/json\n')
         print(json.dumps(objects))
     else:
         images = get_alphabets()
-        print(json.dumps(create_first_task(form, images)))
-        #print(json.dumps(images))
+        rtn = create_first_task(form, images)
+        print('Content-type: text/json\n')
+        print(json.dumps(rtn))
 
 if __name__ == '__main__':
     if '--update-alphabets-file' in sys.argv:

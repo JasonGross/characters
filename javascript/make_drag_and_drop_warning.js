@@ -1,5 +1,5 @@
 (function (warningDivId, showIfDragAndDropClass) {
-  if ((document.createElement('div').ondragstart === undefined && !jQuery.browser.mozilla) || (document.createElement('div').draggable === undefined && !jQuery.browser.msie)) {
+  if ((document.createElement('div').ondragstart === undefined && !jQuery.broswer.mozilla) || (document.createElement('div').draggable === undefined && !jQuery.browser.msie)) {
     var heading = '';
     var message = $('<p>').append('The drag-and-drop functionality ' + 
       'will not work.  If you want it to be able to use drag-and-drop ' +

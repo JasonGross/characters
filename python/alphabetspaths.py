@@ -32,19 +32,19 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
 ##           'get_object', 'get_object_file_name', 'save_object',
            'get_hashed_images_dict', 'raise_object_changed']
  
-_paths = {'ORIGINAL':(lambda s: 'originals/' if s == 'images' else None),
-          'ACCEPTED': (lambda s: ('accepted-%s/' % s) if s != 'information' else None),
-          'REJECTED': (lambda s: ('rejected-%s/' % s) if s != 'information' else None),
-          'TURK': (lambda s: ('turk-%s/' % s) if s != 'information' else None),
-          'TURK_REJECTED': (lambda s: ('turk-rejected-%s/' % s) if s != 'information' else None),
-          'TURK_ACCEPTED': (lambda s: ('turk-accepted-%s/' % s) if s != 'information' else None),
-          'EXTRA': (lambda s: ('extra-%s/' % s) if s != 'information' else None),
-          'CATEGORIZATION_ACCEPTED': (lambda s: ('categorization/accepted-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_REJECTED': (lambda s: ('categorization/rejected-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_TURK': (lambda s: ('categorization/turk-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_TURK_REJECTED': (lambda s: ('categorization/turk-rejected-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_TURK_ACCEPTED': (lambda s: ('categorization/turk-accepted-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_EXTRA': (lambda s: ('categorization/extra-%s/' % s) if s == 'information' else None)}
+_paths = {'ORIGINAL':(lambda s: 'originals' if s == 'images' else None),
+          'ACCEPTED': (lambda s: ('accepted-%s' % s) if s != 'information' else None),
+          'REJECTED': (lambda s: ('rejected-%s' % s) if s != 'information' else None),
+          'TURK': (lambda s: ('turk-%s' % s) if s != 'information' else None),
+          'TURK_REJECTED': (lambda s: ('turk-rejected-%s' % s) if s != 'information' else None),
+          'TURK_ACCEPTED': (lambda s: ('turk-accepted-%s' % s) if s != 'information' else None),
+          'EXTRA': (lambda s: ('extra-%s' % s) if s != 'information' else None),
+          'CATEGORIZATION_ACCEPTED': (lambda s: ('categorization/accepted-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_REJECTED': (lambda s: ('categorization/rejected-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_TURK': (lambda s: ('categorization/turk-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_TURK_REJECTED': (lambda s: ('categorization/turk-rejected-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_TURK_ACCEPTED': (lambda s: ('categorization/turk-accepted-%s' % s) if s == 'information' else None),
+          'CATEGORIZATION_EXTRA': (lambda s: ('categorization/extra-%s' % s) if s == 'information' else None)}
 
 _image_stroke_dicts_names = ['unreviewed'] + [key.lower() for key in sorted(_paths.keys()) if 'CATEGORIZATION_' not in key]
 
@@ -55,24 +55,24 @@ _normal_path_names = [] + \
                      [_path for _path in sorted(_paths.keys()) \
                       if _path not in ('ORIGINAL', 'UNREVIEWED') and 'CATEGORIZATION_' not in _path]
 
-BASE_PATH = os.path.join(os.path.expanduser('~/'), 'web_scripts/', 'alphabets/')
+BASE_PATH = os.path.join(os.path.expanduser('~'), 'web_scripts', 'alphabets')
 BASE_URL = 'http://scripts.mit.edu/~jgross/alphabets/'
 
 _self = sys.modules[globals()['__name__']]
 
-SCRIPTS_PATH = os.path.join(BASE_PATH, 'scripts/')
-JAVASCRIPT_PATH = os.path.join(SCRIPTS_PATH, 'javascript/')
+SCRIPTS_PATH = os.path.join(BASE_PATH, 'scripts')
+JAVASCRIPT_PATH = os.path.join(SCRIPTS_PATH, 'javascript')
 ACCEPTED_JAVASCRIPT_PATH = os.path.join(JAVASCRIPT_PATH, 'accepted_alphabets.js')
 REJECTED_JAVASCRIPT_PATH = os.path.join(JAVASCRIPT_PATH, 'rejected_alphabets.js')
 
-_RELATIVE_RESULTS_PATH = 'results/'
-_RELATIVE_UNREVIEWED_PATH = os.path.join(_RELATIVE_RESULTS_PATH, 'unreviewed/')
+_RELATIVE_RESULTS_PATH = 'results'
+_RELATIVE_UNREVIEWED_PATH = os.path.join(_RELATIVE_RESULTS_PATH, 'unreviewed')
 
-_RELATIVE_CATEGORIZATION_RESULTS_PATH = 'results/categorization/'
-_RELATIVE_CATEGORIZATION_UNREVIEWED_PATH = os.path.join(_RELATIVE_CATEGORIZATION_RESULTS_PATH, 'unreviewed/')
+_RELATIVE_CATEGORIZATION_RESULTS_PATH = 'results/categorization'
+_RELATIVE_CATEGORIZATION_UNREVIEWED_PATH = os.path.join(_RELATIVE_CATEGORIZATION_RESULTS_PATH, 'unreviewed')
 
-_RELATIVE_LOCAL_TEMP_PATH = 'tmp/'
-_RELATIVE_ANONYMOUS_IMAGES_PATH = 'anonymous-images/'
+_RELATIVE_LOCAL_TEMP_PATH = 'tmp'
+_RELATIVE_ANONYMOUS_IMAGES_PATH = 'anonymous-images'
 
 RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)

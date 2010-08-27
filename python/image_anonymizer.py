@@ -8,7 +8,6 @@ cgitb.enable()
 ##except ImportError:
 ##    import pickle
 from alphabetspaths import *
-from alphabetsutil import png_to_uri
 
 hashed_images = get_hashed_images_dict()
 
@@ -50,20 +49,15 @@ hashed_images = get_hashed_images_dict()
 ##    return os.path.relpath(new_path, new_from_path)
 
 _image_reg = re.compile(r'([a-z_]+?)_([0-9]+)_([a-z0-9]+)\.png')
-def anonymize_image(image_path, from_path=BASE_PATH, from_url=BASE_URL, include_data_uri=False):
-    name = os.path.split(image_path)[-1]
+def anonymize_image(image_url):
+    name = os.path.split(image_url)[-1]
     alphabet, number, uid = _image_reg.match(name).groups()
-    first, second, third, fourth = (alphabet + 'a')[:4]
-    uid_first, uid_second, uid_third, uid_fourth, uid_rest = uid[:2], uid[2:4], uid[4:6], uid[6:8], uid[8:]
-##    print('RewriteRule ^results/accepted-images/(..)%(first)s(..)%(second)s(..)%(third)s([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/%(alphabet)s/%(alphabet)s_$4_$1$2$3$5.png' % locals())
-    rtn = {'original url':urllib.parse.urljoin(from_url, image_path),
-           'hash':hash(name),
-           'anonymous url':urllib.parse.urljoin(ACCEPTED_IMAGES_URL, '%(uid_first)s%(first)s%(uid_second)s%(second)s%(uid_third)s%(third)s%(uid_fourth)s%(fourth)s%(number)s%(uid_rest)s.png' % locals())
-           }
-    if include_data_uri:
-        rtn['data uri'] = png_to_uri(os.path.join(from_path, image_path))
-    return rtn
-            
+    first, second, third = alphabet[:3]
+    uid_first, uid_second, uid_third, uid_rest = uid[:2], uid[2:4], uid[4:6], uid[6:]
+    print('RewriteRule ^results/accepted-images/(..)%(first)s(..)%(second)s(..)%(third)s([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/%(alphabet)s/%(alphabet)s_$4_$1$2$3$5.png' % locals())
+    return {'hash':hash(name),
+            'anonymous url':urllib.parse.urljoin(ACCEPTED_IMAGES_URL, '%(uid_first)s%(first)s%(uid_second)s%(second)s%(uid_third)s%(third)%(number)s%(uid_rest)s' % locals())
+            }
 def deanonymize_image(hash_code):
     return hashed_images[int(hash_code)]
 ##def parse_images(anonymize_images=[], deanonymize_images=[]):

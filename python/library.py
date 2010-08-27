@@ -121,3 +121,29 @@ def touch(fname, times=None):
 ##        if not topdown:
 ##            yield top, names
 ##
+
+class MapList(object):
+    def __init__(self, function, *lists):
+        self._calculated_values = {}
+        self._function = function
+        self._lists = list(zip(*lists))
+    def __add__(self, other):
+        """ x.__add__(y) <==> x+y """
+        return list(self) + other
+    def __contains__(self, elem):
+        """ x.__contains__(y) <==> y in x """
+        return elem in list(self)
+    def __getitem__(self, y):
+        if y not in self._calculated_values:
+            self._calculated_values[y] = self._function(*(self._lists[y]))
+        return self._calculated_values[y]
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+    def __len__(self):
+        return len(self._lists)
+    def __setitem__(self, i, y):
+        self._calculated_values[i] = y
+    __hash__ = None    
+def maplist(function, *lists):
+    return MapList(function, *lists)

@@ -75,7 +75,8 @@ function makeBoxForImage(image) {
     jQuery.each(testImages, function (imageNum, imageObject) {
       var testHolderHolder = $('<div>').addClass('test');
       var testHolder = $('<fieldset>')
-        .append($('<legend>').append('Test image ' + (imageNum + 1) + ' for character ' + (groupNum + 1)));
+        .addClass('test')
+        .append($('<legend>').append('Test ' + (imageNum + 1) + ' for character ' + (groupNum + 1)));
       var curTest = $('<p>');
       var testImage = makeBoxForImage($('<img>')
         .attr('id', 'group_' + groupNum + '-test_image_' + (imageNum))
@@ -100,6 +101,7 @@ function makeBoxForImage(image) {
         .attr('name', 'group_' + groupNum + '-test_image_' + (imageNum) + '-test')
         .addClass('character-select')
         .one('change', function () { 
+          answeredInput(groupNum);
           var len = this.options.length;
           for (var i = 0; i < len; i++) {
             if (this[i].value == '-1') {
@@ -111,6 +113,7 @@ function makeBoxForImage(image) {
         .change(function () {
           questionTimeInput.attr('value', dateUTC(new Date()));
         });
+      unansweredInput(groupNum);
       if (trainingImages.length == 1) {
         testSelect
           .append($('<option>').attr('value', '-1').append('(select yes/same ("are") or no/different ("are not"))'))
@@ -124,9 +127,11 @@ function makeBoxForImage(image) {
       }
       var testConfidenceHolder = $('<label>');
       var testConfidence;
-      if (Modernizr.inputtypes['range']) {
-        var testConfidenceSubHolder = $('<div>').css({'display':'inline', 'textAlign':'center'});
-        var testConfidenceSubSubHolder = $('<span>').addClass('bottom');
+      if (Modernizr.inputtypes['range'] && false) {
+        var values = ['randomly guessing (1)', 'slightly confident (2)', 'confident (3)', 
+                      'very confident (4)', 'absolutely sure (5)'];
+        var testConfidenceSubHolder = $('<div>').css({'display':'inline'});
+        var testConfidenceSubSubHolder = $('<span>');
         testConfidence = $('<input>')
           .attr('id', 'group_' + groupNum + '-test_image_' + (imageNum) + '-confidence')
           .attr('name', 'group_' + groupNum + '-test_image_' + (imageNum) + '-confidence')
@@ -135,24 +140,32 @@ function makeBoxForImage(image) {
           .attr('max', 5)
           .attr('value', 0)
           .attr('disabled', 'disabled')
+          .attr('title', "Select your confidence in your answer.  A value of 1 (all the way to the left) means that you think your answer is likely to be wrong.  A value of 5 means that you're sure that your answer is right.")
           .one('change', function () { 
+            answeredInput(groupNum);
             $(this).attr('min', 1);
           })
           .change(function () {
             questionTimeInput.attr('value', dateUTC(new Date()));
           });
+        unansweredInput(groupNum);
         var testConfidenceDescription = $('<span>')
-          .append('(select your level of confidence on a scale of 1 to 5, using the above slider)')
-          .addClass('top');
+          .append('(using the slider to the below, select your level of confidence on a scale of 1 to 5)');
         testConfidenceSubSubHolder.append(testConfidence);
         testConfidenceSubHolder.append(testConfidenceDescription).append(testConfidenceSubSubHolder);
         testConfidenceHolder.append(testConfidenceSubHolder);
+        
+        testConfidence.change(function () {
+          testConfidenceDescription.html(values[this.value - 1]);
+        });
       } else {
         testConfidence = $('<select>')
           .attr('id', 'group_' + groupNum + '-test_image_' + (imageNum) + '-confidence')
           .attr('name', 'group_' + groupNum + '-test_image_' + (imageNum) + '-confidence')
+          .attr('title', "Select your confidence in your answer.  A value of 1 (all the way to the left) means that you think your answer is likely to be wrong.  A value of 5 means that you're sure that your answer is right.")
           .attr('disabled', 'disabled')
           .one('change', function () { 
+            answeredInput(groupNum);
             var len = this.options.length;
             for (var i = 0; i < len; i++) {
               if (this[i].value == '-1') {
@@ -170,8 +183,13 @@ function makeBoxForImage(image) {
           .append($('<option>').attr('value', '3').append('confident (3)'))
           .append($('<option>').attr('value', '4').append('very confident (4)'))
           .append($('<option>').attr('value', '5').append('absolutely sure (5)'));
+        unansweredInput(groupNum);
         testConfidenceHolder.append(testConfidence);
       }
+      
+      testSelect.change(function () {
+        testConfidence.removeAttr('disabled');
+      });
        
       curTest
         .append('I think that ')
@@ -181,15 +199,21 @@ function makeBoxForImage(image) {
         curTest
           .append(' and ')
           .append(trainingImage.clone())
+          .append($('<br>'))
+          
           .append(testSelect)
-          .append(' examples of the same character');
+          .append(' examples of the same character, ');
       } else {
         curTest
+          .append($('<br>'))
+
           .append(testSelect)
-          .append(' an example of character ' + (groupNum + 1));
+          .append(' an example of character ' + (groupNum + 1) + ', ');
       }
       curTest
-        .append(', and I am ')
+        .append($('<br>'))
+
+        .append('and I am ')
         .append(testConfidenceHolder)
         .append(' that I am right.');
       testHolder.append(curTest);
@@ -201,10 +225,24 @@ function makeBoxForImage(image) {
   }
   
   function makeTask(trainingImages, testImages, groupNum) {
-    return $('<fieldset>')
-      .append($('<legend>').append('Character ' + (groupNum + 1)))
+    var task = $('<fieldset>')
+      .append($('<legend>').append('Character ' + (groupNum + 1)));
+    doOnUnansweredInput(function (key) {
+      if (key == groupNum) {
+        task.addClass('not-yet-finished-task');
+        task.removeClass('finished-task');
+      }
+    });
+    doOnAnsweredInput(function (key) {
+      if (key == groupNum) {
+        task.addClass('finished-task');
+        task.removeClass('not-yet-finished-task');
+      }
+    });
+    task
       .append(makeTraining(trainingImages, groupNum))
       .append(makeTest(testImages, groupNum, trainingImages));
+    return task;
   }
   
   function makeInputs(data) {

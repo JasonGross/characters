@@ -15,6 +15,7 @@ try:
 except SyntaxError:
     from python25lib import relpath
 import objectstorage
+from library import maplist
 
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',
@@ -181,6 +182,7 @@ def get_alphabet_id_from_file_name(file_name):
         raise ValueError("Invalid file name paseed for id: %s" % repr(file_name))
     return match.groups()[0]
 
+
 def make_get_list(reg_string, default_from_path, use_dict, name):
     def get_list(alphabet_id=None, from_path=default_from_path):
         reg = re.compile(reg_string)
@@ -205,7 +207,7 @@ def make_get_list(reg_string, default_from_path, use_dict, name):
         if from_path == default_from_path:
             return list(use_dict[alphabet_id])
         else:
-            return [relpath(i, from_path) for i in use_dict[alphabet_id]]
+            return maplist((lambda i: relpath(i, from_path)), use_dict[alphabet_id])
     _object_storage_lookup[default_from_path] = _object_storage_lookup[name] = _object_storage_lookup[get_list] = {
         'path':default_from_path,
         'name':name,
@@ -242,23 +244,23 @@ def make_get_optional_id_list(reg_string, default_from_path, use_dict, name, bas
                 for alphabet_id in use_dict:
                     rtn[alphabet_id] = {}
                     for id_ in use_dict[alphabet_id]:
-                        rtn[alphabet_id][id_] = [fix_path(i) for i in use_dict[alphabet_id][id_]]
+                        rtn[alphabet_id][id_] = maplist(fix_path, use_dict[alphabet_id][id_])
             else:
                 rtn = {}
                 for alphabet_id in use_dict:
                     if id_ in use_dict[alphabet_id]:
-                        rtn[alphabet_id] = [fix_path(i) for i in use_dict[alphabet_id][id_]]
+                        rtn[alphabet_id] = maplist(fix_path, use_dict[alphabet_id][id_])
             return rtn
         else:
             if id_ is None:
                 if alphabet_id not in use_dict: return {}
                 rtn = {}
                 for cur_id in use_dict[alphabet_id]:
-                    rtn[cur_id] = [fix_path(i) for i in use_dict[alphabet_id][cur_id]]
+                    rtn[cur_id] = maplist(fix_path, use_dict[alphabet_id][cur_id])
                 return rtn
             else:
                 if alphabet_id not in use_dict: return []
-                return [relpath(i, from_path) for i in use_dict[alphabet_id][id_]]
+                return maplist((lambda i: relpath(i, from_path)), use_dict[alphabet_id][id_])
     _object_storage_lookup[default_from_path] = _object_storage_lookup[name] = _object_storage_lookup[get_list] = {
         'path':default_from_path,
         'name':name,

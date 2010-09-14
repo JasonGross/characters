@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="en-us" http-equiv="Content-Language" />
+  <meta content="text/html; charset=us-ascii" http-equiv="Content-Type" />
+  <meta content="Allowable url parameters: turkSubmitTo, assignmentId, workerId, hitId, submitTo" />
+  <!--script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script-->
+  <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
+  <script src="http://www.shawnolson.net/scripts/public_smo_scripts.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/patches.js" type="text/javascript"></script>
+  <!--[if lt IE 9]><script src="../scripts/javascript/ie_patches.js" type="text/javascript"></script><![endif]-->
+  <!--[if lt IE 8]><script src="../scripts/javascript/ie7-_patches.js" type="text/javascript"></script><![endif]-->
+  <script src="../scripts/javascript/loading.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/turk_library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/form_setup.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/categorization_parse_url_parameters.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/categorization_drag_and_drop.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/categorization_make_input_clickable.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/categorization_input_maker.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/categorization_validate_form.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/make_drag_and_drop_warning.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/categorization_resize_images.js" type="text/javascript"></script>
+  <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
+  <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
+  <link href="../css/categorization.css" rel="stylesheet" type="text/css" />
+  <!--[if lt IE 8]><link href="../css/ie7-_categorization.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+  <title>Character Categorization</title>
+</head>
+
+<body>
+  <div id="pre-page-checks">
+    <noscript>
+      <div id="noscript" class="error">
+        <h2>Please enable JavaScript!</h2>
+        <p>
+          JavaScript is disabled in your browser. You must enable
+          JavaScript to complete this form.
+        </p>
+      </div>
+    </noscript>
+    <!--[if lt IE 9]>
+      <div id="no-data-uri" class="error">
+        <h2>You are using Internet Explorer 8 or lower</h2>
+        <p>
+          Versions of Internet Explorer before 9 do not support data URIs, so you will not be able to see
+          the images or complete the form.
+        </p>
+        <p>
+          If you want it to be able to complete this form, please update your browser, or use a 
+          different (standards compliant) browser, such as Firefox, Google Chrome, or Safari.  
+          If you do not have one of these browsers or do not know what this means, please visit 
+          <a href="http://utilu.com/UtiluMF/" rel="external" target="_blank">
+          Utilu Silent Setup for Mozilla Firefox</a>, or download 
+          <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
+        </p>
+        <script type="text/javascript">
+          $('submit').attr("disabled", true);
+        </script>
+      </div>
+    <![endif]-->
+    <div id="loading" class="warning">
+      <h2>Please wait while the page loads&#8230;</h2>
+
+      <p>If this message stays here for more than 30 seconds after the page stops changing, 
+      you should not attempt to complete this assignment. Try refreshing or enabling JavaScript.</p>
+    </div>
+
+    <div class="warning show-if-turk" id="preview-mode">
+      <p>You are in preview mode. Remember to accept the HIT before working on it!</p>
+    </div>
+    <div id="drag-and-drop-warnings">
+    </div>
+  </div>
+  <div id="instructions">
+    <h3>Instructions</h3>
+    <p>
+      Below you will see examples of handwritten characters from many
+      different scripts, most of which you will not recognize.  Underneath
+      each set of alphabets is <span id="number-of-questions-per-group">one
+      character</span> that is not grouped with any alphabet. Your job is to
+      categorize this character, to select which of the 
+      <span id="number-of-alphabets-per-group">ten alphabets</span> above it it
+      is most likely to be from.  <strong>Indicate which alphabet you think
+      the extra character is from in one of three ways.</strong>  You can:
+    </p>
+    <ul>
+      <li><strong>click on the appropriate alphabet</strong>, OR</li>
+      <li><strong>click on the drop-down menu</strong> and select an alphabet number (alphabet numbers are on top of the corresponding examples)<span class="show-if-drag-and-drop">, OR</span></li>
+      <li class="show-if-drag-and-drop"><strong>drag and drop</strong> the character on top of one of the alphabets.</li>
+    </ul>
+    <!--Do the following for each group of alphabets.
+    <ol>
+      <li>Examine the example characters from each of the alphabets in the group.</li>
+      <li>
+        Select which alphabet you think the extra character is from, either by:
+        <ul>
+          <li>dragging and dropping the character on top of one of the alphabets, OR</li>
+          <li>clicking on the drop-down menu and selecting an alphabet number (alphabet numbers are on top of the corresponding examples), OR</li>
+          <li>clicking on the appropriate alphabet.</li>
+        </ul>
+        If you are unsure, select your best guess.
+      </li>
+    </ol>-->
+    <p></p>
+    Please note:
+    <ul>
+      <li>You may change any of your answers at any time before submission.</li>
+      <li>
+        You must categorize every non-example character to submit the form.  (The questions at the bottom, however, are optional.)
+        <ul class="show-if-turk">
+          <li>If you somehow manage to submit the form without categorizing every character, your submission will be rejected.</li>
+        </ul>
+      </li>
+      <li class="show-if-turk">So long as you categorize every non-example character, and you make an effort to categorize them correctly, your submission will be accepted independent of how many you get correct.</li>
+    </ul>
+  </div>
+  <div id="disclaimer-box">
+    <p><a id="disclaimer-show" class="showLink" href="#" onclick="showHide('disclaimer');return false;">Show Disclaimer</a></p>
+
+    <div id="disclaimer" class="more">
+      <h3>Disclaimer</h3>
+      <p>By answering the following questions, you are participating in a study
+      being performed by cognitive scientists in the MIT Department of Brain and
+      Cognitive Science. If you have questions about this research, please contact
+      Josh Tenenbaum at jbt AT mit DOT edu. Your participation in this research is
+      voluntary. You may decline to answer any or all of the following questions
+      <span class="show-if-turk">
+        by clicking the &#39;Return HIT&#39; button at the top of this page.
+      </span>
+      <span class="show-if-not-turk">
+        by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively,
+        you may click <a href="http://scripts.mit.edu/~jgross/alphabets/">here</a>.)
+      </span>
+      You may decline further participation, at any time, without adverse consequences. 
+      Your anonymity is assured; the researchers who have requested your participation
+      will not receive any personal information about you.</p>
+
+      <p><a id="disclaimer-hide" class="hideLink" href="#" onclick="showHide('disclaimer');return false;">Hide Disclaimer</a></p>
+    </div>
+    <script id="init-show-hide-disclaimer" type="text/javascript">
+    //<![CDATA[
+    showHide('disclaimer');
+    //]]>
+    </script>
+    <br />
+  </div>
+  <div id="extra-options-form">
+    <form id="extra-options">
+      <div id="form-resize">
+        <label>
+          <input type="checkbox" id="resize-images-on-page-resize" name="resize-images-on-page-resize" />
+          Resize images to fit screen
+        </label>
+      </div>
+    </form>
+  </div>
+
+  <div id="categorization-form-div">
+    <form id="categorization_form"
+          action="../scripts/python/record-categorization-submission.py"
+          method="post">
+      <div id="hidden-inputs">
+        <input id="assignmentId"
+              name="assignmentId"
+              type="hidden"
+              value="" />
+        <input id="form-load-time" name="form-load-time" type="hidden" value="" />
+        <input id="form-submit-time" name="form-submit-time" type="hidden" value="" />
+        <input id="duration" name="duration" type="hidden" value="" />
+        <input type="hidden" id="ipAddress" name="ipAddress" />
+      </div>
+
+      <div id="all-alphabets">
+      </div>
+      
+      <div>
+        <fieldset>
+          <legend>Extra Questions</legend>
+          <label>
+            Please enter any feedback you have in the text box below. <br />
+            <textarea rows="10" cols="30" id="feedback" name="feedback"></textarea>  
+          </label>
+        </fieldset>
+      </div>
+      
+      <p>
+        If you are interested in learning more about this research, please visit 
+        <a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">
+          http://scripts.mit.edu/~jgross/alphabets/
+        </a> (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
+      </p>
+
+      <p><input id="submitButton"
+               type="submit"
+               name="submit"
+               value="Submit" /></p>
+    </form>
+  </div>
+  <script type="text/javascript">
+    //<![CDATA[
+    var ipAddress_field = document.getElementById('ipAddress');
+    var ip = '<!--#echo var="REMOTE_ADDR"-->';
+    ipAddress_field.value = ip;
+    $('#form-load-time').attr('value', dateUTC(new Date()));
+    //$('#form-load-time').hide();
+    //$('#form-submit-time').hide();
+    setUpForm('categorization_form');
+    /*if (!jQuery.browser.opera)
+      $('#opera').remove();
+    if (jQuery.browser.opera ||
+          document.createElement('div').ondragstart !== undefined)
+      $('#no-ondragstart').remove();      */
+    //]]>
+  </script>
+  <script id="check-working-scripts" type="text/javascript">
+    //<![CDATA[
+    if (!isTurkSandbox())
+      $('#preview-mode').remove();
+    if (!isTurk())
+      $('.show-if-turk').remove();
+    else
+      $('.show-if-not-turk').remove();
+    $(function () {
+      $('input').each(function (index) { 
+        if (!$(this).attr('name'))
+          $(this).attr('name', this.id);
+      });
+    });
+    //]]>
+  </script>
+</body>
+</html>

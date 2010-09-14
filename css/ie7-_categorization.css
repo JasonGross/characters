@@ -1,0 +1,9 @@
+.image-box {
+  zoom: 1;
+  *display:inline;
+}
+
+img {
+  width: 75px;
+  height: 75px;
+}

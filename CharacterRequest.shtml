@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<head>
+<!-- Allowable url parameters: characterID, thickness, image, canvasWidth, canvasSize, 
+canvasHeight, globalWidth, globalHeight, globalImageWidth, globalImageHeight, 
+globalCanvasWidth, globalCanvasHeight, globalCanvasSize, imageWidth, imageHeight, noscaling, 
+sampleCount, orientation (horizontal or vertical), globalLineWidth, randomize, 
+characterOrder (ColumnFirst | RowFirst), numRows, numCols, numColumns, checkAll, alertStyle, 
+alertBorderStyle, alertBorderColor, alertBorderWidth, askSeenBefore, askInputDevice, askFeedback,
+submitTo  -->
+<!--  -->
+<meta name="Keywords" content="character, alphabet, write, draw, handwriting, handwrite" />
+<meta name="Description" content="This is a form to gather handwriting samples of characters you may or may not have seen before." />
+<meta name="Allowable url parameters" content="Allowable url parameters: characterID, thickness, image, canvasWidth, canvasSize, 
+canvasHeight, globalWidth, globalHeight, globalImageWidth, globalImageHeight, 
+globalCanvasWidth, globalCanvasHeight, globalCanvasSize, imageWidth, imageHeight, noscaling, 
+sampleCount, orientation (horizontal or vertical), globalLineWidth, randomize, 
+characterOrder (ColumnFirst | RowFirst), numRows, numCols, numColumns, checkAll, alertStyle, 
+alertBorderStyle, alertBorderColor, alertBorderWidth, askSeenBefore, askInputDevice, askFeedback" />
+<link rel="stylesheet" type="text/css" href="css/autosuggest.css" />
+<script type="text/javascript" src="scripts/javascript/autosuggest.js"></script>
+<script type="text/javascript" src="scripts/javascript/autosuggest-languages.js"></script>
+<link rel="stylesheet" type="text/css" href="CharacterRequest.css" />
+<script type="text/javascript" src="scripts/javascript/library.js"></script>
+<script type="text/javascript" src="scripts/javascript/url_parameters.js"></script>
+<script type="text/javascript" src="scripts/javascript/show_hide.js"></script>
+<link rel="stylesheet" type="text/css" href="css/show_hide.css" />
+<script type="text/javascript" src="scripts/javascript/canvas_library.js"></script>
+<script type="text/javascript" src="scripts/javascript/character_input_maker.js"></script>
+<link rel="stylesheet" type="text/css" href="css/autosuggest.css"></link>
+<script type="text/javascript" src="scripts/javascript/autosuggest.js"></script>
+<script type="text/javascript" src="scripts/javascript/autosuggest-languages.js"></script>
+<script type="text/javascript" id="form_processing">
+
+
+function getCanvasData()
+{
+  var canvases = getCanvases();//document.getElementsByTagName('canvas');
+  var rtn = [];
+  for (var i = 0; i < canvases.length; i++)
+    rtn.push({'id':canvases[i].id, 
+              'png':canvases[i].toDataURL(), 
+              'strokes':canvases[i].strokes,
+              'stroke input':document.getElementById(canvases[i].id + '_stroke'),
+              'image input':document.getElementById(canvases[i].id + '_image')});
+  return rtn;
+}
+
+function formatCanvasData(canvas_data)
+{
+  var rtn = '';
+  var cur, cur_id, cur_strokes, cur_stroke_part;
+  for (var i = 0; i < canvas_data.length; i++) {
+    //Process id
+    cur_id = canvas_data[i]['id'];
+    
+    //Process data url
+    cur = cur_id + '_png=<img id="' + cur_id + '" src="' + canvas_data[i]['png'] + '" />&';
+    
+    //Process strokes
+    cur += cur_id + '_strokes=[';
+    cur += strokesToString(canvas_data[i]['strokes']);
+    cur += (i + 1 == canvas_data.length ? '' : '&');
+    rtn += cur;
+  }
+  return rtn;
+}
+
+
+function processFormData()
+{
+  var doAlert = false;
+  var canvas_data = getCanvasData();
+  var name, lineWidth;
+  var toURL;
+  for (var i = 0; i < canvas_data.length; i++) {
+    name = canvas_data[i]['id'];
+    canvas_data[i]['image input'].value = '<img src="' + canvas_data[i]['png'] + '" />';
+    canvas_data[i]['stroke input'].value = strokesToString(canvas_data[i]['strokes']);
+    if (getCheckAll()) {
+      if (canvas_data[i]['strokes'].length == 0) {
+        doAlert = true;
+		toURL = canvas_data[i]['id'];
+        document.getElementById(name).style.cssText = getAlertStyle();
+      } else {
+        document.getElementById(name).style.cssText = '';
+      }
+    }
+  }
+  window.location.hash = toURL;
+  if (doAlert) alert('You must draw something for every input.  Please check the inputs outlined in red.');
+  for (var i = 0; i < canvas_data.length; i++)
+    document.getElementById(canvas_data[i]['id']).style.cssText = '';
+  if (!doAlert) {
+    doAlert = false;
+    var btn = valButton(document.getElementById('input_form').input_device);
+    if (btn == null) {
+      doAlert = true;
+      alert('You must select an input device.');
+    } else {
+      //document.getElementById('actual_input_device').value = btn.id;
+      if (document.getElementById('other_input').checked) {
+        if (document.getElementById('other_input_text').value == '') {
+          doAlert = true;
+          alert('You have selected \'other\' as your type of input device.  You must enter a description of your input device, or select a different option.');
+        } /*else {
+          document.getElementById('actual_input_device').value = 'Other: ' + document.getElementById('other_input_text').value;
+        }*/
+      }
+    }
+    var btn = valButton(document.getElementById('input_form').seen_before)
+    if (btn == null) {
+      doAlert = true;
+      alert('You must select an option for how familiar you are with these characters.');
+    }/* else {
+      document.getElementById('actual_seen_before').value = btn.id;
+    }*/
+    if (!doAlert) {
+      var feedback = document.getElementById('feedback');
+      if (feedback.value == defaultFeedbackString()) feedback.value = '';
+      else feedback.value = feedback.value.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+    }
+  }
+  return !doAlert;
+//  hidden_input_character_image.name 
+}
+
+/*function processForm()
+{  
+  var canvas_data = getCanvasData();
+  for (var i = 0; i < canvas_data.length; i++) {
+    document.writeln('The image for "' + canvas_data[i]['id'] + '" is <img id="img_'+i+'" src="' + canvas_data[i]['png'] + '" /><br />');
+    document.writeln('The path for that character is ' + strokesToString(canvas_data[i]['strokes'], ' ') + '<br />');
+  }
+
+//  document.write(formatCanvasData(getCanvasData()));
+}*/
+
+
+window.onload=function(){
+  var elForm=document.getElementsByTagName('form')[0]; // Get the first form in the document
+  elForm.onsubmit=function()
+  {
+    //var required=['First Name','Last Name','Member Name'];
+    // Place in this array the name of the form that you think should be mandatory
+    /*var bool=true; // Create bool variable and set its value to true
+    for(var i=0;i<required.length;i++)
+    {
+      if(document.getElementsByName(required[i])[0].value=='')
+      {
+        alert(required[i]+' textbox is mandatory to fill in.');
+        bool=false;
+      }
+    }*/
+    return processFormData(); //processForm();
+    //else return false;
+  }
+}
+
+
+
+</script>
+</head>
+
+<body>
+
+<div onselectstart="return false">
+	<!--  onsubmit="processFormData()" -->
+	<!-- <form action="http://www.mturk.com/mturk/externalSubmit" method="post">  -->
+	<!--<form action="javascript:document.url" method="get">-->
+	<script type="text/javascript">
+	document.writeln('<form action="' + getFormAction() + '" method="post" id="input_form">');
+	</script>
+	<!--form action="scripts/python/record-submission.py" method="post" id="input_form"-->
+	<!--form action="https://www.mturk.com/mturk/externalSubmit" method="post" id="input_form"-->
+	<!--form action="http://workersandbox.mturk.com/mturk/externalSubmit" method="post" id="input_form"-->
+	<input type="hidden" id="ipAddress" name="ipAddress" />
+	<input type="hidden" id="assignmentId" name="assignmentId" />
+	<input type="hidden" id="workerid" name="workerid" />
+<script type="text/javascript">
+var assignmentId_field = document.getElementById('assignmentId');
+var assignmentId = getURLParameter('assignmentId');
+var workerId_field = document.getElementById('workerid');
+var workerId = getURLParameter('workerId');
+var ipAddress_field = document.getElementById('ipAddress');
+var ip = '<!--#echo var="REMOTE_ADDR"-->';
+ipAddress_field.value = ip;
+assignmentId_field.value = assignmentId;
+workerId_field.value = workerId;
+
+
+document.write('  Please ignore differences in thickness between the characters you drew and the images from which you\'re drawing; <i>do not</i> go back over lines to make them thicker.<br />  ');
+document.write('Please draw ');
+if (getCharacterTags().length < 2) {
+  if (getSampleCount() == 1)
+    document.write('each character shown below as accurately as you can. ');
+  else 
+    document.write('in each box the character shown below as accurately as you can.');
+} else {
+  if (getSampleCount() == 1) {
+    document.write(' each character as accurately as you can in the <i>center</i> of the box ');
+    if (isHorizontal()) document.write('next to');
+    else document.write('immediately below');
+    document.write(' the character.');
+  } else {
+    document.write(' each character as accurately as you can in the <i>center</i> of each of the boxes ');
+    if (isHorizontal()) document.write('next to');
+    else document.write('on the line following');
+    document.write(' the character.');
+  }
+}
+document.writeln('Please attempt to make each character you draw the <i>same size</i> as the image.  Please draw using a mouse, a tablet pen, or the index finger of the hand with which you write on a trackpad or touchpad.<br />');
+if (getURLParameter('image0').match('angelic'))
+  document.writeln('  Please include the loops, or circles, shown in the images.  If you do not include them, your submission <em>will be rejected</em>.<br />');
+document.writeln('If you make a mistake, click &#39;clear&#39;.  When you have finished, answer the questions at the bottom, and click &#39;submit&#39;.  ');
+ // <br />\n If the boxes are not wide enough for the characters, refresh the page by pressing F5 <i>before</i> you begin drawing.');
+</script>
+	<p>
+	<a href="#" id="disclaimer-show" class="showLink" onclick="showHide('disclaimer');return false;">
+	Show Disclaimer</a> </p>
+	<div id="disclaimer" class="more">
+		<p>By answering the following questions, you are participating in a study 
+		being performed by cognitive scientists in the MIT Department of Brain and 
+		Cognitive Science. If you have questions about this research, please contact 
+		Josh Tenenbaum at jbt AT mit DOT edu. Your participation in this research 
+		is voluntary. You may decline to answer any or all of the following questions
+<script type="text/javascript">
+if (getURLParameter('hitId') != '') {
+    document.write(' by clicking the &#39;Return HIT&#39; button at the top of this page.  ');
+} else {
+    document.write(' by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively, you may click <a href="http://scripts.mit.edu/~jgross/alphabets/">here</a>.)');
+}
+</script>
+                You may decline 
+		further participation, at any time, without adverse consequences. Your anonymity 
+		is assured; the researchers who have requested your participation will not 
+		receive any personal information about you.  The python hash code of your IP address
+		will be associated with your responses to ensure that you do not submit the same 
+		characters multiple times.</p>
+		<p>
+		<a href="#" id="disclaimer-hide" class="hideLink" onclick="showHide('disclaimer');return false;">
+		Hide Disclaimer</a></p>
+	</div>
+	<script type="text/javascript" id="init-show-hide-disclaimer">
+showHide('disclaimer');
+</script>
+	<p></p>
+	<script type="text/javascript">
+  var characterTags = getCharacterTags();
+  for (var i = 0; i < characterTags.length; i++) {
+    document.write('<div class="table">');
+    makeImageCharacterPair(characterTags[i]);
+    document.write('</div>');
+  }
+</script>
+	<div style="float: left; width: 100%">
+	</div>
+	<p></p>
+	<div class="feedback">
+		<table>
+			<tr>
+				<td>
+				<div class="feedback">
+					<fieldset>
+					<legend>Input Device</legend>
+					<input type="radio" name="input_device" id="mouse" value="mouse" />
+					<label for="mouse">Mouse</label> <br />
+					<input type="radio" name="input_device" id="touchpad" value="touchpad" />
+					<label for="touchpad">Touchpad</label> <br />
+					<input type="radio" name="input_device" id="tablet_pen" value="tablet_pen" />
+					<label for="tablet_pen">Tablet Pen</label> <br />
+					<input type="radio" name="input_device" id="other_input" value="other_input" />
+					<label for="other_input">Other:</label>
+					<input type="text" size="10" id="other_input_text" name="other_input_text" />
+					</fieldset>
+					<!--input type="hidden" id="actual_input_device" name="actual_input_device" /-->
+				</div>
+				<div class="feedback">
+					<fieldset>
+					<legend>Have you seen this alphabet before?</legend>
+					<input type="radio" name="seen_before" id="seen_never" value="seen_never" />
+					<label for="seen_never">I have never seen these characters before.</label>
+					<br />
+					<input type="radio" name="seen_before" id="seen_familiar" value="seen_familiar" />
+					<label for="seen_familiar">The characters seem familiar.</label>
+					<br />
+					<input type="radio" name="seen_before" id="seen_know" value="seen_know" />
+					<label for="seen_know">I&#39;ve written with these characters before.</label>
+					<br />
+					<input type="radio" name="seen_before" id="seen_fluent" value="seen_fluent" />
+					<label for="seen_fluent">I can fluently write in a language 
+					that uses these characters.</label> </fieldset>
+					<!--input type="hidden" id="actual_seen_before" name="actual_seen_before" /-->
+				</div>
+				</td>
+			</tr>
+		</table>
+		<p>If you have more than one response to any of the following questions, 
+		please separate your responses by commas (,).  If you have no response, leave the text box blank.</p>
+		<table>
+			<tr>
+				<td><label for="native-language">What is your native language?</label></td>
+				<td>
+				<input type="text" name="native-language" id="native-language" style="width:200%"/>
+				<script type="text/javascript"> new autosuggest("native-language", language_array); </script>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="language-read-write">What other languages or scripts can you read and write?</label></td>
+				<td>
+				<input type="text" name="language-read-write" id="language-read-write" style="width:200%" />
+				<script type="text/javascript"> new autosuggest("language-read-write", language_array); </script>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="language-read">What languages or scripts can you read, but not write?</label></td>
+				<td>
+				<input type="text" name="language-read" id="language-read" style="width:200%" />
+				<script type="text/javascript"> new autosuggest("language-read", language_array); </script>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="age">What is your age?</label></td>
+				<td><input type="text" name="age" id="age" style="width:100%"/> </td>
+			</tr>
+		</table>
+		<table>
+		  <tr>
+		    <td>
+		      <label id="feedback-label" for="feedback">Please enter any feedback you have in the text box below.</label>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+		      <textarea rows="10" cols="30" name="feedback" id="feedback"></textarea>
+		    </td>
+		  </tr>
+		</table>
+		<!--script type="text/javascript">
+  if (getAskFeedback())
+  {
+    document.writeln('<textarea rows="10" cols="30" name="feedback" id="feedback" style="color:gray"');
+    document.writeln("  onfocus=\"if (feedback.value == defaultFeedbackString()) {feedback.value = ''; feedback.style.color='black';}\"");
+    document.writeln("  onblur=\"if (feedback.value == '') {feedback.value = defaultFeedbackString(); feedback.style.color='gray';}\">");
+    document.write(defaultFeedbackString());
+    document.writeln('</textarea>');
+  }
+</script-->
+	</div>
+	<!--  onclick="processFormData();" -->
+	<div style="float: left; width: 100%; height: 100%">
+	</div>
+	
+	<div class="feedback">
+	  <p>
+        If you are interested in learning more about this research, please visit <a href="http://scripts.mit.edu/~jgross/alphabets/" target="_blank">http://scripts.mit.edu/~jgross/alphabets/</a> (this link will open in a new window or tab, so you do not need to worry about loosing your submisison).
+      </p>
+		<input type="submit" value="Submit" /> </div>
+</div>
+</form>
+</div>
+<script type="text/javascript">
+if (!getAskInputDevice()) document.getElementById('input_device_question').innerHTML = '';
+
+if (!getAskSeenBefore()) document.getElementById('seen_before_question').innerHTML = '';
+</script>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+.alphabet-set, .alphabet-image-holder {
+  text-align: center;
+}
+
+.alphabet-question {
+  font-size: 16pt;
+}
+  
+.alphabet-selected {
+  border: thick solid lime;
+}
+
+.alphabet-table-col {
+  width: 100px;
+  display: inline-block;
+  float: left;
+}
+
+.table {
+  display: inline;
+}
+
+.alphabet-table {
+  border: thin solid black;
+  display: inline-block;
+}
+
+.alphabet-table-cell {
+  border: thin solid black;
+  margin: 1px;
+  padding: 1px;
+  text-align: center;
+}
+
+.table-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.image-holder {
+  height: 80px;
+  width: 80px;
+}
+
+.image-box {
+  margin: 2.5px;
+  border: thin solid #C0C0C0; //lightgray
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+img {
+  display: inline;
+}

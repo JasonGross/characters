@@ -1,0 +1,77 @@
+/******************************************************************************
+ * From http://crowdflower.com/stylesheets/bundles/channels/master.css?v=30
+ */
+#pre-page-checks .warning, #pre-page-checks .error {
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #891712;
+	border: 1px solid #5b1512;
+	padding: 10px 15px 5px;
+	margin: 0 0 15px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+	-moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+#pre-page-checks .warning {
+	background-color: #ffe178;
+	border: 1px solid #c8ad4e;
+}
+
+div.error {
+	margin-bottom: 20px;
+}
+/*
+ ******************************************************************************
+ */
+
+
+/******************************************************************************
+ * From http://decafbad.com/2009/07/drag-and-drop/css/index.css
+ */
+.dragoverable {
+  border: thick solid white;
+}
+
+.mouseover-select {
+  border: thick solid orange;
+}
+
+.dragover {
+  border: thick solid aqua;
+}
+
+.selected {
+  border: thick solid lime;
+}
+/*
+ ******************************************************************************
+ */
+ 
+.unfilled-form-element {
+  border: thick solid red;
+}
+
+
+.wraptocenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.wraptocenter * {
+    vertical-align: middle;
+}
+/*\*//*/
+.wraptocenter {
+    display: block;
+}
+.wraptocenter span {
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+}
+/**/
+  

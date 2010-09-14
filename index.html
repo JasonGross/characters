@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+</head>
+<body>
+<h1>Project Description</h1>
+<h2>Project Overview</h2>
+<p>Learning is an active area of research, both from the psychological perspective of discovering how people learn, and from the artificial intelligence perspective of trying to program computers to mimic human learning abilities.  While learning is often thought of as gathering knowledge, much learning also takes place on a more abstract level, for example in the forming generalizations about things we encounter, in categorizing objects, or in learning the structure of the knowledge we acquire.  Although it is not hard to make computers adept at gathering information (e.g. google), it is much harder to program computers to learn how to learn.</p>
+<p>Josh Tenenbaum, the mentor of my UROP, is currently investigating categorical learning, where the inputs are various objects and the output is a categorization of those objects. The simplest form of learning to learn, in this context, is a first order generalization about categories.  For example, if a learner is categorizing animals, the learner might find that humans have two legs and no tail, tigers have four legs and a tail, and spiders have eight legs and no tail.  If the learner is categorizing letters, the learner might discover that most Latin letters are the same thickness, without small details, and mostly connected (i.e. each letter is a single piece), and most Chinese letters are similar in thickness, have many details, and are made of multiple pieces. There are also second order generalizations about categories. Within any species of animal, the number of legs and the presence of a tail are generally constant, while the size and surface patterns may vary widely.  In the case of letters, a learner may realize that the level of detail and the connectedness of characters is generally constant within an alphabet, but varies between alphabets. Learners who make second order generalizations can make reasonable hypotheses about new categories on the basis of a very small number of samples; seeing only a single character from a new alphabet, say formed without much detail in a single piece, a learner who thinks that connectedness and level of detail are similar within a category can reasonably infer that this alphabet has letters consisting of a single connected piece without small details.</p>
+<p>The UROP I am doing involves collecting and analyzing many handwriting samples of various characters from various alphabets that the writer may or may not have seen before.  The handwriting samples will be used as input data to help design an algorithm that can transfer inferences about a single category (alphabet) to new categories, via a model of second order generalizations. Because the samples will be collected digitally, via Amazon Mechanical Turk, I will be working on campus.</p>
+<h2>Personal Role &amp; Responsibilities</h2>
+<p>I am improving the design of and deploying the data collection system that will be used to gather handwriting samples through Amazon Turk. I am reading about Bayesian data analysis, and will learn about various models for the data.I will implement some of these models in Matlab, train them on a subset of the data, and test them against the rest of the data so far collected.I might help my mentors with the models they'll be running on the data.I will also collect more data via the interface that I designed, combined with Amazon Mechanical Turk.</p>
+<h2>Goals/Personal Statement</h2>
+<p>I find the concept of learning interesting, from the perspective of trying to understand how the mind works and from the perspective of artificial intelligence. I hope to learn more about learning from this UROP. I will also learn more about statistics, which I think is one of my weak points within the field of mathematics. Additionally, I enjoy programming, and hope to improve my skills through working on the data collection aspect of this UROP. Ultimately, I hope to enjoy my UROP experience, and better learn what type of research, and which processes involved in research, I enjoy.</p>
+<h1>Results</h1>
+<h2>Get the Dataset</h2>
+<h3><a href="results/dataset-beta.tar.bz2">Download</a></h3>
+<p>You can <a href="results/dataset.tar.bz2">download the data set</a> or <a href="results/dataset-beta.tar.bz2">download the data set including unreviewed submissions</a>. Data set zip files are (hopefully) updated daily at midnight.  Click <a href="results/dataset-updated.log">here</a> to see the last time the dataset was updated.  You may also download the matlab file <a href="results/results.mat">results.mat</a>.</p>
+<h3><a href="scripts/python/display-dataset.py">View</a></h3>
+<form action="scripts/python/display-dataset.py" method="get" target="_self" id="display_form">
+<input type="checkbox" name="use_uri" value="use_uri" checked="checked" id="use_uri" />
+<label for="use_uri" title="This will make the page load faster, prevent caching of images, and cause the page not to load at all in Internet Explorer version 7 and earlier.">Use data URIs</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="include_originals" value="include_originals" checked="checked" id="include_originals" />
+<label for="include_originals">Include original images</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="include_unreviewed" value="include_unreviewed" checked="checked" id="include_unreviewed" />
+<label for="include_unreviewed">Include unreviewed submissions</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="include_rejected" value="include_rejected" checked="checked" id="include_rejected" />
+<label for="include_rejected">Include rejected submissions</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="View Data Set" />
+</form>
+<!--p>You can view the dataset at <a href="scripts/python/display-dataset.py">http://scripts.mit.edu/~jgross/alphabets/scripts/python/display-dataset.py</a></p-->
+<h3><a href="scripts/python/serve-random-alphabet.py?size_upper_bound=50">Contribute</a></h3>
+<form action="scripts/python/serve-random-alphabet.py" method="get" target="_self" id="contribute_form">
+<p>Please <input type="submit" value="contribute" /> by tracing a random alphabet to be added to the data set.</p>
+<label for="size_upper_bound" title="Invalid entries will be ignored.  Do not expect a small alphabet if your entry is not a valid integer.  If there are no alphabets as small as your request, you will be given one of the smallest alphabets.">Maximum number of characters in alphabet:</label>
+<input type="text" value="50" name="size_upper_bound" id="size_upper_bound" title="Invalid entries will be ignored.  Do not expect a small alphabet if your entry is not a valid integer.  If there are no alphabets as small as your request, you will be given one of the smallest alphabets." />
+</form>
+<h3>Contact</h3>
+<p>Please email jgross AT mit DOT edu with questions, concerns, or bug reports.</p>
+</body>
+</html>

@@ -156,8 +156,7 @@ def record_submission(form_dict, names=('get_unreviewed_image_list', 'get_unrevi
                       verbose=True, pseudo=False):
     if names:
         for name in names:
-            if os.path.exists(get_object_file_name(name)):
-                os.remove(get_object_file_name(name))
+            raise_object_changed(name)
     if verbose: print('Hashing IP address...')
     uid = make_uid(form_dict)
     if many_dirs:

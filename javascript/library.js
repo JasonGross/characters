@@ -51,7 +51,7 @@ function hasURLParameter( name, ignoreCase )
 {
   if (ignoreCase === undefined) ignoreCase = true;
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-  var regexS = "[\\?&]"+name+"([&#])";
+  var regexS = "[\\?&]"+name+"([&#=])";
   var regex = new RegExp( regexS, (ignoreCase ? 'i' : ''));
   var results = regex.exec( window.location.href+'#' );
   return ( results != null );
@@ -364,4 +364,3 @@ if (this['changecss'] === undefined)
     }
   } 
 //=============================================================
-

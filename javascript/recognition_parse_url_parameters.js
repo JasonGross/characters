@@ -37,7 +37,7 @@ var urlParameters = new (function () {
   //End default values
   //==========================================================
   var urlParameterObject = this;
-  jQuery.each(validURLParameters, function (index, urlParameter) {
+  jQuery.each(validURLParameters, function (index, urlParameter) { 
       if (hasURLParameter(urlParameter))
         urlParameterObject[urlParameter] = getURLParameter(urlParameter, IGNORE_CASE, null);
     });

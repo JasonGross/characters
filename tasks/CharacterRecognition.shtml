@@ -19,6 +19,7 @@
   <script src="../scripts/javascript/form_setup.js" type="text/javascript"></script>
   <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/make_drag_and_drop_warning.js" type="text/javascript"></script-->
+  <script src="../scripts/javascript/recognition_data_loader.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_parse_url_parameters.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_validate_form.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_input_maker.js" type="text/javascript"></script>
@@ -62,66 +63,86 @@
     <div id="drag-and-drop-warnings">
     </div>
   </div>
-  <div id="instructions">
-    <h3>Instructions</h3>
-    <p>
-      FIX
-    </p>      
-    <!--Do the following for each group of alphabets.
-    <ol>
-      <li>Examine the example characters from each of the alphabets in the group.</li>
-      <li>
-        Select which alphabet you think the extra character is from, either by:
-        <ul>
-          <li>dragging and dropping the character on top of one of the alphabets, OR</li>
-          <li>clicking on the drop-down menu and selecting an alphabet number (alphabet numbers are on top of the corresponding examples), OR</li>
-          <li>clicking on the appropriate alphabet.</li>
-        </ul>
-        If you are unsure, select your best guess.
-      </li>
-    </ol>-->
-    <p></p>
-    Please note:
-    <ul>
-      <li>You may change any of your answers at any time before submission.</li>
-      <li>
-        You must categorize every non-example character to submit the form.  (The questions at the bottom, however, are optional.)
-        <ul class="show-if-turk">
-          <li>If you somehow manage to submit the form without categorizing every character, your submission will be rejected.</li>
-        </ul>
-      </li>
-      <li class="show-if-turk">So long as you categorize every non-example character, and you make an effort to categorize them correctly, your submission will be accepted independent of how many you get correct.</li>
-    </ul>
-  </div>
-  <div id="disclaimer-box">
-    <p><a id="disclaimer-show" class="showLink" href="#" onclick="showHide('disclaimer');return false;">Show Disclaimer</a></p>
-
-    <div id="disclaimer" class="more">
-      <h3>Disclaimer</h3>
-      <p>By answering the following questions, you are participating in a study
-      being performed by cognitive scientists in the MIT Department of Brain and
-      Cognitive Science. If you have questions about this research, please contact
-      Josh Tenenbaum at jbt AT mit DOT edu. Your participation in this research is
-      voluntary. You may decline to answer any or all of the following questions
-      <span class="show-if-turk">
-        by clicking the &#39;Return HIT&#39; button at the top of this page.
-      </span>
-      <span class="show-if-not-turk">
-        by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively,
-        you may click <a href="http://scripts.mit.edu/~jgross/alphabets/">here</a>.)
-      </span>
-      You may decline further participation, at any time, without adverse consequences. 
-      Your anonymity is assured; the researchers who have requested your participation
-      will not receive any personal information about you.</p>
-
-      <p><a id="disclaimer-hide" class="hideLink" href="#" onclick="showHide('disclaimer');return false;">Hide Disclaimer</a></p>
+  <div class="pre-task">
+    <div id="instructions">
+      <h3>Instructions</h3>
+      <p>
+        FIX
+      </p>      
+      <!--Do the following for each group of alphabets.
+      <ol>
+        <li>Examine the example characters from each of the alphabets in the group.</li>
+        <li>
+          Select which alphabet you think the extra character is from, either by:
+          <ul>
+            <li>dragging and dropping the character on top of one of the alphabets, OR</li>
+            <li>clicking on the drop-down menu and selecting an alphabet number (alphabet numbers are on top of the corresponding examples), OR</li>
+            <li>clicking on the appropriate alphabet.</li>
+          </ul>
+          If you are unsure, select your best guess.
+        </li>
+      </ol>-->
+      <p></p>
+      Please note:
+      <ul>
+        <li>You may change any of your answers at any time before submission.</li>
+        <li>
+          You must categorize every non-example character to submit the form.  (The questions at the bottom, however, are optional.)
+          <ul class="show-if-turk">
+            <li>If you somehow manage to submit the form without categorizing every character, your submission will be rejected.</li>
+          </ul>
+        </li>
+        <li class="show-if-turk">So long as you categorize every non-example character, and you make an effort to categorize them correctly, your submission will be accepted independent of how many you get correct.</li>
+      </ul>
     </div>
-    <script id="init-show-hide-disclaimer" type="text/javascript">
-    //<![CDATA[
-    showHide('disclaimer');
-    //]]>
-    </script>
-    <br />
+    <div id="disclaimer-box">
+      <p><a id="disclaimer-show" class="showLink" href="#" onclick="showHide('disclaimer');return false;">Show Disclaimer</a></p>
+  
+      <div id="disclaimer" class="more">
+        <h3>Disclaimer</h3>
+        <p>By answering the following questions, you are participating in a study
+        being performed by cognitive scientists in the MIT Department of Brain and
+        Cognitive Science. If you have questions about this research, please contact
+        Josh Tenenbaum at jbt AT mit DOT edu. Your participation in this research is
+        voluntary. You may decline to answer any or all of the following questions
+        <span class="show-if-turk">
+          by clicking the &#39;Return HIT&#39; button at the top of this page.
+        </span>
+        <span class="show-if-not-turk">
+          by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively,
+          you may click <a href="http://scripts.mit.edu/~jgross/alphabets/">here</a>.)
+        </span>
+        You may decline further participation, at any time, without adverse consequences. 
+        Your anonymity is assured; the researchers who have requested your participation
+        will not receive any personal information about you.</p>
+  
+        <p><a id="disclaimer-hide" class="hideLink" href="#" onclick="showHide('disclaimer');return false;">Hide Disclaimer</a></p>
+      </div>
+      <script id="init-show-hide-disclaimer" type="text/javascript">
+      //<![CDATA[
+      showHide('disclaimer');
+      //]]>
+      </script>
+      <br />
+    </div>
+    <p>
+    	If you are interested in learning more about this research, please visit 
+    	<a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">
+    	  http://scripts.mit.edu/~jgross/alphabets/
+    	</a> (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
+    </p>
+  
+    <div id="accept_task-div">
+    	<form id="accept_task-form">
+    		<p>
+    			To complete this task, you must read the instructions, the disclaimer, and click "Accept" below.
+    			You will not be able to click "Accept" until the necesary data has been loaded.
+    		</p>
+    		<div id="loading_progess-div">
+    		</div>
+    		<input type="submit">Accept</input>
+    	</form>
+    </div>
   </div>
   <div id="extra-options-form">
     <form id="extra-options">
@@ -155,7 +176,7 @@
       <div id="all-tasks">
       </div>
       
-      <div>
+      <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>
           <label>
@@ -165,12 +186,7 @@
         </fieldset>
       </div>
       
-      <p>
-        If you are interested in learning more about this research, please visit 
-        <a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">
-          http://scripts.mit.edu/~jgross/alphabets/
-        </a> (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
-      </p>
+      
 
       <p><input id="submitButton"
                type="submit"
@@ -203,6 +219,7 @@
     if (jQuery.browser.opera ||
           document.createElement('div').ondragstart !== undefined)
       $('#no-ondragstart').remove();      */
+    $('#post-task').hide()
     //]]>
   </script>
   <script id="check-working-scripts" type="text/javascript">

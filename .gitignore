@@ -15,3 +15,4 @@
 *.log
 *.m
 working-directory/
+!*Time*

@@ -1,0 +1,33 @@
+Start: Tuesday, May 25, 2010 16:52.48
+End: Tuesday, May 25, 2010 17:10.55
+Time Spent: 0:18:07.504000
+
+Start: Tuesday, May 25, 2010 17:11.53
+End: Tuesday, May 25, 2010 17:13.13
+Time Spent: 0:01:20.617000
+
+Start: Tuesday, May 25, 2010 21:45.40
+End: Tuesday, May 25, 2010 22:03.43
+Time Spent: 0:18:03.183000
+
+Start: Tuesday, May 25, 2010 22:34.03
+End: Wednesday, May 26, 2010 01:03.23
+Time Spent: 2:29:20.852000
+
+Start: Wednesday, May 26, 2010 16:13.42
+End: Wednesday, May 26, 2010 16:26.08
+Time Spent: 0:12:26.143000
+
+Start: Wednesday, May 26, 2010 22:32.47
+End: Wednesday, May 26, 2010 23:04.46
+Time Spent: 0:31:59.696000
+
+Start: Friday, May 28, 2010 15:19.00
+End: Friday, May 28, 2010 16:08.18
+Time Spent: 0:49:18.188000
+
+Start: Saturday, May 29, 2010 14:43.22
+End: Saturday, May 29, 2010 15:40.24
+Time Spent: 0:57:02.561000
+
+Total Time: 5:37:38.744000

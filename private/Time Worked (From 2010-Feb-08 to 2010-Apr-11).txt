@@ -1,0 +1,98 @@
+Start: Monday, February 08, 2010 17:47.59
+End: Monday, February 08, 2010 18:54.00
+Time Spent: 1:06:01.154000
+
+Start: Friday, February 12, 2010 17:11.56
+End: Friday, February 12, 2010 18:58.27
+Time Spent: 1:46:31.821000
+
+Start: Friday, February 12, 2010 21:05.41
+End: Friday, February 12, 2010 21:20.01
+Time Spent: 0:14:20.417000
+
+Start: Friday, February 12, 2010 21:35.25
+End: Saturday, February 13, 2010 01:09.24
+Time Spent: 3:33:59.631000
+
+Start: Saturday, February 13, 2010 16:28.21
+End: Saturday, February 13, 2010 19:02.10
+Time Spent: 2:33:49.363000
+
+Start: Sunday, February 28, 2010 19:26.19
+End: Sunday, February 28, 2010 21:42.44
+Time Spent: 2:16:25.842000
+
+Start: Monday, March 01, 2010 19:36.45
+End: Monday, March 01, 2010 22:37.26
+Time Spent: 3:00:41.996000
+
+Start: Tuesday, March 02, 2010 21:22.56
+End: Tuesday, March 02, 2010 22:10.08
+Time Spent: 0:47:12.783000
+
+Start: Sunday, March 07, 2010 13:52.08
+End: Sunday, March 07, 2010 21:00.41
+Time Spent: 7:08:33.723000
+
+Start: Sunday, March 14, 2010 15:52.49
+End: Sunday, March 14, 2010 17:51.15
+Time Spent: 1:58:26.206000
+
+Start: Sunday, March 14, 2010 18:11.31
+End: Sunday, March 14, 2010 18:55.57
+Time Spent: 0:44:26.280000
+
+Start: Saturday, March 20, 2010 13:35.36
+End: Saturday, March 20, 2010 13:56.59
+Time Spent: 0:21:23.288000
+
+Start: Saturday, March 20, 2010 21:53.43
+End: Saturday, March 20, 2010 22:19.39
+Time Spent: 0:25:56.474000
+
+Start: Sunday, March 21, 2010 01:08.26
+End: Sunday, March 21, 2010 03:28.44
+Time Spent: 2:20:18.796000
+
+Start: Monday, March 29, 2010 03:09.36
+End: Monday, March 29, 2010 05:20.19
+Time Spent: 2:10:43.577000
+
+Start: Friday, April 02, 2010 15:04.40
+End: Friday, April 02, 2010 15:55.18
+Time Spent: 0:50:38.838000
+
+Start: Friday, April 02, 2010 21:22.03
+End: Friday, April 02, 2010 22:06.33
+Time Spent: 0:44:30.914000
+
+Start: Monday, April 05, 2010 00:00.00
+End: Thursday, April 05, 2010 05:00.00
+Time Spent: 5:00:00.000000
+
+Start: Friday, April 09, 2010 12:39.46
+End: Friday, April 09, 2010 13:53.24
+Time Spent: 1:13:38.018000
+
+Start: Friday, April 09, 2010 14:01.27
+End: Friday, April 09, 2010 16:06.52
+Time Spent: 2:05:25.186000
+
+Start: Saturday, April 10, 2010 13:22.41
+End: Saturday, April 10, 2010 14:58.49
+Time Spent: 1:36:08.422000
+
+Start: Saturday, April 10, 2010 17:18.01
+End: Saturday, April 10, 2010 19:43.51
+Time Spent: 2:25:50.317000
+
+Start: Sunday, April 11, 2010 18:19.43
+End: Sunday, April 11, 2010 19:24.22
+Time Spent: 1:04:39.619000
+
+Start: Sunday, April 11, 2010 19:28.46
+End: Sunday, April 11, 2010 22:22.00
+Time Spent: 2:53:14.475000
+
+
+Total Time: 2 days, 0:22:57.140000

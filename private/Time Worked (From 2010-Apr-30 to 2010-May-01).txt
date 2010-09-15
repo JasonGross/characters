@@ -1,0 +1,18 @@
+Start: Friday, April 30, 2010 13:05.00
+End: Friday, April 30, 2010 13:49.00
+Time Spent: 0:44:00.664000
+
+Start: Friday, April 30, 2010 16:09.17
+End: Friday, April 30, 2010 19:09.38
+Time Spent: 3:00:21.273000
+
+Start: Friday, April 30, 2010 20:48.11
+End: Friday, April 30, 2010 22:45.40
+Time Spent: 1:57:29.638000
+
+Start: Saturday, May 01, 2010 21:04.13
+End: Saturday, May 01, 2010 22:02.49
+Time Spent: 0:58:36.946000
+
+
+Total Time: 6:40:28.521000

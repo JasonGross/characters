@@ -1,0 +1,46 @@
+Start: Monday, April 12, 2010 12:03.22
+End: Monday, April 12, 2010 12:49.42
+Time Spent: 0:46:20.851000
+
+Start: Monday, April 12, 2010 13:18.56
+End: Monday, April 12, 2010 14:04.39
+Time Spent: 0:45:43.794000
+
+Start: Monday, April 12, 2010 15:11.49
+End: Monday, April 12, 2010 15:44.51
+Time Spent: 0:33:02.464000
+
+Start: Monday, April 12, 2010 15:49.41
+End: Monday, April 12, 2010 16:47.32
+Time Spent: 0:57:51.577000
+
+Start: Monday, April 12, 2010 17:48.01
+End: Monday, April 12, 2010 19:16.14
+Time Spent: 1:28:13.038000
+
+Start: Tuesday, April 13, 2010 00:24.26
+End: Tuesday, April 13, 2010 01:30.00
+Time Spent: 1:05:34.039000
+
+Start: Tuesday, April 13, 2010 13:04.08
+End: Tuesday, April 13, 2010 13:14.53
+Time Spent: 0:10:45.596000
+
+Start: Tuesday, April 13, 2010 17:48.59
+End: Tuesday, April 13, 2010 19:05.45
+Time Spent: 1:16:46.121000
+
+Start: Tuesday, April 13, 2010 19:31.32
+End: Wednesday, April 14, 2010 02:33.05
+Time Spent: 7:01:33.505000
+
+Start: Wednesday, April 14, 2010 12:26.20
+End: Wednesday, April 14, 2010 12:51.58
+Time Spent: 0:25:38.502000
+
+Start: Wednesday, April 14, 2010 21:07.35
+End: Wednesday, April 14, 2010 21:22.45
+Time Spent: 0:15:10.155000
+
+
+Total Time: 14:46:39.642000

@@ -1,0 +1,85 @@
+Start: Monday, August 02, 2010 01:20.04
+Start: Monday, August 02, 2010 01:20.04
+End: Monday, August 02, 2010 04:22.07
+Time Spent: 3:02:03.146000
+
+Start: Monday, August 02, 2010 06:11.23
+End: Monday, August 02, 2010 08:39.29
+Time Spent: 2:28:06.804000
+
+Start: Monday, August 02, 2010 12:36.54
+End: Monday, August 02, 2010 12:52.39
+Time Spent: 0:15:45.747000
+
+Start: Monday, August 02, 2010 13:38.07
+End: Monday, August 02, 2010 13:58.39
+Time Spent: 0:20:32.230000
+
+Start: Monday, August 02, 2010 15:12.55
+End: Monday, August 02, 2010 16:28.35
+Time Spent: 1:15:40.826000
+
+Start: Monday, August 02, 2010 18:06.46
+Start: Monday, August 02, 2010 18:12.23
+End: Monday, August 02, 2010 18:15.57
+Time Spent: 0:03:34.862000
+
+Start: Monday, August 02, 2010 18:18.17
+End: Monday, August 02, 2010 18:19.00
+Time Spent: 0:00:43.144000
+
+Start: Monday, August 02, 2010 20:17.08
+End: Monday, August 02, 2010 20:53.42
+Time Spent: 0:36:34.953000
+
+Start: Monday, August 02, 2010 22:30.34
+End: Monday, August 02, 2010 23:04.14
+Time Spent: 0:33:40.284000
+
+Start: Tuesday, August 03, 2010 03:45.39
+End: Tuesday, August 03, 2010 04:29.23
+Time Spent: 0:43:44.095000
+
+Start: Tuesday, August 03, 2010 05:27.13
+End: Tuesday, August 03, 2010 05:52.50
+Time Spent: 0:25:37.318000
+
+Start: Tuesday, August 03, 2010 08:25.00
+End: Tuesday, August 03, 2010 14:02.54
+Time Spent: 5:37:54.296000
+
+Start: Wednesday, August 04, 2010 11:38.15
+End: Wednesday, August 04, 2010 12:26.14
+Time Spent: 0:47:59.822861
+
+Start: Thursday, August 05, 2010 00:24.08
+End: Thursday, August 05, 2010 00:46.52
+Time Spent: 0:22:44.476454
+
+Start: Thursday, August 05, 2010 08:46.37
+End: Thursday, August 05, 2010 11:36.01
+Time Spent: 2:49:24.438866
+
+Start: Thursday, August 05, 2010 16:53.51
+End: Thursday, August 05, 2010 19:08.25
+Time Spent: 2:14:34.582950
+
+Start: Thursday, August 05, 2010 20:02.00
+End: Thursday, August 05, 2010 23:06.47
+Time Spent: 3:04:47.008351
+
+Start: Friday, August 06, 2010 09:30.25
+End: Friday, August 06, 2010 12:36.40
+Time Spent: 3:06:15.865638
+
+Start: Friday, August 06, 2010 19:50.29
+End: Friday, August 06, 2010 20:44.48
+Time Spent: 0:54:19.335733
+
+Start: Saturday, August 07, 2010 10:12.09
+End: Saturday, August 07, 2010 20:52.25
+Time Spent: 10:40:16.224814
+
+
+
+Total Time: 1 day, 15:24:19.460667

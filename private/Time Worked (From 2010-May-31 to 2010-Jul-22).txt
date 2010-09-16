@@ -1,0 +1,131 @@
+Start: Monday, May 31, 2010 12:57.19
+End: Monday, May 31, 2010 13:04.56
+Time Spent: 0:07:37.054000
+
+Start: Saturday, June 19, 2010 19:26.59
+End: Sunday, June 20, 2010 05:02.57
+Time Spent: 9:35:58.980000
+
+Start: Sunday, June 20, 2010 12:05.00
+End: Sunday, June 20, 2010 12:50.00
+Time Spent: 0:45:00.000000
+
+Start: Sunday, June 20, 2010 16:52.16
+End: Sunday, June 20, 2010 21:07.01
+Time Spent: 4:14:45.839000
+
+Start: Sunday, June 20, 2010 22:57.05
+End: Monday, June 21, 2010 00:50.41
+Time Spent: 1:53:36.645000
+
+Start: Monday, June 21, 2010 19:34.05
+End: Monday, June 21, 2010 22:04.38
+Time Spent: 2:30:33.161000
+
+Start: Sunday, June 27, 2010 06:52.40
+End: Sunday, June 27, 2010 07:54.48
+Time Spent: 1:02:08.597000
+
+Start: Sunday, June 27, 2010 08:07.35
+End: Sunday, June 27, 2010 13:35.06
+Time Spent: 5:27:31.292000
+
+Start: Sunday, June 27, 2010 14:00.41
+End: Sunday, June 27, 2010 20:00.48
+Time Spent: 6:00:07.865000
+
+Start: Monday, June 28, 2010 15:27.23
+End: Monday, June 28, 2010 19:13.10
+Time Spent: 3:45:47.311000
+
+Start: Monday, June 28, 2010 20:47.57
+End: Monday, June 28, 2010 20:58.50
+Time Spent: 0:10:53.159000
+
+Start: Thursday, July 01, 2010 09:34.29
+End: Thursday, July 01, 2010 10:59.00
+Time Spent: 1:24:31.610000
+
+Start: Tuesday, July 06, 2010 13:14.03
+End: Tuesday, July 06, 2010 14:45.22
+Time Spent: 1:31:19.533000
+
+Start: Tuesday, July 06, 2010 14:52.04
+End: Tuesday, July 06, 2010 14:58.15
+Time Spent: 0:06:11.474000
+
+Start: Tuesday, July 06, 2010 15:21.31
+End: Tuesday, July 06, 2010 18:55.51
+Time Spent: 3:34:20.906000
+
+Start: Tuesday, July 06, 2010 19:51.06
+End: Tuesday, July 06, 2010 19:53.05
+Time Spent: 0:01:59.543000
+
+Start: Saturday, July 10, 2010 19:14.07
+End: Saturday, July 10, 2010 20:00.11
+Time Spent: 0:46:04.751000
+
+Start: Tuesday, July 13, 2010 14:15.13
+End: Tuesday, July 13, 2010 20:18.34
+Time Spent: 6:03:21.973000
+
+Start: Wednesday, July 14, 2010 14:01.19
+End: Wednesday, July 14, 2010 18:26.56
+Time Spent: 4:25:37.382000
+
+Start: Wednesday, July 14, 2010 18:40.06
+End: Wednesday, July 14, 2010 19:15.40
+Time Spent: 0:35:34.922000
+
+Start: Wednesday, July 14, 2010 23:34.01
+End: Thursday, July 15, 2010 01:08.39
+Time Spent: 1:34:38.097000
+
+Start: Thursday, July 15, 2010 03:37.59
+End: Thursday, July 15, 2010 04:24.57
+Time Spent: 0:46:58.309000
+
+Start: Thursday, July 15, 2010 13:40.30
+End: Thursday, July 15, 2010 20:13.35
+Time Spent: 6:33:05.470000
+
+Start: Friday, July 16, 2010 01:54.46
+End: Friday, July 16, 2010 02:45.00
+Time Spent: 0:50:14.021000
+
+Start: Friday, July 16, 2010 11:37.10
+End: Friday, July 16, 2010 12:03.15
+Time Spent: 0:26:05.947000
+
+Start: Friday, July 16, 2010 15:45.30
+End: Friday, July 16, 2010 23:04.39
+Time Spent: 7:19:09.238000
+
+Start: Saturday, July 17, 2010 01:06.29
+End: Saturday, July 17, 2010 01:21.13
+Time Spent: 0:14:44.075000
+
+Start: Saturday, July 17, 2010 01:48.54
+Start: Saturday, July 17, 2010 12:52.17
+End: Saturday, July 17, 2010 13:50.15
+Time Spent: 0:57:58.207000
+
+Start: Sunday, July 18, 2010 14:10.37
+End: Sunday, July 18, 2010 18:24.28
+Time Spent: 4:13:51.794000
+
+Start: Sunday, July 18, 2010 19:17.55
+End: Sunday, July 18, 2010 20:46.53
+Time Spent: 1:28:58.105000
+
+Start: Wednesday, July 21, 2010 04:31.01
+End: Wednesday, July 21, 2010 06:10.27
+Time Spent: 1:39:26.432000
+
+Start: Thursday, July 22, 2010 16:19.29
+End: Thursday, July 22, 2010 19:58.54
+Time Spent: 3:39:25.413000
+
+
+Total Time: 3 days, 11:47:37.105000

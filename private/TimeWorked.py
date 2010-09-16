@@ -18,6 +18,8 @@ def write_begin_time():
 def write_end_time():
     with open('Time Worked.txt', 'r') as f:
         lines = f.readlines()
+    if not lines[-1].strip(): lines = lines[:-1]
+    print(lines[-1][len('Start: '):].strip())
     start = datetime.strptime(lines[-1][len('Start: '):].strip(), '%A, %B %d, %Y %H:%M.%S')
     with open('Time Worked.txt', 'a') as f:
         f.write('End: ' + datetime.now().strftime('%A, %B %d, %Y %H:%M.%S') + '\n')

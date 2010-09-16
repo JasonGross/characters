@@ -146,9 +146,9 @@ def make_matlab_segment(alphabet_id, alphabet_num, prefix, get_ids, get_extra_in
         tss.append({})
         for uid in uids:
             cur_stroke = stroke_dict[uid]
-            xss[-1][uid] = '{' + ', '.join('[int8(' + '), int8('.join(str(point['x']) for point in stroke) + ')]' for stroke in cur_stroke) + '}'
-            yss[-1][uid] = '{' + ', '.join('[int8(-' + '), int8(-'.join(str(point['y']) for point in stroke) + ')]' for stroke in cur_stroke) + '}'
-            tss[-1][uid] = '{' + ', '.join('[uint16(' + '), uint16('.join(str(point['t']) for point in stroke) + ')]' for stroke in cur_stroke) + '}'
+            xss[-1][uid] = '{' + ', '.join('[' + ', '.join(str(point['x']) for point in stroke) + ']' for stroke in cur_stroke) + '}' # int8
+            yss[-1][uid] = '{' + ', '.join('[-' + ', -'.join(str(point['y']) for point in stroke) + ']' for stroke in cur_stroke) + '}' # int8
+            tss[-1][uid] = '{' + ', '.join('[' + ', '.join(str(point['t']) for point in stroke) + ']' for stroke in cur_stroke) + '}' # uint16
 
     stroke_parts = {'xss':xss, 'yss':yss, 'tss':tss}
     # strokes

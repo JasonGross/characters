@@ -19,6 +19,77 @@ var tasks = [];
 
 (function () {
   
+  var totalTasks;
+  var progressBar;
+  var progressMessage;
+  $(function () { 
+    progressBar = $('.loading_progress');
+    var ellipsis = $('<span>').append('..');
+    var count = 2;
+    var maxCount = 3;
+    progressMessage = $('.loading_message')
+      .append($('<p>').append('Loading information about what tasks to give you').append(ellipsis));
+    ellipsisTime = 1000;
+    ellipsisFunc = function () {
+      if (ellipsis) {
+        if (count == maxCount) {
+          count = 0;
+          ellipsis.html('');
+        } else {
+          count++;
+          ellipsis.append('.');
+        }
+        setTimeout(ellipsisFunc, ellipsisTime);
+      }
+    };
+    ellipsisFunc();
+  });
+  
+  function loadImages(imagePairs) {
+    totalTasks = imagePairs.length;
+    var totalImages = totalTasks * 3;
+    refcounter.setCounter('image progress', totalImages);
+    $(function () {
+      progressMessage.children().destroy();
+      var progressLoaded = $('<span>').append('0')
+      progressMessage
+        .append('Loading images.  ')
+        .append(progressLoaded)
+        .append(' of ' + totalImages + ' done.');
+      progressBar.progressbar('option', 'value', 0);
+      refcounter.handleCounterChange('image progress', function (value) {
+        progressBar.progressbar('option', 'value', totalImages - value);
+        progressLoaded.html(totalImages - value);
+      });
+    });
+    
+    jQuery.each(imagePairs, function (index, imagePair) {
+      tasks.push(makeTask(index, imagePair[0], imagePair[1], imagePair[2]));
+    });
+  }
+  
+  function makeTask(index, exampleImageUrl, testImageUrl, noiseImageUrl) {
+    var task = $('<div>');
+    var taskFieldSet = $('<fieldset>')
+      .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
+      .addClass('task-holder');
+    var example = $('<div>')
+      .addClass('example-holder');
+    var test = $('<div>')
+      .addClass('test-holder');
+    var question = $('<div>')
+      .addClass('question-holder')
+    
+    // Example
+    var exampleImage = $('<img>')
+        .attr('src', exampleImageUrl)
+        .attr('alt', 'Example image for task ' + (index + 1) + '.')
+        .load(function () { refcounter.decrementCounter('image progress'); });
+
+
+   
+
+  }
   var alphabetGlobalNum = 0;
   
   function getQuestionFromSelect(select) {

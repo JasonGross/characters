@@ -41,4 +41,5 @@
         return func.apply(this, newFunc.arguments);
     };
     refcounter.handleCounterChange(counter, newFunc);
+  };
 })();

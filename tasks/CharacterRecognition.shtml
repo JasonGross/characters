@@ -24,7 +24,6 @@
   <script src="../scripts/javascript/recognition_data_loader.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_parse_url_parameters.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_validate_form.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/recognition_input_maker.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->

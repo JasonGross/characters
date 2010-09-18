@@ -16,3 +16,6 @@
 *.m
 working-directory/
 !*Time*.txt
+update-push.bat
+update-pull.bat
+update.bat

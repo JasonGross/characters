@@ -50,10 +50,6 @@
     </noscript>
     <div id="loading" class="warning">
       <h2>Please wait while the page loads&#8230;</h2>
-
-      <p>
-        There are many images that must be loaded.
-      </p>
       <p>
         If this message stays here for more than 120 seconds after the page stops changing, 
         you should not attempt to complete this assignment. Try refreshing or enabling JavaScript.

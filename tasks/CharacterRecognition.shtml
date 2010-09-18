@@ -141,7 +141,7 @@
     		  <div id="loading_message"></div>
     		  <div id="loading_progress"></div>
     		</div>
-    		<input type="submit">Accept</input>
+    		<input type="submit" value="Accept" />
     	</form>
     </div>
   </div>

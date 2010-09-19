@@ -1,4 +1,4 @@
-#!/usr/bin/python
+ #!/usr/bin/python
 # Filename: alphabets.py
 from __future__ import with_statement
 import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
@@ -68,7 +68,7 @@ def is_nested_type(obj, *types):
 
 def create_first_task(form):
     _random = get_object('characters_random', (lambda: random.Random()))
-    NUMBER_OF_ALPAHBETS = int(form.getfirst('numberOfAlphabets', 40))
+    NUMBER_OF_ALPHAHBETS = int(form.getfirst('numberOfAlphabets', 40))
     EXAMPLE_CHARACTERS_PER_ALPHABET = int(form.getfirst('exampleCharactersPerAlphabet', 10))
     SAME_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('sameTestCharactersPerAlphabet', 10))
     DIFFERENT_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentTestCharactersPerAlphabet', 10))
@@ -77,52 +77,47 @@ def create_first_task(form):
     
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
     alphabets = dict((alphabet, alphabets[alphabet]) for alphabet in alphabets
-                     if len(alphabets[alphabet].values()[0]) > max((EXAMPLE_CHARACTERS_PER_ALPHABET, DIFFERENT_TEST_CHARACTERS_PER_ALPHABET, DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET)))
+                     if len(alphabets[alphabet].values()[0]) > max((EXAMPLE_CHARACTERS_PER_ALPHABET,
+                                                                    DIFFERENT_TEST_CHARACTERS_PER_ALPHABET,
+                                                                    DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET)))
     
     if DISTRACT_WITH_ALL:
-        use_alphabets = _random.sample(alphabets.keys(), NUMBER_OF_ALPAHBETS)
+        use_alphabets = _random.sample(alphabets.keys(), NUMBER_OF_ALPHAHBETS)
 
     if not DISTRACT_WITH_ALL:
-        use_alphabets = _random.sample(alphabets.keys(), NUMBER_OF_ALPAHBETS)
+        use_alphabets = _random.sample(alphabets.keys(), NUMBER_OF_ALPHAHBETS)
 
     tasks = []
 
     for alphabet in use_alphabets:
         this_characters = zip(_random.sample(alphabets[alphabet].keys(), EXAMPLE_CHARACTERS_PER_ALPHABET),
                               _random.sample(range(len(alphabets[alphabet].values()[0])), EXAMPLE_CHARACTERS_PER_ALPHABET))
-        alphabets_dict[
-    
-    if DISTINCT_ALPHABETS:
-        training_characters = [(alphabet, random.choice(range(len(alphabets[alphabet].values()[0])))) for alphabet in random.sample(alphabets.keys(), NUMBER_OF_TASKS)]
-    else:
-        training_characters = random.sample(all_characters, NUMBER_OF_TASKS)
+        for uid, character_num in this_characters:
+            all_other_uids = [d_uid for d_uid in alphabets[alphabet].keys() if d_uid != uid]
+            all_other_uids = _random.sample(all_other_uids, len(all_other_uids))
+            
+            other_uid_same_character = all_other_uids[:SAME_TEST_CHARACTERS_PER_ALPHABET]
+            other_characters_same_alphabet = [alphabet[alphabet][u][n]
+                                              for u in all_other_uids[SAME_TEST_CHARACTERS_PER_ALPHABET:SAME_TEST_CHARACTERS_PER_ALPHABET+DIFFERENT_TEST_CHARACTERS_PER_ALPHABET]
+                                              for n in _random.sample([i for i in range(len(alphabets[alphabet][uid])) if i != character_num],
+                                                                      DIFFERENT_TEST_CHARACTERS_PER_ALPHABET)]
+            other_alphabets = _random.sample([a for a in use_alphabets if a != alphabet], DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET)
 
-    tasks = []
-    for i, (alphabet, character_num) in enumerate(training_characters):
-        same_uids = sorted(alphabets[alphabet].keys())
-        same_alphabet_same_characters = [alphabets[alphabet][uid][character_num]
-                                         for uid in same_uids]
-        same_alphabet_other_characters = [alphabets[alphabet][uid][num]
-                                          for num in range(len(alphabets[alphabet][uid]))
-                                          if (alphabet, num) not in training_characters
-                                          for uid in sorted(alphabets[alphabet].keys())]
-        other_alphabet_other_characters = [alphabets[alphabet][uid][num]
-                                           for alphabet in sorted(alphabets.keys())
-                                           for uid in sorted(alphabets[alphabet].keys())
-                                           for num in range(len(alphabets[alphabet][uid]))
-                                           if (alphabet, num) not in training_characters]
-        random.shuffle(same_alphabet_same_characters)
-        random.shuffle(same_alphabet_other_characters)
-        random.shuffle(other_alphabet_other_characters)
-        tasks.append({'training alphabet':alphabet,
-                      'training character number':character_num,
-                      'training characters':list(map(anonymize_image, same_alphabet_same_characters[:TRAINING_IMAGES_PER_TASK])),
-                      'test characters': list(map(anonymize_image,
-                                                  random.sample((same_alphabet_same_characters[TRAINING_IMAGES_PER_TASK:TRAINING_IMAGES_PER_TASK+TRUE_TEST_IMAGES_PER_TASK] +
-                                                                 same_alphabet_other_characters[:SAME_ALPHABET_DISTRASTORS_PER_TASK] +
-                                                                 other_alphabet_other_characters[:OTHER_ALPHABET_DISTRASTORS_PER_TASK]),
-                                                                TEST_IMAGES_PER_TASK)))
-                      })
+            other_characters_other_alphabet = [alphabets[a]
+                                               [_random.choice(alphabets[a].keys())]
+                                               [_random.randrange(len(alphabets[a].values()[0]))] for a in other_alphabets]
+
+
+            this_character_url = anonymize_image(alphabets[alphabet][uid][character_num])
+            tasks.extend([(this_character_url,
+                           anonymize_image(alphabets[alphabet][u][character_num])) for u in other_uid_same_character])
+            tasks.extend([(this_character_url,
+                           anonymize_image(image)) for image in other_characters_same_alphabet])
+            tasks.extend([(this_character_url,
+                           anonymize_image(image)) for image in other_characters_other_alphabet])
+    random.shuffle(tasks)
+    tasks = [(example, test, 'http://www.quasimondo.com/hydra/sineNoise1.jpg')
+             for example, test in tasks]
     return tasks
 
 

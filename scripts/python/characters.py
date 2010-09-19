@@ -10,7 +10,7 @@ except ImportError:
 from alphabetspaths import *
 from alphabetsutil import png_to_uri
 from image_anonymizer import anonymize_image 
-
+from objectstorage import get_object, save_object
 
 FROM_PATH = BASE_PATH
 
@@ -67,19 +67,30 @@ def is_nested_type(obj, *types):
 
 
 def create_first_task(form):
-    NUMBER_OF_TASKS = int(form.getfirst('numberOfTasks', 5))
-    TRAINING_IMAGES_PER_TASK = int(form.getfirst('trainingImagesPerTask', 1))
-    TEST_IMAGES_PER_TASK = int(form.getfirst('testImagesPerTask', 10))
-    SAME_ALPHABET_DISTRASTORS_PER_TASK = int(form.getfirst('sameAlphabetDistractorsPerTask', 3))
-    OTHER_ALPHABET_DISTRASTORS_PER_TASK = int(form.getfirst('otherAlphabetDistractorsPerTask', 2))
-    DISTINCT_ALPHABETS = get_boolean_value(form, 'distinctTaskAlphabets')
-
-    TOTAL_DISTRACTORS_PER_TASK = SAME_ALPHABET_DISTRASTORS_PER_TASK + OTHER_ALPHABET_DISTRASTORS_PER_TASK
-    TRUE_TEST_IMAGES_PER_TASK = TEST_IMAGES_PER_TASK - TOTAL_DISTRACTORS_PER_TASK
+    _random = get_object('characters_random', (lambda: random.Random()))
+    NUMBER_OF_ALPAHBETS = int(form.getfirst('numberOfAlphabets', 40))
+    EXAMPLE_CHARACTERS_PER_ALPHABET = int(form.getfirst('exampleCharactersPerAlphabet', 10))
+    SAME_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('sameTestCharactersPerAlphabet', 10))
+    DIFFERENT_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentTestCharactersPerAlphabet', 10))
+    DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentAlphabetTestCharactersPerAlphabet', 20))
+    DISTRACT_WITH_ALL = get_boolean_value(form, 'distractWithAll')
     
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
+    alphabets = dict((alphabet, alphabets[alphabet]) for alphabet in alphabets
+                     if len(alphabets[alphabet].values()[0]) > max((EXAMPLE_CHARACTERS_PER_ALPHABET, DIFFERENT_TEST_CHARACTERS_PER_ALPHABET, DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET)))
+    
+    if DISTRACT_WITH_ALL:
+        use_alphabets = _random.sample(alphabets.keys(), NUMBER_OF_ALPAHBETS)
 
-    all_characters = [(alphabet, image_num) for alphabet in alphabets for image_num in range(len(alphabets[alphabet].values()[0]))]
+    if not DISTRACT_WITH_ALL:
+        use_alphabets = _random.sample(alphabets.keys(), NUMBER_OF_ALPAHBETS)
+
+    tasks = []
+
+    for alphabet in use_alphabets:
+        this_characters = zip(_random.sample(alphabets[alphabet].keys(), EXAMPLE_CHARACTERS_PER_ALPHABET),
+                              _random.sample(range(len(alphabets[alphabet].values()[0])), EXAMPLE_CHARACTERS_PER_ALPHABET))
+        alphabets_dict[
     
     if DISTINCT_ALPHABETS:
         training_characters = [(alphabet, random.choice(range(len(alphabets[alphabet].values()[0])))) for alphabet in random.sample(alphabets.keys(), NUMBER_OF_TASKS)]
@@ -117,17 +128,10 @@ def create_first_task(form):
 
 def main():
     form = cgi.FieldStorage()
-    non_existant_variable = form.getvalue('variableDoesNotExistString')
-    if 'getObject' in form:
-        objects = dict((name,
-                        (globals()[name] if name in globals() else non_existant_variable)) \
-                       for name in form.getlist('getObject'))
-        print('Content-type: text/json\n')
-        print(json.dumps(objects))
-    else:
-        rtn = create_first_task(form)
-        print('Content-type: text/json\n')
-        print(json.dumps(rtn))
+    non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
+    rtn = create_first_task(form)
+    print('Content-type: text/json\n')
+    print(json.dumps(rtn))
 
 if __name__ == '__main__':
     main()

@@ -106,8 +106,9 @@ var tasks = [];
     jQuery.each(tasks, function (index, task) {
       tasksContainer.append(task['dom-element']);
     });
+    doneLoading();
   }
-  
+  notYetLoaded();
   $(function () {
       $.getJSON("../scripts/python/characters.py", 
         {},

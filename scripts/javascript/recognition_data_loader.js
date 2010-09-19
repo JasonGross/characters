@@ -111,7 +111,8 @@ var tasks = [];
   notYetLoaded();
   $(function () {
       $.getJSON("../scripts/python/characters.py", 
-        {},
+        urlParameters.getParameters(['numberOfAlphabets', 'exampleCharactersPerAlphabet', 'sameTestCharactersPerAlphabet',
+                                     'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll']),
         makeInputs);
     });
 })();

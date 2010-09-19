@@ -1,5 +1,5 @@
- #!/usr/bin/python
-# Filename: alphabets.py
+#!/usr/bin/python
+# Filename: characters.py
 from __future__ import with_statement
 import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
 cgitb.enable()

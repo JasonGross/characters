@@ -2,7 +2,7 @@
 # Filename: characters.py
 from __future__ import with_statement
 import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
-cgitb.enable()
+cgitb.enable(format='nohtml')
 try:
     import cPickle as pickle
 except ImportError:
@@ -128,7 +128,10 @@ def create_first_task(form):
 def main():
     form = cgi.FieldStorage()
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
-    rtn = create_first_task(form)
+    import cProfile
+    cProfile.run('rtn = create_first_task(cgi.FieldStorage())')
+    raw_input()
+#    rtn = create_first_task(form)
     print('Content-type: text/json\n')
     print(json.dumps(rtn))
 

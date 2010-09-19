@@ -97,7 +97,7 @@ def create_first_task(form):
             all_other_uids = _random.sample(all_other_uids, len(all_other_uids))
             
             other_uid_same_character = all_other_uids[:SAME_TEST_CHARACTERS_PER_ALPHABET]
-            other_characters_same_alphabet = [alphabet[alphabet]]
+            other_characters_same_alphabet = [alphabets[alphabet]]
             other_characters_same_alphabet = [i[u]
                                               for u in all_other_uids[SAME_TEST_CHARACTERS_PER_ALPHABET:SAME_TEST_CHARACTERS_PER_ALPHABET+DIFFERENT_TEST_CHARACTERS_PER_ALPHABET]
                                               for i in other_characters_same_alphabet]

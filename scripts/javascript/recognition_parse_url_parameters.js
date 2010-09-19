@@ -1,5 +1,5 @@
 var urlParameters = new (function () {
-  this.getURLParameters(parameters) {
+  this.getURLParameters = function (parameters) {
     if (!(parameters instanceof Array)) parameters = [parameters];
     var rtn = {};
     jQuery.each(parameters, function (index, parameter) {

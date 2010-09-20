@@ -1,7 +1,11 @@
 #!/usr/bin/python
 # Filename: characters.py
 from __future__ import with_statement
-import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib, urllib.parse
+import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
+try:
+  import urllib.parse
+except ImportError:
+  pass
 cgitb.enable(format='nohtml')
 try:
     import cPickle as pickle

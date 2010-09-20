@@ -2,7 +2,7 @@
 # Filename: characters.py
 from __future__ import with_statement
 import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
-cgitb.enable()
+cgitb.enable(format='nohtml')
 try:
     import cPickle as pickle
 except ImportError:
@@ -12,7 +12,7 @@ from alphabetsutil import png_to_uri
 from image_anonymizer import anonymize_image 
 from objectstorage import get_object, save_object
 
-FROM_PATH = BASE_PATH
+FROM_PATH = ACCEPTED_IMAGES_PATH
 
 images = None
 
@@ -110,11 +110,11 @@ def create_first_task(form):
 
             this_character_url = anonymize_image(alphabets[alphabet][uid][character_num])
             tasks.extend([(this_character_url,
-                           anonymize_image(alphabets[alphabet][u][character_num])) for u in other_uid_same_character])
+                           anonymize_image(alphabets[alphabet][u][character_num], from_path=FROM_PATH)) for u in other_uid_same_character])
             tasks.extend([(this_character_url,
-                           anonymize_image(image)) for image in other_characters_same_alphabet])
+                           anonymize_image(image, from_path=FROM_PATH)) for image in other_characters_same_alphabet])
             tasks.extend([(this_character_url,
-                           anonymize_image(image)) for image in other_characters_other_alphabet])
+                           anonymize_image(image, from_path=FROM_PATH)) for image in other_characters_other_alphabet])
     random.shuffle(tasks)
     tasks = [(example, test, 'http://www.quasimondo.com/hydra/sineNoise1.jpg')
              for example, test in tasks]
@@ -125,7 +125,13 @@ def main():
     form = cgi.FieldStorage()
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
     import cProfile
+<<<<<<< HEAD
     cProfile.run('rtn = create_first_task(form)')
+=======
+    cProfile.run('rtn = create_first_task(cgi.FieldStorage())')
+    raw_input()
+#    rtn = create_first_task(form)
+>>>>>>> f1025b42b9d5be28966c6ab86403000fdd079900
     print('Content-type: text/json\n')
     print(json.dumps(rtn))
 

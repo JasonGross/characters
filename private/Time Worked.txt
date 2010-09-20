@@ -22,3 +22,4 @@ Start: Sunday, September 19, 2010 00:37.11
 End: Sunday, September 19, 2010 03:22.13
 Time Spent: 2:45:02.182000
 
+Start: Monday, September 20, 2010 12:03.19

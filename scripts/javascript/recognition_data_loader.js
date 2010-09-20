@@ -93,10 +93,6 @@ var tasks = [];
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
 
-<<<<<<< HEAD
-    $(document).append(exampleImage);
-=======
->>>>>>> f0212c4162030a96a468ee768780cfea892a4b22
     return {'dom-element':task};
   }
   

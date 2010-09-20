@@ -50,7 +50,7 @@ var tasks = [];
     var totalImages = totalTasks * 3;
     refcounter.setCounter('image progress', totalImages);
     $(function () {
-      progressMessage.children().destroy();
+      progressMessage.children().remove();
       var progressLoaded = $('<span>').append('0')
       progressMessage
         .append('Loading images.  ')

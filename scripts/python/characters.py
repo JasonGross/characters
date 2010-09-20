@@ -97,14 +97,10 @@ def create_first_task(form):
             all_other_uids = _random.sample(all_other_uids, len(all_other_uids))
             
             other_uid_same_character = all_other_uids[:SAME_TEST_CHARACTERS_PER_ALPHABET]
-            other_characters_same_alphabet = [alphabets[alphabet]]
-            other_characters_same_alphabet = [i[u]
+            other_characters_same_alphabet = [alphabets[alphabet][u][n]
                                               for u in all_other_uids[SAME_TEST_CHARACTERS_PER_ALPHABET:SAME_TEST_CHARACTERS_PER_ALPHABET+DIFFERENT_TEST_CHARACTERS_PER_ALPHABET]
-                                              for i in other_characters_same_alphabet]
-            other_characters_same_alphabet = [i[n]
                                               for n in _random.sample([i for i in range(len(alphabets[alphabet][uid])) if i != character_num],
-                                                                      DIFFERENT_TEST_CHARACTERS_PER_ALPHABET)
-                                              for i in other_characters_same_alphabet]
+                                                                      DIFFERENT_TEST_CHARACTERS_PER_ALPHABET)]
             other_alphabets = _random.sample([a for a in use_alphabets if a != alphabet], DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET)
 
             other_characters_other_alphabet = [alphabets[a]
@@ -128,7 +124,8 @@ def create_first_task(form):
 def main():
     form = cgi.FieldStorage()
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
-    rtn = create_first_task(form)
+    import cProfile
+    cProfile.run('rtn = create_first_task(form)')
     print('Content-type: text/json\n')
     print(json.dumps(rtn))
 

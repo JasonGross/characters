@@ -57,7 +57,7 @@ var tasks = [];
         .append(' of ' + totalImages + ' done.');
       progressBar.progressbar('option', 'value', 0);
       refcounter.handleCounterChange('image progress', function (value) {
-        progressBar.progressbar('option', 'value', totalImages - value);
+        progressBar.progressbar('option', 'value', 100 * (totalImages - value) / totalImages);
         progressLoaded.html(totalImages - value);
       });
     });
@@ -67,7 +67,7 @@ var tasks = [];
     });
   }
   
-  function makeTask(index, exampleImageUrl, testImageUrl, noiseImageUrl) {
+  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl) {
     var task = $('<div>').hide();
     var taskFieldSet = $('<fieldset>')
       .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
@@ -81,11 +81,11 @@ var tasks = [];
     
     // Example
     var exampleImage = $('<img>')
-        .attr('src', exampleImageUrl)
+        .attr('src', exampleImageObject['anonymous url'])
         .attr('alt', 'Example image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
     var testImage = $('<img>')
-        .attr('src', testImageUrl)
+        .attr('src', testImageObject['anonymous url'])
         .attr('alt', 'Test image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
     var noiseImage = $('<img>')
@@ -93,7 +93,10 @@ var tasks = [];
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
 
+<<<<<<< HEAD
     $(document).append(exampleImage);
+=======
+>>>>>>> f0212c4162030a96a468ee768780cfea892a4b22
     return {'dom-element':task};
   }
   

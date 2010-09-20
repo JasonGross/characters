@@ -125,13 +125,10 @@ def main():
     form = cgi.FieldStorage()
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
     import cProfile
-<<<<<<< HEAD
-    cProfile.run('rtn = create_first_task(form)')
-=======
+##    cProfile.run('rtn = create_first_task(form)')
     cProfile.run('rtn = create_first_task(cgi.FieldStorage())')
     raw_input()
 #    rtn = create_first_task(form)
->>>>>>> f1025b42b9d5be28966c6ab86403000fdd079900
     print('Content-type: text/json\n')
     print(json.dumps(rtn))
 

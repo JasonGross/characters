@@ -67,7 +67,7 @@ var tasks = [];
     });
   }
   
-  function makeTask(index, exampleImageUrl, testImageUrl, noiseImageUrl) {
+  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl) {
     var task = $('<div>').hide();
     var taskFieldSet = $('<fieldset>')
       .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
@@ -81,11 +81,11 @@ var tasks = [];
     
     // Example
     var exampleImage = $('<img>')
-        .attr('src', exampleImageUrl)
+        .attr('src', exampleImageObject['anonymous url'])
         .attr('alt', 'Example image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
     var testImage = $('<img>')
-        .attr('src', testImageUrl)
+        .attr('src', testImageObject['anonymous url'])
         .attr('alt', 'Test image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
     var noiseImage = $('<img>')
@@ -93,7 +93,7 @@ var tasks = [];
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
 
-
+        $('#loading_progess-div').append(exampleImage);
     return {'dom-element':task};
   }
   

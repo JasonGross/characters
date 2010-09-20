@@ -17,8 +17,7 @@ function makeBoxForImage(image) {
 
 var tasks = [];
 
-(function () {
-  
+(function ($) {
   var totalTasks;
   var progressBar;
   var progressMessage;
@@ -115,4 +114,4 @@ var tasks = [];
                                         'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll']),
         makeInputs);
     });
-})();
+})(jQuery);

@@ -57,7 +57,7 @@ var tasks = [];
         .append(' of ' + totalImages + ' done.');
       progressBar.progressbar('option', 'value', 0);
       refcounter.handleCounterChange('image progress', function (value) {
-        progressBar.progressbar('option', 'value', totalImages - value);
+        progressBar.progressbar('option', 'value', 100 * (totalImages - value) / totalImages);
         progressLoaded.html(totalImages - value);
       });
     });
@@ -93,7 +93,6 @@ var tasks = [];
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
         .load(function () { refcounter.decrementCounter('image progress'); });
 
-        $('#loading_progess-div').append(exampleImage);
     return {'dom-element':task};
   }
   

@@ -17,12 +17,11 @@ function makeBoxForImage(image) {
 
 var tasks = [];
 
-(function () {
-  
+(function ($) {
   var totalTasks;
   var progressBar;
   var progressMessage;
-   
+  $(function () { 
     progressBar = $('.loading_progress');
     var ellipsis = $('<span>').append('..');
     var count = 2;
@@ -43,7 +42,7 @@ var tasks = [];
       }
     };
     ellipsisFunc();
-  
+  });
   
   function loadImages(imagePairs) {
     totalTasks = imagePairs.length;
@@ -115,4 +114,4 @@ var tasks = [];
                                         'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll']),
         makeInputs);
     });
-})();
+})(jQuery);

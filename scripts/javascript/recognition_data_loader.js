@@ -22,7 +22,7 @@ var tasks = [];
   var progressBar;
   var progressMessage;
   $(function () { 
-    progressBar = $('#loading_progress');
+    progressBar = $('#loading_progress').progressbar({value:0});
     var ellipsis = $('<span>').append('..');
     var count = 2;
     var maxCount = 3;

@@ -28,7 +28,7 @@ var tasks = [];
     var maxCount = 3;
     progressMessage = $('#loading_message')
       .append($('<p>').append('Loading information about what tasks to give you').append(ellipsis));
-    ellipsisTime = 1000;
+    ellipsisTime = 500;
     ellipsisFunc = function () {
       if (ellipsis) {
         if (count == maxCount) {

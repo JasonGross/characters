@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # Filename: characters.py
 from __future__ import with_statement
-import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib
+import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, random, urllib, urllib.parse
 cgitb.enable(format='nohtml')
 try:
     import cPickle as pickle
@@ -116,7 +116,7 @@ def create_first_task(form):
             tasks.extend([(this_character_url,
                            anonymize_image(image, from_path=FROM_PATH)) for image in other_characters_other_alphabet])
     random.shuffle(tasks)
-    tasks = [(example, test, 'http://www.quasimondo.com/hydra/sineNoise1.jpg')
+    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, 'images/sineNoise1.jpg')) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
              for example, test in tasks]
     return tasks
 

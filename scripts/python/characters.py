@@ -69,10 +69,10 @@ def is_nested_type(obj, *types):
 def create_first_task(form):
     _random = get_object('characters_random', (lambda: random.Random()))
     NUMBER_OF_ALPHAHBETS = int(form.getfirst('numberOfAlphabets', 40))
-    EXAMPLE_CHARACTERS_PER_ALPHABET = int(form.getfirst('exampleCharactersPerAlphabet', 10))
-    SAME_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('sameTestCharactersPerAlphabet', 10))
-    DIFFERENT_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentTestCharactersPerAlphabet', 10))
-    DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentAlphabetTestCharactersPerAlphabet', 20))
+    EXAMPLE_CHARACTERS_PER_ALPHABET = int(form.getfirst('exampleCharactersPerAlphabet', 5)) #10
+    SAME_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('sameTestCharactersPerAlphabet', 1)) #10
+    DIFFERENT_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentTestCharactersPerAlphabet', 1)) #10
+    DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentAlphabetTestCharactersPerAlphabet', 1)) #20
     DISTRACT_WITH_ALL = get_boolean_value(form, 'distractWithAll')
     
     alphabets = get_accepted_image_list(from_path=FROM_PATH)

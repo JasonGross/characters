@@ -22,11 +22,11 @@ var tasks = [];
   var progressBar;
   var progressMessage;
   $(function () { 
-    progressBar = $('.loading_progress');
+    progressBar = $('#loading_progress');
     var ellipsis = $('<span>').append('..');
     var count = 2;
     var maxCount = 3;
-    progressMessage = $('.loading_message')
+    progressMessage = $('#loading_message')
       .append($('<p>').append('Loading information about what tasks to give you').append(ellipsis));
     ellipsisTime = 1000;
     ellipsisFunc = function () {

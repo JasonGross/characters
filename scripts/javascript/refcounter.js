@@ -27,7 +27,7 @@
   };
 
   refcounter.decrementCounter = function (counter) {
-    refcounter.setCounter(counter, refcounter.getCount(counter, 0) + 1);
+    refcounter.setCounter(counter, refcounter.getCount(counter, 0) - 1);
   };
   
   refcounter.handleCounterChange = function (counter, func) {

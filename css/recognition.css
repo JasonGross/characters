@@ -102,8 +102,8 @@ div.loading-message {
 div.example-holder, div.test-holder {
   display:inline-block;
   width: 110px;
-  height:120px;
-  padding: 5px;
+  height:140px;
+  margin: 10px;
   border:thin black solid;
 }
 
@@ -112,24 +112,24 @@ div.question-holder {
 }
 
 .example-holder-long {
-  border:thin red solid;
+  border:thick red solid;
 }
 
 .example-holder-medium {
-  border:thin yellow solid;
+  border:thcik yellow solid;
 }
 
 .example-holder-short {
-  border:thin green solid;
+  border:thcik green solid;
 }
 
 
 .example-holder-doing {
-  border:thin white solid;
+  border:thick white solid;
 }
 
 .example-holder-done {
-  border:thin black solid;
+  border:thick white solid;
 }
 
 .test-header, .example-header {
@@ -142,5 +142,5 @@ div.question-holder {
 }
 
 .noise-image-holder, .test-image-holder, .example-image-holder {
-  padding: 5px;
+  margin: 5px;
 }

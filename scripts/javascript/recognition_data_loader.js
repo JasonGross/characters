@@ -230,7 +230,7 @@ var firstTask = null;
       exampleImageHolder.removeClass('example-holder-doing');
       testImageHolder.append(testImage);
       question.show();
-      questionInputYes.and(questionInputNo).attr('disabled', '')
+      questionInputYes.add(questionInputNo).attr('disabled', '')
         .change(function () {
           alert('chosen');
         });

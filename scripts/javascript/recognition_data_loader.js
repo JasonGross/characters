@@ -75,7 +75,6 @@ var firstTask = null;
       });
       
       $('#accept_task-form').submit(function (ev) {
-        alert('test0');
         ev.preventDefault();
         removeOnAccept.remove();
         tasksContainer.append(firstTask['dom-element']);
@@ -171,7 +170,7 @@ var firstTask = null;
     };
     
     var doTask = function () {
-      //task.show();
+      task.show();
     };
 
     return {'dom-element':task, 'do-task':doTask};

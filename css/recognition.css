@@ -106,10 +106,12 @@ div.example-holder, div.test-holder {
   height:140px;
   margin: 10px;
   border:thin black solid;
+  vertical-align:middle;
 }
 
 div.question-holder {
   display:inline-block;
+  vertical-align:middle;
 }
 
 .example-holder-long {
@@ -142,7 +144,6 @@ div.question-holder {
 }
 
 .task-holder {
-  vertical-align:middle;
 }
 
 .noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {

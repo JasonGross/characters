@@ -165,8 +165,7 @@ var firstTask = null;
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
    
-    questionLegend.append('<br>').append(questionInputYes).append($('<br>')).append(questionInputNo);
-    questionFields.append(questionLegend);
+    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo);
     question.append(questionFields);
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);

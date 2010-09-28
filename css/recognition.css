@@ -99,20 +99,15 @@ div.loading-message {
   font-weight:bold;
 }
 
-div.example-holder {
+div.example-holder, div.test-holder {
   display:inline-block;
-  width: 210px;
-  height:210px;
+  width: 110px;
+  height:120px;
   padding: 5px;
 }
 
 div.test-holder {
-  display:inline-block;
-  border:thin black solid;
-  width: 210px;
-  height:210px;
-  padding: 5px;
-}
+  border:thin black solid;}
 
 div.question-holder {
   display:inline-block;
@@ -140,7 +135,10 @@ div.question-holder {
 }
 
 .noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {
-  width:200px;
-  height:200px;
+  width:100px;
+  height:100px;
   padding: 5px;
+}
+img {
+  padding:0px;
 }

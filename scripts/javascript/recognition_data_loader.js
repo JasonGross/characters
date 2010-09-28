@@ -169,7 +169,7 @@ var firstTask = null;
       example.remove();
       test.remove();
       task.hide();
-      if (nextTask !=== null) {
+      if (nextTask !== null) {
         task.parent().append(nextTask['dom-element']);
         nextTask['do-task']();
       } else {

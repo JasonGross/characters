@@ -73,18 +73,20 @@ var firstTask = null;
           acceptButton.attr('disabled', '');
         progressHolder.hide();
       });
+      
+      $('#accept_task-form').submit(function (ev) {
+        ev.preventDefault();
+        removeOnAccept.remove();
+        tasksContainer.append(firstTask['dom-element']);
+        firstTask['do-task']();
+      });
     });
     
     jQuery.each(imagePairs, function (index, imagePair) {
       firstTask = makeTask(index, imagePair[0], imagePair[1], imagePair[2], firstTask);
     });
     
-    $('#accept_task-form').submit(function (ev) {
-      ev.preventDefault();
-      removeOnAccept.remove();
-      tasksContainer.append(firstTask['dom-element']);
-      firstTask['do-task']();
-    });
+    
   }
   
   function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask) {

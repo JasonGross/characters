@@ -139,7 +139,7 @@ div.question-holder {
   border:thin black solid;
 }
 
-.noise-image .noise-image-holder .test-image-holder .test-image .example-image .example-image-holder {
+.noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {
   width:200px;
   height:200px;
   padding: 5px;

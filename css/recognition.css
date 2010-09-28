@@ -95,7 +95,7 @@ div.loading-progess {
 }
 
 div.loading-message {
-  text-align:center;
+  text-align:left;
   font-weight:bold;
 }
 

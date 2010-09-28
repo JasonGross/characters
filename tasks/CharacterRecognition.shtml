@@ -176,6 +176,11 @@
       <div id="all-tasks">
       </div>
       
+      <div class="task-progress" id="task_progess-div">
+        <div class="task-message" id="task_message"></div>
+        <div id="task_progress"></div>
+      </div>
+      
       <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>
@@ -218,10 +223,9 @@
       $('#opera').remove();
     if (jQuery.browser.opera ||
           document.createElement('div').ondragstart !== undefined)
-      $('#no-ondragstart').remove();      */
+      $('#no-ondragstart').remove(); 
+           */
     $('.post-task').hide()
-    alert([$,$ == jQuery]);
-    console.log($);
     //]]>
   </script>
   <script id="check-working-scripts" type="text/javascript">

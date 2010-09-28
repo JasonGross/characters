@@ -78,14 +78,14 @@ def create_first_task(form):
     DIFFERENT_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentTestCharactersPerAlphabet', 1)) #10
     DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentAlphabetTestCharactersPerAlphabet', 1)) #20
     DISTRACT_WITH_ALL = get_boolean_value(form, 'distractWithAll')
-    passOnValues = {'pauseToFirstHint':3000,
+    passOnValues = {'pauseToFirstHint':1000,
                     'pauseToSecondHint':1000,
                     'pauseToExample':1000,
-                    'pauseToNoise':5000,
-                    'pauseToTest':5000,
+                    'pauseToNoise':1000,
+                    'pauseToTest':1000,
                     'tasksPerFeedbackGroup':1000,
                     'tasksPerWaitGroup':1000,
-                    'pauseToGroup':6000
+                    'pauseToGroup':1000
                     }
     rtn = {}
 

@@ -188,7 +188,7 @@ var firstTask = null;
         task.parent().append(nextTask['dom-element']);
         nextTask['do-task']();
       } else {
-        alert('DONE');
+        $('.post-task').show();
       }
     };
     

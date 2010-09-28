@@ -79,7 +79,7 @@ var firstTask = null;
       firstTask = makeTask(index, imagePair[0], imagePair[1], imagePair[2], firstTask);
     });
     
-    acceptButton.submit(function (ev) {
+    $('#accept_task-form').submit(function (ev) {
       ev.preventDefault();
       removeOnAccept.remove();
       tasksContainer.append(firstTask['dom-element']);

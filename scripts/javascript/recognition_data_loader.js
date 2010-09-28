@@ -160,9 +160,6 @@ var firstTask = null;
     var testImageHolder = $('<div>')
       .addClass('test-image-holder');
       
-    exampleImageHolder.append(exampleImage).append(noiseImage);
-    testImageHolder.append(testImage);
-      
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
    
@@ -197,7 +194,10 @@ var firstTask = null;
    
     var doTask = function () {
       task.show();
+      window.location.hash = '';
       window.location.hash = 'task-' + index;
+      exampleImageHolder.append(exampleImage).append(noiseImage);
+      testImageHolder.append(testImage);
       window.setTimeout(showFirstHint, timeOuts['pauseToFirstHint']);      
     };
     

@@ -101,7 +101,8 @@ div.loading-message {
 
 div.example-holder, div.test-holder {
   display:inline-block;
-  width: 110px;
+  text-align:center;
+  width: 120px;
   height:140px;
   margin: 10px;
   border:thin black solid;
@@ -134,6 +135,14 @@ div.question-holder {
 
 .test-header, .example-header {
   text-align:center;
+}
+
+.test-holder {
+  border:thick white solid;
+}
+
+.task-holder {
+  vertical-align:middle;
 }
 
 .noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {

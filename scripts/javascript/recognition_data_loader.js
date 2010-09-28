@@ -18,11 +18,15 @@ function makeBoxForImage(image) {
 var tasks = [];
 
 (function ($) {
+  var progressHolder;
   var totalTasks;
   var progressBar;
   var progressMessage;
+  var acceptButton;
   $(function () { 
+    progressHolder = $('#loading-progress');
     progressBar = $('#loading_progress').progressbar({value:0});
+    acceptButton = $('#accept_task-button');
     var ellipsis = $('<span>').append('..');
     var count = 2;
     var maxCount = 3;
@@ -48,7 +52,6 @@ var tasks = [];
     totalTasks = imagePairs.length;
     var totalImages = totalTasks * 3;
     refcounter.setCounter('image progress', totalImages);
-    var acceptButton = $('#accept_task-button');
     $(function () {
       progressMessage.children().remove();
       var progressLoaded = $('<span>').append('0')
@@ -63,6 +66,7 @@ var tasks = [];
       });
       refcounter.handleCounterZero('image progress', function () {
         acceptButton.attr('disabled', '');
+        progressHolder.hide();
       });
     });
     
@@ -72,7 +76,7 @@ var tasks = [];
   }
   
   function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl) {
-    var task = $('<div>').hide();
+    var task = $('<div>');
     var taskFieldSet = $('<fieldset>')
       .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
       .addClass('task-holder');
@@ -87,15 +91,51 @@ var tasks = [];
     var exampleImage = $('<img>')
         .attr('src', exampleImageObject['anonymous url'])
         .attr('alt', 'Example image for task ' + (index + 1) + '.')
+        .addClass('example-image')
         .load(function () { refcounter.decrementCounter('image progress'); });
     var testImage = $('<img>')
         .attr('src', testImageObject['anonymous url'])
         .attr('alt', 'Test image for task ' + (index + 1) + '.')
+        .addClass('test-image')
         .load(function () { refcounter.decrementCounter('image progress'); });
     var noiseImage = $('<img>')
         .attr('src', noiseImageUrl)
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
+        .addClass('noise-image')
         .load(function () { refcounter.decrementCounter('image progress'); });
+        
+    var exampleHeader = $('<div>')
+      .addClass('example-header')
+      .append('Example Image');
+    var testHeader = $('<div>')
+      .addClass('example-header')
+      .append('Test Image');
+    var questionFields = $('<fieldset>');
+    var questionLegend = $('<legend>').append('Are these images examples of the same character?');
+    var questionInputYes = $('<label>').append(
+      $('<input>')
+        .attr('type', 'radio')
+        .attr('name', 'task-' + index + '_question')
+        .attr('id', 'task-' + index + '_question-yes')
+        .attr('value', 1)
+      ).append(
+        'Yes, they are the same.'
+      );
+    var questionInputNo = $('<label>').append(
+      $('<input>')
+        .attr('type', 'radio')
+        .attr('name', 'task-' + index + '_question')
+        .attr('id', 'task-' + index + '_question-no')
+        .attr('value', 0)
+      ).append(
+        'No, they are different.'
+      );
+   
+    questionLegend.append(questionInputYes).append($('<br>')).append(questionInputNo);
+    questionFields.append(questionLegend);
+    question.append(questionFields);
+    taskFieldSet.append(example).append(test).append(question);
+    task.append(taskFieldSet);
 
     return {'dom-element':task};
   }

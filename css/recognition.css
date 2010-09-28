@@ -98,3 +98,15 @@ div.loading-message {
   text-align:center;
   font-weight:bold;
 }
+
+div.example-holder {
+  display:inline-block;
+}
+
+div.test-holder {
+  display:inline-block;
+}
+
+div.question-holder {
+  display:inline-block;
+}

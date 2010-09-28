@@ -52,7 +52,8 @@ var firstTask = null;
     ellipsisFunc();
   });
   
-  function loadImages(imagePairs) {
+  function loadImages(data) {
+    imagePairs = data['tasks'];
     totalTasks = imagePairs.length;
     var totalImages = totalTasks * 3;
     refcounter.setCounter('image progress', totalImages);
@@ -83,14 +84,16 @@ var firstTask = null;
     });
     
     jQuery.each(imagePairs, function (index, imagePair) {
-      firstTask = makeTask(index, imagePair[0], imagePair[1], imagePair[2], firstTask);
+      firstTask = makeTask(totalImages - index - 1, imagePair[0], imagePair[1], imagePair[2], firstTask, data);
     });
     
     
   }
   
-  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask) {
-    var task = $('<div>').hide();
+  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask, data) {
+    var task = $('<div>')
+      .attr('id', 'task-' + index)
+      .hide();
     var taskFieldSet = $('<fieldset>')
       .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
       .addClass('task-holder');
@@ -100,6 +103,7 @@ var firstTask = null;
       .addClass('test-holder');
     var question = $('<div>')
       .addClass('question-holder')
+      .hide();
     
     // Example
     var exampleImage = $('<img>')
@@ -165,13 +169,74 @@ var firstTask = null;
       example.remove();
       test.remove();
       task.hide();
-      task.parent().append(nextTask['dom-element']);
-      nextTask['do-task']();
+      if (nextTask !=== null) {
+        task.parent().append(nextTask['dom-element']);
+        nextTask['do-task']();
+      } else {
+        alert('DONE');
+      }
     };
     
+    var timeOuts = {};
+    jQuery.each(['pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup'],
+                function (index, name) {
+      timeOuts[name] = data[name];
+      if (timeOuts[name].length > 1)
+        timeOuts[name] = timeOuts[name][0] + (2 * Math.random() - 1) * timeOuts[name][1];
+      else
+        timeOuts[name] = timeOuts[name][0];
+    });
+   
     var doTask = function () {
       task.show();
+      window.location.hash = 'task-' + index;
+      window.setTimeout(showFirstHint, timeOuts['pauseToFirstHint']);      
+      '', '', , 'pauseToNoise', '', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup']),
     };
+    
+    var showFirstHint = function () {
+      window.setTimeout(showSecondHint, timeOuts['pauseToSecondHint']);
+      exampleImageHolder.addClass('example-holder-long');
+    };
+
+    
+    var showSecondHint = function () {
+      window.setTimeout(showExample, timeOuts['pauseToExample']);
+      exampleImageHolder.addClass('example-holder-short');
+      exampleImageHolder.removeClass('example-holder-long');
+    };
+
+    
+    var showExample = function () {
+      if (timeOuts['pauseToNoise'] > 0)
+        window.setTimeout(showNoise, timeOuts['pauseToNoise']);
+      else
+        window.setTimeout(showTest, timeOuts['pauseToTest']);
+      exampleImageHolder.append(exampleImage);
+      exampleImageHolder.addClass('example-holder-doing');
+      exampleImageHolder.removeClass('example-holder-short');
+    };
+    
+    var showNoise = function () {
+      window.setTimeout(showTest, timeOuts['pauseToTest']);
+      exampleImageHolder.children().remove();
+      exampleImageHolder.append(noiseImage);
+      exampleImageHolder.addClass('example-holder-done');
+      exampleImageHolder.removeClass('example-holder-doing');
+    };
+    
+    var showTest = function () {
+      exampleImageHolder.addClass('example-holder-done');
+      exampleImageHolder.removeClass('example-holder-doing');
+      testImageHolder.append(testImage);
+      question.show();
+      questionInputYes.and(questionInputNo).attr('disabled', '')
+        .change(function () {
+          alert('chosen');
+        });
+    };
+    
+    
 
     return {'dom-element':task, 'do-task':doTask};
   }
@@ -189,7 +254,8 @@ var firstTask = null;
   $(function () {
       $.getJSON("../scripts/python/characters.py", 
         urlParameters.getURLParameters(['numberOfAlphabets', 'exampleCharactersPerAlphabet', 'sameTestCharactersPerAlphabet',
-                                        'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll']),
+                                        'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll',
+                                        'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup']),
         makeInputs);
     });
 })(jQuery);

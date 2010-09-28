@@ -101,12 +101,40 @@ div.loading-message {
 
 div.example-holder {
   display:inline-block;
+  width: 210px;
+  height:210px;
+  padding: 5px;
 }
 
 div.test-holder {
   display:inline-block;
+  border:thin black solid;
+  width: 210px;
+  height:210px;
+  padding: 5px;
 }
 
 div.question-holder {
   display:inline-block;
+}
+
+.example-holder-long {
+  border:thin red solid;
+}
+
+.example-holder-medium {
+  border:thin yellow solid;
+}
+
+.example-holder-short {
+  border:thin green solid;
+}
+
+
+.example-holder-doing {
+  border:thin white solid;
+}
+
+.example-holder-done {
+  border:thin black solid;
 }

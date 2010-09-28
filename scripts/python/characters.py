@@ -78,6 +78,29 @@ def create_first_task(form):
     DIFFERENT_TEST_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentTestCharactersPerAlphabet', 1)) #10
     DIFFERENT_ALPHABET_CHARACTERS_PER_ALPHABET = int(form.getfirst('differentAlphabetTestCharactersPerAlphabet', 1)) #20
     DISTRACT_WITH_ALL = get_boolean_value(form, 'distractWithAll')
+    passOnValues = {'pauseToFirstHint':300,
+                    'pauseToSecondHint':100,
+                    'pauseToExample':100,
+                    'pauseToNoise':50,
+                    'pauseToTest':50,
+                    'tasksPerFeedbackGroup':10,
+                    'tasksPerWaitGroup':10,
+                    'pauseToGroup':600
+                    }
+    rtn = {}
+
+    for key in passOnValues:
+      rtn[key] = form.getfirst(key, passOnValues[key])
+      if isinstance(rtn[key], str) and ('pm' in rtn[key] or '+' in rtn[key] or '\u00B1' in rtn[key]):
+        rtn[key] = rtn[key].replace('+-', '\u00B1').replace('pm', '\u00B1').split('\u00B1')
+        rtn[key] = list(map(int, rtn[key]))
+      elif isinstance(rtn[key], (tuple, list)):
+        rtn[key] = list(map(int, rtn[key]))
+      else:
+        rtn[key] = [int(rtn[key])]
+      if len(rtn[key]) < 2:
+        rtn[key].append(0)
+    
     
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
     alphabets = dict((alphabet, alphabets[alphabet]) for alphabet in alphabets
@@ -122,7 +145,8 @@ def create_first_task(form):
     random.shuffle(tasks)
     tasks = [(example, test, urllib.parse.urljoin(BASE_URL, 'images/sineNoise1.jpg')) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
              for example, test in tasks]
-    return tasks
+    rtn['tasks'] = tasks
+    return rtn
 
 
 def main():

@@ -107,10 +107,12 @@ div.example-holder, div.test-holder {
 }
 
 div.test-holder {
-  border:thin black solid;}
+  border:thin black solid;
+}
 
 div.question-holder {
   display:inline-block;
+  border:thin black solid;
 }
 
 .example-holder-long {
@@ -132,6 +134,10 @@ div.question-holder {
 
 .example-holder-done {
   border:thin black solid;
+}
+
+.test-header, .example-header {
+  text-align:center;
 }
 
 .noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {

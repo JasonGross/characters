@@ -84,7 +84,7 @@ var firstTask = null;
     });
     
     jQuery.each(imagePairs, function (index, imagePair) {
-      firstTask = makeTask(totalImages - index - 1, imagePair[0], imagePair[1], imagePair[2], firstTask, data);
+      firstTask = makeTask(totalTasks - index - 1, imagePair[0], imagePair[1], imagePair[2], firstTask, data);
     });
     
     
@@ -218,6 +218,7 @@ var firstTask = null;
     
     var showNoise = function () {
       window.setTimeout(showTest, timeOuts['pauseToTest']);
+      exampleImage.remove();
       exampleImageHolder.children().remove();
       exampleImageHolder.append(noiseImage);
       exampleImageHolder.addClass('example-holder-done');

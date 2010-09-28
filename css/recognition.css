@@ -138,3 +138,9 @@ div.question-holder {
 .example-holder-done {
   border:thin black solid;
 }
+
+.noise-image .noise-image-holder .test-image-holder .test-image .example-image .example-image-holder {
+  width:200px;
+  height:200px;
+  padding: 5px;
+}

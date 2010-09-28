@@ -24,13 +24,13 @@ var firstTask = null;
   var progressMessage;
   var acceptButton;
   var removeOnAccept;
-  var allTasksDiv;
+  var tasksContainer;
   $(function () { 
     progressHolder = $('#loading-progress');
     progressBar = $('#loading_progress').progressbar({value:0});
     acceptButton = $('#accept_task-button');
     removeOnAccept = $('.pre-task');
-    allTasksDiv = $('#all-tasks');
+    tasksContainer = $('#all-tasks');
     var ellipsis = $('<span>').append('..');
     var count = 2;
     var maxCount = 3;
@@ -69,9 +69,7 @@ var firstTask = null;
         progressLoaded.html(totalImages - value);
       });
       refcounter.handleCounterZero('image progress', function () {
-        console.log($('.warning .error'));
-        console.log($('.warning .error').length);
-        if (!$('.warning .error').length == 0)
+        if ($('.warning .error').length == 0)
           acceptButton.attr('disabled', '');
         progressHolder.hide();
       });
@@ -83,7 +81,7 @@ var firstTask = null;
     
     acceptButton.submit(function () {
       removeOnAccept.remove();
-      allTasksDiv.append(firstTask['dom-element']);
+      tasksContainer.append(firstTask['dom-element']);
       firstTask['do-task']();
     });
   }
@@ -158,7 +156,7 @@ var firstTask = null;
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);
     
-    allTasksDiv.append(task);
+    tasksContainer.append(task);
     
     var doneTask = function () {
       example.remove();
@@ -177,7 +175,6 @@ var firstTask = null;
   
   function makeInputs(data) {
     
-    var tasksContainer = $('#all-tasks');
     loadImages(data);
     
     /*jQuery.each(tasks, function (index, task) {

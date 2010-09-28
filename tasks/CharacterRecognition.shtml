@@ -123,7 +123,7 @@
       </script>
       <br />
     </div>
-    <p>
+    <p id="interest">
     	If you are interested in learning more about this research, please visit 
     	<a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">
     	  http://scripts.mit.edu/~jgross/alphabets/

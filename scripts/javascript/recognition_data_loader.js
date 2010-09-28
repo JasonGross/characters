@@ -15,7 +15,7 @@ function makeBoxForImage(image) {
   return imageBox;
 }
 
-var tasks = [];
+var firstTask = null;
 
 (function ($) {
   var progressHolder;
@@ -23,10 +23,14 @@ var tasks = [];
   var progressBar;
   var progressMessage;
   var acceptButton;
+  var removeOnAccept;
+  var allTasksDiv;
   $(function () { 
     progressHolder = $('#loading-progress');
     progressBar = $('#loading_progress').progressbar({value:0});
     acceptButton = $('#accept_task-button');
+    removeOnAccept = $('.pre-task');
+    allTasksDiv = $('#all-tasks');
     var ellipsis = $('<span>').append('..');
     var count = 2;
     var maxCount = 3;
@@ -65,17 +69,26 @@ var tasks = [];
         progressLoaded.html(totalImages - value);
       });
       refcounter.handleCounterZero('image progress', function () {
-        acceptButton.attr('disabled', '');
+        alert($('.warning .error'));
+        alert(($('.warning .error') ? true : false));
+        if (!$('.warning .error'))
+          acceptButton.attr('disabled', '');
         progressHolder.hide();
       });
     });
     
     jQuery.each(imagePairs, function (index, imagePair) {
-      tasks.push(makeTask(index, imagePair[0], imagePair[1], imagePair[2]));
+      firstTask = makeTask(index, imagePair[0], imagePair[1], imagePair[2], firstTask);
+    });
+    
+    acceptButton.submit(function () {
+      removeOnAccept.remove();
+      allTasksDiv.append(firstTask['dom-element']);
+      firstTask['do-task']();
     });
   }
   
-  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl) {
+  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask) {
     var task = $('<div>');
     var taskFieldSet = $('<fieldset>')
       .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
@@ -103,7 +116,7 @@ var tasks = [];
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
         .addClass('noise-image')
         .load(function () { refcounter.decrementCounter('image progress'); });
-        
+    
     var exampleHeader = $('<div>')
       .addClass('example-header')
       .append('Example Image');
@@ -130,14 +143,34 @@ var tasks = [];
       ).append(
         'No, they are different.'
       );
+      
+    var exampleImageHolder = $('<div>')
+      .addClass('example-image-holder');
+    var testImageHolder = $('<div>')
+      .addClass('test-image-holder');
+      
+    example.append(exampleHeader).append(exampleImageHolder);    
+    test.append(testHeader).append(testImageHolder);
    
     questionLegend.append(questionInputYes).append($('<br>')).append(questionInputNo);
     questionFields.append(questionLegend);
     question.append(questionFields);
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);
+    
+    var doneTask = function () {
+      example.remove();
+      test.remove();
+      task.hide();
+      task.parent().append(nextTask['dom-element']);
+      nextTask['do-task']();
+    };
+    
+    var doTask = function () {
+      
+    };
 
-    return {'dom-element':task};
+    return {'dom-element':task, 'do-task':doTask};
   }
   
   function makeInputs(data) {

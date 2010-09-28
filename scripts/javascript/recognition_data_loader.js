@@ -79,7 +79,8 @@ var firstTask = null;
       firstTask = makeTask(index, imagePair[0], imagePair[1], imagePair[2], firstTask);
     });
     
-    acceptButton.submit(function () {
+    acceptButton.submit(function (ev) {
+      ev.preventDefault();
       removeOnAccept.remove();
       tasksContainer.append(firstTask['dom-element']);
       firstTask['do-task']();
@@ -87,7 +88,7 @@ var firstTask = null;
   }
   
   function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask) {
-    var task = $('<div>');
+    var task = $('<div>').hide();
     var taskFieldSet = $('<fieldset>')
       .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
       .addClass('task-holder');

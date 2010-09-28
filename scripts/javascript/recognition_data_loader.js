@@ -191,7 +191,6 @@ var firstTask = null;
       task.show();
       window.location.hash = 'task-' + index;
       window.setTimeout(showFirstHint, timeOuts['pauseToFirstHint']);      
-      '', '', , 'pauseToNoise', '', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup']),
     };
     
     var showFirstHint = function () {

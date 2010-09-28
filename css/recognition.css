@@ -1,4 +1,4 @@
-/*.alphabet-set, .alphabet-image-holder {
+﻿/*.alphabet-set, .alphabet-image-holder {
   text-align: center;
 }
 
@@ -87,4 +87,14 @@ span.bottom {
 
 img {
   display: inline;
+}
+
+div.loading-progess {
+  text-align:center;
+  border:thin black solid;
+}
+
+div.loading-message {
+  text-align:center;
+  font-weight:bold;
 }

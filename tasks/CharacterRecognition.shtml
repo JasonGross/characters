@@ -136,11 +136,11 @@
     			To complete this task, you must read the instructions, the disclaimer, and click "Accept" below.
     			You will not be able to click "Accept" until the necesary data has been loaded.
     		</p>
-    		<div id="loading_progess-div">
-    		  <div id="loading_message"></div>
+    		<div class="loading-progress" id="loading_progess-div">
+    		  <div class="loading-message" id="loading_message"></div>
     		  <div id="loading_progress"></div>
     		</div>
-    		<input type="submit" value="Accept" />
+    		<input type="submit" value="Accept" disabled="disabled" />
     	</form>
     </div>
   </div>

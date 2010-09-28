@@ -158,16 +158,18 @@ var firstTask = null;
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);
     
+    allTasksDiv.append(task);
+    
     var doneTask = function () {
       example.remove();
       test.remove();
       task.hide();
-      task.parent().append(nextTask['dom-element']);
+//      task.parent().append(nextTask['dom-element']);
       nextTask['do-task']();
     };
     
     var doTask = function () {
-      
+      task.show();
     };
 
     return {'dom-element':task, 'do-task':doTask};

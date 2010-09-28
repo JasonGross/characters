@@ -240,10 +240,12 @@ var firstTask = null;
       //testImageHolder.append(testImage);
       testImage.show();
       question.show();
-      questionInputYes.add(questionInputNo).attr('disabled', '')
-        .change(function () {
-          alert('chosen');
-        });
+      jQuery.each([questionInputYes, questionInputNo], function (index, input) {
+        input.attr('disabled', '')
+          .change(function () {
+            alert('chosen');
+          });
+      });
     };
     
     

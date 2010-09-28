@@ -164,12 +164,12 @@ var firstTask = null;
       example.remove();
       test.remove();
       task.hide();
-//      task.parent().append(nextTask['dom-element']);
+      task.parent().append(nextTask['dom-element']);
       nextTask['do-task']();
     };
     
     var doTask = function () {
-      task.show();
+      //task.show();
     };
 
     return {'dom-element':task, 'do-task':doTask};
@@ -180,9 +180,9 @@ var firstTask = null;
     var tasksContainer = $('#all-tasks');
     loadImages(data);
     
-    jQuery.each(tasks, function (index, task) {
+    /*jQuery.each(tasks, function (index, task) {
       tasksContainer.append(task['dom-element']);
-    });
+    });*/
     doneLoading();
   }
   notYetLoaded();

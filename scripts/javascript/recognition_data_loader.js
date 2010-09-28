@@ -142,17 +142,18 @@ var firstTask = null;
         .attr('disabled', 'disabled')
       ).append(
         'Yes, they are the same.'
-      );
+      )
+      .attr('disabled', 'disabled');
     var questionInputNo = $('<label>').append(
       $('<input>')
         .attr('type', 'radio')
         .attr('name', 'task-' + index + '_question')
         .attr('id', 'task-' + index + '_question-no')
         .attr('value', 0)
-        .attr('disabled', 'disabled')
       ).append(
         'No, they are different.'
-      );
+      )
+      .attr('disabled', 'disabled');
       
     var exampleImageHolder = $('<div>')
       .addClass('example-image-holder');

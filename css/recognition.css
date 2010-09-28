@@ -104,15 +104,11 @@ div.example-holder, div.test-holder {
   width: 110px;
   height:120px;
   padding: 5px;
-}
-
-div.test-holder {
   border:thin black solid;
 }
 
 div.question-holder {
   display:inline-block;
-  border:thin black solid;
 }
 
 .example-holder-long {
@@ -143,8 +139,8 @@ div.question-holder {
 .noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {
   width:100px;
   height:100px;
-  padding: 5px;
 }
-img {
-  padding:0px;
+
+.noise-image-holder, .test-image-holder, .example-image-holder {
+  padding: 5px;
 }

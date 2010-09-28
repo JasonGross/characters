@@ -136,6 +136,7 @@ var firstTask = null;
         .attr('name', 'task-' + index + '_question')
         .attr('id', 'task-' + index + '_question-yes')
         .attr('value', 1)
+        .attr('disabled', 'disabled')
       ).append(
         'Yes, they are the same.'
       );
@@ -145,6 +146,7 @@ var firstTask = null;
         .attr('name', 'task-' + index + '_question')
         .attr('id', 'task-' + index + '_question-no')
         .attr('value', 0)
+        .attr('disabled', 'disabled')
       ).append(
         'No, they are different.'
       );
@@ -157,7 +159,7 @@ var firstTask = null;
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
    
-    questionLegend.append(questionInputYes).append($('<br>')).append(questionInputNo);
+    questionLegend.append('<br>').append(questionInputYes).append($('<br>')).append(questionInputNo);
     questionFields.append(questionLegend);
     question.append(questionFields);
     taskFieldSet.append(example).append(test).append(question);

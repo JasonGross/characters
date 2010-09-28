@@ -70,8 +70,8 @@ var firstTask = null;
       });
       refcounter.handleCounterZero('image progress', function () {
         console.log($('.warning .error'));
-        console.log(($('.warning .error') ? true : false));
-        if (!$('.warning .error'))
+        console.log($('.warning .error').length);
+        if (!$('.warning .error').length == 0)
           acceptButton.attr('disabled', '');
         progressHolder.hide();
       });

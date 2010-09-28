@@ -69,8 +69,8 @@ var firstTask = null;
         progressLoaded.html(totalImages - value);
       });
       refcounter.handleCounterZero('image progress', function () {
-        alert($('.warning .error'));
-        alert(($('.warning .error') ? true : false));
+        console.log($('.warning .error'));
+        console.log(($('.warning .error') ? true : false));
         if (!$('.warning .error'))
           acceptButton.attr('disabled', '');
         progressHolder.hide();

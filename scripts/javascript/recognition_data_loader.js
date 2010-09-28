@@ -91,6 +91,8 @@ var firstTask = null;
   }
   
   function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask, data) {
+    var startTime;
+    var endTime;
     var task = $('<div>')
       .attr('id', 'task-' + index)
       .hide();
@@ -154,6 +156,13 @@ var firstTask = null;
         'No, they are different.'
       );
       
+    var questionDurationInput = $('<input>')
+        .attr('type', 'hidden')
+        .attr('value', '')
+        .attr('id', 'task-' + index + '-duration-of-see-test')
+        .attr('name', 'task-' + index + '-duration-of-see-test');
+      
+      
     var exampleImageHolder = $('<div>')
       .addClass('example-image-holder');
     var testImageHolder = $('<div>')
@@ -162,7 +171,7 @@ var firstTask = null;
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
    
-    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo);
+    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo).append(questionDurationInput);
     question.append(questionFields);
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);
@@ -170,6 +179,8 @@ var firstTask = null;
     tasksContainer.append(task);
     
     var doneTask = function () {
+      endTime = dateUTC(new Date());
+      questionDurationInput.value = endTime - startTime;
       example.remove();
       test.remove();
       task.hide();
@@ -239,10 +250,11 @@ var firstTask = null;
       //testImageHolder.append(testImage);
       testImage.show();
       question.show();
+      startTime = dateUTC(new Date());
       jQuery.each([questionInputYes, questionInputNo], function (index, input) {
         input.children().attr('disabled', '')
           .change(function () {
-            alert('chosen');
+            doneTask();
           });
       });
     };

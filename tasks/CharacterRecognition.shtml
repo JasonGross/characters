@@ -140,7 +140,7 @@
     		  <div class="loading-message" id="loading_message"></div>
     		  <div id="loading_progress"></div>
     		</div>
-    		<input type="submit" value="Accept" disabled="disabled" />
+    		<input id="accept_task-button" type="submit" value="Accept" disabled="disabled" />
     	</form>
     </div>
   </div>

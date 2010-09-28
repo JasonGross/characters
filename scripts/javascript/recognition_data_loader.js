@@ -48,6 +48,7 @@ var tasks = [];
     totalTasks = imagePairs.length;
     var totalImages = totalTasks * 3;
     refcounter.setCounter('image progress', totalImages);
+    var acceptButton = $('#accept_task-button');
     $(function () {
       progressMessage.children().remove();
       var progressLoaded = $('<span>').append('0')
@@ -59,6 +60,9 @@ var tasks = [];
       refcounter.handleCounterChange('image progress', function (value) {
         progressBar.progressbar('option', 'value', 100 * (totalImages - value) / totalImages);
         progressLoaded.html(totalImages - value);
+      });
+      refcounter.handleCounterZero('image progress', function () {
+        acceptButton.attr('disabled', '');
       });
     });
     

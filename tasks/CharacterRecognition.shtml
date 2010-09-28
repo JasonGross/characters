@@ -220,6 +220,8 @@
           document.createElement('div').ondragstart !== undefined)
       $('#no-ondragstart').remove();      */
     $('.post-task').hide()
+    alert([$,$ == jQuery]);
+    console.log($);
     //]]>
   </script>
   <script id="check-working-scripts" type="text/javascript">

@@ -110,16 +110,19 @@ var firstTask = null;
         .attr('src', exampleImageObject['anonymous url'])
         .attr('alt', 'Example image for task ' + (index + 1) + '.')
         .addClass('example-image')
+        .hide()
         .load(function () { refcounter.decrementCounter('image progress'); });
     var testImage = $('<img>')
         .attr('src', testImageObject['anonymous url'])
         .attr('alt', 'Test image for task ' + (index + 1) + '.')
         .addClass('test-image')
+        .hide()
         .load(function () { refcounter.decrementCounter('image progress'); });
     var noiseImage = $('<img>')
         .attr('src', noiseImageUrl)
         .attr('alt', 'Noise image for task ' + (index + 1) + '.')
         .addClass('noise-image')
+        .hide()
         .load(function () { refcounter.decrementCounter('image progress'); });
     
     var exampleHeader = $('<div>')
@@ -155,6 +158,9 @@ var firstTask = null;
       .addClass('example-image-holder');
     var testImageHolder = $('<div>')
       .addClass('test-image-holder');
+      
+    exampleImageHolder.append(exampleImage).append(noiseImage);
+    testImageHolder.append(testImage);
       
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
@@ -213,7 +219,8 @@ var firstTask = null;
         window.setTimeout(showNoise, timeOuts['pauseToNoise']);
       else
         window.setTimeout(showTest, timeOuts['pauseToTest']);
-      exampleImageHolder.append(exampleImage);
+      //exampleImageHolder.append(exampleImage);
+      exampleImage.show();
       exampleImageHolder.addClass('example-holder-doing');
       exampleImageHolder.removeClass('example-holder-short');
     };
@@ -221,8 +228,8 @@ var firstTask = null;
     var showNoise = function () {
       window.setTimeout(showTest, timeOuts['pauseToTest']);
       exampleImage.remove();
-      exampleImageHolder.children().remove();
-      exampleImageHolder.append(noiseImage);
+      //exampleImageHolder.append(noiseImage);
+      noiseImage.show();
       exampleImageHolder.addClass('example-holder-done');
       exampleImageHolder.removeClass('example-holder-doing');
     };
@@ -230,7 +237,8 @@ var firstTask = null;
     var showTest = function () {
       exampleImageHolder.addClass('example-holder-done');
       exampleImageHolder.removeClass('example-holder-doing');
-      testImageHolder.append(testImage);
+      //testImageHolder.append(testImage);
+      testImage.show();
       question.show();
       questionInputYes.add(questionInputNo).attr('disabled', '')
         .change(function () {

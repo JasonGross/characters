@@ -176,7 +176,7 @@
       <div id="all-tasks">
       </div>
       
-      <div class="post-task" visible="false">
+      <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>
           <label>
@@ -189,7 +189,6 @@
       
 
       <p><input id="submitButton" class="post-task"
-               visible="false"
                type="submit"
                name="submit"
                value="Submit" /></p>
@@ -220,7 +219,7 @@
     if (jQuery.browser.opera ||
           document.createElement('div').ondragstart !== undefined)
       $('#no-ondragstart').remove();      */
-    $('#post-task').hide()
+    $('.post-task').hide()
     //]]>
   </script>
   <script id="check-working-scripts" type="text/javascript">

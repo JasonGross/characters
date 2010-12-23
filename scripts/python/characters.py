@@ -17,6 +17,9 @@ from objectstorage import get_object, save_object
 
 FROM_PATH = ACCEPTED_IMAGES_PATH
 
+PLUS_MINUS_CHAR = '\u00B1'
+PLUS_MINUS_STRINGS = ('+-', '-+', '+', '-', PLUS_MINUS_CHAR)
+
 images = None
 
 def get_boolean_value(form, true_keys, false_keys=None, default=None, true_options=(True,'true','1',1,'','yes','on','y','t'),
@@ -193,21 +196,24 @@ def create_first_task(form, reset=False, verbose=False):
                     'pauseToExample':1000,
                     'pauseToNoise':100,
                     'pauseToTest':1000,
-                    'tasksPerFeedbackGroup':1000,
-                    'tasksPerWaitGroup':1000,
+                    'tasksPerFeedbackGroup':20,
+                    'tasksPerWaitGroup':1000, # WHAT IS THIS?  XXX TODO: Figure out what this is, or get rid of it.
                     'pauseToGroup':1000
                     }
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
     tasks = [(anonymize_image(alphabets[task[0][0]][task[0][2]][task[0][1]], from_path=FROM_PATH),
-              anonymize_image(alphabets[task[1][0]][task[1][2]][task[1][1]], from_path=FROM_PATH))
+              anonymize_image(alphabets[task[1][0]][task[1][2]][task[1][1]], from_path=FROM_PATH),
+              task[0][0] == task[1][0] and task[0][1] == task[1][1])
              for task in tasks]
             
     rtn = {}
 
     for key in passOnValues:
       rtn[key] = form.getfirst(key, passOnValues[key])
-      if isinstance(rtn[key], str) and ('pm' in rtn[key] or '+' in rtn[key] or '\u00B1' in rtn[key]):
-        rtn[key] = rtn[key].replace('+-', '\u00B1').replace('pm', '\u00B1').split('\u00B1')
+      if isinstance(rtn[key], str) and any(sign_char in rtn[key] for sign_char in PLUS_MINUS_STRINGS):
+        for sign_char in PLUS_MINUS_STRINGS:
+            rtn[key] = rtn[key].replace(sign_char, PLUS_MINUS_CHAR)
+        rtn[key] = rtn[key].split(PLUS_MINUS_CHAR)
         rtn[key] = list(map(int, rtn[key]))
       elif isinstance(rtn[key], (tuple, list)):
         rtn[key] = list(map(int, rtn[key]))
@@ -216,8 +222,8 @@ def create_first_task(form, reset=False, verbose=False):
       if len(rtn[key]) < 2:
         rtn[key].append(0)
 
-    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, 'images/strokeNoise.png')) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
-             for example, test in tasks]
+    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, 'images/strokeNoise.png'), correct_answer) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
+             for example, test, correct_answer in tasks]
     rtn['tasks'] = tasks
     return rtn
     

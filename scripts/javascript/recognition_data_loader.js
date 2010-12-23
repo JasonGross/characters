@@ -26,7 +26,7 @@ var firstTask = null;
   var removeOnAccept;
   var tasksContainer;
   var tasks = [];
-  $(function () { 
+  $(function () {
     progressHolder = $('#loading-progress');
     progressBar = $('#loading_progress').progressbar({value:0});
     acceptButton = $('#accept_task-button');
@@ -52,7 +52,7 @@ var firstTask = null;
     };
     ellipsisFunc();
   });
-  
+
   function loadImages(data) {
     imagePairs = data['tasks'];
     totalTasks = imagePairs.length;
@@ -75,7 +75,7 @@ var firstTask = null;
           acceptButton.attr('disabled', '');
         progressHolder.hide();
       });
-      
+
       $('#accept_task-form').submit(function (ev) {
         ev.preventDefault();
         removeOnAccept.remove();
@@ -83,19 +83,35 @@ var firstTask = null;
         firstTask['do-task']();
       });
     });
-    
+
+   var numRightWrong = {'right':0, 'wrong':0};
+
     jQuery.each(imagePairs, function (index, imagePair) {
-      firstTask = makeTask(totalTasks - index - 1, imagePair[0], imagePair[1], imagePair[2], firstTask, data);
+      firstTask = makeTask(totalTasks - index - 1, imagePair[0], imagePair[1], imagePair[2], imagePair[3], firstTask, data, numRightWrong);
     });
-    
-    
+
+
   }
 
-  function makeBreak(numRight, numWrong, totalNum) {
-    
+  function makeBreak(numRight, numWrong, breakTime, afterBreak) {
+    var task = $('<div>')
+      .attr('id', 'task-' + index)
+      .hide();
+    var taskFieldSet = $('<fieldset>')
+      .append($('<legend>').append('Task ' + (index + 1) + ' of ' + totalTasks))
+      .addClass('task-holder');
+    var example = $('<div>')
+      .addClass('example-holder');
+    var test = $('<div>')
+      .addClass('test-holder');
+    var question = $('<div>')
+      .addClass('question-holder')
+      .hide();
+
+
   }
-  
-  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, nextTask, data) {
+
+  function makeTask(index, exampleImageObject, testImageObject, noiseImageUrl, areSameCharacter, nextTask, data, numRightWrong) {
     var startTime;
     var endTime;
     var task = $('<div>')
@@ -111,7 +127,7 @@ var firstTask = null;
     var question = $('<div>')
       .addClass('question-holder')
       .hide();
-    
+
     // Example
     var exampleImage = $('<img>')
         .attr('src', exampleImageObject['anonymous url'])
@@ -131,7 +147,7 @@ var firstTask = null;
         .addClass('noise-image')
         .hide()
         .load(function () { refcounter.decrementCounter('image progress'); });
-    
+
     var exampleHeader = $('<div>')
       .addClass('example-header')
       .append('Example Image');
@@ -140,8 +156,9 @@ var firstTask = null;
       .append('Test Image');
     var questionFields = $('<fieldset>');
     var questionLegend = $('<legend>').append('Are these images examples of the same character?');
+    var questionTrueInputYes;
     var questionInputYes = $('<label>').append(
-      $('<input>')
+      questionTrueInputYes = $('<input>')
         .attr('type', 'radio')
         .attr('name', 'task-' + index + '_question')
         .attr('id', 'task-' + index + '_question-yes')
@@ -160,46 +177,50 @@ var firstTask = null;
       ).append(
         'No, they are different.'
       );
-      
+
     var questionDurationInput = $('<input>')
         .attr('type', 'hidden')
         .attr('value', '')
         .attr('id', 'task-' + index + '-duration-of-see-test')
         .attr('name', 'task-' + index + '-duration-of-see-test');
-      
-      
+
+    var questionIsCorrectInput = $('<input>')
+        .attr('type', 'hidden')
+        .attr('value', '')
+        .attr('id', 'task-' + index + '-is-correct-answer')
+        .attr('name', 'task-' + index + '-is-correct-answer');
+
+    var questionExampleURLInput = $('<input>')
+        .attr('type', 'hidden')
+        .attr('value', exampleImageObject['anonymous url'])
+        .attr('id', 'task-' + index + '-example-url')
+        .attr('name', 'task-' + index + '-example-url');
+
+    var questionTestURLInput = $('<input>')
+        .attr('type', 'hidden')
+        .attr('value', testImageObject['anonymous url'])
+        .attr('id', 'task-' + index + '-test-url')
+        .attr('name', 'task-' + index + '-test-url');
+
+
+
+
+
     var exampleImageHolder = $('<div>')
       .addClass('example-image-holder');
     var testImageHolder = $('<div>')
       .addClass('test-image-holder');
-      
-    example.append(exampleHeader).append(exampleImageHolder);    
+
+    example.append(exampleHeader).append(exampleImageHolder);
     test.append(testHeader).append(testImageHolder);
-   
+
     questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo).append(questionDurationInput);
     question.append(questionFields);
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);
-    
+
     tasksContainer.append(task);
 
-    var curRight;
-    var curWrong;
-    
-    var doneTask = function () {
-      endTime = dateUTC(new Date());
-      questionDurationInput.value = endTime - startTime;
-      example.remove();
-      test.remove();
-      task.hide();
-      if (nextTask !== null) {
-        task.parent().append(nextTask['dom-element']);
-        nextTask['do-task']();
-      } else {
-        $('.post-task').show();
-      }
-    };
-    
     var timeOuts = {};
     jQuery.each(['pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup'],
                 function (index, name) {
@@ -209,29 +230,54 @@ var firstTask = null;
       else
         timeOuts[name] = timeOuts[name][0];
     });
-   
+
+    var doneTask = function () {
+      endTime = dateUTC(new Date());
+      questionDurationInput.value = endTime - startTime;
+      questionIsCorrectInput.value = areSameCharacter == questionTrueInputYes.checked;
+      if (areSameCharacter == questionTrueInputYes.checked)
+        numRightWrong['right']++;
+      else
+        numRightWrong['wrong']++;
+      example.remove();
+      test.remove();
+      task.hide();
+      if (nextTask !== null) {
+        var doNextTaskNow = function () {
+            task.parent().append(nextTask['dom-element']);
+            nextTask['do-task']();
+        };
+        if ((numRightWrong['right'] + numRightWrong['wrong']) % data['tasksPerFeedbackGroup'] == 0)
+          makeBreak(numRightWrong['right'], numRightWrong['wrong'], timeOuts['pauseToGroup'], doNextTaskNow);
+        else
+          doNextTaskNow();
+      } else {
+        $('.post-task').show();
+      }
+    };
+
     var doTask = function () {
       task.show();
       window.location.hash = '';
       window.location.hash = 'task-' + index;
       exampleImageHolder.append(exampleImage).append(noiseImage);
       testImageHolder.append(testImage);
-      window.setTimeout(showFirstHint, timeOuts['pauseToFirstHint']);      
+      window.setTimeout(showFirstHint, timeOuts['pauseToFirstHint']);
     };
-    
+
     var showFirstHint = function () {
       window.setTimeout(showSecondHint, timeOuts['pauseToSecondHint']);
       exampleImageHolder.addClass('example-holder-long');
     };
 
-    
+
     var showSecondHint = function () {
       window.setTimeout(showExample, timeOuts['pauseToExample']);
       exampleImageHolder.addClass('example-holder-short');
       exampleImageHolder.removeClass('example-holder-long');
     };
 
-    
+
     var showExample = function () {
       if (timeOuts['pauseToNoise'] > 0)
         window.setTimeout(showNoise, timeOuts['pauseToNoise']);
@@ -242,7 +288,7 @@ var firstTask = null;
       exampleImageHolder.addClass('example-holder-doing');
       exampleImageHolder.removeClass('example-holder-short');
     };
-    
+
     var showNoise = function () {
       window.setTimeout(showTest, timeOuts['pauseToTest']);
       exampleImage.remove();
@@ -251,7 +297,7 @@ var firstTask = null;
       exampleImageHolder.addClass('example-holder-done');
       exampleImageHolder.removeClass('example-holder-doing');
     };
-    
+
     var showTest = function () {
       exampleImageHolder.addClass('example-holder-done');
       exampleImageHolder.removeClass('example-holder-doing');
@@ -267,16 +313,16 @@ var firstTask = null;
           });
       });
     };
-    
-    
+
+
 
     return {'dom-element':task, 'do-task':doTask};
   }
-  
+
   function makeInputs(data) {
-    
+
     loadImages(data);
-    
+
     /*jQuery.each(tasks, function (index, task) {
       tasksContainer.append(task['dom-element']);
     });*/
@@ -284,7 +330,7 @@ var firstTask = null;
   }
   notYetLoaded();
   $(function () {
-      $.getJSON("../scripts/python/characters.py", 
+      $.getJSON("../scripts/python/characters.py",
         urlParameters.getURLParameters(['numberOfAlphabets', 'exampleCharactersPerAlphabet', 'sameTestCharactersPerAlphabet',
                                         'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll',
                                         'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup']),

@@ -58,11 +58,16 @@ if not hasattr(os.path, 'relpath'):
     del relpath
 try:
     import urllib.parse
+    import urllib.request
 except ImportError: # we are not in python 3.x
     import urlparse
     urllib.parse = urlparse
     for method in ('quote', 'unquote'):
         setattr(urllib.parse, method, getattr(urllib, method))
+    urllib.request = urllib
+##    for method in ('urlencode', 'urlopen'):
+##        setattr(urllib.request, method, getattr(urllib, method))
+
 
 if hasattr(sys.version_info, 'major'):
     major = sys.version_info.major

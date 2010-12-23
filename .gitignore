@@ -14,7 +14,9 @@
 *.tar.bz2
 *.log
 *.m
+*.swp
 working-directory/
+working-directory/*
 !*Time*.txt
 update-push.bat
 update-pull.bat

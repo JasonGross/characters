@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # Filename: image_anonymizer.py
 from __future__ import with_statement
-import os, sys, json, cgi, cgitb, subprocess, tempfile, shutil, urllib, re
-cgitb.enable()
+import os, sys, json, subprocess, tempfile, shutil, urllib, re
+
 ##try:
 ##    import cPickle as pickle
 ##except ImportError:

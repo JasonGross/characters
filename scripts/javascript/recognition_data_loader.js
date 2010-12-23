@@ -25,6 +25,7 @@ var firstTask = null;
   var acceptButton;
   var removeOnAccept;
   var tasksContainer;
+  var tasks = [];
   $(function () { 
     progressHolder = $('#loading-progress');
     progressBar = $('#loading_progress').progressbar({value:0});
@@ -87,6 +88,10 @@ var firstTask = null;
       firstTask = makeTask(totalTasks - index - 1, imagePair[0], imagePair[1], imagePair[2], firstTask, data);
     });
     
+    
+  }
+
+  function makeBreak(numRight, numWrong, totalNum) {
     
   }
   
@@ -177,6 +182,9 @@ var firstTask = null;
     task.append(taskFieldSet);
     
     tasksContainer.append(task);
+
+    var curRight;
+    var curWrong;
     
     var doneTask = function () {
       endTime = dateUTC(new Date());
@@ -254,6 +262,7 @@ var firstTask = null;
       jQuery.each([questionInputYes, questionInputNo], function (index, input) {
         input.children().attr('disabled', '')
           .change(function () {
+            console.log(this);
             doneTask();
           });
       });

@@ -1,0 +1,30 @@
+Start: Monday, October 25, 2010 12:16.47
+End: Monday, October 25, 2010 12:59.51
+Time Spent: 0:43:04.030401
+
+Start: Monday, October 25, 2010 14:15.34
+End: Monday, October 25, 2010 15:00.09
+Time Spent: 0:44:35.264159
+
+Start: Monday, October 25, 2010 15:14.04
+End: Monday, October 25, 2010 16:57.04
+Time Spent: 1:43:00.217013
+
+Start: Monday, October 25, 2010 17:03.21
+End: Monday, October 25, 2010 17:18.20
+Time Spent: 0:14:59.028407
+
+Start: Monday, October 25, 2010 17:19.22
+End: Monday, October 25, 2010 18:07.28
+Time Spent: 0:48:06.250411
+
+Start: Monday, October 25, 2010 21:36.09
+End: Tuesday, October 26, 2010 02:51.05
+Time Spent: 5:14:56.075408
+
+Start: Tuesday, October 26, 2010 20:24.40
+End: Tuesday, October 26, 2010 20:27.37
+Time Spent: 0:02:57.312232
+
+
+Total Time: 9:31:38.178031

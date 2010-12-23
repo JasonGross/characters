@@ -1,0 +1,26 @@
+Start: Tuesday, September 14, 2010 18:24.10
+End: Tuesday, September 14, 2010 18:31.39
+Time Spent: 0:07:29.335670
+
+Start: Wednesday, September 15, 2010 11:20.14
+End: Wednesday, September 15, 2010 11:53.24
+Time Spent: 0:33:10.853993
+
+Start: Wednesday, September 15, 2010 15:20.01
+End: Wednesday, September 15, 2010 16:20.18
+Time Spent: 1:00:17.763516
+
+Start: Wednesday, September 15, 2010 21:51.54
+End: Wednesday, September 15, 2010 23:23.53
+Time Spent: 1:31:59.152350
+
+Start: Friday, September 17, 2010 21:30.15
+End: Friday, September 17, 2010 23:59.47
+Time Spent: 2:29:32.789000
+
+Start: Sunday, September 19, 2010 00:37.11
+End: Sunday, September 19, 2010 03:22.13
+Time Spent: 2:45:02.182000
+
+
+Total Time: 8:27:32.076529

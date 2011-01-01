@@ -52,7 +52,7 @@ def pick_random_alphabet_url(folder, file_name, size_upper_bound=50):
         listing = [(name, int(number)) for name, number in old_listing if int(number) <= min_num]
     choice = random.choice(listing)
     url = 'image%(number)d=%(name)s_page_%(number+1)02d.png&character%(number)dId=%(name)s_page_%(number+1)02d'
-    rtn = 'globalImageHeight=100px&submitTo=' + urllib.parse.quote(FORM_SUBMISSION_URL) + '&' + '&'.join(url % {'name':choice[0], 'number':number, 'number+1':number+1} for number in range(choice[1]))
+    rtn = 'globalImageHeight=100px&submitTo=' + urllib.parse.quote(CHARACTER_REQUEST_SUBMISSION_URL) + '&' + '&'.join(url % {'name':choice[0], 'number':number, 'number+1':number+1} for number in range(choice[1]))
     return rtn
 
 

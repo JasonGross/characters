@@ -21,7 +21,7 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'get_original_image_list',
            'get_unreviewed_extra_info_file_name', 'get_unreviewed_ids', 'get_unreviewed_image_list', 'get_unreviewed_stroke_list',
            'pop_dir', 'push_dir', 'PNGOUT_PATH', 'MOGRIFY_PATH', 'CONVERT_PATH', 'SUBMISSION_LOG_PATH', 'ALPHABET_LISTING_PATH',
-           'CHARACTER_REQUEST_URL', 'PUBLIC_DATASET_PATHS', 'PUBLIC_DATASET_BETA_PATHS', 'FORM_SUBMISSION_URL',
+           'CHARACTER_REQUEST_URL', 'PUBLIC_DATASET_PATHS', 'PUBLIC_DATASET_BETA_PATHS', 'CHARACTER_REQUEST_SUBMISSION_URL',
            'MATLAB_MAT_FILE_NAME', 'MATLAB_DOWNSAMPLE_MAT_FILE_NAME', 'MATLAB_NO_STROKES_MAT_FILE_NAME', 'MATLAB_DOWNSAMPLE_NO_STROKES_MAT_FILE_NAME',
            'ACCEPTED_JAVASCRIPT_PATH', 'REJECTED_JAVASCRIPT_PATH', 'SCRIPTS_PATH', 'JAVASCRIPT_PATH', 'TURK_POST_EXTRA_LIST_PATH',
            'RESULTS_PATH', 'get_alphabet_name', 'get_alphabet_id_from_file_name',
@@ -30,6 +30,7 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL',
            'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
            'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
+           'RECOGNITION_RESULTS_PATH', 'RECOGNITION_UNREVIEWED_PATH', 'RECOGNITION_UNREVIEWED_URL',
 ##           'get_object', 'get_object_file_name', 'save_object',
            'get_hashed_images_dict', 'raise_object_changed']
  
@@ -45,16 +46,23 @@ _paths = {'ORIGINAL':(lambda s: 'originals/' if s == 'images' else None),
           'CATEGORIZATION_TURK': (lambda s: ('categorization/turk-%s/' % s) if s == 'information' else None),
           'CATEGORIZATION_TURK_REJECTED': (lambda s: ('categorization/turk-rejected-%s/' % s) if s == 'information' else None),
           'CATEGORIZATION_TURK_ACCEPTED': (lambda s: ('categorization/turk-accepted-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_EXTRA': (lambda s: ('categorization/extra-%s/' % s) if s == 'information' else None)}
+          'CATEGORIZATION_EXTRA': (lambda s: ('categorization/extra-%s/' % s) if s == 'information' else None),
+          'RECOGNITION_ACCEPTED': (lambda s: ('recognition/accepted-%s/' % s) if s == 'information' else None),
+          'RECOGNITION_REJECTED': (lambda s: ('recognition/rejected-%s/' % s) if s == 'information' else None),
+          'RECOGNITION_TURK': (lambda s: ('recognition/turk-%s/' % s) if s == 'information' else None),
+          'RECOGNITION_TURK_REJECTED': (lambda s: ('recognition/turk-rejected-%s/' % s) if s == 'information' else None),
+          'RECOGNITION_TURK_ACCEPTED': (lambda s: ('recognition/turk-accepted-%s/' % s) if s == 'information' else None),
+          'RECOGNITION_EXTRA': (lambda s: ('recognition/extra-%s/' % s) if s == 'information' else None)}
 
-_image_stroke_dicts_names = ['unreviewed'] + [key.lower() for key in sorted(_paths.keys()) if 'CATEGORIZATION_' not in key]
+_image_stroke_dicts_names = ['unreviewed'] + [key.lower() for key in sorted(_paths.keys())
+                                              if 'CATEGORIZATION_' not in key and 'RECOGNITION_' not in key]
 
 FILE_NAME_REGEX = '(.*?)_([0-9]+)_([^._]+)'
 FILE_NAME_REGEX_COMPILED = re.compile(FILE_NAME_REGEX)
 
 _normal_path_names = [] + \
                      [_path for _path in sorted(_paths.keys()) \
-                      if _path not in ('ORIGINAL', 'UNREVIEWED') and 'CATEGORIZATION_' not in _path]
+                      if _path not in ('ORIGINAL', 'UNREVIEWED') and 'CATEGORIZATION_' not in _path and 'RECOGNITION_' not in _path]
 
 BASE_PATH = os.path.join(os.path.expanduser('~/'), 'web_scripts/', 'alphabets/')
 BASE_URL = 'http://scripts.mit.edu/~jgross/alphabets/'
@@ -69,8 +77,16 @@ REJECTED_JAVASCRIPT_PATH = os.path.join(JAVASCRIPT_PATH, 'rejected_alphabets.js'
 _RELATIVE_RESULTS_PATH = 'results/'
 _RELATIVE_UNREVIEWED_PATH = os.path.join(_RELATIVE_RESULTS_PATH, 'unreviewed/')
 
-_RELATIVE_CATEGORIZATION_RESULTS_PATH = 'results/categorization/'
-_RELATIVE_CATEGORIZATION_UNREVIEWED_PATH = os.path.join(_RELATIVE_CATEGORIZATION_RESULTS_PATH, 'unreviewed/')
+for task in ('CATEGORIZATION', 'RECOGNITION'):
+    setattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task, 'results/%s/' % task.lower())
+    setattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % task, os.path.join(getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task), 'unreviewed/'))
+
+    setattr(_self, '%s_RESULTS_PATH' % task, os.path.join(BASE_PATH, getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task)))
+    setattr(_self, '%s_UNREVIEWED_PATH' % task, os.path.join(BASE_PATH, getattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % task)))
+
+    setattr(_self, '%s_RESULTS_URL' % task, urllib.parse.urljoin(BASE_URL, getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task)))
+    setattr(_self, '%s_UNREVIEWED_URL' % task, urllib.parse.urljoin(BASE_URL, getattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % task)))
+
 
 _RELATIVE_LOCAL_TEMP_PATH = 'tmp/'
 _RELATIVE_ANONYMOUS_IMAGES_PATH = 'anonymous-images/'
@@ -78,14 +94,8 @@ _RELATIVE_ANONYMOUS_IMAGES_PATH = 'anonymous-images/'
 RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
 
-CATEGORIZATION_RESULTS_PATH = os.path.join(BASE_PATH, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
-CATEGORIZATION_UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
-
 RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_UNREVIEWED_PATH)
-
-CATEGORIZATION_RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_RESULTS_PATH)
-CATEGORIZATION_UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_CATEGORIZATION_UNREVIEWED_PATH)
 
 TURK_POST_EXTRA_LIST_PATH = os.path.join(RESULTS_PATH, 'turk-bad-submissions.txt')
 
@@ -113,7 +123,8 @@ for _path in _paths:
             __all__.append('%s_%s_URL' % (_path, name_part))
 
 CHARACTER_REQUEST_URL = urllib.parse.urljoin(BASE_URL, 'CharacterRequest.shtml')
-FORM_SUBMISSION_URL = urllib.parse.urljoin(BASE_URL, 'scripts/python/record-submission.py')
+CHARACTER_REQUEST_SUBMISSION_URL = urllib.parse.urljoin(BASE_URL, 'scripts/python/record-submission.py')
+#FORM_SUBMISSION_URL = CHARACTER_REQUEST_SUBMISSION_URL
 
 PNGOUT_PATH = os.path.join(BASE_PATH, 'scripts', 'pngout')
 MOGRIFY_PATH = os.path.join(BASE_PATH, 'scripts', 'ImageMagick-6.6.2-6', 'utilities', 'mogrify')

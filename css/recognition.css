@@ -154,3 +154,25 @@ div.question-holder {
 .noise-image-holder, .test-image-holder, .example-image-holder {
   margin: 5px;
 }
+
+.task-overlay-progress-bar-holder {
+  opacity: 0.5;
+  filter:alpha(opacity=50);
+  -moz-opacity: 0.5;
+}
+
+.task-correct-progress-bar, .task-incorrect-progress-bar {
+  display: inline-block;
+}
+
+.task-correct-progress-bar {
+  background-color: green;
+}
+
+.task-incorrect-progress-bar {
+  background-color: red;
+}
+
+.task-actual-progress-bar-holder {
+  height: 0px;
+}

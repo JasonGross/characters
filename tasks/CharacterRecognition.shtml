@@ -24,6 +24,7 @@
   <script src="../scripts/javascript/recognition_parse_url_parameters.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_data_loader.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_validate_form.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/recognition_example_task.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
@@ -65,33 +66,34 @@
     <div id="instructions">
       <h3>Instructions</h3>
       <p>
-        FIX
+        This task consists of many subtasks.  In each subtask, you will be shown an image of a hand-drawn character
+        for a fraction of a second, after which it will disappear.  Then you will be shown an image of another hand-drawn
+        charater in the right box.  You must decide whether or not these images are drawings of the same character.
       </p>      
-      <!--Do the following for each group of alphabets.
-      <ol>
-        <li>Examine the example characters from each of the alphabets in the group.</li>
-        <li>
-          Select which alphabet you think the extra character is from, either by:
-          <ul>
-            <li>dragging and dropping the character on top of one of the alphabets, OR</li>
-            <li>clicking on the drop-down menu and selecting an alphabet number (alphabet numbers are on top of the corresponding examples), OR</li>
-            <li>clicking on the appropriate alphabet.</li>
-          </ul>
-          If you are unsure, select your best guess.
-        </li>
-      </ol>-->
+      <p>
+        More precisely, each subtask consists of the following:
+        <ol>
+          <li> A red border will flash once around the box that will contain the first image.
+          <li> About half a second later, the first image will appear.
+          <li> Less than half a second later, the image will disappear.
+          <li> About a second later, the second image will appear in the right box, and will not disappear until you answer the question.
+          <li> Every few characters, the progress bar on the bottom will be updated to show how many you've gotten right, and how many you've gotten wrong.
+        </ol>
+      </p>
       <p></p>
       Please note:
       <ul>
-        <li>You may change any of your answers at any time before submission.</li>
         <li>
-          You must categorize every non-example character to submit the form.  (The questions at the bottom, however, are optional.)
+          You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
           <ul class="show-if-turk">
-            <li>If you somehow manage to submit the form without categorizing every character, your submission will be rejected.</li>
+            <li>If you somehow manage to submit the form without completing every subtask, your submission will be rejected.</li>
           </ul>
         </li>
-        <li class="show-if-turk">So long as you categorize every non-example character, and you make an effort to categorize them correctly, your submission will be accepted independent of how many you get correct.</li>
+        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to answer the questions correctly, your submission will be accepted regardless of how many you get correct.</li>
       </ul>
+    </div>
+    <div id="example-task">
+      <div class="mouse-cursor" id="example-mouse-cursor-holder" name="example-mouse-cursor-holder"><img src="http://scripts.mit.edu/~jgross/alphabets/images/mouse-cursor-icon.png" class="mouse-cursor" alt="&#8598;" id="example-mouse-cursor" name="example-mouse-cursor" /></div>
     </div>
     <div id="disclaimer-box">
       <p><a id="disclaimer-show" class="showLink" href="#" onclick="showHide('disclaimer');return false;">Show Disclaimer</a></p>
@@ -125,9 +127,8 @@
     </div>
     <p id="interest">
     	If you are interested in learning more about this research, please visit 
-    	<a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">
-    	  http://scripts.mit.edu/~jgross/alphabets/
-    	</a> (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
+    	<a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">http://scripts.mit.edu/~jgross/alphabets/</a>
+        (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
     </p>
   
     <div id="accept_task-div">
@@ -157,7 +158,7 @@
 
   <div id="character_recognition_form-div">
     <form id="character_recognition_form"
-          action="../scripts/python/record-character-recognition-submission.py"
+          action="../scripts/python/record-recognition-submission.py"
           method="post">
       <div id="hidden-inputs">
         <input id="assignmentId" name="assignmentId" type="hidden" value="" />
@@ -173,12 +174,26 @@
         <input id="windowHeight" name="screenWidth" type="hidden" />
       </div>
 
-      <div id="all-tasks">
+      <div id="all-tasks" class="tasks">
       </div>
+
+      <br class="tasks" />
       
       <div class="task-progress" id="task_progess-div">
-        <div class="task-message" id="task_message"></div>
-        <div id="task_progress"></div>
+        <div class="task-progress-bar-holder" id="task_progress">
+          <div class="task-actual-progress-bar-holder">
+            <div class="task-actual-progress-bar"></div>
+          </div>
+          <div class="task-overlay-progress-bar-holder ui-widget ui-progressbar ui-widget-content ui-corner-all">
+            <div class="task-correct-progress-bar ui-corner-left ui-progressbar"></div>
+            <div class="task-incorrect-progress-bar ui-progressbar"></div>
+          </div>
+        </div>
+        <div class="task-message" id="task_message">
+          Out of the first <span id="task-progress-message-num-tasks-known" name="task-progress-message-num-tasks-known">0</span> tasks: <br />
+          Number Right: <span id="task-progress-message-num-tasks-correct" name="task-progress-message-num-tasks-correct">0</span> <br />
+          Number Wrong: <span id="task-progress-message-num-tasks-incorrect" name="task-progress-message-num-tasks-incorrect">0</span>
+        </div>
       </div>
       
       <div class="post-task">

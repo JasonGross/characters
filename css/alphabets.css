@@ -74,4 +74,14 @@ div.error {
     width: 1px;
 }
 /**/
-  
+
+
+div.mouse-cursor, span.mouse-cursor {
+  display: inline;
+  height: 0px;
+  width: 0px;
+}
+img.mouse-cursor {
+  height: 19px;
+  position: absolute;
+}

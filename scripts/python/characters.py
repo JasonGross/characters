@@ -197,7 +197,7 @@ def create_first_task(form, reset=False, verbose=False):
                     'pauseToNoise':100,
                     'pauseToTest':1000,
                     'tasksPerFeedbackGroup':20,
-                    'tasksPerWaitGroup':1000, # WHAT IS THIS?  XXX TODO: Figure out what this is, or get rid of it.
+                    'tasksPerWaitGroup':1000,
                     'pauseToGroup':1000
                     }
     alphabets = get_accepted_image_list(from_path=FROM_PATH)

@@ -12,6 +12,7 @@
 *.stroke
 *.mat
 *.tar.bz2
+*.tar.gz
 *.log
 *.m
 *.swp
@@ -23,3 +24,13 @@ working-directory/*
 update-push.bat
 update-pull.bat
 update.bat
+scripts/python/_mysql*.so
+scripts/python/_mysql_exceptions.py
+scripts/python/setuptools-0.6c11/
+scripts/python/setuptools-0.6c11/*
+scripts/python/PIL/
+scripts/python/PIL/*
+scripts/python/MySQLdb*/
+scripts/python/MySQLdb*/*
+scripts/python/MySQL-python-1.2.3/
+scripts/python/MySQL-python-1.2.3/*

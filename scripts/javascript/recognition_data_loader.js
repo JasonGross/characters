@@ -152,7 +152,7 @@ var makeTask;
 
   
   makeTask = function (index, exampleImageObject, testImageObject, noiseImageUrl, areSameCharacter, nextTask, data, numRightWrong, taskLabel, onLoadImage,
-                       doGlobalUpdates, localTasksContainer, taskProgressBar, doRepeat, doUserInput) {
+                       doGlobalUpdates, localTasksContainer, taskProgressBar, doRepeat, doUserInput, jumpToTask) {
     if (taskLabel === undefined) taskLabel = 'Task ' + (index + 1) + ' of ' + totalTasks;
     if (onLoadImage === undefined) onLoadImage = function () { refcounter.decrementCounter('image progress'); };
     if (doGlobalUpdates === undefined) doGlobalUpdates = true;
@@ -160,6 +160,7 @@ var makeTask;
     if (taskProgressBar === undefined) taskProgressBar = taskActualProgressBar;
     if (doRepeat === undefined) doRepeat = false;
     if (data === undefined) data = makeTaskData;
+    if (jumpToTask === undefined) jumpToTask = true;
     var startTime;
     var endTime;
     var task = $('<div>')
@@ -213,6 +214,7 @@ var makeTask;
         .attr('id', 'task-' + index + '_question-yes')
         .attr('value', 1)
         .attr('disabled', 'disabled')
+//        .css({'width':'64px', 'height':'64px', 'zoom':2})
       ).append(
         'Yes, they are the same.'
       );
@@ -253,7 +255,7 @@ var makeTask;
 
     var questionTimes = {};
     jQuery.each(['doneTask', 'doTask', 'showFirstHint', 'showSecondHint', 'showExample', 'showNoise', 'showTest'], 
-                function (index, name) {
+                function (questionIndex, name) {
       questionTimes[name] = $('<input>')
         .attr('type', 'hidden')
         .attr('value', '')
@@ -292,8 +294,8 @@ var makeTask;
       endTime = dateUTC(new Date());
       questionDurationInput.attr('value', endTime - startTime);
       questionTimes['doneTask'].attr('value', endTime);
-      questionIsCorrectInput.attr('value', areSameCharacter == questionTrueInputYes.is('checked'));
-      if (areSameCharacter == questionTrueInputYes.is('checked'))
+      questionIsCorrectInput.attr('value', areSameCharacter == questionTrueInputYes.attr('checked'));
+      if (areSameCharacter == questionTrueInputYes.attr('checked'))
         numRightWrong['right']++;
       else
         numRightWrong['wrong']++;
@@ -304,7 +306,9 @@ var makeTask;
         questionTrueInputYes.attr('checked', '');
         questionTrueInputNo.attr('checked', '');
         question.hide();
-        task.hide()
+        exampleImageHolder.removeClass('example-holder-done');
+        example.css({'opacity':0, 'filter':'alpha(opacity=0)', '-moz-opacity':0});
+        test.css({'opacity':0, 'filter':'alpha(opacity=0)', '-moz-opacity':0});
       } else {
         example.remove();
         test.remove();
@@ -329,8 +333,12 @@ var makeTask;
     
     var doTask = function () {
       task.show();
-      window.location.hash = '';
-      window.location.hash = 'task-' + index;
+      example.css({'opacity':1, 'filter':'alpha(opacity=100)', '-moz-opacity':1});
+      test.css({'opacity':1, 'filter':'alpha(opacity=100)', '-moz-opacity':1});
+      if (jumpToTask) {
+        window.location.hash = '';
+        window.location.hash = 'task-' + index;
+      }
       exampleImageHolder.append(exampleImage.hide()).append(noiseImage.hide());
       testImageHolder.append(testImage.hide());
       questionTimes['doTask'].attr('value', dateUTC(new Date()));

@@ -188,6 +188,7 @@ def get_a_task(task_group_index, reset=False, verbose=False, reset_database=True
     return tasks[0]
     
 
+_STROKE_NOISES = get_stroke_noises(from_path=BASE_PATH)
 
 def create_first_task(form, reset=False, verbose=False):
     tasks = get_a_task(0, reset=reset, verbose=verbose)
@@ -222,7 +223,7 @@ def create_first_task(form, reset=False, verbose=False):
       if len(rtn[key]) < 2:
         rtn[key].append(0)
 
-    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, 'images/strokeNoise.png'), correct_answer) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
+    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, random.choice(_STROKE_NOISES)), correct_answer) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
              for example, test, correct_answer in tasks]
     rtn['tasks'] = tasks
     return rtn

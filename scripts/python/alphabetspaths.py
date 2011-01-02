@@ -31,6 +31,7 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
            'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
            'RECOGNITION_RESULTS_PATH', 'RECOGNITION_UNREVIEWED_PATH', 'RECOGNITION_UNREVIEWED_URL',
+           'IMAGES_PATH', 'IMAGES_URL', 'get_stroke_noises',
 ##           'get_object', 'get_object_file_name', 'save_object',
            'get_hashed_images_dict', 'raise_object_changed']
  
@@ -96,6 +97,11 @@ UNREVIEWED_PATH = os.path.join(BASE_PATH, _RELATIVE_UNREVIEWED_PATH)
 
 RESULTS_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_RESULTS_PATH)
 UNREVIEWED_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_UNREVIEWED_PATH)
+
+_RELATIVE_IMAGES_PATH = 'images/'
+
+IMAGES_PATH = os.path.join(BASE_PATH, _RELATIVE_IMAGES_PATH)
+IMAGES_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_IMAGES_PATH)
 
 TURK_POST_EXTRA_LIST_PATH = os.path.join(RESULTS_PATH, 'turk-bad-submissions.txt')
 
@@ -173,6 +179,12 @@ for _name in _image_stroke_dicts_names:
 objectstorage.set_default_object_directory(os.path.join(BASE_PATH, 'object-storage'))
 
 _object_storage_lookup = {}
+
+
+_STROKE_NOISES = tuple(os.path.join(IMAGES_PATH, i) for i in os.listdir(IMAGES_PATH) 
+                      if i[:len('strokeNoise')] == 'strokeNoise' and os.path.splitext(i)[-1] == '.png')
+def get_stroke_noises(from_path=IMAGES_PATH):
+    return [relpath(i, from_path) for i in _STROKE_NOISES]
 
 def get_alphabet_name(alphabet_id):
     global _alphabets_names_dict

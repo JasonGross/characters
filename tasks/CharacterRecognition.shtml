@@ -66,6 +66,19 @@
     <div id="instructions">
       <h3>Instructions</h3>
       <p>
+        This experiment tests your ability to discriminate handwritten characters from writing systems around the world.
+        For example in the Latin alphabet A, B, C, and D are different characters. You will see pairs of character images,
+        and no two images are exactly the same. If you think the two images contain the same character (e.g., two different 
+        people writing the letter B), then mark "Same." If they contain different characters (B and D), mark "Different." 
+        The exact characters you will see should be new to you, so make your best guess.
+      </p>
+      <p>
+        You will see a sequence of 200 trials each requiring a response. During a trial, a red square appears in the left box
+        "Example Image" to cue your attention. Shortly after the cue, an example character is quickly flashed in that box.
+        After the flash, it is masked by a nonsense image. Then a test character appears in the "Test Image" box to the right.
+        Your job is to indicate whether the example character and test character are the same or different.
+      </p>
+      <p>
         This task consists of many subtasks.  In each subtask, you will be shown an image of a hand-drawn character
         for a fraction of a second, after which it will disappear.  Then you will be shown an image of another hand-drawn
         charater in the right box.  You must decide whether or not these images are drawings of the same character.
@@ -91,6 +104,20 @@
         </li>
         <li class="show-if-turk">So long as you complete every subtask, and you make an effort to answer the questions correctly, your submission will be accepted regardless of how many you get correct.</li>
       </ul>
+      <h3>Alternate Instructions (Brenden)</h3>
+      <p>
+        This experiment tests your ability to discriminate handwritten characters from writing systems around the world.
+        For example in the Latin alphabet A, B, C, and D are different characters. You will see pairs of character images,
+        and no two images are exactly the same. If you think the two images contain the same character (e.g., two different
+        people writing the letter B), then mark "Same." If they contain different characters (B and D), mark "Different."
+        The exact characters you will see should be new to you, so make your best guess.
+      </p>
+      <p>
+        You will see a sequence of 200 trials each requiring a response. During a trial, a red square appears in the left box
+        "Example Image" to cue your attention. Shortly after the cue, an example character is quickly flashed in that box.
+        After the flash, it is masked by a nonsense image. Then a test character appears in the "Test Image" box to the right.
+        Your job is to indicate whether the example character and test character are the same or different.
+      </p>
     </div>
     <div id="example-task">
       <div class="mouse-cursor" id="example-mouse-cursor-holder" name="example-mouse-cursor-holder"><img src="http://scripts.mit.edu/~jgross/alphabets/images/mouse-cursor-icon.png" class="mouse-cursor" alt="&#8598;" id="example-mouse-cursor" name="example-mouse-cursor" /></div>
@@ -172,6 +199,17 @@
         <input id="screenAavilHeight" name="screenWidth" type="hidden" />
         <input id="windowWidth" name="screenWidth" type="hidden" />
         <input id="windowHeight" name="screenWidth" type="hidden" />
+        <input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
+        <input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />
+        <input id="navigator.vendor" name="navigator.vendor" type="hidden" />
+        <input id="window.opera" name="window.opera" type="hidden" />
+        <input id="navigator.platform" name="navigator.platform" type="hidden" />
+        <input id="jQuery.browser.webkit" name="jQuery.browser.webkit" type="hidden" />
+        <input id="jQuery.browser.version" name="jQuery.browser.version" type="hidden" />
+        <input id="jQuery.browser.safari" name="jQuery.browser.safari" type="hidden" />
+        <input id="jQuery.browser.opera" name="jQuery.browser.opera" type="hidden" />
+        <input id="jQuery.browser.msie" name="jQuery.browser.msie" type="hidden" />
+        <input id="jQuery.browser.mozilla" name="jQuery.browser.mozilla" type="hidden" />
       </div>
 
       <div id="all-tasks" class="tasks">
@@ -225,10 +263,21 @@
         'screenAavilWidth':screen.availWidth,
         'screenAavilHeight':screen.availHeight,
         'windowWidth':$(window).width(),
-        'windowHeight':$(window).height()
+        'windowHeight':$(window).height(),
+        'navigator.userAgent':navigator.userAgent,
+        'navigator.appVersion':navigator.appVersion,
+        'navigator.vendor':navigator.vendor,
+        'window.opera':window.opera,
+        'navigator.platform':navigator.platform,
+        'jQuery.browser.webkit':jQuery.browser.webkit,
+        'jQuery.browser.version':jQuery.browser.version,
+        'jQuery.browser.safari':jQuery.browser.safari,
+        'jQuery.browser.opera':jQuery.browser.opera,
+        'jQuery.browser.msie':jQuery.browser.msie,
+        'jQuery.browser.mozilla':jQuery.browser.mozilla
       };
     for (var id in fields)
-      if (document.getElementById(id))
+      if (document.getElementById(id) && fields[id] !== undefined)
         document.getElementById(id).value = fields[id];
     $('#form-load-time').attr('value', dateUTC(new Date()));
     //$('#form-load-time').hide();

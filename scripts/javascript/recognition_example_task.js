@@ -20,8 +20,8 @@ var startExampleTask;
                         cursor.animate({'left':offset.left + task['questionInputYes'].width() / 2, 'top':offset.top + task['questionInputYes'].height() / 2}, 'slow', 'linear',
                                        function () {
                                         task['questionInputYes'].attr('checked', 'checked');
-                                        window.setTimeout(function () { task['questionInputYes'].change(); }, 100);
-                                        window.setTimeout(function () { cursor.animate({'left':cursorStart.left, 'top':cursorStart.top}, 'slow', 'linear'); }, 1000);
+                                        window.setTimeout(function () { task['questionInputYes'].change(); }, 2000);
+                                        window.setTimeout(function () { cursor.animate({'left':cursorStart.left, 'top':cursorStart.top}, 'slow', 'linear'); }, 3000);
                                        });
                       }, 2000);
                     }, false);

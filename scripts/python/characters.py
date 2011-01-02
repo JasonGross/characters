@@ -14,7 +14,7 @@ import alphabetspopularity
 from alphabetsutil import png_to_uri
 from image_anonymizer import anonymize_image 
 from objectstorage import get_object, save_object
-import sequencer 
+import sequencer
 
 FROM_PATH = ACCEPTED_IMAGES_PATH
 
@@ -200,7 +200,7 @@ def create_first_task(form, reset=False, verbose=False):
                     'pauseToExample':1000,
                     'pauseToNoise':100,
                     'pauseToTest':1000,
-                    'tasksPerFeedbackGroup':20,
+                    'tasksPerFeedbackGroup':10,
                     'tasksPerWaitGroup':1000,
                     'pauseToGroup':1000
                     }

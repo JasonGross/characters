@@ -14,6 +14,7 @@ import alphabetspopularity
 from alphabetsutil import png_to_uri
 from image_anonymizer import anonymize_image 
 from objectstorage import get_object, save_object
+import sequencer 
 
 FROM_PATH = ACCEPTED_IMAGES_PATH
 
@@ -71,7 +72,8 @@ def is_nested_type(obj, *types):
             return False
 
 
-def make_task(most_popular_number=6, min_characters=20, same_character_distractors_count=5, same_alphabet_distractors_count=5, other_alphabet_distractors_count=10, num_experiments=50, verbose=True, random=random.Random):
+def make_task(most_popular_number=6, min_characters=20, same_character_distractors_count=5, same_alphabet_distractors_count=5,
+              other_alphabet_distractors_count=10, num_experiments=50, foreground_fraction=0.6, verbose=True, random=random.Random):
     originals_count = 1
 
     if verbose: print('Getting list of alphabets...')
@@ -80,7 +82,7 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
     if verbose: print('Getting alphabet popularities...')
     popularities = [(alphabetspopularity.get_popularity(alphabet), alphabet) for alphabet in alphabets_list]
     popularities.sort(reverse=True)
-    if verbose: print('Separating alphabet list into background and use sets...')
+    if verbose: print('Separating alphabet list into background and foreground sets...')
     alphabets_background = [alphabet for popularity, alphabet in popularities[:most_popular_number]]
     popularities = popularities[most_popular_number:]
     too_small = [alphabet for popularity, alphabet in popularities if len(alphabets_dict[alphabet].values()[0]) < min_characters]
@@ -88,10 +90,10 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
     alphabets_left = [alphabet for popularity, alphabet in popularities if alphabet not in too_small]
     random.shuffle(alphabets_left)
 
-    alphabets_use = alphabets_left[:len(alphabets_list)/2]
-    alphabets_background += alphabets_left[len(alphabets_list)/2:]
+    alphabets_use = alphabets_left[:int(0.5 + len(alphabets_list) * foreground_fraction)]
+    alphabets_background += alphabets_left[int(0.5 + len(alphabets_list) * foreground_fraction):]
     alphabets_use.sort()
-    random.shuffle(alphabets_background)
+    #random.shuffle(alphabets_background)
 
 
     if verbose: print('Separating characters into two sets...')
@@ -101,9 +103,9 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
         if verbose: print('Separating characters from %s into sets...' % alphabet)
         characters = list(range(len(alphabets_dict[alphabet].values()[0])))
         random.shuffle(characters)
-        character_sets[0] += [(alphabet, character_i) for character_i in characters[:1+same_alphabet_distractors_count]]
-        character_sets[1] += [(alphabet, character_i) for character_i in characters[1+same_alphabet_distractors_count:2*(1+same_alphabet_distractors_count)]]
-        remaining_characters_use += [(alphabet, character_i) for character_i in characters[2*(1+same_alphabet_distractors_count):]]
+        character_sets[0].extend((alphabet, character_i) for character_i in characters[:1+same_alphabet_distractors_count])
+        character_sets[1].extend((alphabet, character_i) for character_i in characters[1+same_alphabet_distractors_count:2*(1+same_alphabet_distractors_count)])
+        remaining_characters_use.extend((alphabet, character_i) for character_i in characters[2*(1+same_alphabet_distractors_count):])
     random.shuffle(remaining_characters_use)
     character_sets[0] += remaining_characters_use[:int(len(remaining_characters_use)/2)]
     character_sets[1] += remaining_characters_use[int(len(remaining_characters_use)/2):]
@@ -179,19 +181,20 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
     return experiments_sets
 
 
-def get_a_task(task_group_index, reset=False, verbose=False, reset_database=True):
+def get_a_task(task_group_index, reset=False, verbose=False, reset_database=False, reset_on_run_out=True):
     _random = get_object('characters_random', (lambda: random.Random()))
     is_old = ((lambda x:reset) if reset else None)
     tasks = get_object('recognition-tasks', (lambda *args, **kargs: make_task(*args, random=_random, verbose=verbose, **kargs)), is_old=is_old)[task_group_index]
-    random.shuffle(tasks)
-    random.shuffle(tasks[0])
-    return tasks[0]
+    return tasks[sequencer.pop('recognition_characters_%d' % task_group_index, reset_sequence=reset,
+                               reset_database=reset_database, reset_on_run_out=reset_on_run_out, length=len(tasks))]
     
 
 _STROKE_NOISES = get_stroke_noises(from_path=BASE_PATH)
 
 def create_first_task(form, reset=False, verbose=False):
-    tasks = get_a_task(0, reset=reset, verbose=verbose)
+    if 'taskGroupIndex' in form.keys(): task_group_index = int(form.getfirst('taskGroupIndex'))
+    else: task_group_index = 0
+    tasks = get_a_task(task_group_index, reset=reset, verbose=verbose)
     passOnValues = {'pauseToFirstHint':500,
                     'pauseToSecondHint':500,
                     'pauseToExample':1000,

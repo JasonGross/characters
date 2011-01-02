@@ -31,7 +31,7 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
            'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
            'RECOGNITION_RESULTS_PATH', 'RECOGNITION_UNREVIEWED_PATH', 'RECOGNITION_UNREVIEWED_URL',
-           'IMAGES_PATH', 'IMAGES_URL', 'get_stroke_noises',
+           'IMAGES_PATH', 'IMAGES_URL', 'get_stroke_noises', 'LOG_FILE',
 ##           'get_object', 'get_object_file_name', 'save_object',
            'get_hashed_images_dict', 'raise_object_changed']
  
@@ -112,6 +112,8 @@ LOCAL_TEMP_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_LOCAL_TEMP_PATH)
 
 ANONYMOUS_IMAGES_PATH = os.path.join(BASE_PATH, _RELATIVE_ANONYMOUS_IMAGES_PATH)
 ANONYMOUS_IMAGES_URL = urllib.parse.urljoin(BASE_URL, _RELATIVE_ANONYMOUS_IMAGES_PATH)
+
+LOG_FILE = os.path.join(BASE_PATH, 'log.txt')
 
 for _path in _paths:
     for name_part, path_part in (('IMAGES', 'images'),

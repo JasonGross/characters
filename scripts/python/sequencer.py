@@ -103,27 +103,25 @@ def pop(tag, count=1, reset_sequence=False, reset_database=False, reset_on_run_o
     cursor = sqldb.cursor()
 
     try:
-        try:
-            cursor.execute('LOCK TABLES %s WRITE' % tag)
-            cursor.execute('SELECT id FROM %s ORDER BY id LIMIT %d' % (tag, count))
-            rtn = cursor.fetchmany(size=count)
-            cursor.executemany('DELETE FROM %s WHERE id=%%s' % tag,
-                               rtn)
-            rtn = [int(i) for i, in rtn]
-            cursor.execute('UNLOCK TABLES')
-        except Exception:
-            sqldb.rollback()
-            raise
-        finally:
-            sqldb.commit()
-            sqldb.close()
-    except IndexError:
+        cursor.execute('LOCK TABLES %s WRITE' % tag)
+        cursor.execute('SELECT id FROM %s ORDER BY id LIMIT %d' % (tag, count))
+        rtn = cursor.fetchmany(size=count)
+        cursor.executemany('DELETE FROM %s WHERE id=%%s' % tag,
+                           rtn)
+        rtn = [int(i) for i, in rtn]
+        cursor.execute('UNLOCK TABLES')
+    except Exception:
+        sqldb.rollback()
+        raise
+    finally:
+        sqldb.commit()
+        sqldb.close()
+    if len(rtn) < count:
         if reset_on_run_out:
             reset_table(tag)
             return pop(tag, count=count, reset_sequence=reset_sequence, reset_on_run_out=False, length=length)
-        else:
-            raise
     random_sequence = get_random_sequence(tag, length=length, reset=reset_sequence)
     rtn = [random_sequence[i] for i in rtn]
     if len(rtn) == 1: rtn = rtn[0]
+    elif len(rtn) == 0: rtn = None
     return rtn

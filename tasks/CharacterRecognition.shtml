@@ -5,9 +5,12 @@
   <meta content="text/html; charset=us-ascii" http-equiv="Content-Type" />
   <meta content="Allowable url parameters: turkSubmitTo, assignmentId, workerId, hitId, submitTo" />
   <!--script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script-->
+  <!--style type="text/css">@import 'fauxconsole.css';</style-->
+  <!--script src="../scripts/javascript/fauxconsole.js" type="text/javascript"></script-->
   <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script>
   <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
   <script src="http://www.shawnolson.net/scripts/public_smo_scripts.js" type="text/javascript"></script>
@@ -48,6 +51,27 @@
         </p>
       </div>
     </noscript>
+    <!--[if lt IE 9]>
+      <div id="ie8-" class="error">
+        <h2>You are using Internet Explorer <span id="ie-version" name="ie-version"></span></h2>
+        <p>
+          If you want it to be able to complete this form, please update your browser, or use a
+          different (standards compliant) browser, such as Firefox, Google Chrome, or Safari.
+          If you do not have one of these browsers or do not know what this means, please visit
+          <a href="http://utilu.com/UtiluMF/" rel="external" target="_blank">Utilu Silent Setup for Mozilla Firefox</a>,
+          or download <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
+        </p>
+        <p>
+          While <tt>window.setTimeout</tt> works and has sufficient accuracy in Internet Explorer
+          9, earlier versions of Internet Explorer do not have a sufficiently accurate timer to
+          perform this experiment.
+        </p>
+        <script type="text/javascript">
+          $('#ie-version').html(jQuery.browser.version);
+          $('submit').attr("disabled", "disabled");
+        </script>
+      </div>
+    <![endif]-->
     <div id="loading" class="warning">
       <h2>Please wait while the page loads&#8230;</h2>
       <p>

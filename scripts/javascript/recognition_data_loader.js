@@ -100,7 +100,7 @@ var makeTask;
         progressLoaded.html(totalImages - value);
       });
       refcounter.handleCounterZero('image progress', function () {
-        if ($('.warning .error').length == 0)
+        if ($('.warning, .error').length == 0)
           acceptButton.attr('disabled', '');
         progressHolder.hide();
       });

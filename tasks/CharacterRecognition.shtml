@@ -124,7 +124,8 @@
         The exact characters you will see should be new to you, so make your best guess.
       </p>
       <p>
-        You will see a sequence of 200 trials each requiring a response. During a trial, a red square appears in the left box
+        You will see a sequence of <span id="num-trials" class="num-trials">200</span> trials each requiring a response. 
+        During a trial, a red square appears in the left box
         "Example Image" to cue your attention. Shortly after the cue, an example character is quickly flashed in that box.
         After the flash, it is masked by a nonsense image. Then a test character appears in the "Test Image" box to the right.
         Your job is to indicate whether the example character and test character are the same or different.
@@ -194,6 +195,9 @@
     </form>
   </div>
 
+  <div class="task-break" id="task_break">
+  </div>
+
   <div id="character_recognition_form-div">
     <form id="character_recognition_form"
           action="../scripts/python/record-recognition-submission.py"
@@ -227,7 +231,7 @@
       </div>
 
       <br class="tasks" />
-      
+       
       <div class="task-progress" id="task_progess-div">
         <div class="task-progress-bar-holder" id="task_progress">
           <div class="task-actual-progress-bar-holder">
@@ -263,6 +267,7 @@
                value="Submit" /></p>
     </form>
   </div>
+
   <script type="text/javascript">
     //<![CDATA[
     var ipAddress_field = document.getElementById('ipAddress');

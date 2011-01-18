@@ -73,7 +73,8 @@ def is_nested_type(obj, *types):
 
 
 def make_task(most_popular_number=6, min_characters=20, same_character_distractors_count=5, same_alphabet_distractors_count=5,
-              other_alphabet_distractors_count=10, num_experiments=50, foreground_fraction=0.6, verbose=True, random=random.Random):
+              other_alphabet_distractors_count=10, trials_per_experiment=200, foreground_fraction=0.5, duplicate_count=5, num_experiments=None,
+              verbose=True, random=random.Random):
     originals_count = 1
 
     if verbose: print('Getting list of alphabets...')
@@ -160,7 +161,9 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
 
         if verbose: print('Done making trials for set %d.' % set_i)
         random.shuffle(trials_sets[set_i])
-        trials_per_experiment = int(len(trials_sets[set_i])) / num_experiments
+        if num_experiments is None:
+            num_experiments = int(len(trials_sets[set_i])) / trials_per_experiment
+#        trials_per_experiment = int(len(trials_sets[set_i])) / num_experiments
         while len(experiments_sets[set_i]) < num_experiments:
 ##            if verbose: print('Selecting trials for experiment %d / %d...' % (len(experiments_sets[set_i]) + 1, num_experiments))
             cur_experiment = []
@@ -178,6 +181,9 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
             experiments_sets[set_i].append(cur_experiment)
 ##            if verbose: print('\nDone selecting trials for experiment %d.' % len(experiments_sets[set_i]))
         if verbose: print('\nDone making experiments for set %d.' % set_i)
+    for set_i in range(len(experiments_sets)):
+        experiments_sets[set_i] = [experiment for experiment in experiments_sets[set_i] for i in range(duplicate_count)]
+        random.shuffle(experiments_sets[set_i])
     return experiments_sets
 
 
@@ -201,8 +207,10 @@ def create_first_task(form, reset=False, verbose=False):
                     'pauseToNoise':100,
                     'pauseToTest':1000,
                     'tasksPerFeedbackGroup':10,
-                    'tasksPerWaitGroup':1000,
-                    'pauseToGroup':1000
+                    'tasksPerWaitGroup':10,
+                    'pauseToGroup':-1,
+                    'displayProgressBarDuringTask':False,
+                    'allowDidNotSeeCount':1
                     }
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
     tasks = [(anonymize_image(alphabets[task[0][0]][task[0][2]][task[0][1]], from_path=FROM_PATH),
@@ -213,18 +221,21 @@ def create_first_task(form, reset=False, verbose=False):
     rtn = {}
 
     for key in passOnValues:
-      rtn[key] = form.getfirst(key, passOnValues[key])
-      if isinstance(rtn[key], str) and any(sign_char in rtn[key] for sign_char in PLUS_MINUS_STRINGS):
-        for sign_char in PLUS_MINUS_STRINGS:
-            rtn[key] = rtn[key].replace(sign_char, PLUS_MINUS_CHAR)
-        rtn[key] = rtn[key].split(PLUS_MINUS_CHAR)
-        rtn[key] = list(map(int, rtn[key]))
-      elif isinstance(rtn[key], (tuple, list)):
-        rtn[key] = list(map(int, rtn[key]))
-      else:
-        rtn[key] = [int(rtn[key])]
-      if len(rtn[key]) < 2:
-        rtn[key].append(0)
+        if isinstance(passOnValues[key], bool): rtn[key] = get_boolean_value(form, key, default=passOnValues[key])
+        else: rtn[key] = form.getfirst(key, passOnValues[key])
+        if isinstance(rtn[key], str) and any(sign_char in rtn[key] for sign_char in PLUS_MINUS_STRINGS):
+            for sign_char in PLUS_MINUS_STRINGS:
+                rtn[key] = rtn[key].replace(sign_char, PLUS_MINUS_CHAR)
+            rtn[key] = rtn[key].split(PLUS_MINUS_CHAR)
+            rtn[key] = list(map(int, rtn[key]))
+        elif isinstance(rtn[key], (tuple, list)):
+            rtn[key] = list(map(int, rtn[key]))
+        elif isinstance(rtn[key], bool):
+            pass
+        else:
+            rtn[key] = [int(rtn[key])]
+        if isinstance(rtn[key], list) and len(rtn[key]) < 2:
+            rtn[key].append(0)
 
     tasks = [(example, test, urllib.parse.urljoin(BASE_URL, random.choice(_STROKE_NOISES)), correct_answer) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
              for example, test, correct_answer in tasks]

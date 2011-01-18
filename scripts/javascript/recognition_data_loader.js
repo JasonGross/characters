@@ -33,7 +33,7 @@ var makeTask;
   var allUrlParameters = ['numberOfAlphabets', 'exampleCharactersPerAlphabet', 'sameTestCharactersPerAlphabet',
                           'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll',
                           'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 
-                          'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup'];
+                          'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup', 'displayProgressBarDuringTask'];
   var hiddenInputs;
 
   var makeTaskData;
@@ -60,6 +60,8 @@ var makeTask;
     taskCorrectText = $('#task-progress-message-num-tasks-correct');
     taskIncorrectText = $('#task-progress-message-num-tasks-incorrect');
     taskScoredText = $('#task-progress-message-num-tasks-known');
+
+    breakDiv = $('.task-break').hide();
 
     var ellipsis = $('<span>').append('..');
     var count = 2;
@@ -123,6 +125,22 @@ var makeTask;
 
     makeTaskData = data;
     startExampleTask();
+
+    if (data['pauseToGroup'][0] < 0) {
+      breakDiv.append($('<p>').html('You have completed a group of tasks.  You may take a short break and see your progress, below.  When you are ready to move on, click ')
+          .append($('<input>')
+            .attr('type', 'submit')
+            .attr('name', 'finish_break')
+            .attr('id', 'finish_break')
+            .attr('value', 'here')
+            .click(function (ev) { breakDiv.afterBreak(); }))
+          .append('.'));
+    } else {
+      breakDiv.append($('<p>').html('You have completed a group of tasks.  You may take a short break of about ' +
+            data['pauseToGroup'][0] + ' milliseconds and see your progress below.'));
+    }
+
+    $('#num-trials').html(totalTasks);
     
     jQuery.each(imagePairs, function (index, imagePair) {
       firstTask = makeTask(totalTasks - index - 1, imagePair[0], imagePair[1], imagePair[2], imagePair[3], firstTask, data, numRightWrong);
@@ -133,13 +151,32 @@ var makeTask;
         taskCorrectProgressBar.height(taskActualProgressBar.height());
         taskIncorrectProgressBar.height(taskActualProgressBar.height());
         taskOverlayProgressBar.height(taskActualProgressBar.height());
+        if (!data['displayProgressBarDuringTask'])
+          taskProgress.hide();
         doFirstTask();
       };
     })(firstTask['do-task']);
   }
 
-  function makeBreak(breakTime, afterBreak) {
-    window.setTimeout(afterBreak, breakTime);
+  function makeBreak(breakTime, afterBreak, data, tasksProgress, breakDiv) {
+    if (!data['displayProgressBarDuringTask']) {
+      tasksProgress.show();
+      var oldAfterBreak = afterBreak;
+      afterBreak = function () {
+        tasksProgress.hide();
+        oldAfterBreak();
+      };
+    }
+    if (breakDiv !== undefined) {
+      breakDiv.afterBreak = function () {
+        breakDiv.afterBreak = undefined;
+        breakDiv.hide();
+        afterBreak();
+      };
+      breakDiv.show();
+    }
+    if (breakTime >= 0)
+      window.setTimeout(afterBreak, breakTime);
   }
 
   function updateProgress(numRight, numWrong) {
@@ -228,6 +265,17 @@ var makeTask;
       ).append(
         'No, they are different.'
       );
+
+    var questionDidNotSeeButton;
+    var questionDidNotSeeHolder = $('<div>').append(
+        questionDidNotSeeButton = $('<button>')
+          .attr('type', 'button')
+          .attr('value', 'I did not see the test image.'));
+    var questionDidNotSeeUseCount = $('<input>')
+      .attr('type', 'hidden')
+      .attr('value', 0)
+      .attr('id', 'task-' + index + '-did_not_see-count')
+      .attr('name', 'task-' + index + '-did_not_see-count');
       
     var questionDurationInput = $('<input>')
         .attr('type', 'hidden')
@@ -263,7 +311,7 @@ var makeTask;
         .attr('name', 'task-' + index + '-time-of-' + name);
       questionFields.append(questionTimes[name]);
     });
-    questionFields.append(questionDurationInput).append(questionIsCorrectInput).append(questionExampleURLInput).append(questionTestURLInput);
+    questionFields.append(questionDurationInput).append(questionIsCorrectInput).append(questionExampleURLInput).append(questionTestURLInput).append(questionDidNotSeeUseCount);
       
     var exampleImageHolder = $('<div>')
       .addClass('example-image-holder');
@@ -289,6 +337,15 @@ var makeTask;
       else
         timeOuts[name] = timeOuts[name][0];
     });
+
+    var didNotSee = function () {
+    };
+
+    questionDidNotSeeButton.click(didNotSee);
+
+    var redoTask = function () {
+    };
+
 
     var doneTask = function () {
       endTime = dateUTC(new Date());
@@ -325,7 +382,7 @@ var makeTask;
         if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong']) % data['tasksPerFeedbackGroup'][0] == 0)
           updateProgress(numRightWrong['right'], numRightWrong['wrong']);
         if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong']) % data['tasksPerWaitGroup'][0] == 0)
-          makeBreak(timeOuts['pauseToGroup'], doNextTaskNow);
+          makeBreak(timeOuts['pauseToGroup'], doNextTaskNow, data, taskProgress, breakDiv);
         else
           doNextTaskNow();
       }

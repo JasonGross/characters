@@ -8,6 +8,7 @@ import sys
 import glob
 from alphabetspaths import *
 import alphabetsutil
+from matlabutil import format_for_matlab
 
 os.chdir(RESULTS_PATH)
 
@@ -348,16 +349,6 @@ end
     with open(file_name, 'w') as f:
         f.write(''.join(rtn))
 
-def format_for_matlab(object_):
-    if object_ is None:
-        return 'NaN'
-    if isinstance(object_, int):
-        return 'int32(' + str(object_) + ')'
-    if isinstance(object_, str):
-        return "'" + object_.replace("'", "''").replace('\n', '\\n') + "'"
-    if isinstance(object_, list):
-        return '{' + ', '.join(map(format_for_matlab, object_)) + '}'
-    return str(object_)
     
 ##matlab_file = [matlab_header]
 ##

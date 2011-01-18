@@ -4,6 +4,7 @@ from __future__ import with_statement
 import os, re
 import sys
 from alphabetspaths import *
+from matlabutil import format_for_matlab
 
 
 def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH):
@@ -92,7 +93,30 @@ Long Summary:
         rtn.append('the same in %(duration)d ms.\n' % response)
     rtn.append('\nDuration: %s' % properties['duration'].replace('0y 0d ', '').replace('0h ', ''))
     return ''.join(rtn)
-            
+
+def _make_matlab(properties, uid,
+                 not_use=('^ipAddress',
+                          '^annotation', '^assignmentaccepttime', '^assignmentapprovaltime',
+                          '^assignmentduration', '^assignmentrejecttime', '^assignments',
+                          '^assignmentstatus', '^assignmentsubmittime', '^autoapprovaldelay',
+                          '^autoapprovaltime', '^creationtime', '^deadline', '^description',
+                          '^hitlifetime', '^hitstatus', '^hittypeid', '^keywords',
+                          '^numavailable', '^numcomplete', '^numpending', '^reviewstatus',
+                          '^reward', '^title', '^hitid', '^assignmentid'),
+                 quiet=True):
+    rtn = []
+    uid = uid.replace('-', 'm')
+    def can_use(key):
+        for bad_key in not_use:
+            if re.match(bad_key, key):
+                return False
+        return True
+    for key in sorted(properties.keys()):
+        if can_use(key):
+            rtn.append('results.for_%s.%s = %s;' % (uid, key, format_for_matlab(properties[key])))
+    return '\n'.join(rtn)
+    
+
 def _put_summary(folder, properties, file_name, quiet=True):
     push_dir(folder)
     summary = _make_summary(properties)
@@ -102,7 +126,14 @@ def _put_summary(folder, properties, file_name, quiet=True):
         f.write(summary)
     pop_dir()
     
-    
+def _put_matlab(folder, properties, file_name, quiet=True):
+    push_dir(folder)
+    matlab = _make_matlab(properties, uid, quiet=quiet)
+    if not quiet and os.path.exists(file_name):
+        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
+    with open(file_name, 'w') as f:
+        f.write(matlab)
+    pop_dir()
     
 
 def _put_properties(folder, properties, file_name,
@@ -143,10 +174,13 @@ def make_uid(form_dict):
     else:
         return str(hash(form_dict['ipAddress']))
 
-def _make_file_name(uid, summary=False):
+def _make_file_name(uid, summary=False, matlab=False):
     if summary:
         return uid.replace('-', 'm') + '_summary.txt'
-    return uid.replace('-', 'm') + '_results.txt'
+    elif matlab:
+        return uid.replace('-', 'm') + '_matlab.m'
+    else:
+        return uid.replace('-', 'm') + '_results.txt'
 
 def record_submission(form_dict, many_dirs=True, path=RECOGNITION_UNREVIEWED_PATH,
                       verbose=True, pseudo=False, quiet=True):
@@ -160,6 +194,8 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_UNREVIEWED_PAT
     if not pseudo:
         if verbose: print('Done<br>Summarizing your responses...')
         _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
+        if verbose: print('Done<br>Making a matlab file for your responses...')
+        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), quiet=quiet)
     if many_dirs:
         _log_success(path)
     if verbose: print('Done<br>You may now leave this page.<br>')

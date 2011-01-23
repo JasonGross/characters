@@ -33,7 +33,8 @@ var makeTask;
   var allUrlParameters = ['numberOfAlphabets', 'exampleCharactersPerAlphabet', 'sameTestCharactersPerAlphabet',
                           'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll',
                           'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 
-                          'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup', 'displayProgressBarDuringTask'];
+                          'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup', 'displayProgressBarDuringTask',
+                          'random', 'characterSet', 'trialsPerExperiment', 'percentSame'];
   var hiddenInputs;
 
   var makeTaskData;
@@ -85,6 +86,16 @@ var makeTask;
   });
   
   function loadImages(data) {
+    if (data['pauseToNoise'] !== undefined) {
+      if (data['pauseToNoise'] > 0) {
+        $('.show-if-not-timed').hide();
+        $('.show-if-timed').show();
+      } else {
+        $('.show-if-timed').hide();
+        $('.show-if-not-timed').show();
+      }
+    }
+    
     imagePairs = data['tasks'];
     totalTasks = imagePairs.length;
     var totalImages = totalTasks * 3;
@@ -243,7 +254,7 @@ var makeTask;
       .append('Test Image');
     var questionFields = $('<fieldset>');
     var questionLegend = $('<legend>').append('Are these images examples of the same character?');
-    var questionTrueInputYes, questionTrueInputNo;
+    var questionTrueInputYes, questionTrueInputNo, questionTrueInputDidNotSee;
     var questionInputYes = $('<label>').append(
       questionTrueInputYes = $('<input>')
         .attr('type', 'radio')
@@ -265,7 +276,7 @@ var makeTask;
       ).append(
         'No, they are different.'
       );
-    var questioInputDidNotSee = $('<label>').append(
+    var questionInputDidNotSee = $('<label>').append(
         questionTrueInputDidNotSee = $('<input>')
           .attr('type', 'radio')
           .attr('name', 'task-' + index + '_question')
@@ -331,14 +342,6 @@ var makeTask;
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
    
-    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo).append($('<br>'))
-      .append(questionInputDidNotSee).append(questionDurationInput);
-    question.append(questionFields);
-    taskFieldSet.append(example).append(test).append(question);
-    task.append(taskFieldSet);
-    
-    localTasksContainer.append(task);
-
     var timeOuts = {};
     jQuery.each(['pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup'],
                 function (index, name) {
@@ -348,6 +351,17 @@ var makeTask;
       else
         timeOuts[name] = timeOuts[name][0];
     });
+
+    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo).append(questionDurationInput);
+    if (timeOuts['pauseToNoise'] > 0)
+      questionFields.append($('<br>')).append(questionInputDidNotSee).append(questionDurationInput);
+    
+    question.append(questionFields);
+    taskFieldSet.append(example).append(test).append(question);
+    task.append(taskFieldSet);
+
+    localTasksContainer.append(task);
+
 
     var didNotSee = function () {
     };
@@ -366,9 +380,10 @@ var makeTask;
         questionIsCorrectInput.attr('value', 'Did Not See');
       else
         questionIsCorrectInput.attr('value', areSameCharacter == questionTrueInputYes.attr('checked'));
-      if (areSameCharacter == questionTrueInputYes.attr('checked'))
+      if ((areSameCharacter && questionTrueInputYes.attr('checked')) || 
+          (!areSameCharacter && questionTrueInputNo.attr('checked')))
         numRightWrong['right']++;
-      else if (!areSameCharacter == questionTrueInputNo.attr('checked')
+      else if (questionTrueInputYes.attr('checked') || questionTrueInputNo.attr('checked'))
         numRightWrong['wrong']++;
       else
         numRightWrong['did not see']++;
@@ -398,7 +413,7 @@ var makeTask;
         };
         if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong'] + numRightWrong['did not see']) % data['tasksPerFeedbackGroup'][0] == 0)
           updateProgress(numRightWrong['right'], numRightWrong['wrong'], numRightWrong['did not see']);
-        if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong'], numRightWrong['did not see']) % data['tasksPerWaitGroup'][0] == 0)
+        if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong'] + numRightWrong['did not see']) % data['tasksPerWaitGroup'][0] == 0)
           makeBreak(timeOuts['pauseToGroup'], doNextTaskNow, data, taskProgress, breakDiv);
         else
           doNextTaskNow();

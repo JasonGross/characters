@@ -1,14 +1,15 @@
 #!/usr/bin/python
 # Filename: characters.py
 from __future__ import with_statement
-import cgi#, cgitb
-#cgitb.enable(format='nohtml')
+import cgi, cgitb
+cgitb.enable(format='nohtml')
 import os, sys, json, subprocess, tempfile, shutil, random, urllib, random
 import argparse
 try:
   import urllib.parse
 except ImportError:
   pass
+from cgiutil import get_boolean_value, get_list_of_values, is_nested_type
 from alphabetspaths import *
 import alphabetspopularity
 from alphabetsutil import png_to_uri
@@ -22,54 +23,6 @@ PLUS_MINUS_CHAR = '\u00B1'
 PLUS_MINUS_STRINGS = ('+-', '-+', '+', '-', PLUS_MINUS_CHAR)
 
 images = None
-
-def get_boolean_value(form, true_keys, false_keys=None, default=None, true_options=(True,'true','1',1,'','yes','on','y','t'),
-                      false_options=(False,'false','0',0,'','no','off','n','f'),
-                      if_both=None, if_neither=None, aggregate_true_keys=any, aggregate_false_keys=any):
-    if isinstance(true_keys, str): true_keys = [true_keys]
-    if isinstance(false_keys, str): false_keys = [true_keys]
-    if true_keys is None: true_keys = []
-    if false_keys is None: false_keys = []
-    if if_both is None: if_both = (lambda:default)
-    if if_neither is None: if_neither = (lambda:default)
-    true_value = aggregate_true_keys(true_key in form and aggregate_true_keys(value in true_options for value in form.getlist(true_key)) for true_key in true_keys)
-    false_value = aggregate_false_keys(false_key in form and aggregate_false_keys(value in false_options for value in form.getlist(false_key)) for false_key in false_keys)
-    if true_value and false_value: return if_both()
-    elif not true_value and not false_value: return if_neither()
-    else: return true_value and not false_value
-
-def get_list_of_values(form, keys):
-    if isinstance(keys, str): keys = [keys]
-    rtn = []
-    for key in keys:
-        for cur_value in form.getlist(key):
-            if not cur_value:
-                rtn.append('')
-            else:
-                cur_value = json.loads(cur_value)
-                try:
-                    rtn += cur_value
-                except TypeError:
-                    rtn.append(cur_value)
-    return rtn
-
-def is_nested_type(obj, *types):
-    if not types: return True
-    first, rest = types[0], types[1:]
-    try:
-        for type_tree in first:
-            try:
-                if is_nested_type(obj, *type_tree):
-                    return True
-            except TypeError:
-                if is_instance(obj, type_tree):
-                    return True
-            return False
-    except TypeError:
-        if isinstance(obj, first):
-            return is_nested_type(obj, *rest)
-        else:
-            return False
 
 
 def make_task(most_popular_number=6, min_characters=20, same_character_distractors_count=5, same_alphabet_distractors_count=5,
@@ -193,24 +146,32 @@ def get_a_task(task_group_index, reset=False, verbose=False, reset_database=Fals
     tasks = get_object('recognition-tasks', (lambda *args, **kargs: make_task(*args, random=_random, verbose=verbose, **kargs)), is_old=is_old)[task_group_index]
     return tasks[sequencer.pop('recognition_characters_%d' % task_group_index, reset_sequence=reset,
                                reset_database=reset_database, reset_on_run_out=reset_on_run_out, length=len(tasks))]
-    
+
+
 
 _STROKE_NOISES = get_stroke_noises(from_path=BASE_PATH)
 
 def create_first_task(form, reset=False, verbose=False):
     if 'taskGroupIndex' in form.keys(): task_group_index = int(form.getfirst('taskGroupIndex'))
     else: task_group_index = 0
-    tasks = get_a_task(task_group_index, reset=reset, verbose=verbose)
-    passOnValues = {'pauseToFirstHint':500,
-                    'pauseToSecondHint':500,
-                    'pauseToExample':1000,
-                    'pauseToNoise':100,
-                    'pauseToTest':1000,
-                    'tasksPerFeedbackGroup':10,
-                    'tasksPerWaitGroup':10,
-                    'pauseToGroup':-1,
+    if get_boolean_value(form, 'random'):
+        tasks = make_get_random_task(form, verbose=verbose)
+    else:
+        tasks = get_a_task(task_group_index, reset=reset, verbose=verbose)
+    passOnValues = {'pauseToFirstHint':[500],
+                    'pauseToSecondHint':[500],
+                    'pauseToExample':[1000],
+                    'pauseToNoise':[100],
+                    'pauseToTest':[1000],
+                    'tasksPerFeedbackGroup':[10],
+                    'tasksPerWaitGroup':[10],
+                    'pauseToGroup':[-1],
                     'displayProgressBarDuringTask':False,
-                    'allowDidNotSeeCount':1
+                    'allowDidNotSeeCount':[1],
+                    'random':False,
+                    'characterSet':None,
+                    'trialsPerExperiment':200,
+                    'fractionSame':0.25
                     }
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
     tasks = [(anonymize_image(alphabets[task[0][0]][task[0][2]][task[0][1]], from_path=FROM_PATH),
@@ -232,8 +193,12 @@ def create_first_task(form, reset=False, verbose=False):
             rtn[key] = list(map(int, rtn[key]))
         elif isinstance(rtn[key], bool):
             pass
-        else:
+        elif isinstance(passOnValues[key], (list, tuple)):
             rtn[key] = [int(rtn[key])]
+        elif isinstance(passOnValues[key], int):
+            rtn[key] = int(rtn[key])
+        else:
+            rtn[key] = float(rtn[key])
         if isinstance(rtn[key], list) and len(rtn[key]) < 2:
             rtn[key].append(0)
 
@@ -242,56 +207,6 @@ def create_first_task(form, reset=False, verbose=False):
     rtn['tasks'] = tasks
     return rtn
 
-def construct_character_set(form, reset=False, verbose=False, help=False):
-    if get_boolean_value(form, 'help') or help:
-        print('Content-type: text/html\n')
-        print("""<p>You may any of the following permissible url parameters:</p>
-<ul>
-  <li>
-    <b>characters</b> - A list of characters that must be used, in the form [<em>alphabet</em>, <em>number</em>], where <em>number</em> is a 
-    one-based index.  For example, <tt>?constructCharacterSet&amp;characters=[["latin", 1], ["latin", 2], ["greek", 10]]</tt>.  
-    <span style="color:red"><strong>Note that the quotes (") are mandatory.</strong></span>
-  </li>
-  <li>
-    <b>alphabets</b> - A list of alphabets from which to draw the characters.  For example, 
-    <tt>?constructCharacterSet&amp;alphabets=["latin", "greek", "hebrew"]</tt>.  Does not work well with <b>nonAlphabets</b>.
-    <span style="color:red"><strong>Note that the quotes (") are mandatory.</strong></span>
-  </li>
-  <li>
-    <b>nonAlphabets</b> - A list of alphabets from which characters may not be drawn.  For example, 
-    <tt>?constructCharacterSet&amp;nonAlphabets=["latin", "greek", "hebrew"]</tt>.  Does not work well with <b>alphabets</b>.
-    <span style="color:red"><strong>Note that the quotes (") are mandatory.</strong></span>
-  </li>
-  <li><b>totalCharacters</b> - the total number of characters to draw. </li>
-  <li><b>alias</b> - the name of the structure.  If you do not choose an alias, you will be given a hash code. </li>
-  <li><b>overwrite</b> - whether or not an already existent character set should be overwritten.  Either <tt>true</tt> or <tt>false</tt>.
-</ul>""")
-        return False
-    try:
-        characters = get_list_of_values(form, 'characters')
-        alphabets = get_list_of_values(form, 'alphabets')
-        non_alphabets = get_list_of_values(form, 'nonAlphabets')
-        totalCharacters = int(form.getfirst('totalCharacters', -1))
-        alias = form.getfirst('alias', None)
-        overwrite = get_boolean_value(form, 'overwrite', default=(alias is None)) 
-        if characters:
-            rtn = characters
-        elif alphabets:
-            rtn = alphabets
-        elif nonAlphabets:
-            rtn = [alphabet for alphabet in get_accepted_image_list() 
-                   if alphabet not in nonAlphabets and alphabet.lower() not in nonAlphabets]
-        else:
-            raise Exception("Insufficient parameters for decision")
-        rtn.sort()
-        if not alias:
-            alias = str(hash(rtn))
-    except Exception:
-        construct_character_set(help=True)
-        raise
-    if rtn != get_object('recognition-tasks_character-set_%s' % alias, (lambda: rtn), is_old=(lambda x: overwrite)):
-        raise Exception('Structure with given alias (%s) already exists.  Pick a new alias.' % alias)
-    return {'alias':alias}
 
 
 
@@ -337,10 +252,7 @@ def main():
     form = cgi.FieldStorage()
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
     args = parser.parse_args()
-    if get_boolean_value(form, 'constructCharacterSet'):
-        rtn = construct_character_set(form, verbose=args.verbose)
-    else:
-        rtn = create_first_task(form, reset=args.reset, verbose=args.verbose)
+    rtn = create_first_task(form, reset=args.reset, verbose=args.verbose)
 #    rtn = create_first_task(form)
     print('Content-type: text/json\n')
     print(json.dumps(rtn))
@@ -350,7 +262,6 @@ parser.add_argument('--reset', '-r', action='store_true',
                     help='recreate the tasks from scratch and reset the database')
 parser.add_argument('--verbose', '-v', action='store_true',
                     help='print status on recreating tasks')
-
 if __name__ == '__main__':
     main()
         

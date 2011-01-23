@@ -89,23 +89,42 @@
   <div class="pre-task">
     <div id="instructions">
       <h3>Instructions</h3>
+      <p>You must use the Mozilla Firefox web browser.</p>
+      <p>This HIT consists of many subtasks, and you must complete every subtask to submit the form.</p>
       <p>
-        This task consists of many subtasks.  In each subtask, you will be shown an image of a hand-drawn character
-        for a fraction of a second, after which it will disappear.  Then you will be shown an image of another hand-drawn
-        charater in the right box.  You must decide whether or not these images are drawings of the same character.
-      </p>      
-      <p>
-        More precisely, each subtask consists of the following:
-        <ol>
-          <li> A red border will flash once around the box that will contain the first image.
-          <li> About half a second later, the first image will appear.
-          <li> Less than half a second later, the image will disappear.
-          <li> About a second later, the second image will appear in the right box, and will not disappear until you answer the question.
-          <li> Every few characters, the progress bar on the bottom will be updated to show how many you've gotten right, and how many you've gotten wrong.
-        </ol>
+        This task tests your ability to discriminate handwritten characters from writing systems around the world. For example in
+        the Latin alphabet A, B, C, and D are different characters.  In each subtask, you will see pairs of character images, and 
+        no two images are exactly the same. If you think the two images contain the same character (for example, two different people
+        writing the letter B), then mark "Yes, they are the same." If they contain different characters (for example, B and D), mark 
+        "No, they are different." The exact characters you will see should be new to you, so make your best guess.
       </p>
-      <p></p>
-      Please note:
+      <p>
+        You will see a sequence of <span id="num-trials" class="num-trials">200</span> subtasks each requiring a response.
+        Each subtask has the following structure:
+      </p>
+      <div class="show-if-timed">
+        <ol>
+          <li>A red square appears in the left box "Example Image" to cue your attention.</li>
+          <li>Shortly after the cue, an example character is quickly flashed in that red square.</li>
+          <li>After the flash, the character disappears and is replaced by a nonsense scribble image.</li>
+          <li>Then a test character appears in the "Test Image" box to the right.</li>
+          <li>Indicate whether the example character and test character are the same or different.</li>
+        </ol>
+        <p>
+          After every few characters, a progress bar appears to show you your accuracy so far. If you fail to see the example
+          character before it disappears, you may click "I did not see the example character."
+        </p>
+      </div>
+      <div class="show-if-untimed">
+        <ol>
+          <li>A red square appears in the left box "Example Image" to cue your attention.</li>
+          <li>Shortly after the cue, an example character appears in that red square.</li>
+          <li>Then a test character appears in the "Test Image" box to the right.</li>
+          <li>Indicate whether the example character and test character are the same or different.</li>
+        </ol>
+        <p>After every few characters, a progress bar appears to show you your accuracy so far.</p>
+      </div>
+      <p>Please note:</p>
       <ul>
         <li>
           You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
@@ -115,21 +134,6 @@
         </li>
         <li class="show-if-turk">So long as you complete every subtask, and you make an effort to answer the questions correctly, your submission will be accepted regardless of how many you get correct.</li>
       </ul>
-      <h3>Alternate Instructions (Brenden)</h3>
-      <p>
-        This experiment tests your ability to discriminate handwritten characters from writing systems around the world.
-        For example in the Latin alphabet A, B, C, and D are different characters. You will see pairs of character images,
-        and no two images are exactly the same. If you think the two images contain the same character (e.g., two different
-        people writing the letter B), then mark "Same." If they contain different characters (B and D), mark "Different."
-        The exact characters you will see should be new to you, so make your best guess.
-      </p>
-      <p>
-        You will see a sequence of <span id="num-trials" class="num-trials">200</span> trials each requiring a response. 
-        During a trial, a red square appears in the left box
-        "Example Image" to cue your attention. Shortly after the cue, an example character is quickly flashed in that box.
-        After the flash, it is masked by a nonsense image. Then a test character appears in the "Test Image" box to the right.
-        Your job is to indicate whether the example character and test character are the same or different.
-      </p>
     </div>
     <div id="example-task">
       <div class="mouse-cursor" id="example-mouse-cursor-holder" name="example-mouse-cursor-holder"><img src="http://scripts.mit.edu/~jgross/alphabets/images/mouse-cursor-icon.png" class="mouse-cursor" alt="&#8598;" id="example-mouse-cursor" name="example-mouse-cursor" /></div>
@@ -267,6 +271,15 @@
                value="Submit" /></p>
     </form>
   </div>
+
+  <script id="choose-instructions" type="text/javascript">
+    //<![CDATA[
+    if (urlParameters.getURLParameters('pauseToNoise')['pauseToNoise'] <= 0)
+      $('.show-if-timed').hide();
+    else
+      $('.show-if-not-timed').hide();
+    //]]>
+  </script>
 
   <script type="text/javascript">
     //<![CDATA[

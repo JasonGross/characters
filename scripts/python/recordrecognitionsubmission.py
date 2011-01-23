@@ -113,7 +113,7 @@ def _make_matlab(properties, uid,
         return True
     for key in sorted(properties.keys()):
         if can_use(key):
-            rtn.append('results.for_%s.%s = %s;' % (uid, key, format_for_matlab(properties[key])))
+            rtn.append('results.for_%s.%s = %s;' % (uid, key.replace('-', '_'), format_for_matlab(properties[key])))
     return '\n'.join(rtn)
     
 

@@ -115,10 +115,10 @@ var makeTask;
       });
     });
 
-    var numRightWrong = {'right':0, 'wrong':0};
+    var numRightWrong = {'right':0, 'wrong':0, 'did not see':0};
 
     firstTask = {'do-task': function () {
-        updateProgress(numRightWrong['right'], numRightWrong['wrong']);
+        updateProgress(numRightWrong['right'], numRightWrong['wrong'], numRightWrong['did not see']);
         $('.tasks').hide();
         $('.post-task').show();
       }};
@@ -179,12 +179,12 @@ var makeTask;
       window.setTimeout(afterBreak, breakTime);
   }
 
-  function updateProgress(numRight, numWrong) {
+  function updateProgress(numRight, numWrong, numDidNotSee) {
     taskCorrectProgressBar.width(numRight * 100.0 / totalTasks + '%');
     taskIncorrectProgressBar.width(numWrong * 100.0 / totalTasks + '%');
     taskCorrectText.html(numRight);
     taskIncorrectText.html(numWrong);
-    taskScoredText.html(numRight + numWrong);
+    taskScoredText.html(numRight + numWrong + numDidNotSee);
   }
 
   
@@ -265,6 +265,16 @@ var makeTask;
       ).append(
         'No, they are different.'
       );
+    var questioInputDidNotSee = $('<label>').append(
+        questionTrueInputDidNotSee = $('<input>')
+          .attr('type', 'radio')
+          .attr('name', 'task-' + index + '_question')
+          .attr('id', 'task-' + index + '_question-did_not_see')
+          .attr('value', 1)
+          .attr('disabled', 'disabled')
+        ).append(
+          'I did not see the example character.'
+        );
 
     var questionDidNotSeeButton;
     var questionDidNotSeeHolder = $('<div>').append(
@@ -321,7 +331,8 @@ var makeTask;
     example.append(exampleHeader).append(exampleImageHolder);    
     test.append(testHeader).append(testImageHolder);
    
-    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo).append(questionDurationInput);
+    questionFields.append(questionLegend).append(questionInputYes).append($('<br>')).append(questionInputNo).append($('<br>'))
+      .append(questionInputDidNotSee).append(questionDurationInput);
     question.append(questionFields);
     taskFieldSet.append(example).append(test).append(question);
     task.append(taskFieldSet);
@@ -351,17 +362,23 @@ var makeTask;
       endTime = dateUTC(new Date());
       questionDurationInput.attr('value', endTime - startTime);
       questionTimes['doneTask'].attr('value', endTime);
-      questionIsCorrectInput.attr('value', areSameCharacter == questionTrueInputYes.attr('checked'));
+      if (questionTrueInputDidNotSee.attr('checked'))
+        questionIsCorrectInput.attr('value', 'Did Not See');
+      else
+        questionIsCorrectInput.attr('value', areSameCharacter == questionTrueInputYes.attr('checked'));
       if (areSameCharacter == questionTrueInputYes.attr('checked'))
         numRightWrong['right']++;
-      else
+      else if (!areSameCharacter == questionTrueInputNo.attr('checked')
         numRightWrong['wrong']++;
+      else
+        numRightWrong['did not see']++;
       if (doRepeat) {
         testImage.hide();
         noiseImage.hide();
         exampleImage.hide();
         questionTrueInputYes.attr('checked', '');
         questionTrueInputNo.attr('checked', '');
+        questionTrueInputDidNotSee.attr('checked', '')
         question.hide();
         exampleImageHolder.removeClass('example-holder-done');
         example.css({'opacity':0, 'filter':'alpha(opacity=0)', '-moz-opacity':0});
@@ -372,16 +389,16 @@ var makeTask;
         task.hide()
       }
       if (taskProgressBar !== null)
-        taskProgressBar.progressbar('option', 'value', 100 * (numRightWrong['right'] + numRightWrong['wrong']) / totalTasks);
+        taskProgressBar.progressbar('option', 'value', 100 * (numRightWrong['right'] + numRightWrong['wrong'] + numRightWrong['did not see']) / totalTasks);
       if (nextTask !== null) {
         var doNextTaskNow = function () {
             if ('dom-element' in nextTask && nextTask['dom-element'] !== null)
               task.parent().append(nextTask['dom-element']);
             nextTask['do-task']();
         };
-        if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong']) % data['tasksPerFeedbackGroup'][0] == 0)
-          updateProgress(numRightWrong['right'], numRightWrong['wrong']);
-        if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong']) % data['tasksPerWaitGroup'][0] == 0)
+        if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong'] + numRightWrong['did not see']) % data['tasksPerFeedbackGroup'][0] == 0)
+          updateProgress(numRightWrong['right'], numRightWrong['wrong'], numRightWrong['did not see']);
+        if (doGlobalUpdates && (numRightWrong['right'] + numRightWrong['wrong'], numRightWrong['did not see']) % data['tasksPerWaitGroup'][0] == 0)
           makeBreak(timeOuts['pauseToGroup'], doNextTaskNow, data, taskProgress, breakDiv);
         else
           doNextTaskNow();
@@ -450,7 +467,7 @@ var makeTask;
       question.show();
       questionTimes['showTest'].attr('value', dateUTC(new Date()));
       startTime = dateUTC(new Date());
-      jQuery.each([questionInputYes, questionInputNo], function (index, input) {
+      jQuery.each([questionInputYes, questionInputNo, questionInputDidNotSee], function (index, input) {
         input.children().attr('disabled', '')
           .one('change', function () {
             //console.log(this);
@@ -463,7 +480,7 @@ var makeTask;
     
     
 
-    return {'dom-element':task, 'do-task':doTask, 'questionInputYes':questionTrueInputYes, 'questionInputNo':questionTrueInputNo};
+    return {'dom-element':task, 'do-task':doTask, 'questionInputYes':questionTrueInputYes, 'questionInputNo':questionTrueInputNo, 'questionInputDidNotSee':questionTrueInputDidNotSee};
   }
 
   function saveUrlParameters(data) {

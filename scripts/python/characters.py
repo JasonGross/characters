@@ -148,16 +148,48 @@ def get_a_task(task_group_index, reset=False, verbose=False, reset_database=Fals
                                reset_database=reset_database, reset_on_run_out=reset_on_run_out, length=len(tasks))]
 
 
+def make_get_random_task(form, defaults, verbose=False, _random=None):
+    if _random is None: _random = random.Random()
+    alias = form.getfirst('characterSet')
+    def bad_alias():
+        raise Exception("Character set with the given name does not exist.  Run construct-character-set.py to create it.")
+    list_of_stuff = get_object('recognition-tasks_character-set_%s' % alias, bad_alias)
+
+    if verbose: print('Getting list of alphabets...')
+    alphabets_dict = get_accepted_image_list()
+    trialCount = int(form.getfirst('trialsPerExperiment', default=defaults['trialsPerExperiment']))
+    rtn = []
+    if isinstance(list_of_stuff[0], str): 
+        alphabets = list_of_stuff
+        for trial_num in range(trialCount):
+            test = None
+            while test is None:
+                alphabet1, alphabet2 = random.choice(alphabets), random.choice(alphabets)
+                uid1, uid2 = random.choice(alphabets_dict[alphabet1].keys()), random.choice(alphabets_dict[alphabet2].keys())
+                ch_num1, ch_num2 = random.randint(len(alphabets_dict[alphabet1][uid1])), random.randint(len(alphabets_dict[alphabet2][uid2]))
+                test = [(alphabet1, ch_num1, uid1), (alphabet2, ch_num2, uid2)]
+                if test[0] == test[1]: test = None
+            rtn.append(test)
+    else: 
+        characters = list_of_stuff
+        for trial_num in range(trialCount):
+            test = None
+            while test is None:
+                (alphabet1, ch_num1), (alphabet2, ch_num2) = random.choice(characters), random.choice(characters)
+                uid1, uid2 = random.choice(alphabets_dict[alphabet1].keys()), random.choice(alphabets_dict[alphabet2].keys())
+                test = [(alphabet1, ch_num1, uid1), (alphabet2, ch_num2, uid2)]
+                if test[0] == test[1]: test = None
+            rtn.append(test)
+    return rtn
+
+
+
 
 _STROKE_NOISES = get_stroke_noises(from_path=BASE_PATH)
 
 def create_first_task(form, reset=False, verbose=False):
     if 'taskGroupIndex' in form.keys(): task_group_index = int(form.getfirst('taskGroupIndex'))
     else: task_group_index = 0
-    if get_boolean_value(form, 'random'):
-        tasks = make_get_random_task(form, verbose=verbose)
-    else:
-        tasks = get_a_task(task_group_index, reset=reset, verbose=verbose)
     passOnValues = {'pauseToFirstHint':[500],
                     'pauseToSecondHint':[500],
                     'pauseToExample':[1000],
@@ -173,6 +205,10 @@ def create_first_task(form, reset=False, verbose=False):
                     'trialsPerExperiment':200,
                     'fractionSame':0.25
                     }
+    if get_boolean_value(form, 'random'):
+        tasks = make_get_random_task(form, passOnValues, verbose=verbose)
+    else:
+        tasks = get_a_task(task_group_index, reset=reset, verbose=verbose)
     alphabets = get_accepted_image_list(from_path=FROM_PATH)
     tasks = [(anonymize_image(alphabets[task[0][0]][task[0][2]][task[0][1]], from_path=FROM_PATH),
               anonymize_image(alphabets[task[1][0]][task[1][2]][task[1][1]], from_path=FROM_PATH),

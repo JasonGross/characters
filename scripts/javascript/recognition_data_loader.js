@@ -34,7 +34,7 @@ var makeTask;
                           'differentTestCharactersPerAlphabet', 'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll',
                           'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise', 'pauseToTest', 
                           'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 'pauseToGroup', 'displayProgressBarDuringTask',
-                          'random', 'characterSet', 'trialsPerExperiment', 'percentSame'];
+                          'random', 'characterSet', 'trialsPerExperiment', 'fractionSame'];
   var hiddenInputs;
 
   var makeTaskData;
@@ -130,6 +130,7 @@ var makeTask;
 
     firstTask = {'do-task': function () {
         updateProgress(numRightWrong['right'], numRightWrong['wrong'], numRightWrong['did not see']);
+        taskProgress.show();
         $('.tasks').hide();
         $('.post-task').show();
       }};

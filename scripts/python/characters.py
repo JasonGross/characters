@@ -158,28 +158,36 @@ def make_get_random_task(form, defaults, verbose=False, _random=None):
     if verbose: print('Getting list of alphabets...')
     alphabets_dict = get_accepted_image_list()
     trialCount = int(form.getfirst('trialsPerExperiment', default=defaults['trialsPerExperiment']))
+    fractionSame = float(form.getfirst('fractionSame', default=defaults['fractionSame']))
     rtn = []
     if isinstance(list_of_stuff[0], str): 
         alphabets = list_of_stuff
         for trial_num in range(trialCount):
+            same = _random.random() < fractionSame
             test = None
             while test is None:
-                alphabet1, alphabet2 = random.choice(alphabets), random.choice(alphabets)
-                uid1, uid2 = random.choice(alphabets_dict[alphabet1].keys()), random.choice(alphabets_dict[alphabet2].keys())
-                ch_num1, ch_num2 = random.randint(len(alphabets_dict[alphabet1][uid1])), random.randint(len(alphabets_dict[alphabet2][uid2]))
+                alphabet1, alphabet2 = _random.choice(alphabets), _random.choice(alphabets)
+                if same: alphabet2 = alphabet1
+                uid1, uid2 = _random.choice(alphabets_dict[alphabet1].keys()), _random.choice(alphabets_dict[alphabet2].keys())
+                ch_num1, ch_num2 = _random.randint(len(alphabets_dict[alphabet1][uid1])), _random.randint(len(alphabets_dict[alphabet2][uid2]))
+                if same: ch_num2 = ch_num1
                 test = [(alphabet1, ch_num1, uid1), (alphabet2, ch_num2, uid2)]
                 if test[0] == test[1]: test = None
             rtn.append(test)
     else: 
         characters = list_of_stuff
         for trial_num in range(trialCount):
+            same = _random.random() < fractionSame
             test = None
             while test is None:
-                (alphabet1, ch_num1), (alphabet2, ch_num2) = random.choice(characters), random.choice(characters)
-                uid1, uid2 = random.choice(alphabets_dict[alphabet1].keys()), random.choice(alphabets_dict[alphabet2].keys())
+                (alphabet1, ch_num1), (alphabet2, ch_num2) = _random.choice(characters), _random.choice(characters)
+                if same:
+                    alphabet2, ch_num2 = alphabet1, ch_num1
+                uid1, uid2 = _random.choice(alphabets_dict[alphabet1].keys()), _random.choice(alphabets_dict[alphabet2].keys())
                 test = [(alphabet1, ch_num1, uid1), (alphabet2, ch_num2, uid2)]
                 if test[0] == test[1]: test = None
             rtn.append(test)
+    _random.shuffle(rtn)
     return rtn
 
 
@@ -233,7 +241,7 @@ def create_first_task(form, reset=False, verbose=False):
             rtn[key] = [int(rtn[key])]
         elif isinstance(passOnValues[key], int):
             rtn[key] = int(rtn[key])
-        else:
+        elif isinstance(passOnValues[key], float):
             rtn[key] = float(rtn[key])
         if isinstance(rtn[key], list) and len(rtn[key]) < 2:
             rtn[key].append(0)
@@ -285,9 +293,9 @@ def create_first_task(form, reset=False, verbose=False):
 ##    return rtn
 
 def main():
-    form = cgi.FieldStorage()
+    form = cgi.FieldStorage(keep_blank_values=True)
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
-    args = parser.parse_args()
+    args, argv = parser.parse_known_args()
     rtn = create_first_task(form, reset=args.reset, verbose=args.verbose)
 #    rtn = create_first_task(form)
     print('Content-type: text/json\n')

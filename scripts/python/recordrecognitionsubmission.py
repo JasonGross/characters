@@ -5,7 +5,7 @@ import os, re
 import sys
 from alphabetspaths import *
 from matlabutil import format_for_matlab
-
+from image_anonymizer import deanonymize_image
 
 def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH):
     if not isinstance(uid, str):
@@ -21,11 +21,21 @@ def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH):
     return os.path.join(path, uid.replace('-', 'm'), new_dir)
 
 
-_BOOL_DICT = {'true':True, 'false':False, 'True':True, 'False':False, '0':False, '1':True, 0:False, 1:True}
+_BOOL_DICT = {'true':True, 'false':False, 'True':True, 'False':False, '0':False, '1':True, 0:False, 1:True, 'Did Not See':None, 'did not see':None}
 
 _REWRITE_DICT = {}
 for alphabet in sorted(os.listdir(ACCEPTED_IMAGES_PATH)):
     _REWRITE_DICT[(alphabet + 'a')[:4]] = alphabet
+
+def _enhance_properties(properties):
+    for key in sorted(properties.keys()):
+        if key[:len('task-')] == 'task-' and key[-len('-url'):] == '-url':
+            url = os.path.split(properties[key])[1]
+            properties[key.replace('-url', '-alphabet')] = _REWRITE_DICT['%s%s%s%s' % (url[2], url[5], url[8], url[11])]
+            properties[key.replace('-url', '-character-number')] = url[12:14]
+            properties[key.replace('-url', '-id')] = '%s%s%s%s%s' % (url[:2], url[3:5], url[6:8], url[9:11], url[15:-4])
+    return properties
+
 
 def _make_summary(properties):
     rtn = []
@@ -62,10 +72,10 @@ def _make_summary(properties):
             url = response['%s-url' % image_type]
             response['%s-alphabet' % image_type] = _REWRITE_DICT['%s%s%s%s' % (url[2], url[5], url[8], url[11])]
             response['%s-character-number' % image_type] = int(url[12:14])
-            response['%s-id' % image_type] = url[15:-4]
-    percent_correct = right_count * 100 / (right_count + wrong_count)
-    percent_same_correct = right_same_count * 100 / (right_same_count + wrong_same_count)
-    percent_different_correct = right_different_count * 100 / (right_different_count + wrong_different_count)
+            response['%s-id' % image_type] = '%s%s%s%s%s' % (url[:2], url[3:5], url[6:8], url[9:11], url[15:-4])
+    percent_correct = right_count * 100 / (right_count + wrong_count) if right_count + wrong_count else -1
+    percent_same_correct = right_same_count * 100 / (right_same_count + wrong_same_count) if right_same_count + wrong_same_count else -1
+    percent_different_correct = right_different_count * 100 / (right_different_count + wrong_different_count) if right_different_count + wrong_different_count else -1
     
     rtn.append("""Short Summary:
 Correct: %(right_count)d
@@ -113,7 +123,11 @@ def _make_matlab(properties, uid,
         return True
     for key in sorted(properties.keys()):
         if can_use(key):
-            rtn.append('results.for_%s.%s = %s;' % (uid, key.replace('-', '_'), format_for_matlab(properties[key])))
+            use_key = key.replace('-', '_')
+            if use_key[:len('task_')] == 'task_':
+                use_key = use_key.split('_')
+                use_key = '%s(%d).%s' % (use_key[0], int(use_key[1]) + 1, '_'.join(use_key[2:]))
+            rtn.append('results.for_%s.%s = %s;' % (uid, use_key, format_for_matlab(properties[key])))
     return '\n'.join(rtn)
     
 
@@ -126,7 +140,7 @@ def _put_summary(folder, properties, file_name, quiet=True):
         f.write(summary)
     pop_dir()
     
-def _put_matlab(folder, properties, file_name, quiet=True):
+def _put_matlab(folder, properties, file_name, uid, quiet=True):
     push_dir(folder)
     matlab = _make_matlab(properties, uid, quiet=quiet)
     if not quiet and os.path.exists(file_name):
@@ -190,12 +204,13 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_UNREVIEWED_PAT
         if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
         path = _make_folder_for_submission(uid, path=path)
     if verbose: print('Done<br>Storing your responses...')
+    form_dict = _enhance_properties(form_dict)
     _put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
     if not pseudo:
         if verbose: print('Done<br>Summarizing your responses...')
         _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
         if verbose: print('Done<br>Making a matlab file for your responses...')
-        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), quiet=quiet)
+        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet)
     if many_dirs:
         _log_success(path)
     if verbose: print('Done<br>You may now leave this page.<br>')

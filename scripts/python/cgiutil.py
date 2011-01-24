@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # Filename: cgiutil.py
+import json
 
 def get_boolean_value(form, true_keys, false_keys=None, default=None, true_options=(True,'true','1',1,'','yes','on','y','t'),
                       false_options=(False,'false','0',0,'','no','off','n','f'),
@@ -16,7 +17,7 @@ def get_boolean_value(form, true_keys, false_keys=None, default=None, true_optio
     elif not true_value and not false_value: return if_neither()
     else: return true_value and not false_value
 
-def get_list_of_values(form, keys):
+def get_list_of_values(form, keys, default=None):
     if isinstance(keys, str): keys = [keys]
     rtn = []
     for key in keys:
@@ -29,6 +30,7 @@ def get_list_of_values(form, keys):
                     rtn += cur_value
                 except TypeError:
                     rtn.append(cur_value)
+    if default and not rtn: return default
     return rtn
 
 def is_nested_type(obj, *types):

@@ -64,8 +64,10 @@ def anonymize_image(image_path, from_path=BASE_PATH, from_url=BASE_URL, include_
         rtn['data uri'] = png_to_uri(os.path.join(from_path, image_path))
     return rtn
             
-def deanonymize_image(hash_code):
-    return hashed_images[int(hash_code)]
+def deanonymize_image(anonymous_url):#hash_code):
+    base, image = os.path.split(anonymous_url)
+    return '%s%s%s%s_%s_%s%s%s%s%s' % (image[2], image[5], image[8], image[11], image[12:14], image[0:2], image[3:5], image[6:8], image[9:11], image[15:])
+    #return hashed_images[int(hash_code)]
 ##def parse_images(anonymize_images=[], deanonymize_images=[]):
 ##    rtn = {}
 ##    for image in anonymize_images:

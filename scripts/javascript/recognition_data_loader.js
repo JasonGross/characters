@@ -86,20 +86,20 @@ var makeTask;
   });
   
   function loadImages(data) {
-    if (data['pauseToNoise'] !== undefined) {
-      if (data['pauseToNoise'] > 0) {
-        $('.show-if-not-timed').hide();
-        $('.show-if-timed').show();
-      } else {
-        $('.show-if-timed').hide();
-        $('.show-if-not-timed').show();
-      }
-    }
-    
     imagePairs = data['tasks'];
     totalTasks = imagePairs.length;
     var totalImages = totalTasks * 3;
     refcounter.setCounter('image progress', totalImages);
+        
+    if (data['pauseToNoise'] !== undefined) {
+      if (data['pauseToNoise'][0] > 0) {
+        $('.show-if-untimed').hide();
+        $('.show-if-timed').show();
+      } else {
+        $('.show-if-timed').hide();
+        $('.show-if-untimed').show();
+      }
+    }
     $(function () {
       progressMessage.children().remove();
       var progressLoaded = $('<span>').append('0')

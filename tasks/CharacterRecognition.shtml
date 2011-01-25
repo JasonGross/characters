@@ -115,7 +115,7 @@
           character before it disappears, you may click "I did not see the example character."
         </p>
       </div>
-      <div class="show-if-untimed">
+      <div class="show-if-untimed" style="display:none;">
         <ol>
           <li>A red square appears in the left box "Example Image" to cue your attention.</li>
           <li>Shortly after the cue, an example character appears in that red square.</li>
@@ -274,10 +274,14 @@
 
   <script id="choose-instructions" type="text/javascript">
     //<![CDATA[
-    if (urlParameters.getURLParameters('pauseToNoise')['pauseToNoise'] <= 0)
+    if (urlParameters.getURLParameters('pauseToNoise')['pauseToNoise'] != '' &&
+        parseInt(urlParameters.getURLParameters('pauseToNoise')['pauseToNoise']) <= 0) {
       $('.show-if-timed').hide();
-    else
-      $('.show-if-not-timed').hide();
+      $('.show-if-untimed').show();
+    } else {
+      $('.show-if-untimed').hide();
+      $('.show-if-timed').show();
+    }
     //]]>
   </script>
 

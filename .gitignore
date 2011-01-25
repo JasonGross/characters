@@ -34,3 +34,5 @@ scripts/python/MySQLdb*/
 scripts/python/MySQLdb*/*
 scripts/python/MySQL-python-1.2.3/
 scripts/python/MySQL-python-1.2.3/*
+results/*strokes/
+results/*images/

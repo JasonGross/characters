@@ -20,7 +20,7 @@ import sequencer
 FROM_PATH = ACCEPTED_IMAGES_PATH
 
 PLUS_MINUS_CHAR = '\u00B1'
-PLUS_MINUS_STRINGS = ('+-', '-+', '+', '-', PLUS_MINUS_CHAR)
+PLUS_MINUS_STRINGS = ('+-', '-+', '+', PLUS_MINUS_CHAR)
 
 images = None
 
@@ -150,7 +150,7 @@ def get_a_task(task_group_index, reset=False, verbose=False, reset_database=Fals
 
 def make_get_random_task(form, defaults, verbose=False, _random=None):
     if _random is None: _random = random.Random()
-    alias = form.getfirst('characterSet')
+    alias = form.getfirst('characterSet', default=defaults['characterSet'])
     def bad_alias():
         raise Exception("Character set with the given name does not exist.  Run construct-character-set.py to create it.")
     list_of_stuff = get_object('recognition-tasks_character-set_%s' % alias, bad_alias)
@@ -160,7 +160,7 @@ def make_get_random_task(form, defaults, verbose=False, _random=None):
     trialCount = int(form.getfirst('trialsPerExperiment', default=defaults['trialsPerExperiment']))
     fractionSame = float(form.getfirst('fractionSame', default=defaults['fractionSame']))
     rtn = []
-    if isinstance(list_of_stuff[0], str): 
+    if not isinstance(list_of_stuff[0], (list, tuple)):
         alphabets = list_of_stuff
         for trial_num in range(trialCount):
             same = _random.random() < fractionSame
@@ -169,7 +169,7 @@ def make_get_random_task(form, defaults, verbose=False, _random=None):
                 alphabet1, alphabet2 = _random.choice(alphabets), _random.choice(alphabets)
                 if same: alphabet2 = alphabet1
                 uid1, uid2 = _random.choice(alphabets_dict[alphabet1].keys()), _random.choice(alphabets_dict[alphabet2].keys())
-                ch_num1, ch_num2 = _random.randint(len(alphabets_dict[alphabet1][uid1])), _random.randint(len(alphabets_dict[alphabet2][uid2]))
+                ch_num1, ch_num2 = _random.randint(0, len(alphabets_dict[alphabet1][uid1])-1), _random.randint(0, len(alphabets_dict[alphabet2][uid2])-1)
                 if same: ch_num2 = ch_num1
                 test = [(alphabet1, ch_num1, uid1), (alphabet2, ch_num2, uid2)]
                 if test[0] == test[1]: test = None
@@ -195,7 +195,7 @@ def make_get_random_task(form, defaults, verbose=False, _random=None):
 
 _STROKE_NOISES = get_stroke_noises(from_path=BASE_PATH)
 
-def create_first_task(form, reset=False, verbose=False):
+def create_first_task(form, args, reset=False, verbose=False):
     if 'taskGroupIndex' in form.keys(): task_group_index = int(form.getfirst('taskGroupIndex'))
     else: task_group_index = 0
     passOnValues = {'pauseToFirstHint':[500],
@@ -213,7 +213,13 @@ def create_first_task(form, reset=False, verbose=False):
                     'trialsPerExperiment':200,
                     'fractionSame':0.25
                     }
-    if get_boolean_value(form, 'random'):
+    for key in passOnValues:
+        if hasattr(args, key) and getattr(args, key) is not None:
+            if isinstance(passOnValues[key], (list, tuple)) and not isinstance(getattr(args, key), (list, tuple)):
+                passOnValues[key] = [getattr(args, key)]
+            else:
+                passOnValues[key] = getattr(args, key)
+    if get_boolean_value(form, 'random', default=passOnValues['random']):
         tasks = make_get_random_task(form, passOnValues, verbose=verbose)
     else:
         tasks = get_a_task(task_group_index, reset=reset, verbose=verbose)
@@ -296,7 +302,7 @@ def main():
     form = cgi.FieldStorage(keep_blank_values=True)
     non_existant_variable = form.getvalue('&=variableDoesNotExistString=&')
     args, argv = parser.parse_known_args()
-    rtn = create_first_task(form, reset=args.reset, verbose=args.verbose)
+    rtn = create_first_task(form, args, reset=args.reset, verbose=args.verbose)
 #    rtn = create_first_task(form)
     print('Content-type: text/json\n')
     print(json.dumps(rtn))
@@ -306,6 +312,12 @@ parser.add_argument('--reset', '-r', action='store_true',
                     help='recreate the tasks from scratch and reset the database')
 parser.add_argument('--verbose', '-v', action='store_true',
                     help='print status on recreating tasks')
+parser.add_argument('--random', action='store_true',
+                    help='generate a new random set of characters')
+parser.add_argument('--characterSet', nargs='?', default=None, type=str,
+                    help='the alias of the character set to use')
+parser.add_argument('--pauseToNoise', nargs='?', default=None, type=int,
+                    help='the duration between the second hint and the noise')
 if __name__ == '__main__':
     main()
         

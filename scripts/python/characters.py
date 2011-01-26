@@ -169,7 +169,7 @@ def make_get_random_task(form, defaults, verbose=False, _random=None):
                 alphabet1, alphabet2 = _random.choice(alphabets), _random.choice(alphabets)
                 if same: alphabet2 = alphabet1
                 uid1, uid2 = _random.choice(alphabets_dict[alphabet1].keys()), _random.choice(alphabets_dict[alphabet2].keys())
-                ch_num1, ch_num2 = _random.randint(0, len(alphabets_dict[alphabet1][uid1])-1), _random.randint(0, len(alphabets_dict[alphabet2][uid2])-1)
+                ch_num1, ch_num2 = _random.randrange(len(alphabets_dict[alphabet1][uid1])), _random.randrange(len(alphabets_dict[alphabet2][uid2]))
                 if same: ch_num2 = ch_num1
                 test = [(alphabet1, ch_num1, uid1), (alphabet2, ch_num2, uid2)]
                 if test[0] == test[1]: test = None

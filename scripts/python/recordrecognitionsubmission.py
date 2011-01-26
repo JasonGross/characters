@@ -7,7 +7,7 @@ from alphabetspaths import *
 from matlabutil import format_for_matlab
 from image_anonymizer import deanonymize_image
 
-def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH):
+def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH, return_num=True):
     if not isinstance(uid, str):
         uid = str(uid)
     push_dir(path)
@@ -18,7 +18,9 @@ def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH):
     new_dir = str(1 + max(existing))
     os.mkdir(new_dir)
     pop_dir()
-    return os.path.join(path, uid.replace('-', 'm'), new_dir)
+    rtn = os.path.join(path, uid.replace('-', 'm'), new_dir)
+    if return_num: return rtn, int(new_dir)
+    else: return rtn
 
 
 _BOOL_DICT = {'true':True, 'false':False, 'True':True, 'False':False, '0':False, '1':True, 0:False, 1:True, 'Did Not See':None, 'did not see':None}
@@ -113,7 +115,7 @@ def _make_matlab(properties, uid,
                           '^hitlifetime', '^hitstatus', '^hittypeid', '^keywords',
                           '^numavailable', '^numcomplete', '^numpending', '^reviewstatus',
                           '^reward', '^title', '^hitid', '^assignmentid'),
-                 quiet=True):
+                 quiet=True, zero_based_num=0):
     rtn = []
     uid = uid.replace('-', 'm')
     def can_use(key):
@@ -127,7 +129,7 @@ def _make_matlab(properties, uid,
             if use_key[:len('task_')] == 'task_':
                 use_key = use_key.split('_')
                 use_key = '%s(%d).%s' % (use_key[0], int(use_key[1]) + 1, '_'.join(use_key[2:]))
-            rtn.append('results.for_%s.%s = %s;' % (uid, use_key, format_for_matlab(properties[key])))
+            rtn.append('results.for_%s(%d).%s = %s;' % (uid, zero_based_num+1, use_key, format_for_matlab(properties[key])))
     return '\n'.join(rtn)
     
 
@@ -140,9 +142,9 @@ def _put_summary(folder, properties, file_name, quiet=True):
         f.write(summary)
     pop_dir()
     
-def _put_matlab(folder, properties, file_name, uid, quiet=True):
+def _put_matlab(folder, properties, file_name, uid, quiet=True, **kwargs):
     push_dir(folder)
-    matlab = _make_matlab(properties, uid, quiet=quiet)
+    matlab = _make_matlab(properties, uid, quiet=quiet, **kwargs)
     if not quiet and os.path.exists(file_name):
         input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
     with open(file_name, 'w') as f:
@@ -200,9 +202,10 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_UNREVIEWED_PAT
                       verbose=True, pseudo=False, quiet=True):
     if verbose: print('Hashing IP address...')
     uid = make_uid(form_dict)
+    results_num = 0
     if many_dirs:
         if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
-        path = _make_folder_for_submission(uid, path=path)
+        path, results_num = _make_folder_for_submission(uid, path=path, return_num=True)
     if verbose: print('Done<br>Storing your responses...')
     form_dict = _enhance_properties(form_dict)
     _put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
@@ -210,7 +213,7 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_UNREVIEWED_PAT
         if verbose: print('Done<br>Summarizing your responses...')
         _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
         if verbose: print('Done<br>Making a matlab file for your responses...')
-        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet)
+        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
     if many_dirs:
         _log_success(path)
     if verbose: print('Done<br>You may now leave this page.<br>')

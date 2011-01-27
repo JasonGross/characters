@@ -290,7 +290,7 @@ var makeTask;
           .attr('value', 1)
           .attr('disabled', 'disabled')
         ).append(
-          'I did not see the example character.'
+          "I wasn't looking at my computer screen."
         );
 
     var questionDidNotSeeButton;

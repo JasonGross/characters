@@ -256,10 +256,9 @@ var makeTask;
     var questionFields = $('<fieldset>');
     var questionLegend = $('<legend>').append('Are these images examples of the same character?');
     var extraInstructions = $('<p>')
-      .append($('<strong>')
-          .append("Don't worry if the Example Image was hard to see, it flashes very quickly."))
+      .append("Don't worry if the Example Image was hard to see, it flashes very quickly.")
       .append($('<br>'))
-      .append($('<strong>').append("Please respond as quickly as possible."));
+      .append("Please respond as quickly as possible.");
     var questionTrueInputYes, questionTrueInputNo, questionTrueInputDidNotSee;
     var questionInputYes = $('<label>').append(
       questionTrueInputYes = $('<input>')

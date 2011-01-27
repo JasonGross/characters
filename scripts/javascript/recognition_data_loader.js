@@ -477,6 +477,10 @@ var makeTask;
       questionTimes['showNoise'].attr('value', dateUTC(new Date()));
       exampleImageHolder.addClass('example-holder-done');
       exampleImageHolder.removeClass('example-holder-doing');
+
+      // On the first two trials (until they answer two trials), show extra instructions
+      if (numRightWrong['right'] + numRightWrong['wrong'] < 2)
+        questionFields.prepend(extraInstructions);
     };
     
     var showTest = function () {
@@ -484,12 +488,6 @@ var makeTask;
       exampleImageHolder.removeClass('example-holder-doing');
       //testImageHolder.append(testImage);
       testImage.show();
-
-      // On the first two trials (until they answer two trials), show extra instructions
-      if (numRightWrong['right'] + numRightWrong['wrong'] < 2 && timeOuts['pauseToNoise'] > 0)
-        questionFields.prepend(extraInstructions);
-
-
       question.show();
       questionTimes['showTest'].attr('value', dateUTC(new Date()));
       startTime = dateUTC(new Date());

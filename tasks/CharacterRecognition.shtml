@@ -24,6 +24,7 @@
   <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/make_drag_and_drop_warning.js" type="text/javascript"></script-->
   <script src="../scripts/javascript/refcounter.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/browser.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_parse_url_parameters.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_data_loader.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_validate_form.js" type="text/javascript"></script>
@@ -72,6 +73,31 @@
         </script>
       </div>
     <![endif]-->
+    <![if !IE]>
+      <div id="not-firefox" class="error">
+        <h2>You are not using Firefox.  You are using <span id="browser" name="browser"></span>.</h2>
+        <p>
+          If you want to be able to complete this form, please use Firefox.  If you do not have Firefox
+          or do not know what this means, pease visit
+          <a href="http://utilu.com/UtiluMF/" rel="external" target="_blank">Utilu Silent Setup for Mozilla Firefox</a>,
+          or download <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
+        </p>
+        <p> 
+          While <tt>window.setTimeout</tt> may work in your browser, it has insufficient or untested
+          accuracy for complex visual elements.  <span id="contact-me-timeout">Please contact me at
+          jgross AT mit DOT edu if you think your browser has sufficient accuracy and you want me to
+          permit it.</span>
+        <p>
+        <script type="text/javascript">
+          if (jQuery.browser.mozilla || 'overrideAccept' in urlParameters.getURLParameters('overrideAccept'))
+            $('#not-firefox').remove();
+          else {
+            $('#browser').html(browser.browserName);
+            $('submit').attr("disabled", "disabled");
+          }
+        </script>
+      </div>
+    <![endif]>
     <div id="loading" class="warning">
       <h2>Please wait while the page loads&#8230;</h2>
       <p>
@@ -110,9 +136,10 @@
           <li>Then a test character appears in the "Test Image" box to the right.</li>
           <li>Indicate whether the example character and test character are the same or different.</li>
         </ol>
+        <p><strong>Please respond as quickly as possible.</strong></p>
         <p>
           After every few characters, a progress bar appears to show you your accuracy so far. If you fail to see the example
-          character before it disappears, you may click "I did not see the example character."
+          character before it disappears, you may click "I wasn't looking at my computer screen."
         </p>
       </div>
       <div class="show-if-untimed" style="display:none;">
@@ -122,6 +149,7 @@
           <li>Then a test character appears in the "Test Image" box to the right.</li>
           <li>Indicate whether the example character and test character are the same or different.</li>
         </ol>
+        <p><strong>Please respond as quickly as possible.</strong></p>
         <p>After every few characters, a progress bar appears to show you your accuracy so far.</p>
       </div>
       <p>Please note:</p>
@@ -218,6 +246,8 @@
         <input id="screenAavilHeight" name="screenWidth" type="hidden" />
         <input id="windowWidth" name="screenWidth" type="hidden" />
         <input id="windowHeight" name="screenWidth" type="hidden" />
+        <input id="navigator.appName" name="navigator.appCodeName" type="hidden" />
+        <input id="navigator.appCodeName" name="navigator.appCodeName" type="hidden" />
         <input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
         <input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />
         <input id="navigator.vendor" name="navigator.vendor" type="hidden" />
@@ -297,6 +327,8 @@
         'screenAavilHeight':screen.availHeight,
         'windowWidth':$(window).width(),
         'windowHeight':$(window).height(),
+        'navigator.appName':navigator.appName,
+        'navigator.appCodeName':navigator.appCodeName,
         'navigator.userAgent':navigator.userAgent,
         'navigator.appVersion':navigator.appVersion,
         'navigator.vendor':navigator.vendor,
@@ -316,12 +348,6 @@
     //$('#form-load-time').hide();
     //$('#form-submit-time').hide();
     setUpForm('character_recognition_form');
-    /*if (!jQuery.browser.opera)
-      $('#opera').remove();
-    if (jQuery.browser.opera ||
-          document.createElement('div').ondragstart !== undefined)
-      $('#no-ondragstart').remove(); 
-           */
     $('.post-task').hide()
     //]]>
   </script>

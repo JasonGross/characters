@@ -255,6 +255,11 @@ var makeTask;
       .append('Test Image');
     var questionFields = $('<fieldset>');
     var questionLegend = $('<legend>').append('Are these images examples of the same character?');
+    var extraInstructions = $('<p>')
+      .append($('<strong>')
+          .append("Don't worry if the Example Image was hard to see, it flashes very quickly."))
+      .append($('<br>'))
+      .append($('<strong>').append("Please respond as quickly as possible."));
     var questionTrueInputYes, questionTrueInputNo, questionTrueInputDidNotSee;
     var questionInputYes = $('<label>').append(
       questionTrueInputYes = $('<input>')
@@ -480,6 +485,12 @@ var makeTask;
       exampleImageHolder.removeClass('example-holder-doing');
       //testImageHolder.append(testImage);
       testImage.show();
+
+      // On the first two trials (until they answer two trials), show extra instructions
+      if (numRightWrong['right'] + numRightWrong['wrong'] < 2 && timeOuts['pauseToNoise'] > 0)
+        questionFields.prepend(extraInstructions);
+
+
       question.show();
       questionTimes['showTest'].attr('value', dateUTC(new Date()));
       startTime = dateUTC(new Date());

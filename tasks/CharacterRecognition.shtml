@@ -121,9 +121,16 @@
         This task tests your ability to discriminate handwritten characters from writing systems around the world. For example in
         the Latin alphabet A, B, C, and D are different characters.  In each subtask, you will see pairs of character images, and 
         no two images are exactly the same.  <strong>Importantly, your task is not to judge whether the two images are literally 
-        the same, but rather whether they are images of the same type of character (for example, a "B" and another "B") or instead
-        of two different types of characters (for example, a "B" and a "D").</strong>  If the two images contain the same type of
-        character, mark "Yes, they are the same." Otherwise if they contain different types of characters, mark "No, they are 
+        the same, but rather whether they are images of the same type of character (for example, 
+        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
+        and 
+        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_azdw60621ia38.png" alt='another "b"' style="height:1.25em" title='another "b"' />)
+        or instead of two different types of characters (for example, 
+        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
+        and 
+        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_04_a1z59eb58sfxpy.png" alt='a "d"' style="height:1.25em" title='a "d"' />).</strong>
+        If the two images contain the same type of
+        character, mark "Yes, they are the same." Otherwise, if they contain different types of characters, mark "No, they are 
         different.  The exact characters you will see should be new to you, so make your best guess.
       </p>
       <p>

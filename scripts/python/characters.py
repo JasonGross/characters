@@ -201,7 +201,7 @@ def create_first_task(form, args, reset=False, verbose=False):
     passOnValues = {'pauseToFirstHint':[500],
                     'pauseToSecondHint':[500],
                     'pauseToExample':[1000],
-                    'pauseToNoise':[40],
+                    'pauseToNoise':[60],
                     'pauseToTest':[1000],
                     'tasksPerFeedbackGroup':[10],
                     'tasksPerWaitGroup':[10],

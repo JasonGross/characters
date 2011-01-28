@@ -104,6 +104,7 @@ Long Summary:
         if not response['said-are-same']: rtn.append('not ')
         rtn.append('the same in %(duration)d ms.\n' % response)
     rtn.append('\nDuration: %s' % properties['duration'].replace('0y 0d ', '').replace('0h ', ''))
+    rtn.append('\nComments: %s' % (properties['feedback'] if 'feedback' in properties else ''))
     return ''.join(rtn)
 
 def _make_matlab(properties, uid,

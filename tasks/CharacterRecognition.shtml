@@ -120,9 +120,11 @@
       <p>
         This task tests your ability to discriminate handwritten characters from writing systems around the world. For example in
         the Latin alphabet A, B, C, and D are different characters.  In each subtask, you will see pairs of character images, and 
-        no two images are exactly the same. If you think the two images contain the same character (for example, two different people
-        writing the letter B), then mark "Yes, they are the same." If they contain different characters (for example, B and D), mark 
-        "No, they are different." The exact characters you will see should be new to you, so make your best guess.
+        no two images are exactly the same.  <strong>Importantly, your task is not to judge whether the two images are literally 
+        the same, but rather whether they are images of the same type of character (for example, a "B" and another "B") or instead
+        of two different types of characters (for example, a "B" and a "D").</strong>  If the two images contain the same type of
+        character, mark "Yes, they are the same." Otherwise if they contain different types of characters, mark "No, they are 
+        different.  The exact characters you will see should be new to you, so make your best guess.
       </p>
       <p>
         You will see a sequence of <span id="num-trials" class="num-trials">200</span> subtasks each requiring a response.
@@ -149,7 +151,6 @@
           <li>Then a test character appears in the "Test Image" box to the right.</li>
           <li>Indicate whether the example character and test character are the same or different.</li>
         </ol>
-        <p>Please respond as quickly as possible.</p>
         <p>After every few characters, a progress bar appears to show you your accuracy so far.</p>
       </div>
       <p>Please note:</p>

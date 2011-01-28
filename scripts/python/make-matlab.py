@@ -6,6 +6,7 @@ import os
 import re
 import sys
 import glob
+import argparse
 from alphabetspaths import *
 import alphabetsutil
 from matlabutil import format_for_matlab
@@ -615,10 +616,16 @@ def remove_strokes_from_matlab_file(original_file_name, new_file_name, delete_af
 
 ##def remove_stroke_data(output
 
-#todo: make files without strokes, with imresize to 28x28
+#todo?: make files without strokes, with imresize to 28x28
+
+
+parser = argparse.ArgumentParser(description='Makes matlab files from accepted character data.')
+parser.add_argument('--no-prompt', action='store_true',
+                    help='do not prompt for whether or not to continue making matlab files')
 
 if __name__ == '__main__':
-    do_all = False
+    args, argv = parser.parse_known_args()
+    do_all = args.no_prompt
     try:
         do_all = do_all or 'a' == raw_input('Press enter to continue making initial matlab files...').lower()
         file_names = make_split_matlab_files()

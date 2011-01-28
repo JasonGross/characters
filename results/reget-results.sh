@@ -25,7 +25,7 @@ ask-boolean "Get Turk results?" GO
 if [ $GO == 1 ]; then
   ./mturk-results/HITs/get-seventeen/get-results.sh
 fi
-ask-boolean "Convert Turk to images?" GO
+ask-boolean "Convert Turk file to folders?" GO
 if [ $GO == 1 ]; then
   rm -rf turk-*/*
   ../scripts/python/convert-turk-file-to-folders.py mturk-results/HIT-results-firsts.txt mturk-results/HIT-results-17.txt
@@ -43,9 +43,14 @@ ask-boolean "Remake images?" GO
 if [ $GO == 1 ]; then
   ../scripts/python/convert-alphabet-strokes-to-pngs.py
 fi
+ask-boolean "Rebuild data objects?" GO
+if [ $GO == 1 ]; then
+  rm ../object-storage/get_accepted_image_list.obj ../object-storage/get_rejected_image_list.obj ../object-storage/get_rejected_image_list.obj ../object-storage/get_turk_*.obj
+  /mit/python/bin/python2.6 ../scripts/python/characters.py
+fi
 ask-boolean "Make matlab?" GO
 if [ $GO == 1 ]; then
-  ../scripts/python/make-matlab.py
+  ../scripts/python/make-matlab.py --no-prompt
 fi
 ask-boolean "Make dataset?" GO
 if [ $GO == 1 ]; then

@@ -15,24 +15,24 @@ export JAVA_HOME=/usr
 SCRIPTPATH=`dirname $(readlink -f $0)`
 export MTURK_CMD_HOME=~/web_scripts/alphabets/results/mturk-results/aws-mturk-clt-1.3.0
 """)
-        num_add = 0
-        while rejects:
-            num_add += 1
-            reject_assignments = []
-            wf.write('ECHO hitid\thittypeid> %(success_file)s\n' % locals())
-            wf.write('ECHO assignmentIdToReject\tassignmentIdToRejectComment> %(reject_file)s\n' % locals())
-            lf.write('echo hitid\thittypeid> %(success_file)s\n' % locals())
-            lf.write('echo assignmentIdToReject\tassignmentIdToRejectComment> %(reject_file)s\n' % locals())
-            for hit_key in sorted(rejects.keys()):
-                hitid, hittypeid = hit_key
-                if sum(map(len, rejects[hit_key].values())) == num_add:
-                    wf.write('ECHO %(hitid)s\t%(hittypeid)s>> %(success_file)s\n' % locals())
-                    lf.write('echo %(hitid)s\t%(hittypeid)s>> %(success_file)s\n' % locals())
-                    for worker_id in rejects[hit_key]:
-                        for assignmentIdToReject in rejects[hit_key][worker_id]:
-                            wf.write('ECHO %(assignmentIdToReject)s\t%(assignmentIdToRejectComment)s>> %(reject_file)s\n' % locals())
-                            lf.write('echo %(assignmentIdToReject)s\t%(assignmentIdToRejectComment)s>> %(reject_file)s\n' % locals())
-                    del rejects[hit_key]
+            num_add = 0
+            while rejects:
+                num_add += 1
+                reject_assignments = []
+                wf.write('ECHO hitid\thittypeid> %(success_file)s\n' % locals())
+                wf.write('ECHO assignmentIdToReject\tassignmentIdToRejectComment> %(reject_file)s\n' % locals())
+                lf.write('echo hitid\thittypeid> %(success_file)s\n' % locals())
+                lf.write('echo assignmentIdToReject\tassignmentIdToRejectComment> %(reject_file)s\n' % locals())
+                for hit_key in sorted(rejects.keys()):
+                    hitid, hittypeid = hit_key
+                    if sum(map(len, rejects[hit_key].values())) == num_add:
+                        wf.write('ECHO %(hitid)s\t%(hittypeid)s>> %(success_file)s\n' % locals())
+                        lf.write('echo %(hitid)s\t%(hittypeid)s>> %(success_file)s\n' % locals())
+                        for worker_id in rejects[hit_key]:
+                            for assignmentIdToReject in rejects[hit_key][worker_id]:
+                                wf.write('ECHO %(assignmentIdToReject)s\t%(assignmentIdToRejectComment)s>> %(reject_file)s\n' % locals())
+                                lf.write('echo %(assignmentIdToReject)s\t%(assignmentIdToRejectComment)s>> %(reject_file)s\n' % locals())
+                        del rejects[hit_key]
             wf.write(r"""PUSHD "D:\mech-turk-tools-1.3.0\bin"
 ECHO %%i%%
 START rejectWork -rejectfile "%%i%%\%(reject_file)s"

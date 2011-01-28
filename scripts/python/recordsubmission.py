@@ -153,7 +153,7 @@ alphabet_id = None
 def record_submission(form_dict, names=('get_unreviewed_image_list', 'get_unreviewed_stroke_list'),
                       many_dirs=False, path=UNREVIEWED_PATH,
                       images_path=TURK_IMAGES_PATH, strokes_path=TURK_STROKES_PATH, extra_info_path=TURK_EXTRA_INFO_PATH,
-                      verbose=True, pseudo=False):
+                      verbose=True, pseudo=False, compress=False):
     if names:
         for name in names:
             raise_object_changed(name)
@@ -180,7 +180,7 @@ def record_submission(form_dict, names=('get_unreviewed_image_list', 'get_unrevi
     else:
         file_name = get_alphabet_id_from_dict(form_dict) + '_' + uid + '.results.txt'
         _put_properties(extra_info_path, form_dict, file_name=file_name)
-    if not pseudo:
+    if not pseudo and compress:
         if verbose: print('Done<br>Compressing your image data...')
         compress_images(folder=images_path, image_list=image_list)
     if many_dirs:

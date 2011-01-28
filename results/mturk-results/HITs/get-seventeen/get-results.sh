@@ -2,6 +2,7 @@
 export JAVA_HOME=/usr
 SCRIPTPATH=`dirname $(readlink -f $0)`
 export MTURK_CMD_HOME=~/web_scripts/alphabets/results/mturk-results/aws-mturk-clt-1.3.0
+pushd $SCRIPTPATH
 for file in HIT-results-17.txt*
 do
     mv $file ${file}2.bak
@@ -11,6 +12,5 @@ pushd ~/web_scripts/alphabets/results/mturk-results/aws-mturk-clt-1.3.0/bin
 echo $SCRIPTPATH
 ./getResults.sh -successfile $SCRIPTPATH/characterrequest.input.success -namevaluepairs -outputfile $SCRIPTPATH/HIT-results-17.txt
 popd
-pushd $SCRIPTPATH
 cp HIT-results-17.txt ../../
 popd

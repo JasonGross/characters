@@ -3,24 +3,19 @@
 from __future__ import with_statement
 import os, re
 import sys
+import shutil
 from alphabetspaths import *
 from matlabutil import format_for_matlab
 from image_anonymizer import deanonymize_image
+import turkutil
+
+
+#def get_submission_paths(submission_dict, if_rejected=TURK_RECOGNITION_REJECTED_PATH, if_accepted=TURK_RECOGNITION_PATH, if_none=TURK_RECOGNITION_UNREVIEWED_PATH):
+#    return turkutil.get_submission_paths(submission_dict, if_rejected, if_accepted, if_none)
+
 
 def _make_folder_for_submission(uid, path=RECOGNITION_UNREVIEWED_PATH, return_num=True):
-    if not isinstance(uid, str):
-        uid = str(uid)
-    push_dir(path)
-    if not os.path.exists(uid.replace('-', 'm')):
-        os.mkdir(uid.replace('-', 'm'))
-    os.chdir(uid.replace('-', 'm'))
-    existing = map(int, [i for i in os.listdir(os.getcwd()) if os.path.isdir(i)] + [-1])
-    new_dir = str(1 + max(existing))
-    os.mkdir(new_dir)
-    pop_dir()
-    rtn = os.path.join(path, uid.replace('-', 'm'), new_dir)
-    if return_num: return rtn, int(new_dir)
-    else: return rtn
+    return turkutil.make_folder_for_submission(uid, path, return_num=return_num)
 
 
 _BOOL_DICT = {'true':True, 'false':False, 'True':True, 'False':False, '0':False, '1':True, 0:False, 1:True, 'Did Not See':None, 'did not see':None}
@@ -135,13 +130,7 @@ def _make_matlab(properties, uid,
     
 
 def _put_summary(folder, properties, file_name, quiet=True):
-    push_dir(folder)
-    summary = _make_summary(properties)
-    if not quiet and os.path.exists(file_name):
-        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
-    with open(file_name, 'w') as f:
-        f.write(summary)
-    pop_dir()
+    turkutil.put_summary(folder, properties, file_name, _make_summary, quiet=quiet)
     
 def _put_matlab(folder, properties, file_name, uid, quiet=True, **kwargs):
     push_dir(folder)
@@ -153,44 +142,6 @@ def _put_matlab(folder, properties, file_name, uid, quiet=True, **kwargs):
     pop_dir()
     
 
-def _put_properties(folder, properties, file_name,
-                   not_use=('^ipAddress',
-                            '^annotation', '^assignmentaccepttime', '^assignmentapprovaltime',
-                            '^assignmentduration', '^assignmentrejecttime', '^assignments',
-                            '^assignmentstatus', '^assignmentsubmittime', '^autoapprovaldelay',
-                            '^autoapprovaltime', '^creationtime', '^deadline', '^description',
-                            '^hitlifetime', '^hitstatus', '^hittypeid', '^keywords',
-                            '^numavailable', '^numcomplete', '^numpending', '^reviewstatus',
-                            '^reward', '^title', '^hitid', '^assignmentid'),
-                    quiet=True):
-    push_dir(folder)
-    write_to_file = ''
-    def can_use(key):
-        for bad_key in not_use:
-            if re.match(bad_key, key):
-                return False
-        return True
-    for key in sorted(properties.keys()):
-        if can_use(key):
-            write_to_file += '%s: %s\n' % (key, properties[key].replace('\n', '\\n'))
-    if not quiet and os.path.exists(file_name):
-        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
-    with open(file_name, 'w') as f:
-        f.write(write_to_file)
-    pop_dir()
-
-def _log_success(folder):
-    push_dir(folder)
-    with open('success.log', 'w') as f:
-        f.write('')
-    pop_dir()
-
-def make_uid(form_dict):
-    if 'workerid' in form_dict and form_dict['workerid']:
-        return form_dict['workerid']
-    else:
-        return str(hash(form_dict['ipAddress']))
-
 def _make_file_name(uid, summary=False, matlab=False):
     if summary:
         return uid.replace('-', 'm') + '_summary.txt'
@@ -199,23 +150,35 @@ def _make_file_name(uid, summary=False, matlab=False):
     else:
         return uid.replace('-', 'm') + '_results.txt'
 
+
 def record_submission(form_dict, many_dirs=True, path=RECOGNITION_UNREVIEWED_PATH,
-                      verbose=True, pseudo=False, quiet=True):
+                      verbose=True, pseudo=False, quiet=True, exclude_rejected=False):
+    accepted, rejected = turkutil.get_accepted_rejected_status(form_dict)
+    if rejected and exclude_rejected:
+        print('Submission rejected.')
+        return False
     if verbose: print('Hashing IP address...')
-    uid = make_uid(form_dict)
+    uid = turkutil.make_uid(form_dict)
     results_num = 0
     if many_dirs:
         if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
         path, results_num = _make_folder_for_submission(uid, path=path, return_num=True)
     if verbose: print('Done<br>Storing your responses...')
     form_dict = _enhance_properties(form_dict)
-    _put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
-    if not pseudo:
-        if verbose: print('Done<br>Summarizing your responses...')
-        _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
-        if verbose: print('Done<br>Making a matlab file for your responses...')
-        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
-    if many_dirs:
-        _log_success(path)
+    try:
+        turkutil.put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
+        if not pseudo:
+            if verbose: print('Done<br>Summarizing your responses...')
+            _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
+            if verbose: print('Done<br>Making a matlab file for your responses...')
+            _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
+        if many_dirs:
+            turkutil.log_success(path)
+    except KeyError as ex:
+        print('<br />  <strong>Error</strong>: %s. Failed to save.  Moving data to bad subdirectory.' % ex)
+        new_path = os.path.join(path, '../../BAD')
+        if not os.path.exists(new_path):
+            os.makedirs(new_path)
+        shutil.move(path, new_path)
     if verbose: print('Done<br>You may now leave this page.<br>')
     if verbose: print('<a href="http://scripts.mit.edu/~jgross/alphabets/">Return to home page</a>')

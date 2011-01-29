@@ -30,7 +30,7 @@ var doOnAnsweredInput;
 $(function () {
   $('form').submit(function () {
     var feedback = $('#feedback');
-    feedback.html(feedback.html().replace(/\n/g, '\\n').replace(/\r/g, '\\r'));
+    feedback.attr('value', feedback.attr('value').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t'));
     $('#form-submit-time').attr('value', dateUTC(new Date()));
     var duration = timeDelta(formFinishedLoadingTime, new Date());
     $('#duration').attr('value', duration.years + 'y ' + duration.days + 'd ' + duration.hours + 'h ' + 

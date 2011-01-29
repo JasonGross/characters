@@ -2,6 +2,7 @@
 # convert-turk-file-to-folders.py -- Converts the results of a turk submission to folders.
 from __future__ import with_statement
 import os, sys
+import re
 from alphabetspaths import *
 
 rejects = {}
@@ -64,8 +65,15 @@ def note_bad_hit(submission_dict, ex=None):
     else:
         print('Rejected empty submission not saved to folder.')
 
+def preparse_hit(hit, line_sep='\n', data_sep='\t'):
+    reg = re.compile('%s(feedback=.*?)%s[^"]' % (data_sep, data_sep), re.DOTALL)
+    for rep in reg.findall(hit):
+        hit = hit.replace(rep, rep.replace(line_sep, '\\n').replace(data_sep, '\\t'))
+    return hit
+
 def convert_hit(hit, record_submission, message=(lambda submission_dict: 'Saving for %s...' % repr(submission_dict['workerid'])),
-                line_sep='\n', data_sep='\t', pseudo=False):
+                line_sep='\n', data_sep='\t', pseudo=False, **kwargs):
+    hit = preparse_hit(hit, line_sep=line_sep, data_sep=data_sep)
     table = [line.split(data_sep) for line in hit.split(line_sep) if line.strip()]
     data = _parse_table(table)
 ##    check = map((lambda d: (get_alphabet_name(d), hash(d['ipAddress']), d['ipAddress'], d['reject'], d['viewhit'], d['workerid'])), data)
@@ -78,7 +86,7 @@ def convert_hit(hit, record_submission, message=(lambda submission_dict: 'Saving
     for submission_dict in data:
         print(message(submission_dict))
         try:
-            record_submission(submission_dict, pseudo=pseudo)
+            record_submission(submission_dict, pseudo=pseudo, **kwargs)
         except AttributeError, ex:
             note_bad_hit(submission_dict, ex)
 
@@ -107,4 +115,81 @@ def _parse_table(table):
         return row_dict
     rtn = [row_to_dict(row) for row in body]
     return rtn
+
+def get_accepted_rejected_status(submission_dict, extra_submission_dict=tuple()):
+    rejected = (submission_dict['reject'] == 'y')
+    accepted = (submission_dict['assignmentstatus'].lower() == 'Approved'.lower())
+    if submission_dict['assignmentid'] in extra_submission_dict:
+        props = extra_submission_dict[submission_dict['assignmentid']]
+        rejected = 'rejected' in props and props['rejected'].lower() not in ('0', 'false', 'no', 'off')
+        accepted = 'accepted' in props and props['accepted'].lower() not in ('0', 'false', 'no', 'off')
+    return accepted, rejected
+
+def get_submission_paths(submission_dict, rejected_return, accepted_return, unreviewed_return, extra_submission_dict=tuple()):
+    accepted, rejected = get_accepted_rejected_status(submission_dict, extra_submission_dict=extra_submission_dict)
+    if rejected: return rejected_return
+    elif accepted: return accepted_return
+    else: return unreviewed_return
+
     
+def make_folder_for_submission(uid, path, return_num=True):
+    if not isinstance(uid, str):
+        uid = str(uid)
+    push_dir(path)
+    if not os.path.exists(uid.replace('-', 'm')):
+        os.mkdir(uid.replace('-', 'm'))
+    os.chdir(uid.replace('-', 'm'))
+    existing = map(int, [i for i in os.listdir(os.getcwd()) if os.path.isdir(i)] + [-1])
+    new_dir = str(1 + max(existing))
+    os.mkdir(new_dir)
+    pop_dir()
+    rtn = os.path.join(path, uid.replace('-', 'm'), new_dir)
+    if return_num: return rtn, int(new_dir)
+    else: return rtn
+
+def put_summary(folder, properties, file_name, make_summary, quiet=True):
+    push_dir(folder)
+    summary = make_summary(properties)
+    if not quiet and os.path.exists(file_name):
+        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
+    with open(file_name, 'w') as f:
+        f.write(summary)
+    pop_dir()
+
+def put_properties(folder, properties, file_name,
+                   not_use=('^ipAddress',
+                            '^annotation', '^assignmentaccepttime', '^assignmentapprovaltime',
+                            '^assignmentduration', '^assignmentrejecttime', '^assignments',
+                            '^assignmentstatus', '^assignmentsubmittime', '^autoapprovaldelay',
+                            '^autoapprovaltime', '^creationtime', '^deadline', '^description',
+                            '^hitlifetime', '^hitstatus', '^hittypeid', '^keywords',
+                            '^numavailable', '^numcomplete', '^numpending', '^reviewstatus',
+                            '^reward', '^title', '^hitid', '^assignmentid'),
+                    quiet=True):
+    push_dir(folder)
+    write_to_file = ''
+    def can_use(key):
+        for bad_key in not_use:
+            if re.match(bad_key, key):
+                return False
+        return True
+    for key in sorted(properties.keys()):
+        if can_use(key):
+            write_to_file += '%s: %s\n' % (key, properties[key].replace('\n', '\\n'))
+    if not quiet and os.path.exists(file_name):
+        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
+    with open(file_name, 'w') as f:
+        f.write(write_to_file)
+    pop_dir()
+
+def log_success(folder):
+    push_dir(folder)
+    with open('success.log', 'w') as f:
+        f.write('')
+    pop_dir()
+
+def make_uid(form_dict):
+    if 'workerid' in form_dict and form_dict['workerid']:
+        return form_dict['workerid']
+    else:
+        return str(hash(form_dict['ipAddress']))

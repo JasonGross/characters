@@ -294,7 +294,7 @@ var makeTask;
 
     var questionDidNotSeeButton;
     var questionDidNotSeeHolder = $('<div>').append(
-        questionDidNotSeeButton = $('<button>')
+        questionDidNotSeeButton = $('<input>')
           .attr('type', 'button')
           .attr('value', 'I did not see the test image.'));
     var questionDidNotSeeUseCount = $('<input>')

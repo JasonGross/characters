@@ -69,7 +69,10 @@
         </p>
         <script type="text/javascript">
           $('#ie-version').html(jQuery.browser.version);
-          $('submit').attr("disabled", "disabled");
+          if ('overrideAccept' in urlParameters.getURLParameters('overrideAccept'))
+            $('#ie8-').remove();
+          else
+            $('submit').attr("disabled", "disabled");
         </script>
       </div>
     <![endif]-->
@@ -98,6 +101,29 @@
         </script>
       </div>
     <![endif]>
+    <div id="seen-HIT-before" class="error show-if-turk">
+      <h2>You have completed a HIT like this one before.</h2>
+      <p>
+        Our experiments rely on you not having seen the characters we are testing before.  Since you have already completed a HIT like this one,
+        we would not be able to use your data in our analysis.  If you believe that you are recieving this message in error, please contact me
+        at jgross AT mit DOT edu. 
+      </p>
+      <script type="text/javascript">
+        var rejectIds = urlParameters.getURLParameters('rejectIds');
+        if ('rejectIds' in rejectIds)
+          rejectIds = rejectIds['rejectIds'];
+        else
+          rejectIds = '';
+        if (hasURLParameter('workerId')) { 
+          var workerId = getURLParameter('workerId');
+          if (rejectIds.indexOf(workerId) == -1)
+            $('#seen-HIT-before').remove();
+          else
+            $('submit').attr("disabled", "disabled");
+        } else
+          $('#seen-HIT-before').remove();
+      </script>
+    </div>
     <div id="loading" class="warning">
       <h2>Please wait while the page loads&#8230;</h2>
       <p>
@@ -106,7 +132,14 @@
       </p>
     </div>
 
-    <div class="warning show-if-turk" id="preview-mode">
+    <div class="warning show-if-turk show-if-preview-mode" id="maybe-done-before">
+      <p>You will not be able to complete this HIT if you have already completed a HIT similar to this one before.</p>
+      <script type="text/javascript">
+        if (!(hasURLParameter('rejectIds')) || hasURLParameter('workerId'))
+          $('#maybe-done-before').remove();
+      </script>
+    </div>
+    <div class="warning show-if-turk show-if-preview-mode" id="preview-mode">
       <p>You are in preview mode. Remember to accept the HIT before working on it!</p>
     </div>
     <div id="drag-and-drop-warnings">

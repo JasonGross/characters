@@ -176,3 +176,8 @@ div.question-holder {
 .task-actual-progress-bar-holder {
   height: 0px;
 }
+
+.calibration-symbol {
+  display: inline-block;
+  font-size: 72pt;
+}

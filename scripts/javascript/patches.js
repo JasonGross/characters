@@ -55,4 +55,16 @@ var isMSIE = /*@cc_on!@*/false;
       testInput.constructor.prototype.__addSetter__('valueAsDate', function (newDate) { this.value = convertDateToDateTimeInputString(newDate); });
     }
   }*/
+
+  // from http://stackoverflow.com/questions/1181575/javascript-determine-whether-an-array-contains-a-value
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(needle) {
+      for (var i = 0; i < this.length; i++) {
+        if (this[i] === needle) {
+          return i;
+        }
+      }
+      return -1;
+    };
+  }
 })();

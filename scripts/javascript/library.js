@@ -364,3 +364,13 @@ if (this['changecss'] === undefined)
     }
   } 
 //=============================================================
+
+function makeInput(id, value, type) {
+  if (value === undefined) value = '';
+  if (type === undefined) type = 'hidden';
+  return $('<input>')
+    .attr('type', type)
+    .attr('value', value)
+    .attr('id', id)
+    .attr('name', id);
+}

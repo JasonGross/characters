@@ -222,8 +222,9 @@
     <div id="accept_task-div">
     	<form id="accept_task-form">
     		<p>
-    			To complete this task, you must read the instructions, the disclaimer, and click "Accept" below.
-    			You will not be able to click "Accept" until the necesary data has been loaded.
+          To complete this task, you must read the instructions, the disclaimer,
+          and click "Accept" below.  You will not be able to click "Accept"
+          until the necesary data has been loaded.
     		</p>
     		<div class="loading-progress" id="loading_progess-div">
     		  <div class="loading-message" id="loading_message"></div>
@@ -289,6 +290,7 @@
           <div class="calibration-symbol">#</div>
           <div id="calibration-results"></div>
         </fieldset>
+        <div id="calibration-display"></div>
       </div>
 
       <div id="all-tasks" class="tasks">

@@ -1,4 +1,6 @@
+var recognitionRTTasks;
 (function ($, jQuery, undefined) {
-  $(function () {
-  });
+  recognitionRTTasks = function () {
+    
+  };
 })(jQuery, jQuery);

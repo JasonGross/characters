@@ -146,13 +146,15 @@ div.question-holder {
 .task-holder {
 }
 
-.noise-image, .noise-image-holder, .test-image-holder, .test-image, .example-image, .example-image-holder {
+.noise-image, .test-image, .example-image, .rt-symbol {
   width:100px;
   height:100px;
 }
 
-.noise-image-holder, .test-image-holder, .example-image-holder {
+.noise-image-holder, .test-image-holder, .example-image-holder, .rt-symbol-holder {
   margin: 5px;
+  width:105px;
+  height:105px;
 }
 
 .task-overlay-progress-bar-holder {
@@ -177,7 +179,7 @@ div.question-holder {
   height: 0px;
 }
 
-.calibration-symbol {
+.calibration-symbol, .rt-symbol-holder {
   display: inline-block;
   font-size: 72pt;
 }

@@ -8,8 +8,9 @@ var RecognitionRTTasks;
     noiseImageURLs.push('http://jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
   }
   $(function () { $(tasksDivSelector).hide(); });
-  RecognitionRTTasks = function (data, totalTasks, dataLoader, onDoneTasks, 
-      sameDelay) {
+  RecognitionRTTasks = function (data, totalTasks, dataLoader, 
+      onDoneTasks, sameDelay) {
+    if (sameDelay === undefined) sameDelay = defaultSameDelay;
     RTTasks.apply(this, [tag,
       delayRange, displayEvery, displayDelay,
       resultsDivSelector, taskNumberSelector, taskTotalSelector,
@@ -18,7 +19,6 @@ var RecognitionRTTasks;
     var self = this;
     var onLoadImage = dataLoader.thingDone;
     var $results = $(resultsDivSelector);
-    if (sameDelay === undefined) sameDelay = defaultSameDelay;
 
 
     function makeTask(taskIndex, imagePair) {
@@ -77,12 +77,7 @@ var RecognitionRTTasks;
           $this.children().remove();
           $this.append(task['letters'][index].show());
       });
-      sameTimeoutId = setTimeout(self.finishTask, sameDelay);
     };
-
-    this.onFinishTask = function () {
-      clearTimeout(sameTimeoutId);
-    }
 
 
 

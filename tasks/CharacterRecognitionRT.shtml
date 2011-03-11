@@ -307,6 +307,25 @@
         <div id="rt-display"></div>
       </div>
 
+      <!--br class="tasks" />
+       
+      <div class="task-progress" id="task_progess-div">
+        <div class="task-progress-bar-holder" id="task_progress">
+          <div class="task-actual-progress-bar-holder">
+            <div class="task-actual-progress-bar"></div>
+          </div>
+          <div class="task-overlay-progress-bar-holder ui-widget ui-progressbar ui-widget-content ui-corner-all">
+            <div class="task-correct-progress-bar ui-corner-left ui-progressbar"></div>
+            <div class="task-incorrect-progress-bar ui-progressbar"></div>
+          </div>
+        </div>
+        <div class="task-message" id="task_message">
+          Out of the first <span id="task-progress-message-num-tasks-known" name="task-progress-message-num-tasks-known">0</span> tasks: <br />
+          Number Right: <span id="task-progress-message-num-tasks-correct" name="task-progress-message-num-tasks-correct">0</span> <br />
+          Number Wrong: <span id="task-progress-message-num-tasks-incorrect" name="task-progress-message-num-tasks-incorrect">0</span>
+        </div>
+      </div-->
+
       <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>

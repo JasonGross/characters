@@ -211,7 +211,8 @@ def create_first_task(form, args, reset=False, verbose=False):
                     'random':False,
                     'characterSet':None,
                     'trialsPerExperiment':200,
-                    'fractionSame':0.25
+                    'fractionSame':0.25,
+                    'calibrationTaskCount':25
                     }
     for key in passOnValues:
         if hasattr(args, key) and getattr(args, key) is not None:

@@ -9,7 +9,7 @@
     'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise',
     'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 
     'pauseToGroup', 'displayProgressBarDuringTask', 'random', 'characterSet',
-    'trialsPerExperiment', 'fractionSame'];
+    'trialsPerExperiment', 'fractionSame', 'calibrationTaskCount'];
 
 
   function retrieveData (loadData) {
@@ -23,7 +23,6 @@
   }
 
   function onAccept() {
-    calibrationTasks = new CalibrationTasks(tasks.startTasks);
     calibrationTasks.startTasks();
   };
 
@@ -36,6 +35,8 @@
     saveUrlParameters(data);
     tasks = new RecognitionRTTasks(data, data['tasks'].length, dataLoader,
         onDoneTasks);
+    calibrationTasks = new CalibrationTasks(tasks.startTasks,
+        data['calibrationTaskCount']);
     doneLoading();
   };
   notYetLoaded();

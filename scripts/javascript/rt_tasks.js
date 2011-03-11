@@ -6,8 +6,8 @@ var RTTasks;
            defaultDisplayEvery, defaultDisplayDelay,
            $, jQuery, undefined) {
   RTTasks = function (tag, delayRange, displayEvery, 
-      displayDelay, resultsDivSelector, taskNumberSelector, taskTotalSelector,
-      tasksDivSelector, displaySelector, sameDelay) {
+      displayDelay, resultsDivSelector, taskNumberSelector, 
+      taskTotalSelector, tasksDivSelector, displaySelector, sameDelay) {
     SequentialTasks.apply(this);
     
     if (totalTasks === undefined) totalTasks = defaultTotalTasks;
@@ -15,11 +15,13 @@ var RTTasks;
     if (displayEvery === undefined) displayEvery = defaultDisplayEvery;
     if (displayDelay === undefined) displayDelay = defaultDisplayDelay;
     if (sameDelay === undefined) sameDelay = -1;
+    var showAnswer = sameDelay >= 0;
     var results;
     var taskNumber;
     var taskTotal;
     var tasks;
-    var averageSpan, lastSpan;
+    var averageSpan, lastSpan, answerSpan;
+    var averageP, lastP;
     var totalReactionTime = 0;
     var lastReactionTime;
     var lastStartTime;
@@ -31,6 +33,7 @@ var RTTasks;
     var totalTasks;
     var displayResults;
     var sameTimeoutId = undefined;
+    var sameCount = 0;
     var doOnKeypress = function () {};
     var actualDoOnKeypress = function () {
       doOnKeypress.apply(this, arguments);
@@ -98,16 +101,33 @@ var RTTasks;
       self.showPrompt(task);
       doOnKeypress = function () { onkeypress.apply(this, arguments); };
       if (sameDelay > 0)
-        sameTimeoutId = setTimeout(self.finishTask, sameDelay);
+        sameTimeoutId = setTimeout(function () {
+              sameCount++;
+              self.finishTask(true); 
+            },
+            sameDelay);
     }
 
-    function showResults(doNext) {
+    function showResults(answeredSame, doNext) {
       if (doNext === undefined) doNext = function () { self.doNextTask(); };
-      if (self.getCurrentTaskNumber() + 1 != 0)
-        averageSpan.html(totalReactionTime / (self.getCurrentTaskNumber() + 1));
-      else
-        averageSpan.html('Weird error: self.getCurrentTaskNumber() = -1.  totalReactionTime = ' + totalReactionTime);
-      lastSpan.html(lastReactionTime);
+      if (!answeredSame) {
+        if (self.getCurrentTaskNumber() + 1 - sameCount != 0)
+          averageSpan.html(totalReactionTime / (self.getCurrentTaskNumber() + 1 - sameCount));
+        else
+          averageSpan.html('Weird error: self.getCurrentTaskNumber() = -1.  totalReactionTime = ' + totalReactionTime);
+        lastSpan.html(lastReactionTime).show();
+        averageP.show();
+        lastP.show();
+      } else {
+        averageP.hide();
+        lastP.hide();
+      }
+      if (showAnswer) {
+        if (answeredSame)
+          answerSpan.html('Same');
+        else
+          answerSpan.html('Different');
+      }
       displayResults.show();
       setTimeout(doNext, displayDelay);
     }
@@ -133,22 +153,23 @@ var RTTasks;
           'timeStamp':ev.timeStamp,
           'which':ev.which
         }));
-      self.finishTask(true);
+      self.finishTask(false);
     };
 
-    this.onFinishTask = function () {};
+    this.onFinishTask = function (answeredSame, willShowResults) {};
 
-    this.finishTask = function (shouldShowResults) {
+    this.finishTask = function (answeredSame, shouldShowResults) {
       doOnKeypress = function () {};
-      self.onFinishTask();
-      if (shouldShowResults === undefined) showResults = false;
+      if (shouldShowResults === undefined) shouldShowResults = true;
+      self.onFinishTask(answeredSame, shouldShowResults);
       if (self.doneWithTasks()) { 
         $(document).unbind('keypress', actualDoOnKeypress);
         doOnKeypress = function () { console.log("Detachment of keypress event failed."); alert("Something went wrong.  Why am I here?"); };
-        showResults(function () { tasks.hide();  self.onDoneTasks(); });
+        showResults(answeredSame,
+            function () { tasks.hide();  self.onDoneTasks(); });
       } else {
         if (self.getCurrentTaskNumber() % displayEvery == 0 && shouldShowResults)
-          showResults();
+          showResults(answeredSame);
         else
           self.doNextTask();
       }
@@ -162,12 +183,18 @@ var RTTasks;
       taskNumber = $(taskNumberSelector || defaultTaskNumberSelector);
       taskTotal = $(taskTotalSelector || defaultTaskTotalSelector);
       tasks = $(tasksDivSelector || defaultTasksDivSelector);
-      displayResults = $(displaySelector || defualtDisplaySelector)
-        .append($('<p>')
+      displayResults = $(displaySelector || defualtDisplaySelector);
+      if (sameDelay >= 0)
+        displayResults
+          .append($('<p>')
+            .append('Your Answer: ')
+            .append(answerSpan = $('<span>')))
+      displayResults
+        .append(averageP = $('<p>')
           .append('Average Reaction Time: ')
           .append(averageSpan = $('<span>'))
           .append(' ms'))
-        .append($('<p>')
+        .append(lastP = $('<p>')
           .append('Most Recent Reaction Time: ')
           .append(lastSpan = $('<span>'))
           .append(' ms'));

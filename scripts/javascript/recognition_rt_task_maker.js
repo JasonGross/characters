@@ -63,7 +63,7 @@ var RecognitionRTTasks;
         });
 
       jQuery.each(task['letterURLs'], function (index, url) {
-          $results.append(makeInput(tag + '-' + taskIndex + '-character-' + index + '-url')
+          $results.append(makeInput(tag + '-' + taskIndex + '-character-' + index + '-anonymous_url')
             .attr('value', url));
         });
 

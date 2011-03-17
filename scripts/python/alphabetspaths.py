@@ -17,6 +17,8 @@ except SyntaxError:
 import objectstorage
 from library import maplist
 
+_tasks = ['recognition', 'categorization', 'recognition-rt']
+
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',
            'get_unreviewed_extra_info_file_name', 'get_unreviewed_ids', 'get_unreviewed_image_list', 'get_unreviewed_stroke_list',
@@ -26,11 +28,8 @@ __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_N
            'ACCEPTED_JAVASCRIPT_PATH', 'REJECTED_JAVASCRIPT_PATH', 'SCRIPTS_PATH', 'JAVASCRIPT_PATH', 'TURK_POST_EXTRA_LIST_PATH',
            'RESULTS_PATH', 'get_alphabet_name', 'get_alphabet_id_from_file_name',
            'STORED_ALPHABET_IMAGES_LIST_PATH',
-           'CATEGORIZATION_RESULTS_PATH',
-           'CATEGORIZATION_UNREVIEWED_PATH', 'CATEGORIZATION_UNREVIEWED_URL',
            'LOCAL_TEMP_PATH', 'LOCAL_TEMP_URL',
            'ANONYMOUS_IMAGES_PATH', 'ANONYMOUS_IMAGES_URL',
-           'RECOGNITION_RESULTS_PATH', 'RECOGNITION_UNREVIEWED_PATH', 'RECOGNITION_UNREVIEWED_URL',
            'IMAGES_PATH', 'IMAGES_URL', 'get_stroke_noises', 'LOG_FILE',
 ##           'get_object', 'get_object_file_name', 'save_object',
            'get_hashed_images_dict', 'raise_object_changed']
@@ -41,19 +40,18 @@ _paths = {'ORIGINAL':(lambda s: 'originals/' if s == 'images' else None),
           'TURK': (lambda s: ('turk-%s/' % s) if s != 'information' else None),
           'TURK_REJECTED': (lambda s: ('turk-rejected-%s/' % s) if s != 'information' else None),
           'TURK_ACCEPTED': (lambda s: ('turk-accepted-%s/' % s) if s != 'information' else None),
-          'EXTRA': (lambda s: ('extra-%s/' % s) if s != 'information' else None),
-          'CATEGORIZATION_ACCEPTED': (lambda s: ('categorization/accepted-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_REJECTED': (lambda s: ('categorization/rejected-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_TURK': (lambda s: ('categorization/turk-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_TURK_REJECTED': (lambda s: ('categorization/turk-rejected-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_TURK_ACCEPTED': (lambda s: ('categorization/turk-accepted-%s/' % s) if s == 'information' else None),
-          'CATEGORIZATION_EXTRA': (lambda s: ('categorization/extra-%s/' % s) if s == 'information' else None),
-          'RECOGNITION_ACCEPTED': (lambda s: ('recognition/accepted-%s/' % s) if s == 'information' else None),
-          'RECOGNITION_REJECTED': (lambda s: ('recognition/rejected-%s/' % s) if s == 'information' else None),
-          'RECOGNITION_TURK': (lambda s: ('recognition/turk-%s/' % s) if s == 'information' else None),
-          'RECOGNITION_TURK_REJECTED': (lambda s: ('recognition/turk-rejected-%s/' % s) if s == 'information' else None),
-          'RECOGNITION_TURK_ACCEPTED': (lambda s: ('recognition/turk-accepted-%s/' % s) if s == 'information' else None),
-          'RECOGNITION_EXTRA': (lambda s: ('recognition/extra-%s/' % s) if s == 'information' else None)}
+          'EXTRA': (lambda s: ('extra-%s/' % s) if s != 'information' else None)}
+
+for task in _tasks:
+    utask = task.upper().replace('-', '_')
+    __all__.extend([utask + '_RESULTS_PATH', utask + '_UNREVIEWED_PATH', utask + '_UNREVIEWED_URL'])
+    _paths.update({utask + '_ACCEPTED': (lambda s: ('%s/accepted-%s/' % (task, s)) if s == 'information' else None),
+                   utask + '_REJECTED': (lambda s: ('%s/rejected-%s/' % (task, s)) if s == 'information' else None),
+                   utask + '_TURK': (lambda s: ('%s/turk-%s/' % (task, s)) if s == 'information' else None),
+                   utask + '_TURK_REJECTED': (lambda s: ('%s/turk-rejected-%s/' % (task, s)) if s == 'information' else None),
+                   utask + '_TURK_ACCEPTED': (lambda s: ('%s/turk-accepted-%s/' % (task, s)) if s == 'information' else None),
+                   utask + '_EXTRA': (lambda s: ('%s/extra-%s/' % (task, s)) if s == 'information' else None)})
+
 
 _image_stroke_dicts_names = ['unreviewed'] + [key.lower() for key in sorted(_paths.keys())
                                               if 'CATEGORIZATION_' not in key and 'RECOGNITION_' not in key]
@@ -78,15 +76,16 @@ REJECTED_JAVASCRIPT_PATH = os.path.join(JAVASCRIPT_PATH, 'rejected_alphabets.js'
 _RELATIVE_RESULTS_PATH = 'results/'
 _RELATIVE_UNREVIEWED_PATH = os.path.join(_RELATIVE_RESULTS_PATH, 'unreviewed/')
 
-for task in ('CATEGORIZATION', 'RECOGNITION'):
-    setattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task, 'results/%s/' % task.lower())
-    setattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % task, os.path.join(getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task), 'unreviewed/'))
+for task in _tasks:
+    utask = task.upper().replace('-', '_')
+    setattr(_self, '_RELATIVE_%s_RESULTS_PATH' % utask, 'results/%s/' % task)
+    setattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % utask, os.path.join(getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % utask), 'unreviewed/'))
 
-    setattr(_self, '%s_RESULTS_PATH' % task, os.path.join(BASE_PATH, getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task)))
-    setattr(_self, '%s_UNREVIEWED_PATH' % task, os.path.join(BASE_PATH, getattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % task)))
+    setattr(_self, '%s_RESULTS_PATH' % utask, os.path.join(BASE_PATH, getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % utask)))
+    setattr(_self, '%s_UNREVIEWED_PATH' % utask, os.path.join(BASE_PATH, getattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % utask)))
 
-    setattr(_self, '%s_RESULTS_URL' % task, urllib.parse.urljoin(BASE_URL, getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % task)))
-    setattr(_self, '%s_UNREVIEWED_URL' % task, urllib.parse.urljoin(BASE_URL, getattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % task)))
+    setattr(_self, '%s_RESULTS_URL' % utask, urllib.parse.urljoin(BASE_URL, getattr(_self, '_RELATIVE_%s_RESULTS_PATH' % utask)))
+    setattr(_self, '%s_UNREVIEWED_URL' % utask, urllib.parse.urljoin(BASE_URL, getattr(_self, '_RELATIVE_%s_UNREVIEWED_PATH' % utask)))
 
 
 _RELATIVE_LOCAL_TEMP_PATH = 'tmp/'

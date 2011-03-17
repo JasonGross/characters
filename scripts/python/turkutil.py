@@ -4,6 +4,7 @@ from __future__ import with_statement
 import os, sys
 import re
 from alphabetspaths import *
+from image_anonymizer import deanonymize_image
 
 rejects = {}
 
@@ -181,6 +182,16 @@ def put_properties(folder, properties, file_name,
     with open(file_name, 'w') as f:
         f.write(write_to_file)
     pop_dir()
+
+def deanonymize_urls(properties, tail_tag='-anonymous_url')):
+    rtn = dict(properties)
+    for key in sorted(rtn.keys()):
+        if key[-len(tail_tag):] == tail_tag:
+            values = deanonymize_image(rtn[key])
+            rtn[key.replace(tail_tag, '-alphabet')] = values['alphabet']
+            rtn[key.replace(tail_tag, '-character-number')] = values['character-number']
+            rtn[key.replace(tail_tag, '-id')] = values['id']
+    return rtn
 
 def log_success(folder):
     push_dir(folder)

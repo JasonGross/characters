@@ -28,6 +28,8 @@ def write_end_time():
     with open(TIME_WORKED, 'a') as f:
         f.write('End: ' + datetime.now().strftime('%A, %B %d, %Y %H:%M.%S') + '\n')
         f.write('Time Spent: ' + str(datetime.now() - start) + '\n\n')
+    print('End: ' + datetime.now().strftime('%A, %B %d, %Y %H:%M.%S'))
+    print('Time Spent: ' + str(datetime.now() - start))
 
 def get_total_time(begin=None, end=None):
     return get_total_timef(TIME_WORKED, begin, end)

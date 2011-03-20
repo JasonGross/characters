@@ -6,9 +6,8 @@
   var allUrlParameters = ['numberOfAlphabets', 'exampleCharactersPerAlphabet',
     'sameTestCharactersPerAlphabet', 'differentTestCharactersPerAlphabet',
     'differentAlphabetTestCharactersPerAlphabet', 'distractWithAll',
-    'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise',
-    'pauseToTest', 'tasksPerFeedbackGroup', 'tasksPerWaitGroup', 
-    'pauseToGroup', 'displayProgressBarDuringTask', 'random', 'characterSet',
+    'tasksPerFeedbackGroup', 'displayProgressBarDuringTask',
+    'pauseToGroup', 'random', 'characterSet',
     'trialsPerExperiment', 'fractionSame', 'calibrationTaskCount'];
 
 

@@ -51,17 +51,17 @@ var RTTasks;
 
       jQuery.each(['doTask', 'showCharacters', 'keypress'],
         function (index, name) {
-          curTimeInputs[name] = makeInput(tag + '-' + self.getCurrentTaskNumber() + '-time-of-' + name);
+          curTimeInputs[name] = makeInput(tag + 'task-' + self.getCurrentTaskNumber() + '-time-of-' + name);
           results.append(curTimeInputs[name]);
         });
 
-      curKeypress = makeInput(tag + '-' + self.getCurrentTaskNumber() + '-keypress');
-      curJumpinessInput = makeInput(tag + '-' + self.getCurrentTaskNumber() + '-keypress_before_show_prompt_count');
+      curKeypress = makeInput(tag + 'task-' + self.getCurrentTaskNumber() + '-keypress');
+      curJumpinessInput = makeInput(tag + 'task-' + self.getCurrentTaskNumber() + '-keypress_before_show_prompt_count');
 
       results.append(curKeypress).append(curJumpinessInput);
     }
 
-    this.beforeEachTask = function () {};
+    this.beforeEachTask = function (task, callback) { callback(); };
 
     this.prepTask = function (task, index) {};
 
@@ -73,13 +73,14 @@ var RTTasks;
     function doTask(task, delay) {
       doOnKeypress = function () {};
       displayResults.hide();
-      self.beforeEachTask();
-      makeNextTask();
-      self.prepTask(task, self.getCurrentTaskNumber());
-      if (delay === undefined) delay = getNextDelay();
-     
-      curTimeInputs['doTask'].attr('value', dateUTC(new Date()));
-      queueResponse(task, delay);
+      self.beforeEachTask(task, function () {
+        makeNextTask();
+        self.prepTask(task, self.getCurrentTaskNumber());
+        if (delay === undefined) delay = getNextDelay();
+       
+        curTimeInputs['doTask'].attr('value', dateUTC(new Date()));
+        queueResponse(task, delay);
+      });
     };
 
     this.doNextTask = function (delay) {
@@ -99,24 +100,24 @@ var RTTasks;
     function showCharacters(task) {
       curTimeInputs['showCharacters'].attr('value', lastStartTime = dateUTC(new Date()));
       self.showPrompt(task);
-      doOnKeypress = function () { onkeypress.apply(this, arguments); };
+      doOnKeypress = function () { onkeypress.apply(this, [task].concat(Array.prototype.slice.call(arguments))); };
       if (sameDelay > 0)
         sameTimeoutId = setTimeout(function () {
               sameCount++;
-              self.finishTask(true); 
+              self.finishTask(task, true); 
             },
             sameDelay);
     }
 
-    function showResults(answeredSame, doNext) {
+    function showResults(task, answeredSame, doNext) {
       if (doNext === undefined) doNext = function () { self.doNextTask(); };
       if (!answeredSame) {
-        if (self.getCurrentTaskNumber() + 1 - sameCount != 0)
+        /*if (self.getCurrentTaskNumber() + 1 - sameCount != 0)
           averageSpan.html(totalReactionTime / (self.getCurrentTaskNumber() + 1 - sameCount));
         else
-          averageSpan.html('Weird error: self.getCurrentTaskNumber() = -1.  totalReactionTime = ' + totalReactionTime);
+          averageSpan.html('Weird error: self.getCurrentTaskNumber() = -1.  totalReactionTime = ' + totalReactionTime);*/
         lastSpan.html(lastReactionTime).show();
-        averageP.show();
+        averageP.hide();
         lastP.show();
       } else {
         averageP.hide();
@@ -134,7 +135,7 @@ var RTTasks;
 
     this.onDoneTasks = function () {};
 
-    function onkeypress(ev) {
+    function onkeypress(task, ev) {
       doOnKeypress = function () {};
       if (sameTimeoutId !== undefined) clearTimeout(sameTimeoutId);
       curTimeInputs['keypress'].attr('value', lastReactionTime = dateUTC(new Date()));
@@ -153,23 +154,23 @@ var RTTasks;
           'timeStamp':ev.timeStamp,
           'which':ev.which
         }));
-      self.finishTask(false);
+      self.finishTask(task, false);
     };
 
-    this.onFinishTask = function (answeredSame, willShowResults) {};
+    this.onFinishTask = function (task, answeredSame, willShowResults) {};
 
-    this.finishTask = function (answeredSame, shouldShowResults) {
+    this.finishTask = function (task, answeredSame, shouldShowResults) {
       doOnKeypress = function () {};
       if (shouldShowResults === undefined) shouldShowResults = true;
-      self.onFinishTask(answeredSame, shouldShowResults);
+      self.onFinishTask(task, answeredSame, shouldShowResults);
       if (self.doneWithTasks()) { 
         $(document).unbind('keypress', actualDoOnKeypress);
         doOnKeypress = function () { console.log("Detachment of keypress event failed."); alert("Something went wrong.  Why am I here?"); };
-        showResults(answeredSame,
+        showResults(task, answeredSame,
             function () { tasks.hide();  self.onDoneTasks(); });
       } else {
         if (self.getCurrentTaskNumber() % displayEvery == 0 && shouldShowResults)
-          showResults(answeredSame);
+          showResults(task, answeredSame);
         else
           self.doNextTask();
       }

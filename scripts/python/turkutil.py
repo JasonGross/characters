@@ -118,9 +118,9 @@ def _parse_table(table):
     return rtn
 
 def get_accepted_rejected_status(submission_dict, extra_submission_dict=tuple()):
-    rejected = (submission_dict['reject'] == 'y')
-    accepted = (submission_dict['assignmentstatus'].lower() == 'Approved'.lower())
-    if submission_dict['assignmentid'] in extra_submission_dict:
+    rejected = (submission_dict.get('reject') == 'y')
+    accepted = (submission_dict.get('assignmentstatus', '').lower() == 'Approved'.lower())
+    if submission_dict.get('assignmentid', '') in extra_submission_dict:
         props = extra_submission_dict[submission_dict['assignmentid']]
         rejected = 'rejected' in props and props['rejected'].lower() not in ('0', 'false', 'no', 'off')
         accepted = 'accepted' in props and props['accepted'].lower() not in ('0', 'false', 'no', 'off')
@@ -183,7 +183,7 @@ def put_properties(folder, properties, file_name,
         f.write(write_to_file)
     pop_dir()
 
-def deanonymize_urls(properties, tail_tag='-anonymous_url')):
+def deanonymize_urls(properties, tail_tag='-anonymous_url'):
     rtn = dict(properties)
     for key in sorted(rtn.keys()):
         if key[-len(tail_tag):] == tail_tag:
@@ -204,3 +204,13 @@ def make_uid(form_dict):
         return form_dict['workerid']
     else:
         return str(hash(form_dict['ipAddress']))
+
+_OBJECT_DICT = {'true':True, 'false':False}
+def string_to_object(string):
+    if string in _OBJECT_DICT:
+        return _OBJECT_DICT[string]
+    try:
+        return int(string)
+    except ValueError:
+        pass
+    return string

@@ -8,7 +8,7 @@ var CalibrationTasks;
   $(function () { $(calibrationTasksDivSelector).hide(); });
   CalibrationTasks = function (onDoneTasks, totalTasks, 
       defaultCharacter, defaultHiderCharacter) {
-    RTTasks.apply(this, ['calibration',
+    RTTasks.apply(this, ['calibration_',
       defaultDelayRange, defaultDisplayEvery, defaultDisplayDelay, 
       calibrationResultsDivSelector, calibrationTaskNumberSelector,
       calibrationTaskTotalSelector, calibrationTasksDivSelector, "#calibration-display"]);

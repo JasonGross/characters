@@ -63,16 +63,18 @@
       <div id="ie8-" class="error">
         <h2>You are using Internet Explorer <span id="ie-version" name="ie-version"></span></h2>
         <p>
-          If you want it to be able to complete this form, please update your browser, or use a
-          different (standards compliant) browser, such as Firefox, Google Chrome, or Safari.
-          If you do not have one of these browsers or do not know what this means, please visit
-          <a href="http://utilu.com/UtiluMF/" rel="external" target="_blank">Utilu Silent Setup for Mozilla Firefox</a>,
-          or download <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
+          If you want it to be able to complete this form, please update your
+          browser, or use a different (standards compliant) browser, such as
+          Firefox, Google Chrome, or Safari.  If you do not have one of these
+          browsers or do not know what this means, please visit <a
+            href="http://utilu.com/UtiluMF/" rel="external"
+            target="_blank">Utilu Silent Setup for Mozilla Firefox</a>, or
+          download <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
         </p>
         <p>
-          While <tt>window.setTimeout</tt> works and has sufficient accuracy in Internet Explorer
-          9, earlier versions of Internet Explorer do not have a sufficiently accurate timer to
-          perform this experiment.
+          While <tt>setTimeout</tt> works and has sufficient accuracy in
+          Internet Explorer 9, earlier versions of Internet Explorer do not
+          have a sufficiently accurate timer to perform this experiment.
         </p>
         <script type="text/javascript">
           $('#ie-version').html(jQuery.browser.version);
@@ -86,9 +88,11 @@
     <div id="seen-HIT-before" class="error show-if-turk">
       <h2>You have completed a HIT like this one before.</h2>
       <p>
-        Our experiments rely on you not having seen the characters we are testing before.  Since you have already completed a HIT like this one,
-        we would not be able to use your data in our analysis.  If you believe that you are recieving this message in error, please contact me
-        at jgross AT mit DOT edu. 
+        Our experiments rely on you not having seen the characters we are
+        testing before.  Since you have already completed a HIT like this one,
+        we would not be able to use your data in our analysis.  If you believe
+        that you are recieving this message in error, please contact me at
+        jgross AT mit DOT edu. 
       </p>
       <script type="text/javascript">
         var rejectIds = urlParameters.getURLParameters('rejectIds');
@@ -106,11 +110,35 @@
           $('#seen-HIT-before').remove();
       </script>
     </div>
+    <div id="no-inline-block" class="error">
+      <h2>Your browser is outdated or does not comform to standards</h2>
+      <p>
+        Your browser does not support the CSS <tt>display: inline-block</tt>
+        style.
+      </p>
+      <p>
+        If you want it to be able to complete this form, please update your
+        browser, or use a different (standards compliant) browser, such as
+        Firefox, Google Chrome, or Safari.  If you do not have one of these
+        browsers or do not know what this means, please visit <a
+          href="http://utilu.com/UtiluMF/" rel="external" target="_blank">Utilu
+          Silent Setup for Mozilla Firefox</a>, or download <a
+          href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
+      </p>
+      <script type="text/javascript">
+        //<![CDATA[
+        var elem = $('<div>').css({'display':'inline-block'});
+        if (elem.css('display') == 'inline-block')
+          $('#no-inline-block').remove();
+        //]]>
+      </script>
+    </div>
     <div id="loading" class="warning">
       <h2>Please wait while the page loads&#8230;</h2>
       <p>
-        If this message stays here for more than 120 seconds after the page stops changing, 
-        you should not attempt to complete this assignment. Try refreshing or enabling JavaScript.
+        If this message stays here for more than 120 seconds after the page
+        stops changing, you should not attempt to complete this assignment. Try
+        refreshing or enabling JavaScript.
       </p>
     </div>
 
@@ -122,7 +150,8 @@
       </script>
     </div>
     <div class="warning show-if-turk show-if-preview-mode" id="preview-mode">
-      <p>You are in preview mode. Remember to accept the HIT before working on it!</p>
+      <p>You are in preview mode. Remember to accept the HIT before working on
+      it!</p>
     </div>
     <div id="drag-and-drop-warnings">
     </div>
@@ -130,27 +159,32 @@
   <div class="pre-task">
     <div id="instructions">
       <h3>Instructions</h3>
-      <p>You must use the Mozilla Firefox web browser.</p>
       <p>This HIT consists of many subtasks, and you must complete every subtask to submit the form.</p>
       <p>
-        This task tests your ability to discriminate handwritten characters from writing systems around the world. For example in
-        the Latin alphabet A, B, C, and D are different characters.  In each subtask, you will see pairs of character images, and 
-        no two images are exactly the same.  <strong>Importantly, your task is not to judge whether the two images are literally 
-        the same, but rather whether they are images of the same type of character (for example, 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
-        and 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_azdw60621ia38.png" alt='another "b"' style="height:1.25em" title='another "b"' />)
-        or instead of two different types of characters (for example, 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
-        and 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_04_a1z59eb58sfxpy.png" alt='a "d"' style="height:1.25em" title='a "d"' />).</strong>
-      </p>
-        If the two images contain the same type of
-        character, mark "Yes, they are the same." Otherwise, if they contain different types of characters, mark "No, they are 
-        different.  The exact characters you will see should be new to you, so make your best guess.
+        This task tests your ability to discriminate handwritten characters
+        from writing systems around the world. For example in the Latin
+        alphabet A, B, C, and D are different characters.  In each subtask, you
+        will see pairs of character images, and no two images are exactly the
+        same.  <strong>Importantly, your task is not to judge whether the two
+          images are literally the same, but rather whether they are images of
+          the same type of character (for example, <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png"
+          alt='a "b"' style="height:1.25em" title='a "b"' /> and <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_azdw60621ia38.png"
+          alt='another "b"' style="height:1.25em" title='another "b"' />) or
+          instead of two different types of characters (for example, <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png"
+          alt='a "b"' style="height:1.25em" title='a "b"' /> and <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_04_a1z59eb58sfxpy.png"
+          alt='a "d"' style="height:1.25em" title='a "d"' />).</strong> </p> If
+        the two images contain the same type of character, mark "Yes, they are
+        the same." Otherwise, if they contain different types of characters,
+        mark "No, they are different.  The exact characters you will see should
+        be new to you, so make your best guess.
       </p>
       <p>
-        You will see a sequence of <span id="num-trials" class="num-trials">200</span> subtasks each requiring a response.
+        You will see a sequence of <span id="num-trials"
+          class="num-trials">200</span> subtasks each requiring a response.
         Each subtask has the following structure:
         <ol>
           <li>There are five noise images of random scribbles.</li>
@@ -159,12 +193,11 @@
         </ol>
       </p>
       <p>
-        Before you begin distinguishing characters, there will be 
-        <span id="num-calibration">some</span> calibration tasks;
-        it takes a certain amount of time for you to realize that
-        something has changed, and to press a key after that, and
-        we need to know what that delay is for you.
-        Each of these tasks has the following structure:
+        Before you begin distinguishing characters, there will be <span
+          id="num-calibration">some</span> calibration tasks; it takes a
+        certain amount of time for you to realize that something has changed,
+        and to press a key after that, and we need to know what that delay is
+        for you.  Each of these tasks has the following structure:
         <ol>
           <li>There are five pound signs (#).</li>
           <li>After a short pause, two of the pound signs will be replaced by letters.</li>
@@ -172,13 +205,14 @@
         </ol>
       </p>
       <p>
-        After every few characters, a progress bar appears to show you your accuracy so far.
-        You may take a break from the task at this time.
+        After every few characters, a progress bar appears to show you your
+        accuracy so far.  You may take a break from the task at this time.
       </p>
       <p>Please note:</p>
       <ul>
         <li>
-          You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
+          You must complete every subtask to submit the form.  (The questions
+          at the end, however, are optional.)
           <ul class="show-if-turk">
             <li>If you somehow manage to submit the form without completing every subtask, your submission will be rejected.</li>
           </ul>

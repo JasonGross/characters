@@ -211,7 +211,7 @@ def create_first_task(form, args, reset=False, verbose=False):
                     'random':False,
                     'characterSet':None,
                     'trialsPerExperiment':200,
-                    'fractionSame':0.25,
+                    'fractionSame':0.5, # this was 0.25 before the RT task, changed to 0.5 for RT
                     'calibrationTaskCount':25
                     }
     for key in passOnValues:

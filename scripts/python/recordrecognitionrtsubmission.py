@@ -85,8 +85,8 @@ def _make_matlab(properties, uid,
         if can_use(key):
             use_key = key.replace('-', '_')
             if 'task_' in use_key:
-                tag = use_key[:len('task_')+use_key.index('task_')]
-                rest = use_key[len(tag):].split('_')
+                tag = use_key[:len('task_')+use_key.index('task_')-1]
+                rest = use_key[len(tag)+1:].split('_')
                 use_key = '%s(%d).%s' % (tag, int(rest[0]) + 1, '_'.join(rest[1:]))
             rtn.append('results.for_%s(%d).%s = %s;' % (uid, zero_based_num+1, use_key, 
                 format_for_matlab(turkutil.string_to_object(properties[key]))))
@@ -115,6 +115,24 @@ def _make_file_name(uid, summary=False, matlab=False):
         return uid.replace('-', 'm') + '_results.txt'
 
 
+def _record_reaction_times(properties, overwrite=True, tags=('task-', 'calibration_task-'),
+        start_time_end='-time-of-showCharacters', end_time_end='-time-of-keypress', find_nums='-time-of-showCharacters',
+        if_none=-1):
+    if not overwrite: properties = dict(properties)
+    for tag in tags:
+        cur_regex = re.compile('^%s([0-9]+)' % tag)
+        pre_nums = (cur_regex.match(key) for key in properties if tag in key and find_nums in key)
+        nums = list(sorted(set(int(match.groups()[0]) for match in pre_nums if match)))
+        start_time_key = '%s%%d%s' % (tag, start_time_end)
+        end_time_key = '%s%%d%s' % (tag, end_time_end)
+        for i in nums:
+            if (start_time_key % i) in properties and (end_time_key % i) in properties:
+                properties['%s%d-reaction-time' % (tag, i)] = str(int(properties[end_time_key % i]) - int(properties[start_time_key % i]))
+            else:
+                properties['%s%d-reaction-time' % (tag, i)] = str(if_none)
+    return properties
+
+
 def record_submission(form_dict, many_dirs=True, path=RECOGNITION_RT_UNREVIEWED_PATH,
                       verbose=True, pseudo=False, quiet=True, exclude_rejected=False):
     accepted, rejected = turkutil.get_accepted_rejected_status(form_dict)
@@ -129,6 +147,7 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_RT_UNREVIEWED_
         path, results_num = _make_folder_for_submission(uid, path=path, return_num=True)
     if verbose: print('Done<br>Storing your responses...')
     form_dict = turkutil.deanonymize_urls(form_dict)
+    form_dict = _record_reaction_times(form_dict)
     try:
         turkutil.put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
         if not pseudo:

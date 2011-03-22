@@ -10,6 +10,7 @@
   <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/json2.js" type="text/javascript"></script>
   <script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script>
   <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->

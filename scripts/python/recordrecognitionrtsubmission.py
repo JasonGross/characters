@@ -20,72 +20,49 @@ def _make_folder_for_submission(uid, path=RECOGNITION_RT_UNREVIEWED_PATH, return
 
 _BOOL_DICT = {'true':True, 'false':False, 'True':True, 'False':False, '0':False, '1':True, 0:False, 1:True, 'Did Not See':None, 'did not see':None}
 
-##def _make_summary(properties):
-##    rtn = []
-##    rtn.append('\n\nSummary:')
-##    is_correct_regex = re.compile('^task-([0-9]+)-is-correct-answer$')
-##    task_numbers = list(sorted(int(is_correct_regex.match(key).groups()[0]) for key in properties if '-is-correct-answer' in key))
-##
-##    responses = []
-##    for task_number in task_numbers:
-##        responses.append({'task-number':task_number,
-##                          'duration':int(properties['task-%d-duration-of-see-test' % task_number]),
-##                          'said-are-same': _BOOL_DICT[properties['task-%d_question' % task_number]],
-##                          'example-url': os.path.split(properties['task-%d-example-url' % task_number])[1],
-##                          'test-url': os.path.split(properties['task-%d-test-url' % task_number])[1],
-##                          'is-correct': _BOOL_DICT[properties['task-%d-is-correct-answer' % task_number]]})
-##    right_count = 0
-##    wrong_count = 0
-##    right_same_count = 0
-##    wrong_same_count = 0
-##    right_different_count = 0
-##    wrong_different_count = 0
-##
-##    for response in responses:
-##        if response['is-correct']: 
-##            right_count += 1
-##            if response['said-are-same']: right_same_count += 1
-##            else: right_different_count += 1
-##        else: 
-##            wrong_count += 1
-##            if response['said-are-same']: wrong_different_count += 1
-##            else: wrong_same_count += 1
-##        for image_type in ('example', 'test'):
-##            url = response['%s-url' % image_type]
-##            response['%s-alphabet' % image_type] = _REWRITE_DICT['%s%s%s%s' % (url[2], url[5], url[8], url[11])]
-##            response['%s-character-number' % image_type] = int(url[12:14])
-##            response['%s-id' % image_type] = '%s%s%s%s%s' % (url[:2], url[3:5], url[6:8], url[9:11], url[15:-4])
-##    percent_correct = right_count * 100 / (right_count + wrong_count) if right_count + wrong_count else -1
-##    percent_same_correct = right_same_count * 100 / (right_same_count + wrong_same_count) if right_same_count + wrong_same_count else -1
-##    percent_different_correct = right_different_count * 100 / (right_different_count + wrong_different_count) if right_different_count + wrong_different_count else -1
-##    
-##    rtn.append("""Short Summary:
-##Correct: %(right_count)d
-##Incorrect: %(wrong_count)d
-##Percent Correct: %(percent_correct)d
-##
-##Same Correct: %(right_same_count)d
-##Same Incorrect: %(wrong_same_count)d
-##Percent Same Correct: %(percent_same_correct)d
-##
-##Different Correct: %(right_different_count)d
-##Different Incorrect: %(wrong_different_count)d
-##Percent Different Correct: %(percent_different_correct)d
-##
-##Long Summary:
-##""" % locals())
-##    
-##    for response in responses:
-##        rtn.append('Task %(task-number)d: ' % response)
-##        if not response['is-correct']: rtn.append('in')
-##        rtn.append('correctly said that ')
-##        rtn.append('(%(example-alphabet)s, %(example-character-number)d, %(example-id)s) and ' % response)
-##        rtn.append('(%(test-alphabet)s, %(test-character-number)d, %(test-id)s) are ' % response)
-##        if not response['said-are-same']: rtn.append('not ')
-##        rtn.append('the same in %(duration)d ms.\n' % response)
-##    rtn.append('\nDuration: %s' % properties['duration'].replace('0y 0d ', '').replace('0h ', ''))
-##    rtn.append('\nComments: %s' % (properties['feedback'] if 'feedback' in properties else ''))
-##    return ''.join(rtn)
+def _make_summary(properties):
+    rtn = []
+    rtn.append('Summary:')
+    calibration_task_regex = re.compile('^calibration_task-([0-9]+)-time-of-showCharacters$')
+    task_regex = re.compile('^task-([0-9]+)-time-of-showCharacters$')
+    calibration_start_time = 'calibration_task-%d-time-of-showCharacters'
+    calibration_end_time = 'calibration_task-%d-time-of-keypress'
+    task_start_time = 'task-%d-time-of-showCharacters'
+    task_end_time = 'task-%d-time-of-keypress'
+    task_desc = '%%(task-%(task)d-character-0-alphabet)s, %%(task-%(task)d-character-0-character-number)s, %%(task-%(task)d-character-0-id)s VS. ' + \
+            '%%(task-%(task)d-character-1-alphabet)s, %%(task-%(task)d-character-1-character-number)s, %%(task-%(task)d-character-1-id)s'
+
+    calibration_numbers = list(sorted(int(calibration_task_regex.match(key).groups()[0]) for key in properties
+        if 'calibration' in key and '-time-of-showCharacters' in key))
+    task_numbers = list(sorted(int(task_regex.match(key).groups()[0]) for key in properties
+        if 'calibration' not in key and '-time-of-showCharacters' in key))
+    
+    rtn.append('\nCalibration:')
+    total_time, task_count = 0, 0
+    for i in calibration_numbers:
+        task_count += 1
+        cur_time = int(properties[calibration_end_time % i]) - int(properties[calibration_start_time % i])
+        total_time += cur_time
+        rtn.append('\n%d' % cur_time)
+    rtn.append('\nAverage: %d\n\n' % int(total_time / task_count))
+    
+    rtn.append('\nTasks:')
+    for i in task_numbers:
+        rtn.append('\nTask %d: %s' % (i, ((task_desc % {'task':i}) % properties)))
+        is_correct = _BOOL_DICT[properties['task-%d-is-correct-answer' % i]]
+        are_same = _BOOL_DICT[properties['task-%d-are-same' % i]]
+        rtn.append('\nTask %d: ' % i)
+        if is_correct: rtn.append('Right, ')
+        else: rtn.append('Wrong, ')
+        if are_same: rtn.append('Are Same')
+        else: rtn.append('Are Different')
+        if (task_end_time % i) in properties:
+            start_time = int(properties[task_start_time % i])
+            end_time = int(properties[task_end_time % i])
+            rtn.append('\nTask %d RT: %d' % (i, end_time - start_time))
+    return ''.join(rtn)
+
+    
 
 def _make_matlab(properties, uid,
                  not_use=('^ipAddress',
@@ -116,8 +93,8 @@ def _make_matlab(properties, uid,
     return '\n'.join(rtn)
     
 
-##def _put_summary(folder, properties, file_name, quiet=True):
-##    turkutil.put_summary(folder, properties, file_name, _make_summary, quiet=quiet)
+def _put_summary(folder, properties, file_name, quiet=True):
+    turkutil.put_summary(folder, properties, file_name, _make_summary, quiet=quiet)
     
 def _put_matlab(folder, properties, file_name, uid, quiet=True, **kwargs):
     push_dir(folder)
@@ -155,8 +132,8 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_RT_UNREVIEWED_
     try:
         turkutil.put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
         if not pseudo:
-##            if verbose: print('Done<br>Summarizing your responses...')
-##            _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
+            if verbose: print('Done<br>Summarizing your responses...')
+            _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
             if verbose: print('Done<br>Making a matlab file for your responses...')
             _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
         if many_dirs:

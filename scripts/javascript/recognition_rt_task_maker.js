@@ -102,7 +102,7 @@ var RecognitionRTTasks;
 
     this.beforeEachTask = function (task, callback) {
       if (tasksPerGroup > 0 && self.getCurrentTaskNumber() > 0 &&
-          ((self.getCurrentTaskNumber() + 1) % tasksPerGroup) == 0) {
+          (self.getCurrentTaskNumber() % tasksPerGroup) == 0) {
         tasksProgress.showProgress();
         tasksDiv.hide();
         tasksBreak.makeBreak(function () {

@@ -2,6 +2,7 @@
   var dataLoader;
   var tasks;
   var calibrationTasks;
+  var afterCalibrationInstructionsDiv;
 
   var allUrlParameters = ['numberOfAlphabets', 'exampleCharactersPerAlphabet',
     'sameTestCharactersPerAlphabet', 'differentTestCharactersPerAlphabet',
@@ -10,8 +11,11 @@
     'pauseToGroup', 'random', 'characterSet',
     'trialsPerExperiment', 'fractionSame', 'calibrationTaskCount'];
 
+  $(function () {
+    afterCalibrationInstructionsDiv = $('#after-calibration-instructions').hide();
+  });
 
-  function retrieveData (loadData) {
+  function retrieveData(loadData) {
     $.getJSON("../scripts/python/characters.py",
       urlParameters.getURLParameters(allUrlParameters),
       loadData);
@@ -25,16 +29,28 @@
     calibrationTasks.startTasks();
   };
 
-  function onDoneTasks () {
+  function onDoneTasks() {
     $('.tasks').hide();
     $('.post-task').show();
   }
 
-  function doLoadData (data) {
+  function onDoneCalibration() {
+    afterCalibrationInstructionsDiv.show();
+    $('#continue-after-calibration').click(function () {
+        afterCalibrationInstructionsDiv.remove();
+        tasks.startTasks();
+      });
+  }
+
+  function doLoadData(data) {
     saveUrlParameters(data);
+    $(function () {
+      $('.num-calibration-trials').html(data['calibrationTaskCount']);
+      $('.num-trials').html(data['tasks'].length);
+    });
     tasks = new RecognitionRTTasks(data, data['tasks'].length, dataLoader,
         onDoneTasks);
-    calibrationTasks = new CalibrationTasks(tasks.startTasks,
+    calibrationTasks = new CalibrationTasks(onDoneCalibration,
         data['calibrationTaskCount']);
     doneLoading();
   };

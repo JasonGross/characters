@@ -30,11 +30,13 @@ def timestamp_object(object_name, timestamp_dir=None):
     if not timestamp_dir:
         touch(os.path.join(_default_object_storage_directory, object_name + '.timestamp.txt'))
     else:
-        touch(os.path.join(timestamp_dir, object_name + '.timestamp.txt'))
-        update_directory_timestamp(timestamp_dir)
+        if os.path.exists(timestamp_dir):
+            touch(os.path.join(timestamp_dir, object_name + '.timestamp.txt'))
+            update_directory_timestamp(timestamp_dir)
 
 def update_directory_timestamp(timestamp_dir):
-    touch(os.path.join(timestamp_dir, 'timestamp.txt'))
+    if os.path.exists(timestamp_dir):
+        touch(os.path.join(timestamp_dir, 'timestamp.txt'))
 
 def get_timestamp(object_name, timestamp_dir=None):
     if not timestamp_dir: timestamp_dir = _default_object_storage_directory

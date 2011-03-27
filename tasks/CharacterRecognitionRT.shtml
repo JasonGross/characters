@@ -416,7 +416,7 @@
           <fieldset>
             <legend>Calibration Task <span id="calibration-task-number">1</span> of <span id="calibration-task-total">25</span></legend>
             <p>
-              Respond as quickly as possible   Press any key when the
+              Respond as quickly as possible.  Press any key when the
               sequence '#<span
                 id="calibration-letter-1-name">B</span>#<span
                 id="calibration-letter-2-name">D</span>#' appears.
@@ -435,9 +435,9 @@
           <fieldset>
             <legend>Task <span id="task-number">1</span> of <span id="task-total">200</span></legend>
             <p>
-              Respond as quickly as possible. When two scribbles change to
-              characters, press any key when the characters are
-              <strong>different</strong>.
+              Respond as quickly as possible.  When two scribbles change to
+              characters, press any key if the characters are
+              <strong>DIFFERENT</strong>.
             </p>
             <div class="rt-symbol-holder" id="rt-noise-1"></div>
             <div class="rt-symbol-holder rt-character-holder" id="rt-letter-1"></div>

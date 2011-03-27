@@ -205,6 +205,17 @@ def make_uid(form_dict):
     else:
         return str(hash(form_dict['ipAddress']))
 
+def fix_str_dict(properties):
+    weirdness = []
+    for key in properties:
+        if not isinstance(properties[key], str):
+            weirdness.append(str((key, type(properties[key]), str(properties[key]))))
+            print('<br>Your submission is weird: %s has a %s for a value: %s<br>' % (key, type(properties[key]), str(properties[key])))
+            properties[key] = str(properties[key])
+    if weirdness:
+        properties['weirdness'] = ';'.join(weirdness)
+    return properties
+
 _OBJECT_DICT = {'true':True, 'false':False}
 def string_to_object(string):
     if string in _OBJECT_DICT:

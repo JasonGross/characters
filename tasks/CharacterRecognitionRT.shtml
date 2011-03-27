@@ -87,6 +87,15 @@
           </script>
         </div>
       <![endif]-->
+      <div id="sorry" class="show-if-turk">
+        <h1>This HIT should now be working!</h1>
+        <p>
+          This HIT was previously not working.  I apologize for the
+          malfunctioning of my HIT.  I had a few typos in my code, and though
+          I'm not sure why they weren't caught during testing, they should be
+          fixed now.
+        </p>
+      </div>
       <div id="seen-HIT-before" class="error show-if-turk">
         <h2>You have completed a HIT like this one before.</h2>
         <p>
@@ -392,12 +401,12 @@
           <input id="duration" name="duration" type="hidden" value="" />
           <input id="ipAddress" name="ipAddress" type="hidden" />
           <input id="screenWidth" name="screenWidth" type="hidden" />
-          <input id="screenHeight" name="screenWidth" type="hidden" />
-          <input id="screenAavilWidth" name="screenWidth" type="hidden" />
-          <input id="screenAavilHeight" name="screenWidth" type="hidden" />
-          <input id="windowWidth" name="screenWidth" type="hidden" />
-          <input id="windowHeight" name="screenWidth" type="hidden" />
-          <input id="navigator.appName" name="navigator.appCodeName" type="hidden" />
+          <input id="screenHeight" name="screenHeight" type="hidden" />
+          <input id="screenAavilWidth" name="screenAvailWidth" type="hidden" />
+          <input id="screenAavilHeight" name="screenAvailHeight" type="hidden" />
+          <input id="windowWidth" name="windowWidth" type="hidden" />
+          <input id="windowHeight" name="windowHeight" type="hidden" />
+          <input id="navigator.appName" name="navigator.appName" type="hidden" />
           <input id="navigator.appCodeName" name="navigator.appCodeName" type="hidden" />
           <input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
           <input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />

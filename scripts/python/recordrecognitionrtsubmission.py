@@ -146,6 +146,7 @@ def record_submission(form_dict, many_dirs=True, path=RECOGNITION_RT_UNREVIEWED_
         if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
         path, results_num = _make_folder_for_submission(uid, path=path, return_num=True)
     if verbose: print('Done<br>Storing your responses...')
+    form_dict = turkutil.fix_str_dict(form_dict)
     form_dict = turkutil.deanonymize_urls(form_dict)
     form_dict = _record_reaction_times(form_dict)
     try:

@@ -276,30 +276,30 @@
           action="../scripts/python/record-recognition-submission.py"
           method="post">
       <div id="hidden-inputs">
-        <input id="assignmentId" name="assignmentId" type="hidden" value="" />
-        <input id="form-load-time" name="form-load-time" type="hidden" value="" />
-        <input id="form-submit-time" name="form-submit-time" type="hidden" value="" />
-        <input id="duration" name="duration" type="hidden" value="" />
-        <input id="ipAddress" name="ipAddress" type="hidden" />
-        <input id="screenWidth" name="screenWidth" type="hidden" />
-        <input id="screenHeight" name="screenWidth" type="hidden" />
-        <input id="screenAavilWidth" name="screenWidth" type="hidden" />
-        <input id="screenAavilHeight" name="screenWidth" type="hidden" />
-        <input id="windowWidth" name="screenWidth" type="hidden" />
-        <input id="windowHeight" name="screenWidth" type="hidden" />
-        <input id="navigator.appName" name="navigator.appCodeName" type="hidden" />
-        <input id="navigator.appCodeName" name="navigator.appCodeName" type="hidden" />
-        <input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
-        <input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />
-        <input id="navigator.vendor" name="navigator.vendor" type="hidden" />
-        <input id="window.opera" name="window.opera" type="hidden" />
-        <input id="navigator.platform" name="navigator.platform" type="hidden" />
-        <input id="jQuery.browser.webkit" name="jQuery.browser.webkit" type="hidden" />
-        <input id="jQuery.browser.version" name="jQuery.browser.version" type="hidden" />
-        <input id="jQuery.browser.safari" name="jQuery.browser.safari" type="hidden" />
-        <input id="jQuery.browser.opera" name="jQuery.browser.opera" type="hidden" />
-        <input id="jQuery.browser.msie" name="jQuery.browser.msie" type="hidden" />
-        <input id="jQuery.browser.mozilla" name="jQuery.browser.mozilla" type="hidden" />
+          <input id="assignmentId" name="assignmentId" type="hidden" value="" />
+          <input id="form-load-time" name="form-load-time" type="hidden" value="" />
+          <input id="form-submit-time" name="form-submit-time" type="hidden" value="" />
+          <input id="duration" name="duration" type="hidden" value="" />
+          <input id="ipAddress" name="ipAddress" type="hidden" />
+          <input id="screenWidth" name="screenWidth" type="hidden" />
+          <input id="screenHeight" name="screenHeight" type="hidden" />
+          <input id="screenAavilWidth" name="screenAvailWidth" type="hidden" />
+          <input id="screenAavilHeight" name="screenAvailHeight" type="hidden" />
+          <input id="windowWidth" name="windowWidth" type="hidden" />
+          <input id="windowHeight" name="windowHeight" type="hidden" />
+          <input id="navigator.appName" name="navigator.appName" type="hidden" />
+          <input id="navigator.appCodeName" name="navigator.appCodeName" type="hidden" />
+          <input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
+          <input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />
+          <input id="navigator.vendor" name="navigator.vendor" type="hidden" />
+          <input id="window.opera" name="window.opera" type="hidden" />
+          <input id="navigator.platform" name="navigator.platform" type="hidden" />
+          <input id="jQuery.browser.webkit" name="jQuery.browser.webkit" type="hidden" />
+          <input id="jQuery.browser.version" name="jQuery.browser.version" type="hidden" />
+          <input id="jQuery.browser.safari" name="jQuery.browser.safari" type="hidden" />
+          <input id="jQuery.browser.opera" name="jQuery.browser.opera" type="hidden" />
+          <input id="jQuery.browser.msie" name="jQuery.browser.msie" type="hidden" />
+          <input id="jQuery.browser.mozilla" name="jQuery.browser.mozilla" type="hidden" />
       </div>
 
       <div id="all-tasks" class="tasks">

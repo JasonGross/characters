@@ -18,6 +18,7 @@
 *.swp
 *.swo
 *.swn
+*.bak
 working-directory/
 working-directory/*
 !*Time*.txt

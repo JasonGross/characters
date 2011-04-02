@@ -3,7 +3,7 @@ source hit_header.sh "$@"
 
 echo Backing up files...
 pushd "$SCRIPTPATH" 1>/dev/null
-cp -f "$HITNAME.input" "$HITNAME$SANDBOX.input"
+cp -f "$HITNAME.input" "$HITNAME$SANDBOX.input" 2>/dev/null
 for file in $HITNAME$SANDBOX.input.success*
 do
 	mv "$file" "${file}2.bak" 2>/dev/null

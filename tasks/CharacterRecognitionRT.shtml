@@ -87,15 +87,6 @@
           </script>
         </div>
       <![endif]-->
-      <div id="sorry" class="show-if-turk">
-        <h1>This HIT should now be working!</h1>
-        <p>
-          This HIT was previously not working.  I apologize for the
-          malfunctioning of my HIT.  I had a few typos in my code, and though
-          I'm not sure why they weren't caught during testing, they should be
-          fixed now.
-        </p>
-      </div>
       <div id="seen-HIT-before" class="error show-if-turk">
         <h2>You have completed a HIT like this one before.</h2>
         <p>
@@ -180,7 +171,8 @@
         <h3>Instructions</h3>
         <p>
           This HIT consists of many subtasks, and you must complete every
-          subtask to submit the form.
+          subtask to submit the form.  You should expect this HIT to take
+          approximately 20-30 minutes.
         </p>
         <p>
           This task tests your ability to discriminate handwritten
@@ -546,7 +538,7 @@
       $('#form-load-time').attr('value', dateUTC(new Date()));
       //$('#form-load-time').hide();
       //$('#form-submit-time').hide();
-      setUpForm('character_recognition_form');
+      setUpForm('character_recognition_rt_form');
       $('.post-task').hide()
       //]]>
     </script>

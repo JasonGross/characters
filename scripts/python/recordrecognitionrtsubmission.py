@@ -203,7 +203,7 @@ def do_record_things(directory, things, uid, local_dict, global_dict, **kwargs):
                              'things':things,
                              'uid':uid,
                              'local_dict_repr':repr(local_dict),
-                             'global_dict_repr':repr(global_dict)
+                             'global_dict_repr':repr(global_dict),
                              'kwargs_repr':repr(kwargs)}
             fail_store = {'local_dict':local_dict, 
                           'global_dict':global_dict,
@@ -217,7 +217,7 @@ def do_record_things(directory, things, uid, local_dict, global_dict, **kwargs):
                              'things_repr':repr(things),
                              'uid':uid,
                              'local_dict_repr':repr(local_dict),
-                             'global_dict_repr':repr(global_dict)
+                             'global_dict_repr':repr(global_dict),
                              'kwargs_repr':repr(kwargs)}
             fail_store = {'local_dict':local_dict, 
                           'global_dict':global_dict,

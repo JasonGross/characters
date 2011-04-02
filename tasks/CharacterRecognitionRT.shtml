@@ -207,7 +207,7 @@
           <ol>
             <li>Five pound signs (#####) are shown on the screen.</li>
             <li>After a short pause, two pound signs are replaced by letters (#B#D#).</li>
-            <li>After the letters appear (#B#D#), press a key <strong>as quickly as you can.</strong></li>
+            <li>After the letters appear (#B#D#), press a key (such as the 'a' key) <strong>as quickly as you can.</strong></li>
           </ol>
         </p>
         <h4>Part II: Character Discrimination</h4>
@@ -420,8 +420,8 @@
           <fieldset>
             <legend>Calibration Task <span id="calibration-task-number">1</span> of <span id="calibration-task-total">25</span></legend>
             <p>
-              Respond as quickly as possible.  Press any key when the
-              sequence '#<span
+              Respond as quickly as possible.  Press any key (for example, the
+              'a' key) when the sequence '#<span
                 id="calibration-letter-1-name">B</span>#<span
                 id="calibration-letter-2-name">D</span>#' appears.
             </p>
@@ -440,8 +440,8 @@
             <legend>Task <span id="task-number">1</span> of <span id="task-total">200</span></legend>
             <p>
               Respond as quickly as possible.  When two scribbles change to
-              characters, press any key if the characters are
-              <strong>DIFFERENT</strong>.
+              characters, press any key (for example, the 'a' key) if the
+              characters are <strong>DIFFERENT</strong>.
             </p>
             <div class="rt-symbol-holder" id="rt-noise-1"></div>
             <div class="rt-symbol-holder rt-character-holder" id="rt-letter-1"></div>

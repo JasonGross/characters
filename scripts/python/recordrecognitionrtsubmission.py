@@ -60,7 +60,7 @@ def _make_summary(properties):
         else: rtn.append('Wrong, ')
         if are_same: rtn.append('Are Same')
         else: rtn.append('Are Different')
-        if (task_end_time % i) in properties:
+        if (task_end_time % i) in properties and properties[task_end_time % i]:
             start_time = int(properties[task_start_time % i])
             end_time = int(properties[task_end_time % i])
             rtn.append('\nTask %d RT: %d' % (i, end_time - start_time))
@@ -130,7 +130,8 @@ def _record_reaction_times(properties, overwrite=True, tags=('task-', 'calibrati
         start_time_key = '%s%%d%s' % (tag, start_time_end)
         end_time_key = '%s%%d%s' % (tag, end_time_end)
         for i in nums:
-            if (start_time_key % i) in properties and (end_time_key % i) in properties:
+            if (start_time_key % i) in properties and (end_time_key % i) in properties and \
+               properties[start_time_key % i] and properties[end_time_key % i]:
                 properties['%s%d-reaction-time' % (tag, i)] = str(int(properties[end_time_key % i]) - int(properties[start_time_key % i]))
             else:
                 properties['%s%d-reaction-time' % (tag, i)] = str(if_none)
@@ -235,65 +236,65 @@ def do_record_things(directory, things, uid, local_dict, global_dict, **kwargs):
 
 def record_submission(form_dict, many_dirs=True, path=RECOGNITION_RT_UNREVIEWED_PATH,
                       verbose=True, pseudo=False, quiet=True, exclude_rejected=False):
-    try:
-        uid = '0'
-        try:
-            accepted, rejected = turkutil.get_accepted_rejected_status(form_dict)
-            if rejected and exclude_rejected:
-                print('Submission rejected.')
-                return False
-            if verbose: print('Hashing IP address...')
-            uid = turkutil.make_uid(form_dict)
-            results_num = 0
-            if many_dirs:
-                if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
-                path, results_num = _make_folder_for_submission(uid, path=path, return_num=True)
-            if verbose: print('Done<br>')
-        except Exception:
-            print("Whoa!  I failed to make your directory.  This is a big problem.  I'm going to try to save your results anyway...")
-            succeed_store, fail_store, succed_traceback, file_name = do_record_things(os.path.expanduser('~'), form_dict, uid, locals(), globals(), many_dirs=many_dirs, path=path, verbose=verbose, pseudo=pseudo, quiet=quiet, exclude_rejected=exclude_rejected)
-            if succeed_store:
-                print('Done.  You should email jgross AT mit DOT edu and tell him that your submission was recorded in "%s", and that he should look into the problem and fix it.<br />' % file_name)
-                print('I failed to store the following objects: %s' % repr(fail_store))
-                print('The traceback: %s<br /><br />' % traceback.format_exc(None).replace('\n', '<br />\n'))
-                return False
-            else:
-                raise
-        if verbose: print('Done<br>Storing your responses...')
-        try:
-            form_dict = turkutil.fix_str_dict(form_dict)
-            form_dict = turkutil.deanonymize_urls(form_dict)
-            form_dict = _record_reaction_times(form_dict)
-        except Exception:
-            print('<br>I failed to standardize your responses.  This is not necessarily fatal, but you should report it to jgross AT mit DOT edu.<br>')
-        try:
-            turkutil.put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
-            if not pseudo:
-                if verbose: print('Done<br>Summarizing your responses...')
-                _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
-                if verbose: print('Done<br>Making a matlab file for your responses...')
-                _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
-            if many_dirs:
-                turkutil.log_success(path)
-        except Exception:
-            print('<br>Something bad happened.  I failed to save your responses.  Trying to save state...')
-            succeed_store, fail_store, succed_traceback, file_name = do_record_things(path, form_dict, uid, locals(), globals(), many_dirs=many_dirs, path=path, verbose=verbose, pseudo=pseudo, quiet=quiet, exclude_rejected=exclude_rejected)
-            if succeed_store:
-                print('Done.  You should email jgross AT mit DOT edu and tell him that your submission was recorded in "%s", and that he should look into the problem and fix it.<br />' % file_name)
-                print('I failed to store the following objects: %s' % repr(fail_store))
-                print('The traceback: %s<br /><br />' % traceback.format_exc(None).replace('\n', '<br />\n'))
-                return False
-            else:
-                raise
-        if verbose: print('Done<br>You may now leave this page.<br>')
-        if verbose: print('<a href="http://scripts.mit.edu/~jgross/alphabets/">Return to home page</a>')
-        return True
-    except Exception:
-        print('<br />Uh oh.  I completely failed to record your submission.  You should email jgross AT mit DOT edu, and tell him about this problem.  It is unlikely that your submission can be recovered, but I will print all possiblly useful information below.  You should try to leave this page open; it may be possilbe to recover your submissions by reloading the frame/page, after Jason fixes the bug(s).  You should include the information below in your email.<br /><br />')
-        print('Your submission data: %s<br /><br />' % repr(form_dict))
-        print('The traceback: %s<br /><br />' % traceback.format_exc(None).replace('\n', '<br />\n'))
-        print('Your uid: %s<br /><br />' % uid)
-        print('Optional arguments: %s<br /><br />' % repr({'many_dirs': many_dirs, 'path':path, 'verbose':verbose, 'pseudo':pseudo, 'quiet':quiet, 'exclude_rejected':exclude_rejected}))
-        print('Local variables: %s<br /><br />' % repr(locals()))
-        print('Global Variables: %s<br /><br />' % repr(globals()))
+#    try:
+#        uid = '0'
+#        try:
+    accepted, rejected = turkutil.get_accepted_rejected_status(form_dict)
+    if rejected and exclude_rejected:
+        print('Submission rejected.')
         return False
+    if verbose: print('Hashing IP address...')
+    uid = turkutil.make_uid(form_dict)
+    results_num = 0
+    if many_dirs:
+        if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
+        path, results_num = _make_folder_for_submission(uid, path=path, return_num=True)
+    if verbose: print('Done<br>')
+#        except Exception:
+#            print("Whoa!  I failed to make your directory.  This is a big problem.  I'm going to try to save your results anyway...")
+#            succeed_store, fail_store, succed_traceback, file_name = do_record_things(os.path.expanduser('~'), form_dict, uid, locals(), globals(), many_dirs=many_dirs, path=path, verbose=verbose, pseudo=pseudo, quiet=quiet, exclude_rejected=exclude_rejected)
+#            if succeed_store:
+#                print('Done.  You should email jgross AT mit DOT edu and tell him that your submission was recorded in "%s", and that he should look into the problem and fix it.<br />' % file_name)
+#                print('I failed to store the following objects: %s' % repr(fail_store))
+#                print('The traceback: %s<br /><br />' % traceback.format_exc(None).replace('\n', '<br />\n'))
+#                return False
+#            else:
+#                raise
+    if verbose: print('Done<br>Storing your responses...')
+#        try:
+    form_dict = turkutil.fix_str_dict(form_dict)
+    form_dict = turkutil.deanonymize_urls(form_dict)
+    form_dict = _record_reaction_times(form_dict)
+#        except Exception:
+#            print('<br>I failed to standardize your responses.  This is not necessarily fatal, but you should report it to jgross AT mit DOT edu.<br>')
+#        try:
+    turkutil.put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
+    if not pseudo:
+        if verbose: print('Done<br>Summarizing your responses...')
+        _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
+        if verbose: print('Done<br>Making a matlab file for your responses...')
+        _put_matlab(path, form_dict, _make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
+    if many_dirs:
+        turkutil.log_success(path)
+#        except Exception:
+#            print('<br>Something bad happened.  I failed to save your responses.  Trying to save state...')
+#            succeed_store, fail_store, succed_traceback, file_name = do_record_things(path, form_dict, uid, locals(), globals(), many_dirs=many_dirs, path=path, verbose=verbose, pseudo=pseudo, quiet=quiet, exclude_rejected=exclude_rejected)
+#            if succeed_store:
+#                print('Done.  You should email jgross AT mit DOT edu and tell him that your submission was recorded in "%s", and that he should look into the problem and fix it.<br />' % file_name)
+#                print('I failed to store the following objects: %s' % repr(fail_store))
+#                print('The traceback: %s<br /><br />' % traceback.format_exc(None).replace('\n', '<br />\n'))
+#                return False
+#            else:
+#                raise
+    if verbose: print('Done<br>You may now leave this page.<br>')
+    if verbose: print('<a href="http://scripts.mit.edu/~jgross/alphabets/">Return to home page</a>')
+#        return True
+#    except Exception:
+#        print('<br />Uh oh.  I completely failed to record your submission.  You should email jgross AT mit DOT edu, and tell him about this problem.  It is unlikely that your submission can be recovered, but I will print all possiblly useful information below.  You should try to leave this page open; it may be possilbe to recover your submissions by reloading the frame/page, after Jason fixes the bug(s).  You should include the information below in your email.<br /><br />')
+#        print('Your submission data: %s<br /><br />' % repr(form_dict))
+#        print('The traceback: %s<br /><br />' % traceback.format_exc(None).replace('\n', '<br />\n'))
+#        print('Your uid: %s<br /><br />' % uid)
+#        print('Optional arguments: %s<br /><br />' % repr({'many_dirs': many_dirs, 'path':path, 'verbose':verbose, 'pseudo':pseudo, 'quiet':quiet, 'exclude_rejected':exclude_rejected}))
+#        print('Local variables: %s<br /><br />' % repr(locals()))
+#        print('Global Variables: %s<br /><br />' % repr(globals()))
+#        return False

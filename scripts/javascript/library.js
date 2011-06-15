@@ -1,4 +1,5 @@
-﻿String.prototype.trim = function() { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); }
+﻿String.prototype.trim = function () { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); };
+if (Array.prototype.empty === undefined) Array.prototype.empty = function () { this.length = 0; };
 
 //=============================================================
 // From http://my.opera.com/GreyWyvern/blog/show.dml/1725165.

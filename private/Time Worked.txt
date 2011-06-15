@@ -102,3 +102,20 @@ Start: Friday, April 01, 2011 22:33.36
 End: Saturday, April 02, 2011 02:30.54
 Time Spent: 3:57:18.808539
 
+Start: Saturday, June 11, 2011 17:33.57
+End: Saturday, June 11, 2011 17:53.34
+Time Spent: 0:19:37.841269
+
+Start: Saturday, June 11, 2011 18:01.23
+End: Saturday, June 11, 2011 18:35.45
+Time Spent: 0:34:22.242639
+
+Start: Tuesday, June 14, 2011 18:32.32
+End: Tuesday, June 14, 2011 18:58.22
+Time Spent: 0:25:50.433944
+
+Start: Tuesday, June 14, 2011 20:20.31
+End: Tuesday, June 14, 2011 21:33.56
+Time Spent: 1:13:25.172551
+
+Start: Wednesday, June 15, 2011 12:27.03

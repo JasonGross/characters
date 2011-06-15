@@ -33,34 +33,54 @@ function keys(obj) {
   return rtn;
 };
 
-//=============================================================
-// From http://www.netlobo.com/url_query_string_javascript.html
-function getURLParameter(name, ignoreCase, nullValue)
-{
-  if (ignoreCase === undefined) ignoreCase = true;
-  if (nullValue === undefined) nullValue = '';
-  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-  var regexS = "[\\?&]"+name+"=([^&#]*)";
-  var regex = new RegExp( regexS, (ignoreCase ? 'i' : ''));
-  var results = regex.exec( window.location.href );
-  if( results == null )
-    return nullValue;
-  else
-    return results[1];
-}
-function hasURLParameter( name, ignoreCase )
-{
-  if (ignoreCase === undefined) ignoreCase = true;
-  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-  var regexS = "[\\?&]"+name+"([&#=])";
-  var regex = new RegExp( regexS, (ignoreCase ? 'i' : ''));
-  var results = regex.exec( window.location.href+'#' );
-  return ( results != null );
+function deprecated(func, name, newName, warningFunc) {
+  if (warningFunc === undefined) warningFunc = console.log;
+  if (newName === undefined) newName = func.name;
+  return function () {
+    warningFunc('Warning: ' + name + ' is deprecated.  Please use ' + newName + ' instead.');
+    func.apply(this, arguments);
+  };
 }
 
-//=============================================================
+var urlParameters = {
+  'getURLParameters' : function getURLParameters(parameters) { // 'foo' : function foo(...) makes foo.name == 'foo'
+    if (!(parameters instanceof Array)) parameters = [parameters];
+    var rtn = {};
+    jQuery.each(parameters, function (index, parameter) {
+      if (urlParameters.hasURLParameter(parameter))
+        rtn[parameter] = urlParameters.getURLParameter(parameter);
+    });
+    return rtn;
+  },
 
+  //=============================================================
+  // From http://www.netlobo.com/url_query_string_javascript.html
+  'getURLParameter' : function getURLParameter(name, ignoreCase, nullValue) {
+    if (ignoreCase === undefined) ignoreCase = true;
+    if (nullValue === undefined) nullValue = '';
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp(regexS, (ignoreCase ? 'i' : ''));
+    var results = regex.exec(window.location.href);
+    if (results == null)
+      return nullValue;
+    else
+      return results[1];
+  },
 
+  'hasURLParameter': function hasURLParameter(name, ignoreCase) {
+    if (ignoreCase === undefined) ignoreCase = true;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"([&#=])";
+    var regex = new RegExp(regexS, (ignoreCase ? 'i' : ''));
+    var results = regex.exec(window.location.href+'#');
+    return (results != null);
+  }
+  //=============================================================
+};
+
+var getURLParameter = deprecated(urlParameters.getURLParameter, 'getURLParameter', 'urlParameters.getURLParameter');
+var getURLParameter = deprecated(urlParameters.hasURLParameter, 'hasURLParameter', 'urlParameters.hasURLParameter');
 
 function toBool(value, nullValue)
 {

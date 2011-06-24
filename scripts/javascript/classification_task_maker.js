@@ -125,7 +125,6 @@ var ClassificationTasks;
     }
 
     this.onFinishTask = function (task, answerIndex, willShowResults) {
-      console.log(task);
       var isCorrect = (answerIndex == task['correctClassIndex']);
       self.recordInfo(function (index) { return tag + 'task-' + index + '-is-correct-answer'; }, isCorrect);
       self.recordInfo(function (index) { return tag + 'task-' + index + '-chosen-class'; }, answerIndex);
@@ -133,7 +132,7 @@ var ClassificationTasks;
       jQuery.each(anchorImageHolders, function (index, imageHolder) {
           self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-noise-image-' + index + '-url'; },
                           task['noiseImageURLs'][index]);
-          self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-anchor-image-' + index + '-url'; },
+          self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-anchor-image-' + index + '-anonymous_url'; },
                           task['anchorURLs'][index]);
         });
       if (isCorrect)
@@ -155,7 +154,7 @@ var ClassificationTasks;
       jQuery.each(classImageHolders, function (index, imageHolderList) {
           jQuery.each(imageHolderList, function (characterIndex, imageHolder) {
             imageHolder.children().remove();
-            self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-class-' + index + '-image-' + characterIndex + '-url'; },
+            self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-class-' + index + '-image-' + characterIndex + '-anonymous_url'; },
                             task['classURLs'][index][characterIndex]);
           });
         });

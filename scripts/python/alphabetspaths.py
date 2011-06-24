@@ -17,7 +17,7 @@ except SyntaxError:
 import objectstorage
 from library import maplist
 
-_tasks = ['recognition', 'categorization', 'recognition-rt']
+_tasks = ['recognition', 'categorization', 'recognition-rt', 'classification']
 
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',
@@ -53,15 +53,22 @@ for task in _tasks:
                    utask + '_EXTRA': (lambda s: ('%s/extra-%s/' % (task, s)) if s == 'information' else None)})
 
 
+_upper_tasks = [_task.upper().replace('-', '_') + '_' for _task in _tasks]
+def is_not_from_tasks(key):
+    for _task in _upper_tasks:
+        if _task in key:
+            return False
+    return True
+
 _image_stroke_dicts_names = ['unreviewed'] + [key.lower() for key in sorted(_paths.keys())
-                                              if 'CATEGORIZATION_' not in key and 'RECOGNITION_' not in key]
+                                              if is_not_from_tasks(key)]
 
 FILE_NAME_REGEX = '(.*?)_([0-9]+)_([^._]+)'
 FILE_NAME_REGEX_COMPILED = re.compile(FILE_NAME_REGEX)
 
 _normal_path_names = [] + \
                      [_path for _path in sorted(_paths.keys()) \
-                      if _path not in ('ORIGINAL', 'UNREVIEWED') and 'CATEGORIZATION_' not in _path and 'RECOGNITION_' not in _path]
+                      if _path not in ('ORIGINAL', 'UNREVIEWED') and is_not_from_tasks(_path)]
 
 BASE_PATH = os.path.join(os.path.expanduser('~/'), 'web_scripts/', 'alphabets/')
 BASE_URL = 'http://jgross.scripts.mit.edu/alphabets/'

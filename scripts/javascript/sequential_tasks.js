@@ -62,7 +62,7 @@ var SequentialTasks;
     this.onFinishTask = function onFinishTask(task, answer, willShowResults) {};
 
     this.finishTask = function finishTask(task, answer, shouldShowResults) {
-      console.log(displayEvery);
+      self.recordInfo(function (num) { return tag + 'task-' + num + '-time-of-finish-task'; }, dateUTC(new Date()));
       if (shouldShowResults === undefined) shouldShowResults = true;
       self.onFinishTask(task, answer, shouldShowResults);
       if (self.doneWithTasks()) {

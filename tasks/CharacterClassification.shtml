@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="en-us" http-equiv="Content-Language" />
+  <meta content="text/html; charset=us-ascii" http-equiv="Content-Type" />
+  <!--script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script-->
+  <!--style type="text/css">@import 'fauxconsole.css';</style-->
+  <!--script src="../scripts/javascript/fauxconsole.js" type="text/javascript"></script-->
+  <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
+  <script src="http://www.shawnolson.net/scripts/public_smo_scripts.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/patches.js" type="text/javascript"></script>
+  <!--[if lt IE 9]><script src="../scripts/javascript/ie_patches.js" type="text/javascript"></script><![endif]-->
+  <!--[if lt IE 8]><script src="../scripts/javascript/ie7-_patches.js" type="text/javascript"></script><![endif]-->
+  <script src="../scripts/javascript/browser.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/loading.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/turk_library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/form_setup.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/make_drag_and_drop_warning.js" type="text/javascript"></script-->
+  <script src="../scripts/javascript/refcounter.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/generic_data_loader.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/task_progress.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/task_break.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/hinted_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/classification_task_maker.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/classification_data_loader.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/classification_validate_form.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
+  <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
+  <link href="../css/classification.css" rel="stylesheet" type="text/css" />
+
+  <title>Character Classification</title>
+</head>
+
+<body>
+  <div id="pre-page-checks" class="pre-page-checks">
+    <!--#include virtual="../html/errors/noscript.html" -->
+    <!--#include virtual="../html/errors/setTimeout.html" -->
+    <!--#include virtual="../html/errors/loading.html" -->
+    <!--#include virtual="../html/errors/turk-preview.html" -->
+  </div>
+  <div class="pre-task">
+    <div id="instructions">
+      <h3>Instructions</h3>
+      <p>You must use the Mozilla Firefox web browser.</p>
+      <p>This HIT consists of <span class="task-count">200</span> subtasks, and you must
+        complete every subtask to submit the form.</p>
+      <p>
+        This task tests your ability to pick out a matching character from
+        <span class="n">20</span> characters you've likely never seen before.
+        You will be shown an image of a character, such as
+        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' /><span class="show-if-timed">
+          for a fraction of a second, after which it
+          will be replaced by noise</span>.  You will then be shown <span
+          class="n">20</span> other images, and you should click on the click
+        on the image which you think is the same character, such as <img
+        src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1kj5bqqwzijjt.png"
+        alt='another "b"' style="height:1.25em" title='another "b"' />
+      </p>
+      <p class="show-if-timed">
+        Each subtask has the following structure:
+      </p>
+      <ol class="show-if-timed">
+        <li>A red square appears in the box labeled "Anchor Character" to cue your attention.</li>
+        <li>Shortly after the cue, the anchor character is quickly flashed in that red square.</li>
+        <li>After the flash, the character disappears and is replaced by a nonsense scribble image.</li>
+        <li><span class="n">20</span> images of characters then appear <span class="position">below</span> the anchor box.</li>
+      </ol>
+      <p>Please note:</p>
+      <ul>
+        <li>
+          You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
+        </li>
+        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to guess correctly, your submission will be accepted regardless of how accurate you are.</li>
+      </ul>
+    </div>
+    <!--#include virtual="../html/disclaimer.html" -->
+    <!--#include virtual="../html/learn-more.html" -->
+  
+    <div id="accept_task-div">
+      <form id="accept_task-form">
+        <p>
+          To complete this task, you must read the instructions, the disclaimer, and click "Accept" below.
+          You will not be able to click "Accept" until the necesary data has been loaded.
+        </p>
+        <div class="loading-progress" id="loading_progess-div">
+          <div class="loading-message" id="loading_message"></div>
+          <div id="loading_progress"></div>
+        </div>
+        <input id="accept_task-button" type="submit" value="Accept" disabled="disabled" />
+      </form>
+    </div>
+  </div>
+  <div id="extra-options-form">
+    <form id="extra-options">
+      <div id="form-resize">
+        <label>
+          <input type="checkbox" id="resize-images-on-page-resize" name="resize-images-on-page-resize" />
+          Resize images to fit screen
+        </label>
+      </div>
+    </form>
+  </div>
+
+  <div class="task-break" id="task_break">
+  </div>
+
+  <div id="task_display">
+    <div id="all-tasks" class="tasks">
+      <fieldset id="task">
+        <legend>Task <span class="task-number">1</span> of <span class="task-count">200</span></legend>
+        <p>
+        Respond as quickly as possible.  Pick the character that looks most like the anchor image<span class="s-if-multiple-anchors"></span>.
+        </p>
+      </fieldset>
+    </div>
+
+    <br class="tasks" />
+       
+    <div class="task-progress" id="task_progess-div">
+      <div class="task-progress-bar-holder" id="task_progress">
+        <div class="task-actual-progress-bar-holder">
+          <div class="task-actual-progress-bar"></div>
+        </div>
+        <div class="task-overlay-progress-bar-holder ui-widget ui-progressbar ui-widget-content ui-corner-all">
+          <div class="task-correct-progress-bar ui-corner-left ui-progressbar"></div>
+          <div class="task-incorrect-progress-bar ui-progressbar"></div>
+        </div>
+      </div>
+      <div class="task-message" id="task_message">
+        Out of the first <span id="task-progress-message-num-tasks-known" name="task-progress-message-num-tasks-known">0</span> tasks: <br />
+        Number Right: <span id="task-progress-message-num-tasks-correct" name="task-progress-message-num-tasks-correct">0</span> <br />
+        Number Wrong: <span id="task-progress-message-num-tasks-incorrect" name="task-progress-message-num-tasks-incorrect">0</span>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      $('.task-progress').html($('.task-progress').html().replace(/>(\s|\n)+</g, '><')).hide();
+      //]]>
+    </script>
+  </div>
+
+  <div id="main_form-div">
+    <form id="main_form"
+          action="../scripts/python/record-classification-submission.py"
+          method="post">
+      <div id="hidden-inputs">
+        <!--#include virtual="../html/extra-inputs.html" -->
+      </div>
+
+      <div id="task-results"></div>
+
+      <div class="post-task">
+        <fieldset>
+          <legend>Extra Questions</legend>
+          <label>
+            Please enter any feedback you have in the text box below. <br />
+            <textarea rows="10" cols="30" id="feedback" name="feedback"></textarea>  
+          </label>
+        </fieldset>
+      </div>
+      
+      
+
+      <p><input id="submitButton" class="post-task"
+               type="submit"
+               name="submit"
+               value="Submit" /></p>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    if (urlParameters.getURLParameter('pauseToNoise') != '' &&
+        parseInt(urlParameters.getURLParameter('pauseToNoise')) <= 0) {
+      $('.show-if-timed').hide();
+      $('.show-if-untimed').show();
+    } else {
+      $('.show-if-untimed').hide();
+      $('.show-if-timed').show();
+    }
+    //]]>
+  </script>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    setUpForm('main_form');
+    $('.post-task').hide()
+    $('.tasks').hide();
+
+    if (!isTurkSandbox())
+      $('.preview-mode').remove();
+    else if (isTurk())
+      unansweredInput();
+    if (!isTurk())
+      $('.show-if-turk').remove();
+    else
+      $('.show-if-not-turk').remove();
+    //]]>
+  </script>
+</body>
+</html>

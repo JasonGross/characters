@@ -1,0 +1,57 @@
+<input id="assignmentId" name="assignmentId" type="hidden" value="" />
+<input id="form-load-time" name="form-load-time" type="hidden" value="" />
+<input id="form-submit-time" name="form-submit-time" type="hidden" value="" />
+<input id="duration" name="duration" type="hidden" value="" />
+<input id="ipAddress" name="ipAddress" type="hidden" />
+<input id="screenWidth" name="screenWidth" type="hidden" />
+<input id="screenHeight" name="screenHeight" type="hidden" />
+<input id="screenAavilWidth" name="screenAvailWidth" type="hidden" />
+<input id="screenAavilHeight" name="screenAvailHeight" type="hidden" />
+<input id="windowWidth" name="windowWidth" type="hidden" />
+<input id="windowHeight" name="windowHeight" type="hidden" />
+<input id="navigator.appName" name="navigator.appName" type="hidden" />
+<input id="navigator.appCodeName" name="navigator.appCodeName" type="hidden" />
+<input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
+<input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />
+<input id="navigator.vendor" name="navigator.vendor" type="hidden" />
+<input id="window.opera" name="window.opera" type="hidden" />
+<input id="navigator.platform" name="navigator.platform" type="hidden" />
+<input id="jQuery.browser.webkit" name="jQuery.browser.webkit" type="hidden" />
+<input id="jQuery.browser.version" name="jQuery.browser.version" type="hidden" />
+<input id="jQuery.browser.safari" name="jQuery.browser.safari" type="hidden" />
+<input id="jQuery.browser.opera" name="jQuery.browser.opera" type="hidden" />
+<input id="jQuery.browser.msie" name="jQuery.browser.msie" type="hidden" />
+<input id="jQuery.browser.mozilla" name="jQuery.browser.mozilla" type="hidden" />
+
+<script type="text/javascript">
+  //<![CDATA[
+  var ipAddress_field = document.getElementById('ipAddress');
+  var ip = '<!--#echo var="REMOTE_ADDR"-->';
+  ipAddress_field.value = ip;
+  var fields = {
+    'screenWidth':screen.width,
+    'screenHeight':screen.height,
+    'screenAavilWidth':screen.availWidth,
+    'screenAavilHeight':screen.availHeight,
+    'windowWidth':$(window).width(),
+    'windowHeight':$(window).height(),
+    'navigator.appName':navigator.appName,
+    'navigator.appCodeName':navigator.appCodeName,
+    'navigator.userAgent':navigator.userAgent,
+    'navigator.appVersion':navigator.appVersion,
+    'navigator.vendor':navigator.vendor,
+    'window.opera':window.opera,
+    'navigator.platform':navigator.platform,
+    'jQuery.browser.webkit':jQuery.browser.webkit,
+    'jQuery.browser.version':jQuery.browser.version,
+    'jQuery.browser.safari':jQuery.browser.safari,
+    'jQuery.browser.opera':jQuery.browser.opera,
+    'jQuery.browser.msie':jQuery.browser.msie,
+    'jQuery.browser.mozilla':jQuery.browser.mozilla
+  };
+  for (var id in fields)
+    if (document.getElementById(id) && fields[id] !== undefined)
+      document.getElementById(id).value = fields[id];
+  $('#form-load-time').attr('value', dateUTC(new Date()));
+  //]]>
+</script>

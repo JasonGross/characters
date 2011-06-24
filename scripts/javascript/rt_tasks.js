@@ -8,29 +8,25 @@ var RTTasks;
   RTTasks = function (tag, delayRange, displayEvery, 
       displayDelay, resultsDivSelector, taskNumberSelector, 
       taskTotalSelector, tasksDivSelector, displaySelector, sameDelay) {
-    SequentialTasks.apply(this);
-    
-    if (totalTasks === undefined) totalTasks = defaultTotalTasks;
-    if (delayRange === undefined) delayRange = defaultDelayRange;
     if (displayEvery === undefined) displayEvery = defaultDisplayEvery;
+    SequentialTasks.call(this, undefined, (taskNumberSelector || defaultTaskNumberSelector),
+                         (taskTotalSelector || defaultTaskTotalSelector),
+                         (tasksDivSelector || defaultTasksDivSelector),
+                         (resultsDivSelector || defaultResultsDivSelector),
+                         displayEvery,
+                         tag);
+    
+    if (delayRange === undefined) delayRange = defaultDelayRange;
     if (displayDelay === undefined) displayDelay = defaultDisplayDelay;
     if (sameDelay === undefined) sameDelay = -1;
     var showAnswer = sameDelay >= 0;
-    var results;
-    var taskNumber;
-    var taskTotal;
-    var tasks;
     var averageSpan, lastSpan, answerSpan;
     var averageP, lastP;
     var totalReactionTime = 0;
     var lastReactionTime;
     var lastStartTime;
-    var curTimeInputs = {};
-    var curKeypress;
     var timeoutId;
     var curJumpiness = 0;
-    var curJumpinessInput;
-    var totalTasks;
     var displayResults;
     var sameTimeoutId = undefined;
     var sameCount = 0;
@@ -46,46 +42,20 @@ var RTTasks;
       return delayRange[0] + Math.random() * delayRange[1];
     }
 
-    function makeNextTask() {
-      taskNumber.html(self.getCurrentTaskNumber() + 1);
-
-      jQuery.each(['doTask', 'showCharacters', 'keypress'],
-        function (index, name) {
-          curTimeInputs[name] = makeInput(tag + 'task-' + self.getCurrentTaskNumber() + '-time-of-' + name);
-          results.append(curTimeInputs[name]);
-        });
-
-      curKeypress = makeInput(tag + 'task-' + self.getCurrentTaskNumber() + '-keypress');
-      curJumpinessInput = makeInput(tag + 'task-' + self.getCurrentTaskNumber() + '-keypress_before_show_prompt_count');
-
-      results.append(curKeypress).append(curJumpinessInput);
-    }
-
     this.beforeEachTask = function (task, callback) { callback(); };
-
-    this.prepTask = function (task, index) {};
 
     function queueResponse(task, delay) {
       timeoutId = setTimeout(function () { showCharacters(task); }, delay);
       doOnKeypress = function () { badKeypress(task, delay); };
     };
 
-    function doTask(task, delay) {
+    this.beforeTask = function beforeTask(task, callback) {
       doOnKeypress = function () {};
       displayResults.hide();
       self.beforeEachTask(task, function () {
-        makeNextTask();
-        self.prepTask(task, self.getCurrentTaskNumber());
-        if (delay === undefined) delay = getNextDelay();
-       
-        curTimeInputs['doTask'].attr('value', dateUTC(new Date()));
-        queueResponse(task, delay);
+        queueResponse(task, getNextDelay());
+        callback.apply(this, arguments);
       });
-    };
-
-    this.doNextTask = function (delay) {
-      if (self.doneWithTasks()) return false;
-      return doTask(self.takeNextTask(), delay);
     };
 
     function badKeypress(task, delay) {
@@ -98,7 +68,7 @@ var RTTasks;
     this.showPrompt = function (task) {};
 
     function showCharacters(task) {
-      curTimeInputs['showCharacters'].attr('value', lastStartTime = dateUTC(new Date()));
+      self.recordInfo(function (num) { return tag + 'task-' + num + '-time-of-showCharacters'; }, lastStartTime = dateUTC(new Date()));
       self.showPrompt(task);
       doOnKeypress = function () { onkeypress.apply(this, [task].concat(Array.prototype.slice.call(arguments))); };
       if (sameDelay > 0)
@@ -109,8 +79,8 @@ var RTTasks;
             sameDelay);
     }
 
-    function showResults(task, answeredSame, doNext) {
-      if (doNext === undefined) doNext = function () { self.doNextTask(); };
+    this.showResults = function showResults(task, answeredSame, doNext) {
+      //if (doNext === undefined) doNext = function () { self.doNextTask(); };
       if (!answeredSame) {
         /*if (self.getCurrentTaskNumber() + 1 - sameCount != 0)
           averageSpan.html(totalReactionTime / (self.getCurrentTaskNumber() + 1 - sameCount));
@@ -130,20 +100,18 @@ var RTTasks;
           answerSpan.html('Different');
       }
       displayResults.show();
-      setTimeout(doNext, displayDelay);
+      setTimeout(function () { doNext(); }, displayDelay);
     }
-
-    this.onDoneTasks = function () {};
 
     function onkeypress(task, ev) {
       doOnKeypress = function () {};
       if (sameTimeoutId !== undefined) clearTimeout(sameTimeoutId);
-      curTimeInputs['keypress'].attr('value', lastReactionTime = dateUTC(new Date()));
+      self.recordInfo(function (num) { return tag + 'task-' + num + '-time-of-keypress'; }, lastReactionTime = dateUTC(new Date()));
       lastReactionTime -= lastStartTime;
       totalReactionTime += lastReactionTime;
-      curJumpinessInput.attr('value', curJumpiness);
+      self.recordInfo(function (num) { return tag + 'task-' + num + '-keypress_before_show_prompt_count'; }, curJumpiness);
       curJumpiness = 0;
-      curKeypress.attr('value', JSON.stringify(
+      self.recordInfo(function (num) { return tag + 'task-' + num + '-keypress'; }, JSON.stringify(
         {
           'altKey':ev.altKey,
           'charCode':ev.charCode,
@@ -159,31 +127,22 @@ var RTTasks;
 
     this.onFinishTask = function (task, answeredSame, willShowResults) {};
 
-    this.finishTask = function (task, answeredSame, shouldShowResults) {
+    var oldFinishTask = this.finishTask;
+
+    this.finishTask = function finishTask(task, answeredSame, shouldShowResults) {
       doOnKeypress = function () {};
-      if (shouldShowResults === undefined) shouldShowResults = true;
-      self.onFinishTask(task, answeredSame, shouldShowResults);
       if (self.doneWithTasks()) { 
         $(document).unbind('keypress', actualDoOnKeypress);
         doOnKeypress = function () { console.log("Detachment of keypress event failed."); alert("Something went wrong.  Why am I here?"); };
-        showResults(task, answeredSame,
-            function () { tasks.hide();  self.onDoneTasks(); });
-      } else {
-        if (self.getCurrentTaskNumber() % displayEvery == 0 && shouldShowResults)
-          showResults(task, answeredSame);
-        else
-          self.doNextTask();
       }
+      oldFinishTask.apply(this, arguments);
       lastReactionTime = 0;
     };
 
     this.onBeginTasks = function () {};
 
-    this.startTasks = function () {
-      results = $(resultsDivSelector || defaultResultsDivSelector);
-      taskNumber = $(taskNumberSelector || defaultTaskNumberSelector);
-      taskTotal = $(taskTotalSelector || defaultTaskTotalSelector);
-      tasks = $(tasksDivSelector || defaultTasksDivSelector);
+    var oldStartTasks = this.startTasks;
+    this.startTasks = function startTasks() {
       displayResults = $(displaySelector || defualtDisplaySelector);
       if (sameDelay >= 0)
         displayResults
@@ -199,13 +158,8 @@ var RTTasks;
           .append('Most Recent Reaction Time: ')
           .append(lastSpan = $('<span>'))
           .append(' ms'));
-      self.onBeginTasks();
-      taskTotal.html(totalTasks = self.tasksLeftCount());
-      taskNumber.html(1);
-      tasks.show();
+      oldStartTasks.apply(this, arguments);
       $(document).bind('keypress', actualDoOnKeypress);
-      if (!(self.doneWithTasks())) self.doNextTask();
-      self.startTasks = undefined;
     };
     
   };

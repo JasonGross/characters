@@ -31,7 +31,6 @@
     <script src="../scripts/javascript/task_break.js" type="text/javascript"></script>  
     <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>  
     <script src="../scripts/javascript/rt_tasks.js" type="text/javascript"></script>  
-    <script src="../scripts/javascript/recognition_parse_url_parameters.js" type="text/javascript"></script>
     <script src="../scripts/javascript/recognition_rt_calibration.js" type="text/javascript"></script>
     <script src="../scripts/javascript/recognition_rt_task_maker.js" type="text/javascript"></script>
     <script src="../scripts/javascript/recognition_rt_data_loader.js" type="text/javascript"></script>

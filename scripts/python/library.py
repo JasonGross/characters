@@ -144,6 +144,8 @@ class MapList(object):
         return len(self._lists)
     def __setitem__(self, i, y):
         self._calculated_values[i] = y
-    __hash__ = None    
+    def __getslice__(self, i, j):
+        return MapList(self._function, *[_list[i:j] for _list in self._lists])
+    __hash__ = None
 def maplist(function, *lists):
     return MapList(function, *lists)

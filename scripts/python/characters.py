@@ -24,14 +24,10 @@ PLUS_MINUS_STRINGS = ('+-', '-+', '+', PLUS_MINUS_CHAR)
 
 images = None
 
-
-def make_task(most_popular_number=6, min_characters=20, same_character_distractors_count=5, same_alphabet_distractors_count=5,
-              other_alphabet_distractors_count=10, trials_per_experiment=200, foreground_fraction=0.5, duplicate_count=5, num_experiments=None,
-              verbose=True, random=random.Random):
-    originals_count = 1
-
-    if verbose: print('Getting list of alphabets...')
-    alphabets_dict = get_accepted_image_list()
+def make_foreground_alphabets(most_popular_number=6, min_characters=20, verbose=False, random=random, alphabets_dict=None, foreground_fraction=0.5):
+    if alphabets_dict is None:
+        if verbose: print('Getting list of alphabets...')
+        alphabets_dict = get_accepted_image_list()
     alphabets_list = alphabets_dict.keys()
     if verbose: print('Getting alphabet popularities...')
     popularities = [(alphabetspopularity.get_popularity(alphabet), alphabet) for alphabet in alphabets_list]
@@ -48,7 +44,18 @@ def make_task(most_popular_number=6, min_characters=20, same_character_distracto
     alphabets_background += alphabets_left[int(0.5 + len(alphabets_list) * foreground_fraction):]
     alphabets_use.sort()
     #random.shuffle(alphabets_background)
+    return alphabets_use
 
+
+def make_task(most_popular_number=6, min_characters=20, same_character_distractors_count=5, same_alphabet_distractors_count=5,
+              other_alphabet_distractors_count=10, trials_per_experiment=200, foreground_fraction=0.5, duplicate_count=5, num_experiments=None,
+              verbose=True, random=random):
+    originals_count = 1
+
+    alphabets_dict = get_accepted_image_list()
+
+    alphabets_use = make_foreground_alphabets(most_popular_number=most_popular_number, min_characters=min_characters, verbose=verbose, random=random, 
+            alphabets_dict=alphabets_dict, foreground_fraction=foreground_fraction)['foreground']
 
     if verbose: print('Separating characters into two sets...')
     character_sets = [[], []]

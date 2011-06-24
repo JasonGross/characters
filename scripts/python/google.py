@@ -6,7 +6,10 @@ try:
     from urllib.request import urlopen
 except ImportError:
     from urllib import quote, urlencode, urlopen
-from json import loads
+try:
+    from json import loads
+except ImportError: # python 2.5
+    from simplejson import loads
 from xgoogle.search import GoogleSearch
 import re
 

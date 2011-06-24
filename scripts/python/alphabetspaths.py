@@ -64,7 +64,7 @@ _normal_path_names = [] + \
                       if _path not in ('ORIGINAL', 'UNREVIEWED') and 'CATEGORIZATION_' not in _path and 'RECOGNITION_' not in _path]
 
 BASE_PATH = os.path.join(os.path.expanduser('~/'), 'web_scripts/', 'alphabets/')
-BASE_URL = 'http://scripts.mit.edu/~jgross/alphabets/'
+BASE_URL = 'http://jgross.scripts.mit.edu/alphabets/'
 
 _self = sys.modules[globals()['__name__']]
 
@@ -160,6 +160,17 @@ _dir_stack = []
 
 
     
+def make_path(target, desired_base_of_target='.', actual_base_of_target='/', desired_base_path_to_result='', relpath=relpath, target_join=os.path.join, result_join=os.path.join):
+    """
+    makes a path to target from desired_base_of_result, assuming that
+    target is a (relative) path based in actual_base_of_target, and
+    that desired_base_path_to_result is equivalent to actual_base_of_target
+    This can be used, for example, to make a url out of a local path.
+    """
+    full_path = target_join(actual_base_of_target, target)
+    relative_path = relpath(full_path, desired_base_of_target)
+    return result_join(desired_base_path_to_result, relative_path)
+
 
 def push_dir(new_dir, make_dirs=True):
     _dir_stack.append(os.getcwd())
@@ -185,7 +196,7 @@ _object_storage_lookup = {}
 _STROKE_NOISES = tuple(os.path.join(IMAGES_PATH, i) for i in os.listdir(IMAGES_PATH) 
                       if i[:len('strokeNoise')] == 'strokeNoise' and os.path.splitext(i)[-1] == '.png')
 def get_stroke_noises(from_path=IMAGES_PATH):
-    return [relpath(i, from_path) for i in _STROKE_NOISES]
+    return [make_path(i, from_path) for i in _STROKE_NOISES]
 
 def get_alphabet_name(alphabet_id):
     global _alphabets_names_dict
@@ -209,6 +220,7 @@ def get_alphabet_id_from_file_name(file_name):
 
 def make_get_list(reg_string, default_from_path, use_dict, name):
     def get_list(alphabet_id=None, from_path=default_from_path):
+        raw_input('good')
         reg = re.compile(reg_string)
         if not use_dict:
             def make_dict():
@@ -221,7 +233,7 @@ def make_get_list(reg_string, default_from_path, use_dict, name):
                             name = match.groups()[0]
                             if name not in use_dict:
                                 use_dict[name] = []
-                            use_dict[name].append(os.path.join(default_from_path, file_name))
+                            use_dict[name].append(make_path(file_name, desired_base_of_target=default_from_path, actual_base_of_target=base))
                 return use_dict
             use_dict.update(objectstorage.get_object(name, make_dict, timestamp_dir=default_from_path))
         if alphabet_id is None:
@@ -231,7 +243,7 @@ def make_get_list(reg_string, default_from_path, use_dict, name):
         if from_path == default_from_path:
             return list(use_dict[alphabet_id])
         else:
-            return maplist((lambda i: relpath(i, from_path)), use_dict[alphabet_id])
+            return maplist((lambda i: make_path(i, desired_base_of_target=from_path, actual_base_of_target=default_from_path)), use_dict[alphabet_id])
     _object_storage_lookup[default_from_path] = _object_storage_lookup[name] = _object_storage_lookup[get_list] = {
         'path':default_from_path,
         'name':name,
@@ -255,13 +267,13 @@ def make_get_optional_id_list(reg_string, default_from_path, use_dict, name, bas
                             name = name
                             if name not in use_dict: use_dict[name] = {}
                             if cur_id not in use_dict[name]: use_dict[name][cur_id] = []
-                            use_dict[name][cur_id].append(os.path.join(base, file_name))
+                            use_dict[name][cur_id].append(make_path(file_name, desired_base_of_target=default_from_path, actual_base_of_target=base))
                 return use_dict
             use_dict.update(objectstorage.get_object(name, make_dict, timestamp_dir=default_from_path))
         if default_from_path == from_path:
             def fix_path(path): return path
         else:
-            def fix_path(path): return relpath(path, from_path)
+            def fix_path(path): return make_path(path, desired_base_of_target=from_path, actual_base_of_target=default_from_path)
         if alphabet_id is None:
             rtn = {}
             if id_ is None:
@@ -317,7 +329,7 @@ def make_get_extra_info_file_name(get_ids, location_path, default_from_path=RESU
         if default_from_path == from_path:
             def fix_path(path): return path
         else:
-            def fix_path(path): return relpath(path, from_path)
+            def fix_path(path): return make_path(path, desired_base_of_target=from_path, actual_base_of_target=default_from_path)
         ids = get_ids(alphabet_id=alphabet_id, id_=id_)
         if alphabet_id is None:
             rtn = {}
@@ -363,12 +375,12 @@ def get_unreviewed_extra_info_file_name(alphabet_id=None, id_=None, from_path=UN
             for alphabet_id in images:
                 for id_ in images[alphabet_id]: # images[alphabet_id] is a dict with ids as keys
                     base = os.path.split(images[alphabet_id][id_][0])[0]
-                    rtn[alphabet_id][id_] = os.path.join(base, 'responses.txt')
+                    rtn[alphabet_id][id_] = make_path('responses.txt', desired_base_of_target=from_path, actual_base_of_target=base)
         else:
             for alphabet_id in images:
                 if images[alphabet_id]:
                     base = os.path.split(images[alphabet_id][0])[0]
-                    rtn[alphabet_id] = os.path.join(base, 'responses.txt')
+                    rtn[alphabet_id] = make_path('responses.txt', desired_base_of_target=from_path, actual_base_of_target=base)
         return rtn
     else:
         if id_ is None:
@@ -376,12 +388,12 @@ def get_unreviewed_extra_info_file_name(alphabet_id=None, id_=None, from_path=UN
             for id_ in images:
                 if images[id_]:
                     base = os.path.split(images[id_][0])[0]
-                    rtn[id_] = os.path.join(base, 'responses.txt')
+                    rtn[id_] = make_path('responses.txt', desired_base_of_target=from_path, actual_base_of_target=base)
             return rtn
         else:
             if images:
                 base = os.path.split(images[id_][0])[0]
-                return os.path.join(base, 'responses.txt')
+                return make_path('responses.txt', desired_base_of_target=from_path, actual_base_of_target=base)
             else:
                 return None
 

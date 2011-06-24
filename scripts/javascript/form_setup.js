@@ -7,8 +7,8 @@ function setUpForm( form_name, button_name ) {
     }
       
     form = document.getElementById(form_name); 
-    if (form && getURLParameter('submitTo')) {
-       form.action = unescape(getURLParameter('submitTo')); 
+    if (form && urlParameters.hasURLParameter('submitTo')) {
+       form.action = unescape(urlParameters.getURLParameter('submitTo')); 
     }
     $('*').each(function (index) { $(this).attr('name', $(this).attr('id')); });
   }

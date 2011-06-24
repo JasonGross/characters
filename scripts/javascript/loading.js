@@ -14,6 +14,6 @@ var notYetLoaded, doneLoading, formFinishedLoadingTime;
       formFinishedLoadingTime = new Date();
     }
   };
-})('#loading');
+})('.loading, #loading');
 notYetLoaded();
 $(doneLoading);

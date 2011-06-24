@@ -1,7 +1,7 @@
 function isTurk() {
-  return hasURLParameter('assignmentId') && hasURLParameter('hitId');
+  return urlParameters.hasURLParameter('assignmentId') && urlParameters.hasURLParameter('hitId');
 }
 
 function isTurkSandbox() {
-  return isTurk() && getURLParameter('assignmentId') == 'ASSIGNMENT_ID_NOT_AVAILABLE';
+  return isTurk() && urlParameters.getURLParameter('assignmentId') == 'ASSIGNMENT_ID_NOT_AVAILABLE';
 }

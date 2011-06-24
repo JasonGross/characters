@@ -2,6 +2,7 @@
 # Filename: image_anonymizer.py
 from __future__ import with_statement
 import os, sys, json, subprocess, tempfile, shutil, urllib, re
+import warnings
 
 ##try:
 ##    import cPickle as pickle
@@ -50,18 +51,22 @@ hashed_images = get_hashed_images_dict()
 ##    return os.path.relpath(new_path, new_from_path)
 
 _image_reg = re.compile(r'([a-z_]+?)_([0-9]+)_([a-z0-9]+)\.png')
-def anonymize_image(image_path, from_path=BASE_PATH, from_url=BASE_URL, include_data_uri=False):
+def anonymize_image(image_path, from_path=BASE_PATH, from_url=BASE_URL, desired_base_path=BASE_PATH, include_data_uri=False, include_hash=True, include_original=True, **kwargs):
     name = os.path.split(image_path)[-1]
+    image_path = os.path.relpath(os.path.join(from_path, image_path), desired_base_path)
     alphabet, number, uid = _image_reg.match(name).groups()
     first, second, third, fourth = (alphabet + 'a')[:4]
     uid_first, uid_second, uid_third, uid_fourth, uid_rest = uid[:2], uid[2:4], uid[4:6], uid[6:8], uid[8:]
 ##    print('RewriteRule ^results/accepted-images/(..)%(first)s(..)%(second)s(..)%(third)s([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/%(alphabet)s/%(alphabet)s_$4_$1$2$3$5.png' % locals())
-    rtn = {'original url':urllib.parse.urljoin(from_url, image_path),
-           'hash':hash(name),
+    rtn = {
            'anonymous url':urllib.parse.urljoin(ACCEPTED_IMAGES_URL, '%(uid_first)s%(first)s%(uid_second)s%(second)s%(uid_third)s%(third)s%(uid_fourth)s%(fourth)s%(number)s%(uid_rest)s.png' % locals())
-           }
+          }
     if include_data_uri:
         rtn['data uri'] = png_to_uri(os.path.join(from_path, image_path))
+    if include_hash:
+        rtn['hash'] = hash(name)
+    if include_original:
+        rtn['original url'] = urllib.parse.urljoin(from_url, image_path)
     return rtn
     
 _REWRITE_DICT = {}

@@ -5,7 +5,7 @@ var DataLoader;
            defaultLoadingTypeText, defaultNoErrors, defaultAcceptTaskForm,
            $, jQuery, undefined) {
   var dataLoaderId = 0;
-  DataLoader = function (retrieveData, getTotalCount, onAccept, doLoadData,
+  DataLoader = function DataLoader(retrieveData, getTotalCount, onAccept, doLoadData,
       autoLoadData, progressHolder, progressBar, acceptButton, removeOnAccept,
       progressMessage, progressMessageText, ellipsisTime, loadingTypeText, 
       noErrors, acceptTaskForm) {

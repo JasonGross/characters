@@ -156,7 +156,7 @@
     // make a canvas drawable and give the stroke to some function after each stroke
     // better canvas.drawable({start: startcallback, stop: stopcallback, stroke: strokecallback})
     //function makeDrawable(canvas, lineWidth, undoLink, redoLink) {
-    (function (ctx, canvasLineWidth, canvasLineCap, strokes) {
+    (function (ctx, canvasLineWidth, canvasLineCap, strokesDict, strokesKey) {
       // Initilize canvas context values
       ctx.lineWidth = canvasLineWidth;
       ctx.lineCap = canvasLineCap;
@@ -164,7 +164,7 @@
       var is_stroking = false;
       var has_drawn = false;
       var current_stroke;
-      strokes.empty();
+      strokesDict[strokesKey] = [];
       function point(x, y) {
         return {"x":x, "y":y, "t": (new Date()).getTime()};
       }
@@ -191,13 +191,13 @@
       function stop(evt) {
         drawEnd();
         if (is_stroking && has_drawn) {
-          strokes.push(current_stroke);
+          strokesDict[strokesKey].push(current_stroke);
           self.clearFuture();
           if (enableUndo !== undefined) enableUndo();
         }
         is_stroking = false;
       }
-    }
+    })(ctx, canvasLineWidth, canvasLineCap, strokes, 'strokes');
     
     // canvas addons
     makeCanvasMemoryful('strokes');
@@ -209,10 +209,10 @@
     }
     self.clear();
     canvas
-      .mousedown(function(evt) {start(evt);})
-      .mousemove(function(evt) {stroke(evt);})
-      .mouseup(function(evt) {stop(evt);})
-      .mouseout(function(evt) {stop(evt);});
+      .mousedown(start)
+      .mousemove(stroke)
+      .mouseup(stop)
+      .mouseout(stop);
 
     function styleDisableLink(link, name) {
       link
@@ -259,7 +259,7 @@
     //===================================================================
     //From http://skuld.bmsc.washington.edu/~merritt/gnuplot/canvas_demos/
     function getMouseCoordsWithinTarget(event) {
-      var coords = { x: 0, y: 0};
+      var coords = {x: 0, y: 0};
 
       if (!event) { // then we're in a non-DOM (probably IE) browser
         event = window.event;

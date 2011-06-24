@@ -34,10 +34,10 @@ function keys(obj) {
 };
 
 function deprecated(func, name, newName, warningFunc) {
-  if (warningFunc === undefined) warningFunc = console.log;
+  if (warningFunc === undefined) warningFunc = console.warn ? console.warn : console.log;
   if (newName === undefined) newName = func.name;
   return function () {
-    warningFunc('Warning: ' + name + ' is deprecated.  Please use ' + newName + ' instead.');
+    warningFunc.call(console, 'Warning: ' + name + ' is deprecated.  Please use ' + newName + ' instead.');
     func.apply(this, arguments);
   };
 }
@@ -80,7 +80,7 @@ var urlParameters = {
 };
 
 var getURLParameter = deprecated(urlParameters.getURLParameter, 'getURLParameter', 'urlParameters.getURLParameter');
-var getURLParameter = deprecated(urlParameters.hasURLParameter, 'hasURLParameter', 'urlParameters.hasURLParameter');
+var hasURLParameter = deprecated(urlParameters.hasURLParameter, 'hasURLParameter', 'urlParameters.hasURLParameter');
 
 function toBool(value, nullValue)
 {

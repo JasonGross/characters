@@ -6,7 +6,7 @@
     'experimentGroup', 'displayProgressBarDuringTask',
     'unique', 'tasksPerFeedbackGroup', 'anchorPosition',
     'pauseToFirstHint', 'pauseToSecondHint', 'pauseToAnchor', 'pauseToNoise', 'pauseToTest', 'pauseToNextGroup',
-    'confirmToContinue',
+    'confirmToContinue', 'characterSize', 'characterSet',
     'allowDidNotSeeCount', 'sameAlphabetClassCount'];
 
   function retrieveData(loadData) {
@@ -21,6 +21,7 @@
 
   function onAccept() {
     tasks.startTasks();
+    $('#extra-options-form').show();
   };
 
   function onDoneTasks() {
@@ -37,6 +38,15 @@
     });
     tasks = new ClassificationTasks(data, data['tasks'].length, dataLoader,
         onDoneTasks);
+    var checkBox = setupResizeImages(tasks.resizeImages, tasks.resetImageSizes);
+    tasks.extraTaskInfo = function () {
+        var rtn = {
+                    'resized-images-checked':checkBox.attr('checked'),
+                    'window-width':$(window).width(),
+                    'window-height':$(window).height()
+                  };
+        return rtn;
+      };
     doneLoading();
   };
   notYetLoaded();

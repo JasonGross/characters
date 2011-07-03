@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # Filename: classification-characters.py
 from __future__ import with_statement
+#import warnings
+#warnings.simplefilter('ignore') #make cgitb work correctly
 import cgi, cgitb
 cgitb.enable(format='nohtml')
 import os, sys, json, subprocess, tempfile, shutil, random, urllib, random
@@ -57,26 +59,38 @@ def tasks_to_task_images(tasks, verbose=True, random=random):
             }
             for anchor, classes in tasks]
 
-def make_task(unique=True, anchor_count=1, class_count=20, same_alphabet_class_count=-1, task_count=200, foreground_fraction=0.75,
-              verbose=True, random=random, **kwargs):
-    if same_alphabet_class_count < 0: same_alphabet_class_count = None
+def make_task(foreground_fraction=0.75, verbose=True, random=random, **kwargs):
 
     if verbose: print('Getting list of alphabets...')
     alphabets_dict = get_accepted_image_list()
 
     alphabets_use = make_foreground_alphabets(random=random, verbose=verbose, alphabets_dict=alphabets_dict, foreground_fraction=foreground_fraction, **kwargs)
 
+    return make_task_from_alphabet_list(alphabets_use, random=random, verbose=verbose, alphabets_dict=alphabets_dict, **kwargs)
+
+def make_task_from_alphabet_list(alphabets_use, alphabets_dict=None,
+                                 verbose=True, random=random, **kwargs):
+    if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
+
     remaining_characters_use = []
     for alphabet in alphabets_use:
         if verbose: print('Collecting characters from %s...' % alphabet)
         remaining_characters_use.extend((alphabet, character_i) for character_i in range(len(alphabets_dict[alphabet].values()[0])))
+
+    return make_task_from_characters_list(remaining_characters_use, alphabets_dict=alphabets_dict, verbose=verbose, random=random, **kwargs)
+
+def make_task_from_characters_list(remaining_characters_use, unique=True, anchor_count=1, class_count=20, same_alphabet_class_count=-1, task_count=200,
+                                   alphabets_dict=None, verbose=True, random=random, **kwargs):
+    if same_alphabet_class_count < 0: same_alphabet_class_count = None
+    if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
+
     random.shuffle(remaining_characters_use)
 
-    anchor_characters = remaining_characters_use[:task_count]
     if unique: 
+        anchor_characters = remaining_characters_use[:task_count]
         remaining_characters_use = remaining_characters_use[task_count:]
     else:
-        random.shuffle(remaining_characters_use)
+        anchor_characters = random.sample(remaining_characters_use, task_count)
 
     tasks = []
     class_count -= 1
@@ -118,11 +132,27 @@ def make_task(unique=True, anchor_count=1, class_count=20, same_alphabet_class_c
     tasks = anchor_classes_to_tasks(tasks, random=random, verbose=verbose, alphabets_dict=alphabets_dict, anchor_count=anchor_count)
     return tasks_to_task_images(tasks, verbose=verbose, random=random)
 
+def make_task_from_alphabet_set(alphabet_set, alphabets_dict=None, **kwargs):
+    if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
+    def bad_alias():
+        raise Exception("Character set with the given name does not exist.  Run construct-character-set.py to create it.")
+    
+    list_of_stuff = get_object('recognition-tasks_character-set_%s' % alphabet_set, bad_alias)
+    if not isinstance(list_of_stuff[0], (list, tuple)):
+        return make_task_from_alphabet_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
+    else: # is string
+        return make_task_from_characters_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
+#    else:
+#        print(list_of_stuff)
+#        raw_input(list_of_stuff[0])
+#        raise Exception("Character set with the given name is malformed.")
+
+
 def create_first_task(form, args, verbose=False):
     passOnValues = {'pauseToFirstHint':[500],
                     'pauseToSecondHint':[500],
                     'pauseToAnchor':[1000],
-                    'pauseToNoise':[500],
+                    'pauseToNoise':[-1],
                     'pauseToTest':[1000],
                     'tasksPerFeedbackGroup':[10],
                     'pauseToNextGroup':[-1],
@@ -134,7 +164,9 @@ def create_first_task(form, args, verbose=False):
                     'unique':True,
                     'confirmToContinue':True,
                     'anchorPosition':'above',
-                    'sameAlphabetClassCount':-1
+                    'sameAlphabetClassCount':-1,
+                    'characterSize':'80px',
+                    'characterSet':''
                     }
     for key in passOnValues:
         if hasattr(args, key) and getattr(args, key) is not None:
@@ -168,8 +200,13 @@ def create_first_task(form, args, verbose=False):
     
     rtn['imagesPerTask'] = 2 * rtn['anchorCount'] + rtn['classCount']
 
-    rtn['tasks'] = make_task(verbose=verbose, anchor_count=rtn['anchorCount'], class_count=rtn['classCount'], 
-                             same_alphabet_class_count=rtn['sameAlphabetClassCount'], task_count=rtn['taskCount'])
+    if rtn['characterSet']:
+        rtn['tasks'] = make_task_from_alphabet_set(rtn['characterSet'], verbose=verbose, anchor_count=rtn['anchorCount'], class_count=rtn['classCount'],
+                                                   same_alphabet_class_count=rtn['sameAlphabetClassCount'], task_count=rtn['taskCount'], 
+                                                   unique=rtn['unique'])
+    else:
+        rtn['tasks'] = make_task(verbose=verbose, anchor_count=rtn['anchorCount'], class_count=rtn['classCount'], 
+                                 same_alphabet_class_count=rtn['sameAlphabetClassCount'], task_count=rtn['taskCount'], unique=rtn['unique'])
     return rtn
 
 def main():
@@ -184,5 +221,9 @@ def main():
 parser = argparse.ArgumentParser(description='Get the characters classification task')
 parser.add_argument('--verbose', '-v', action='store_true',
                     help='print status on recreating tasks')
+parser.add_argument('--character-set', '-s', dest='characterSet', type=str,
+                    help='name of character set to use')
+parser.add_argument('--no-unique', dest='unique', action='store_false',
+                    help='unique characters?')
 if __name__ == '__main__':
     main()

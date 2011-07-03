@@ -11,8 +11,22 @@ def get_boolean_value(form, true_keys, false_keys=None, default=None, true_optio
     if false_keys is None: false_keys = []
     if if_both is None: if_both = (lambda:default)
     if if_neither is None: if_neither = (lambda:default)
-    true_value = aggregate_true_keys(true_key in form and aggregate_true_keys(value in true_options for value in form.getlist(true_key)) for true_key in true_keys)
-    false_value = aggregate_false_keys(false_key in form and aggregate_false_keys(value in false_options for value in form.getlist(false_key)) for false_key in false_keys)
+    true_value = (aggregate_true_keys(true_key in form and 
+                                      aggregate_true_keys(value in true_options 
+                                                          for value in form.getlist(true_key))
+                                      for true_key in true_keys) or
+                  aggregate_true_keys(false_key in form and
+                                      aggregate_true_keys(value in false_options
+                                                          for value in form.getlist(false_key))
+                                      for false_key in false_keys))
+    false_value = (aggregate_false_keys(false_key in form and
+                                        aggregate_false_keys(value in true_options
+                                                             for value in form.getlist(false_key))
+                                        for false_key in false_keys) or
+                   aggregate_false_keys(true_key in form and
+                                        aggregate_false_keys(value in false_options
+                                                             for value in form.getlist(true_key))
+                                        for true_key in true_keys))
     if true_value and false_value: return if_both()
     elif not true_value and not false_value: return if_neither()
     else: return true_value and not false_value

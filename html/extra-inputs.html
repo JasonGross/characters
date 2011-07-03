@@ -1,3 +1,9 @@
+<!-- You must have the lines
+<script type="text/javascript">
+  var ip = '<!- -#echo var="REMOTE_ADDR"- ->';
+</script>
+(without the spaces) in your main file, before this
+-->
 <input id="assignmentId" name="assignmentId" type="hidden" value="" />
 <input id="form-load-time" name="form-load-time" type="hidden" value="" />
 <input id="form-submit-time" name="form-submit-time" type="hidden" value="" />
@@ -26,7 +32,6 @@
 <script type="text/javascript">
   //<![CDATA[
   var ipAddress_field = document.getElementById('ipAddress');
-  var ip = '<!--#echo var="REMOTE_ADDR"-->';
   ipAddress_field.value = ip;
   var fields = {
     'screenWidth':screen.width,
@@ -52,6 +57,16 @@
   for (var id in fields)
     if (document.getElementById(id) && fields[id] !== undefined)
       document.getElementById(id).value = fields[id];
-  $('#form-load-time').attr('value', dateUTC(new Date()));
+  var formFinishedLoadingTime = new Date();
+  $('#form-load-time').attr('value', dateUTC(formFinishedLoadingTime));
+  $(function () {
+    $('form').submit(function () {
+      $('#form-submit-time').attr('value', dateUTC(new Date()));
+      var duration = timeDelta(formFinishedLoadingTime, new Date());
+      $('#duration').attr('value', duration.years + 'y ' + duration.days + 'd ' + duration.hours + 'h ' +
+                          duration.minutes + 'm ' + duration.seconds + 's ' + duration.milliseconds + 'ms');
+      return true;
+    });
+  });
   //]]>
 </script>

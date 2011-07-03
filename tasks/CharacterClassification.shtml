@@ -7,12 +7,11 @@
   <!--style type="text/css">@import 'fauxconsole.css';</style-->
   <!--script src="../scripts/javascript/fauxconsole.js" type="text/javascript"></script-->
   <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
   <script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script>
   <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
-  <script src="http://www.shawnolson.net/scripts/public_smo_scripts.js" type="text/javascript"></script>
   <script src="../scripts/javascript/library.js" type="text/javascript"></script>
   <script src="../scripts/javascript/patches.js" type="text/javascript"></script>
   <!--[if lt IE 9]><script src="../scripts/javascript/ie_patches.js" type="text/javascript"></script><![endif]-->
@@ -29,13 +28,14 @@
   <script src="../scripts/javascript/task_break.js" type="text/javascript"></script>
   <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>
   <script src="../scripts/javascript/hinted_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/classification_resize_images.js" type="text/javascript"></script>
   <script src="../scripts/javascript/classification_task_maker.js" type="text/javascript"></script>
   <script src="../scripts/javascript/classification_data_loader.js" type="text/javascript"></script>
   <script src="../scripts/javascript/classification_validate_form.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
   <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
   <link href="../css/classification.css" rel="stylesheet" type="text/css" />
@@ -53,19 +53,19 @@
   <div class="pre-task">
     <div id="instructions">
       <h3>Instructions</h3>
-      <p>You must use the Mozilla Firefox web browser.</p>
+      <p class="show-if-timed">You must use the Mozilla Firefox web browser.</p>
       <p>This HIT consists of <span class="task-count">200</span> subtasks, and you must
         complete every subtask to submit the form.</p>
       <p>
         This task tests your ability to pick out a matching character from
         <span class="n">20</span> characters you've likely never seen before.
         You will be shown an image of a character, such as
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' /><span class="show-if-timed">
+        <img src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' /><span class="show-if-timed">
           for a fraction of a second, after which it
           will be replaced by noise</span>.  You will then be shown <span
           class="n">20</span> other images, and you should click on the click
         on the image which you think is the same character, such as <img
-        src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1kj5bqqwzijjt.png"
+        src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1kj5bqqwzijjt.png"
         alt='another "b"' style="height:1.25em" title='another "b"' />
       </p>
       <p class="show-if-timed">
@@ -102,7 +102,7 @@
       </form>
     </div>
   </div>
-  <div id="extra-options-form">
+  <div id="extra-options-form" class="tasks">
     <form id="extra-options">
       <div id="form-resize">
         <label>
@@ -157,6 +157,9 @@
           action="../scripts/python/record-classification-submission.py"
           method="post">
       <div id="hidden-inputs">
+        <script type="text/javascript">
+          var ip = '<!--#echo var="REMOTE_ADDR"-->';
+        </script>
         <!--#include virtual="../html/extra-inputs.html" -->
       </div>
 
@@ -183,12 +186,12 @@
 
   <script type="text/javascript">
     //<![CDATA[
-    if (urlParameters.getURLParameter('pauseToNoise') != '' &&
+    if (urlParameters.getURLParameter('pauseToNoise') == '' ||
         parseInt(urlParameters.getURLParameter('pauseToNoise')) <= 0) {
-      $('.show-if-timed').hide();
+      $('.show-if-timed').remove();
       $('.show-if-untimed').show();
     } else {
-      $('.show-if-untimed').hide();
+      $('.show-if-untimed').remove();
       $('.show-if-timed').show();
     }
     //]]>
@@ -200,10 +203,8 @@
     $('.post-task').hide()
     $('.tasks').hide();
 
-    if (!isTurkSandbox())
-      $('.preview-mode').remove();
-    else if (isTurk())
-      unansweredInput();
+    if (!isTurkPreview())
+      $('.show-if-preview-mode').remove();
     if (!isTurk())
       $('.show-if-turk').remove();
     else

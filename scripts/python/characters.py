@@ -24,7 +24,7 @@ PLUS_MINUS_STRINGS = ('+-', '-+', '+', PLUS_MINUS_CHAR)
 
 images = None
 
-def make_foreground_alphabets(most_popular_number=6, min_characters=20, verbose=False, random=random, alphabets_dict=None, foreground_fraction=0.5):
+def make_foreground_alphabets(most_popular_number=6, min_characters=20, verbose=False, random=random, alphabets_dict=None, foreground_fraction=0.5, **kwargs):
     if alphabets_dict is None:
         if verbose: print('Getting list of alphabets...')
         alphabets_dict = get_accepted_image_list()

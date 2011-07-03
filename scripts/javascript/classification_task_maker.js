@@ -14,7 +14,7 @@ var ClassificationTasks;
            $, jQuery, undefined) {
   var noiseImageURLs = [];
   for (var i = 0; i < 10; i++) {
-    noiseImageURLs.push('http://jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
+    noiseImageURLs.push('https://jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
   }
   var tasksDiv;
   $(function () { tasksDiv = $(tasksDivSelector).hide(); });
@@ -38,6 +38,7 @@ var ClassificationTasks;
     var anchorBoxes = [];
     var classImageHolders = [];
     var classBoxes = [];
+    var $imageHolders = $();
     var $chosenCharacterDisplay;
     var $characterInput;
 
@@ -124,6 +125,8 @@ var ClassificationTasks;
       return rtn;
     }
 
+    this.extraTaskInfo = function defaultExtraTaskInfo(task) { return {}; }
+
     this.onFinishTask = function (task, answerIndex, willShowResults) {
       var isCorrect = (answerIndex == task['correctClassIndex']);
       self.recordInfo(function (index) { return tag + 'task-' + index + '-is-correct-answer'; }, isCorrect);
@@ -135,6 +138,11 @@ var ClassificationTasks;
           self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-anchor-image-' + index + '-anonymous_url'; },
                           task['anchorURLs'][index]);
         });
+      var extraInfo = self.extraTaskInfo(task);
+      if (extraInfo)
+        jQuery.each(extraInfo, function (key, value) {
+            self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-' + key; }, value);
+          });
       if (isCorrect)
         tasksProgress.addCorrect();
       else
@@ -230,6 +238,8 @@ var ClassificationTasks;
     };
 
     function showClasses(task) {
+      self.recordInfo(function (taskIndex) { return tag + 'task-' + taskIndex + '-time-of-show-classes'; },
+                      dateUTC(new Date()));
       $characterInput.attr('disabled', '');
       jQuery.each(classImageHolders, function (classIndex, imageHolderList) {
           classBoxes[classIndex].removeClass('class-disable-select');
@@ -245,7 +255,7 @@ var ClassificationTasks;
       if (changeFocus === undefined) changeFocus = true;
       jQuery.each(classBoxes, function (index, box) { box.removeClass('class-selected'); });
       $chosenCharacterDisplay.children().hide();
-      if (classIndex === undefined || classIndex == '') {
+      if (classIndex === undefined || classIndex === '') {
         $continueButton.attr('disabled', 'disabled');
         return;
       }
@@ -275,9 +285,19 @@ var ClassificationTasks;
         .attr('id', pre_tag + 'box' + post_tag);
       var imageHolder = $('<span>')
         .addClass('wraptocenter image-holder ' + img_holder_class_string)
+        .css({'width':data['characterSize'], 'height':data['characterSize']})
         .attr('id', pre_tag + 'image-holder' + post_tag);
+      $imageHolders = $imageHolders.add(imageHolder);
       imageBox.append(imageHolder);
       return {'box':imageBox, 'image-holder':imageHolder};
+    }
+
+    this.resizeImages = function resizeImages(size) {
+      $imageHolders.css({'width':size, 'height':size});
+    }
+
+    this.resetImageSizes = function resetImageSizes() {
+      self.resizeImages(data['characterSize']);
     }
 
     function makeAnchor(index) {
@@ -292,8 +312,8 @@ var ClassificationTasks;
       var classHolder = $('<fieldset>')
         .addClass('class-holder class-unselected')
         .append($('<legend>').append(index + 1).addClass('class-label'))
-        .mouseover(function () { $(this).addClass('class-hover'); })
-        .mouseleave(function () { $(this).removeClass('class-hover'); })
+        .mouseover(function () { classHolder.addClass('class-hover'); })
+        .mouseleave(function () { classHolder.removeClass('class-hover'); })
         .click(function () { selectAnswer(index); });
       classBoxes[index] = classHolder;
       classImageHolders[index] = [];
@@ -342,7 +362,7 @@ var ClassificationTasks;
       var defaultOption = $('<option>')
         .attr('id', 'default-option')
         .attr('value', '')
-        .append('(number)');
+        .append('(#)');
       $characterInput.append(defaultOption)
         .change(function () { selectAnswer(this.value); })
         .keyup(function () { selectAnswer($characterInput.attr('value'), false); })
@@ -361,7 +381,8 @@ var ClassificationTasks;
         $anchorsHolder.append(makeAnchor(i));
       }
       var chosenImageHolder = makeImageHolder('chosen-');
-      $chosenCharacterDisplay = chosenImageHolder['image-holder'].append($('<img>'));
+      $chosenCharacterDisplay = chosenImageHolder['image-holder'].append($('<img>')
+                                                                          .css({'width':'100%', 'height':'100%'})); // not sure why I need this
       $prompt
         .append(" is most likely to be the same as character ")
         .append($characterInput)
@@ -394,10 +415,17 @@ var ClassificationTasks;
 
       if (confirmToContinue) taskHolder.append(continueDiv);
 
-      jumpToTask = function jumpToTask() {
-        window.location.hash = '';
-        window.location.hash = 'anchors-holder';
-      };
+      if (data['pauseToNoise'][0] > 0)
+        jumpToTask = function jumpToTask() {
+          window.location.hash = '';
+          window.location.hash = 'anchors-holder';
+        };
+      else
+        jumpToTask = function jumpToTaskTop() {
+          window.location.hash = '';
+          window.location.hash = 'task';
+          window.location.hash = 'extra-options-form';
+        };
     }
 
     jQuery.each(data['tasks'], function (index, task) {

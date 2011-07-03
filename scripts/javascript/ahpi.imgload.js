@@ -74,4 +74,4 @@
 			$.event.special.load = newLoad;
 			$(this).remove();
 		});
-}(jQuery, 'http://static.jquery.com/files/rocker/images/logo_jquery_215x53.gif'));
+})(jQuery, 'https://jgross.scripts.mit.edu/alphabets/images/down.gif');

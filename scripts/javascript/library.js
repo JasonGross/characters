@@ -357,32 +357,36 @@ if (this['changecss'] === undefined)
 	cssRules = document.styleSheets[s]['rules'];
       else if (document.styleSheets[s]['cssRules'])
 	cssRules = document.styleSheets[s]['cssRules'];
+      else if (document.styleSheets[s].length)
+        cssRules = document.styleSheets[s];
       else { // no rules found... browser unknown
-	if (onError !== undefined)
-	  onError();
+/*	if (onError !== undefined)
+	  onError();*/
 	continue;
       }
-      
-      for (var r = 0; r < cssRules.length; r++) {
+
+      for (var r = cssRules.length - 1; r >= 0; r--) {
 	if (cssRules[r].selectorText == theClass) {
 	  if (cssRules[r].style[element]) {
 	    cssRules[r].style[element] = value;
-	    added=true;
+	    added = (cssRules[r].style[element] == value);
 	    break;
 	  }
 	}
       }
     }
-    
+
     s = document.styleSheets.length - 1;
     if (!added) {
-      if (document.styleSheets[s].insertRule) {
+      if (document.styleSheets[s].addRule) {
+	document.styleSheets[s].addRule(theClass, element+':'+value);
+      } else if (document.styleSheets[s].insertRule) {
 	document.styleSheets[s].insertRule(theClass + ' { ' + element + ': ' +
 	  value + '; }', cssRules.length);
-      } else if (document.styleSheets[s].addRule) {
-	document.styleSheets[s].addRule(theClass, element+': '+value+';');
-      }
+      } else if (onError !== undefined)
+        onError();
     }
+    console.log(document.styleSheets[s]);
   } 
 //=============================================================
 

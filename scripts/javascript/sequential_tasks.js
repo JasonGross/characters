@@ -69,8 +69,8 @@ var SequentialTasks;
         self.showResults(task, answer, 
                          function () { self.tasksDisplay.hide(); self.onDoneTasks(); });
       } else {
-        if (displayEvery > 0 && self.getCurrentTaskNumber() > 0 &&
-            (self.getCurrentTaskNumber() % displayEvery) == 0 && shouldShowResults)
+        if (displayEvery > 0 &&
+            ((self.getCurrentTaskNumber() + 1) % displayEvery) == 0 && shouldShowResults)
           self.showResults(task, answer, self.doNextTask);
         else
           self.doNextTask();

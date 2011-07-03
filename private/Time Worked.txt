@@ -207,3 +207,26 @@ End: Friday, June 24, 2011 11:58.29
 Time Spent: 2:48:05.820198
 
 Start: Friday, June 24, 2011 12:37.12
+End: Friday, June 24, 2011 13:55.27
+Time Spent: 1:18:15.519960
+
+Start: Friday, June 24, 2011 13:59.00
+End: Friday, June 24, 2011 14:00.47
+Time Spent: 0:01:47.141163
+
+Start: Saturday, July 02, 2011 13:04.03
+End: Saturday, July 02, 2011 15:42.02
+Time Spent: 2:37:59.498674
+
+Start: Saturday, July 02, 2011 18:12.54
+End: Saturday, July 02, 2011 19:25.39
+Time Spent: 1:12:45.680954
+
+Start: Saturday, July 02, 2011 20:16.14
+End: Saturday, July 02, 2011 22:40.23
+Time Spent: 2:24:09.115136
+
+Start: Sunday, July 03, 2011 00:42.17
+End: Sunday, July 03, 2011 01:04.08
+Time Spent: 0:21:51.483099
+

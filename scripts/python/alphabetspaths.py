@@ -71,7 +71,7 @@ _normal_path_names = [] + \
                       if _path not in ('ORIGINAL', 'UNREVIEWED') and is_not_from_tasks(_path)]
 
 BASE_PATH = os.path.join(os.path.expanduser('~/'), 'web_scripts/', 'alphabets/')
-BASE_URL = 'http://jgross.scripts.mit.edu/alphabets/'
+BASE_URL = 'https://jgross.scripts.mit.edu/alphabets/'
 
 _self = sys.modules[globals()['__name__']]
 

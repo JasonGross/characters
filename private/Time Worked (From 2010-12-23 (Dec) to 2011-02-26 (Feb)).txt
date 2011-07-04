@@ -1,0 +1,62 @@
+Start: Thursday, December 23, 2010 12:43.31
+End: Thursday, December 23, 2010 13:46.28
+Time Spent: 1:02:57.720695
+
+Start: Wednesday, December 29, 2010 12:26.31
+End: Wednesday, December 29, 2010 14:39.35
+Time Spent: 2:13:04.565075
+
+Start: Saturday, January 01, 2011 12:51.27
+End: Sunday, January 02, 2011 00:37.30
+Time Spent: 11:46:03.456577
+
+Start: Sunday, January 02, 2011 18:14.32
+End: Sunday, January 02, 2011 23:29.11
+Time Spent: 5:14:39.487306
+
+Start: Tuesday, January 18, 2011 16:47.52
+End: Tuesday, January 18, 2011 18:49.54
+Time Spent: 2:02:02.361196
+
+Start: Sunday, January 23, 2011 16:56.45
+End: Sunday, January 23, 2011 18:47.30
+Time Spent: 1:50:45.366740
+
+Start: Monday, January 24, 2011 11:17.29
+End: Monday, January 24, 2011 14:57.06
+Time Spent: 3:39:37.456809
+
+Start: Wednesday, January 26, 2011 11:58.39
+End: Wednesday, January 26, 2011 12:44.12
+Time Spent: 0:45:33.809252
+
+Start: Wednesday, January 26, 2011 19:17.31
+End: Wednesday, January 26, 2011 19:33.51
+Time Spent: 0:16:20.655880
+
+Start: Friday, January 28, 2011 02:56.58
+End: Friday, January 28, 2011 04:04.16
+Time Spent: 1:07:18.588746
+
+Start: Friday, January 28, 2011 06:04.39
+End: Friday, January 28, 2011 07:30.12
+Time Spent: 1:25:33.869347
+
+Start: Saturday, January 29, 2011 12:39.11
+End: Saturday, January 29, 2011 13:20.10
+Time Spent: 0:40:59.214491
+
+Start: Saturday, January 29, 2011 14:31.50
+End: Saturday, January 29, 2011 16:01.06
+Time Spent: 1:29:16.703140
+
+Start: Sunday, February 13, 2011 20:11.10
+End: Monday, February 14, 2011 01:15.57
+Time Spent: 5:04:47.848085
+
+Start: Saturday, February 26, 2011 15:08.44
+End: Saturday, February 26, 2011 22:57.24
+Time Spent: 7:48:40.400995
+
+
+Total Time: 1 day, 22:27:41.504334

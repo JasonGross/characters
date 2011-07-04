@@ -1,0 +1,23 @@
+<div id="no-inline-block" class="error">
+  <h2>Your browser is outdated or does not comform to standards</h2>
+  <p>
+    Your browser does not support the CSS <tt>display: inline-block</tt> style.
+  </p>
+  <p>
+    If you want it to be able to complete this form, please update your
+    browser, or use a different (standards compliant) browser, such as Firefox,
+    Google Chrome, or Safari.  If you do not have one of these browsers or do
+    not know what this means, please visit <a href="http://utilu.com/UtiluMF/"
+      rel="external" target="_blank">Utilu Silent Setup for Mozilla
+      Firefox</a>, or download <a
+      href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
+  </p>
+  <script type="text/javascript">
+    //<![CDATA[
+    var elem = $('<div>').css({'display':'inline-block'});
+    if (elem.css('display') == 'inline-block')
+      $('#no-inline-block').remove();
+    //]]>
+  </script>
+</div>
+

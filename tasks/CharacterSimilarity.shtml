@@ -28,25 +28,23 @@
   <script src="../scripts/javascript/task_break.js" type="text/javascript"></script>
   <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>
   <script src="../scripts/javascript/hinted_tasks.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/classification_resize_images.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/classification_task_maker.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/classification_data_loader.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/classification_validate_form.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/similarity_task_maker.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/similarity_data_loader.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/escape_feedback.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
   <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
-  <link href="../css/classification.css" rel="stylesheet" type="text/css" />
+  <link href="../css/similarity.css" rel="stylesheet" type="text/css" />
 
-  <title>Character Classification</title>
+  <title>Character Similarity</title>
 </head>
 
 <body>
   <div id="pre-page-checks" class="pre-page-checks">
     <!--#include virtual="../html/errors/noscript.html" -->
-    <!--#include virtual="../html/errors/setTimeout.html" -->
     <!--#include virtual="../html/errors/inline-block.html" -->
     <!--#include virtual="../html/errors/loading.html" -->
     <!--#include virtual="../html/errors/turk-preview.html" -->
@@ -54,36 +52,39 @@
   <div class="pre-task">
     <div id="instructions">
       <h3>Instructions</h3>
-      <p class="show-if-timed">You must use the Mozilla Firefox web browser.</p>
       <p>This HIT consists of <span class="task-count">200</span> subtasks, and you must
         complete every subtask to submit the form.</p>
       <p>
-        This task tests your ability to pick out a matching character from
-        <span class="n">20</span> characters you've likely never seen before.
-        You will be shown an image of a character, such as
-        <img src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' /><span class="show-if-timed">
-          for a fraction of a second, after which it
-          will be replaced by noise</span>.  You will then be shown <span
-          class="n">20</span> other images, and you should click on the click
-        on the image which you think is the same character, such as <img
-        src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1kj5bqqwzijjt.png"
-        alt='another "b"' style="height:1.25em" title='another "b"' />
+        This task asks you to rate the similarity of two characters, which
+        you've likely never seen before, on a scale of <span
+          class="small-rating">1</span> to <span class="big-rating">7</span>;
+        <span class="different-rating">1</span> means that you think the
+        characters are not at all alike, and <span class="same-rating">7</span>
+        means that you think the images are the same character.
       </p>
-      <p class="show-if-timed">
-        Each subtask has the following structure:
+      <p>
+        <strong>Importantly, your task is not to judge whether the two images
+          are literally the same, but rather whether they are images of the
+          same type of character (for example, <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png"
+          alt='a "b"' style="height:1.25em" title='a "b"' /> and <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_azdw60621ia38.png"
+          alt='another "b"' style="height:1.25em" title='another "b"' />) or
+          instead of two different types of characters (for example, <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png"
+          alt='a "b"' style="height:1.25em" title='a "b"' /> and <img
+          src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_04_a1z59eb58sfxpy.png"
+          alt='a "d"' style="height:1.25em" title='a "d"' />).</strong>
       </p>
-      <ol class="show-if-timed">
-        <li>A red square appears in the box labeled "Anchor Character" to cue your attention.</li>
-        <li>Shortly after the cue, the anchor character is quickly flashed in that red square.</li>
-        <li>After the flash, the character disappears and is replaced by a nonsense scribble image.</li>
-        <li><span class="n">20</span> images of characters then appear <span class="position">below</span> the anchor box.</li>
-      </ol>
+      <p>
+        The first 10 subtasks will be practice, for you to get used to the
+        degree of variability of the characters.
       <p>Please note:</p>
       <ul>
         <li>
           You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
         </li>
-        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to guess correctly, your submission will be accepted regardless of how accurate you are.</li>
+        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to be accurate, your submission will be accepted regardless of how accurate you are.</li>
       </ul>
     </div>
     <!--#include virtual="../html/disclaimer.html" -->
@@ -105,12 +106,6 @@
   </div>
   <div id="extra-options-form" class="tasks">
     <form id="extra-options">
-      <div id="form-resize">
-        <label>
-          <input type="checkbox" id="resize-images-on-page-resize" name="resize-images-on-page-resize" />
-          Resize images to fit screen
-        </label>
-      </div>
     </form>
   </div>
 
@@ -120,10 +115,34 @@
   <div id="task_display">
     <div id="all-tasks" class="tasks">
       <fieldset id="task">
-        <legend>Task <span class="task-number">1</span> of <span class="task-count">200</span></legend>
+        <legend>Task <span class="task-number">1</span> of <span class="task-count">210</span></legend>
         <p>
-        Respond as quickly as possible.  Pick the character that looks most like the anchor image<span class="s-if-multiple-anchors"></span>.
+          Respond as quickly as possible.  Rate the similarity of the following
+          two characters.<!-- on a scale of <span class="small-rating">1</span> to
+          <span class="big-rating">7</span>, where <span
+            class="different-rating">1</span> is the most <em>different</em>
+          and <span class="same-rating">7</span> is the most <em>similar</em>.-->
         </p>
+        <div class="task-holder character-question">
+          I think that
+          <div id="image-holder-0" class="image-box image-holder"></div>
+          and
+          <div id="image-holder-1" class="image-box image-holder"></div>
+          are
+          <select id="similarity-input" class="character-question" autofocus>
+            <option value="">(pick a similarity)</option>
+            <option value="1">extremely different</option>
+            <option value="2">moderately different</option>
+            <option value="3">somewhat different</option>
+            <option value="4">neither similar nor different</option>
+            <option value="5">somewhat similar</option>
+            <option value="6">moderately similar</option>
+            <option value="7">extremely similar</option>
+          </select>
+        </div>
+        <div class="task-holder character-question">
+          <button id="next-task-button" class="character-question" disabled="disabled" type="button">continue to the next task</button>
+        </div>
       </fieldset>
     </div>
 
@@ -141,8 +160,8 @@
       </div>
       <div class="task-message" id="task_message">
         Out of the first <span id="task-progress-message-num-tasks-known" name="task-progress-message-num-tasks-known">0</span> tasks: <br />
-        Number Right: <span id="task-progress-message-num-tasks-correct" name="task-progress-message-num-tasks-correct">0</span> <br />
-        Number Wrong: <span id="task-progress-message-num-tasks-incorrect" name="task-progress-message-num-tasks-incorrect">0</span>
+        Average Rating for Same Characters: <span id="task-progress-message-average-same">0</span> <br />
+        Average Rating for Different Characters: <span id="task-progress-message-average-different">0</span>
       </div>
     </div>
 
@@ -155,7 +174,7 @@
 
   <div id="main_form-div">
     <form id="main_form"
-          action="../scripts/python/record-classification-submission.py"
+          action="../scripts/python/record-similarity-submission.py"
           method="post">
       <div id="hidden-inputs">
         <script type="text/javascript">
@@ -184,19 +203,6 @@
                value="Submit" /></p>
     </form>
   </div>
-
-  <script type="text/javascript">
-    //<![CDATA[
-    if (urlParameters.getURLParameter('pauseToNoise') == '' ||
-        parseInt(urlParameters.getURLParameter('pauseToNoise')) <= 0) {
-      $('.show-if-timed').remove();
-      $('.show-if-untimed').show();
-    } else {
-      $('.show-if-untimed').remove();
-      $('.show-if-timed').show();
-    }
-    //]]>
-  </script>
 
   <script type="text/javascript">
     //<![CDATA[

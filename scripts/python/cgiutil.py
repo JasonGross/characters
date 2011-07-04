@@ -64,5 +64,3 @@ def is_nested_type(obj, *types):
             return is_nested_type(obj, *rest)
         else:
             return False
-
-

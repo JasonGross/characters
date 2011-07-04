@@ -221,12 +221,8 @@ def create_first_task(form, args, reset=False, verbose=False):
                     'fractionSame':0.5, # this was 0.25 before the RT task, changed to 0.5 for RT
                     'calibrationTaskCount':25
                     }
-    for key in passOnValues:
-        if hasattr(args, key) and getattr(args, key) is not None:
-            if isinstance(passOnValues[key], (list, tuple)) and not isinstance(getattr(args, key), (list, tuple)):
-                passOnValues[key] = [getattr(args, key)]
-            else:
-                passOnValues[key] = getattr(args, key)
+    rtn = aggregate_values(passOnValues, args, form)
+
     if get_boolean_value(form, 'random', default=passOnValues['random']):
         tasks = make_get_random_task(form, passOnValues, verbose=verbose)
     else:
@@ -237,11 +233,26 @@ def create_first_task(form, args, reset=False, verbose=False):
               task[0][0] == task[1][0] and task[0][1] == task[1][1])
              for task in tasks]
             
+    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, random.choice(_STROKE_NOISES)), correct_answer) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
+             for example, test, correct_answer in tasks]
+    rtn['tasks'] = tasks
+    return rtn
+
+
+def aggregate_values(pass_on_values, args, form):
+    pass_on_values = dict(pass_on_values)
+    for key in pass_on_values:
+        if hasattr(args, key) and getattr(args, key) is not None:
+            if isinstance(pass_on_values[key], (list, tuple)) and not isinstance(getattr(args, key), (list, tuple)):
+                pass_on_values[key] = [getattr(args, key)]
+            else:
+                pass_on_values[key] = getattr(args, key)
+
     rtn = {}
 
-    for key in passOnValues:
-        if isinstance(passOnValues[key], bool): rtn[key] = get_boolean_value(form, key, default=passOnValues[key])
-        else: rtn[key] = form.getfirst(key, passOnValues[key])
+    for key in pass_on_values:
+        if isinstance(pass_on_values[key], bool): rtn[key] = get_boolean_value(form, key, default=pass_on_values[key])
+        else: rtn[key] = form.getfirst(key, pass_on_values[key])
         if isinstance(rtn[key], str) and any(sign_char in rtn[key] for sign_char in PLUS_MINUS_STRINGS):
             for sign_char in PLUS_MINUS_STRINGS:
                 rtn[key] = rtn[key].replace(sign_char, PLUS_MINUS_CHAR)
@@ -251,21 +262,16 @@ def create_first_task(form, args, reset=False, verbose=False):
             rtn[key] = list(map(int, rtn[key]))
         elif isinstance(rtn[key], bool):
             pass
-        elif isinstance(passOnValues[key], (list, tuple)):
+        elif isinstance(pass_on_values[key], (list, tuple)):
             rtn[key] = [int(rtn[key])]
-        elif isinstance(passOnValues[key], int):
+        elif isinstance(pass_on_values[key], int):
             rtn[key] = int(rtn[key])
-        elif isinstance(passOnValues[key], float):
+        elif isinstance(pass_on_values[key], float):
             rtn[key] = float(rtn[key])
         if isinstance(rtn[key], list) and len(rtn[key]) < 2:
             rtn[key].append(0)
 
-    tasks = [(example, test, urllib.parse.urljoin(BASE_URL, random.choice(_STROKE_NOISES)), correct_answer) #http://www.quasimondo.com/hydra/sineNoise1.jpg')
-             for example, test, correct_answer in tasks]
-    rtn['tasks'] = tasks
     return rtn
-
-
 
 
 

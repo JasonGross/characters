@@ -1,15 +1,7 @@
 var ClassificationTasks;
-(function (defaultConfirmToContinue, delayRange, displayEvery, displayDelay, resultsDivSelector,
+(function (resultsDivSelector,
            taskNumberSelector, taskTotalSelector, tasksDivSelector, 
-           displaySelector, tag, defaultSameDelay,
-           taskProgressSelector, taskProgressMessageSelector,
-           taskProgressBarHolderSelector, 
-           taskActualProgressBarSelector, 
-           taskOverlayProgressBarSelector,
-           taskCorrectProgressBarSelector,
-           taskIncorrectProgressBarSelector,
-           taskCorrectTextSelector, taskIncorrectTextSelector,
-           taskScoredTextSelector, breakDivSelector,
+           tag,
            taskDisplaySelector,
            $, jQuery, undefined) {
   var noiseImageURLs = [];
@@ -434,14 +426,7 @@ var ClassificationTasks;
 
     tasksProgress = new TasksProgress(this.tasksLeftCount());
   };
-})(true, [600, 1000], 1, 1000, '#task-results', '.task-number',
-  '.task-count', '#all-tasks', "#task-results-display", 
-  '', 4000,
-  '.task-progress', '.task-message', '.task-progress-bar-holder',
-  '.task-actual-progress-bar', '.task-overlay-progress-bar-holder',
-  '.task-correct-progress-bar', '.task-incorrect-progress-bar',
-  '#task-progress-message-num-tasks-correct', 
-  '#task-progress-message-num-tasks-incorrect', 
-  '#task-progress-message-num-tasks-known', '.task-break',
+})('#task-results', '.task-number',
+  '.task-count', '#all-tasks', '',
   '#task',
   jQuery, jQuery);

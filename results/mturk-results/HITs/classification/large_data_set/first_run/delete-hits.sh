@@ -1,1 +1,0 @@
-../../../../../../scripts/turk-scripts/delete-hits.sh

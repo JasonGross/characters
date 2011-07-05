@@ -4,7 +4,7 @@
 
   var allUrlParameters = ['taskCount', 'anchorCount', 'classCount',
     'experimentGroup', 'displayProgressBarDuringTask',
-    'unique', 'tasksPerFeedbackGroup', 'anchorPosition',
+    'unique', 'uniqueClasses', 'tasksPerFeedbackGroup', 'anchorPosition',
     'pauseToFirstHint', 'pauseToSecondHint', 'pauseToAnchor', 'pauseToNoise', 'pauseToTest', 'pauseToNextGroup',
     'confirmToContinue', 'characterSize', 'characterSet',
     'allowDidNotSeeCount', 'sameAlphabetClassCount'];
@@ -33,6 +33,7 @@
     saveUrlParameters(data);
     $(function () {
       $('.task-count').html(data['tasks'].length);
+      $('.expected-duration').html((data['tasks'].length / 10) + '-' + (data['tasks'].length / 5)); // minutes
       $('.n').html(data['tasks'][0]['classes'].length);
       if (data['tasks'][0]['anchors'].length > 1) $('.s-if-multiple-anchors').html('s');
     });

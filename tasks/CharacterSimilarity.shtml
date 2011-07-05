@@ -46,6 +46,7 @@
   <div id="pre-page-checks" class="pre-page-checks">
     <!--#include virtual="../html/errors/noscript.html" -->
     <!--#include virtual="../html/errors/inline-block.html" -->
+    <!--#include virtual="../html/errors/seen-HIT-before.html" -->
     <!--#include virtual="../html/errors/loading.html" -->
     <!--#include virtual="../html/errors/turk-preview.html" -->
   </div>

@@ -1,1 +1,0 @@
-../../../../../../scripts/turk-scripts/upload_hits.sh

@@ -1,0 +1,42 @@
+<div id="seen-HIT-before" class="error show-if-turk">
+  <h2>You have completed a HIT like this one before.</h2>
+  <p>
+    Our experiments rely on you not having seen the characters we are testing
+    before.  Since you have already completed a HIT like this one, we would not
+    be able to use your data in our analysis.  If you believe that you are
+    recieving this message in error, please contact me at jgross AT mit DOT
+    edu.
+  </p>
+  <script type="text/javascript">
+    //<![CDATA[
+    var addToRejectIds = ''
+    if ('rejectIds' in this) addToRejectIds += ',' + this['rejectIds'];
+    var rejectIds = urlParameters.getURLParameters('rejectIds');
+    if ('rejectIds' in rejectIds)
+      rejectIds = rejectIds['rejectIds'];
+    else
+      rejectIds = '';
+    rejectIds += addToRejectIds;
+
+    if (urlParameters.hasURLParameter('workerId')) {
+      var workerId = urlParameters.getURLParameter('workerId');
+      if (rejectIds.indexOf(workerId) == -1)
+        $('#seen-HIT-before').remove();
+      else
+        $('submit').attr("disabled", "disabled");
+    } else
+      $('#seen-HIT-before').remove();
+    //]]>
+  </script>
+</div>
+<div class="warning show-if-turk show-if-preview-mode" id="maybe-done-before">
+  <p>
+    You will not be able to complete this HIT if you have already completed a
+    HIT similar to this one before.
+  </p>
+  <script type="text/javascript">
+    if (!(urlParameters.hasURLParameter('rejectIds') || this['rejectIds']) ||
+        urlParameters.hasURLParameter('workerId'))
+      $('#maybe-done-before').remove();
+  </script>
+</div>

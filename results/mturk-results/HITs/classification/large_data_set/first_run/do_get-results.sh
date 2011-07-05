@@ -1,1 +1,0 @@
-../../../../../../scripts/turk-scripts/do_get-results.sh

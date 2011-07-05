@@ -48,6 +48,7 @@
     <!--#include virtual="../html/errors/noscript.html" -->
     <!--#include virtual="../html/errors/setTimeout.html" -->
     <!--#include virtual="../html/errors/inline-block.html" -->
+    <!--#include virtual="../html/errors/seen-HIT-before.html" -->
     <!--#include virtual="../html/errors/loading.html" -->
     <!--#include virtual="../html/errors/turk-preview.html" -->
   </div>
@@ -55,8 +56,12 @@
     <div id="instructions">
       <h3>Instructions</h3>
       <p class="show-if-timed">You must use the Mozilla Firefox web browser.</p>
-      <p>This HIT consists of <span class="task-count">200</span> subtasks, and you must
-        complete every subtask to submit the form.</p>
+      <p>
+        This HIT consists of <span class="task-count">50</span> subtasks, and
+        you must complete every subtask to submit the form.  I expect this HIT
+        to take you approximately <span class="expected-duration">5-10</span>
+        minutes.
+      </p>
       <p>
         This task tests your ability to pick out a matching character from
         <span class="n">20</span> characters you've likely never seen before.
@@ -122,7 +127,9 @@
       <fieldset id="task">
         <legend>Task <span class="task-number">1</span> of <span class="task-count">200</span></legend>
         <p>
-        Respond as quickly as possible.  Pick the character that looks most like the anchor image<span class="s-if-multiple-anchors"></span>.
+          Although this task is not timed, please respond in a timely manner.
+          Pick the character that looks most like the anchor image<span
+            class="s-if-multiple-anchors"></span>.
         </p>
       </fieldset>
     </div>

@@ -79,10 +79,12 @@ def make_task_from_alphabet_list(alphabets_use, alphabets_dict=None,
 
     return make_task_from_characters_list(remaining_characters_use, alphabets_dict=alphabets_dict, verbose=verbose, random=random, **kwargs)
 
-def make_task_from_characters_list(remaining_characters_use, unique=True, anchor_count=1, class_count=20, same_alphabet_class_count=-1, task_count=200,
+def make_task_from_characters_list(remaining_characters_use, unique=True, unique_classes=True, anchor_count=1, class_count=20,
+                                   same_alphabet_class_count=-1, task_count=50,
                                    alphabets_dict=None, verbose=True, random=random, **kwargs):
     if same_alphabet_class_count < 0: same_alphabet_class_count = None
     if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
+    if same_alphabet_class_count is not None and unique_classes: raise Exception("Cannot have multiple identical classes and have them all be distinct.")
 
     random.shuffle(remaining_characters_use)
 
@@ -98,13 +100,36 @@ def make_task_from_characters_list(remaining_characters_use, unique=True, anchor
     for anchor in anchor_characters:
         classes = []
         if same_alphabet_class_count is None:
-            if unique:
-                if len(remaining_characters_use) < class_count: raise Exception("Not enough characters")
-                classes.extend(remaining_characters_use[:class_count])
-                remaining_characters_use = remaining_characters_use[class_count:]
-            else: # exclude characters identical to the anchor
-                classes.extend(islice((character for character in remaining_characters_use if character != anchor), class_count))
-                random.shuffle(remaining_characters_use)
+            if unique_classes:
+                if unique:
+                    i = 0
+                    used_alphabets = set([anchor[0]])
+                    while len(classes) < class_count:
+                        if i >= len(remaining_characters_use): raise Exception("Not enough characters")
+                        if remaining_characters_use[i][0] not in used_alphabets:
+                            used_alphabets.add(remaining_characters_use[i][0])
+                            classes.append(remaining_characters_use[i])
+                            del remaining_characters_use[i]
+                        else:
+                            i += 1
+                else:
+                    i = 0
+                    used_alphabets = set([anchor[0]])
+                    while len(classes) < class_count:
+                        if i >= len(remaining_characters_use): raise Exception("Not enough characters")
+                        if remaining_characters_use[i][0] not in used_alphabets:
+                            used_alphabets.add(remaining_characters_use[i][0])
+                            classes.append(remaining_characters_use[i])
+                        i += 1
+                    random.shuffle(remaining_characters_use)
+            else:
+                if unique:
+                    if len(remaining_characters_use) < class_count: raise Exception("Not enough characters")
+                    classes.extend(remaining_characters_use[:class_count])
+                    remaining_characters_use = remaining_characters_use[class_count:]
+                else: # exclude characters identical to the anchor
+                    classes.extend(islice((character for character in remaining_characters_use if character != anchor), class_count))
+                    random.shuffle(remaining_characters_use)
         else:
             if unique:
                 if len(remaining_characters_use) < class_count: raise Exception("Not enough characters")
@@ -161,11 +186,12 @@ def create_first_task(form, args, verbose=False):
                     'taskCount':50,
                     'anchorCount':1,
                     'classCount':20,
-                    'unique':True,
+                    'unique':False,
+                    'uniqueClasses':True,
                     'confirmToContinue':True,
                     'anchorPosition':'above',
                     'sameAlphabetClassCount':-1,
-                    'characterSize':'80px',
+                    'characterSize':'50px',
                     'characterSet':''
                     }
     for key in passOnValues:
@@ -203,10 +229,11 @@ def create_first_task(form, args, verbose=False):
     if rtn['characterSet']:
         rtn['tasks'] = make_task_from_alphabet_set(rtn['characterSet'], verbose=verbose, anchor_count=rtn['anchorCount'], class_count=rtn['classCount'],
                                                    same_alphabet_class_count=rtn['sameAlphabetClassCount'], task_count=rtn['taskCount'], 
-                                                   unique=rtn['unique'])
+                                                   unique=rtn['unique'], unique_classes=rtn['uniqueClasses'])
     else:
         rtn['tasks'] = make_task(verbose=verbose, anchor_count=rtn['anchorCount'], class_count=rtn['classCount'], 
-                                 same_alphabet_class_count=rtn['sameAlphabetClassCount'], task_count=rtn['taskCount'], unique=rtn['unique'])
+                                 same_alphabet_class_count=rtn['sameAlphabetClassCount'], task_count=rtn['taskCount'], unique=rtn['unique'],
+                                 unique_classes=rtn['uniqueClasses'])
     return rtn
 
 def main():

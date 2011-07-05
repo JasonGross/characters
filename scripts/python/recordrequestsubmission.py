@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# recordsubmission.py -- Stores the data from the submission
+# recordrequestsubmission.py -- Stores the data from the submission
 from __future__ import with_statement
 import cgi
 import os, re

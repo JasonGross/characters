@@ -1,9 +1,9 @@
 #!/usr/bin/python
-# record-submission.py -- Stores the data from the submission
+# record-request-submission.py -- Stores the data from the submission
 from __future__ import with_statement
 import cgi, cgitb
 cgitb.enable(format="html")
-from recordsubmission import record_submission
+from recordrequestsubmission import record_submission
 
 if __name__ == '__main__':
     form = cgi.FieldStorage()

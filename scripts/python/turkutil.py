@@ -3,10 +3,25 @@
 from __future__ import with_statement
 import os, sys
 import re
+import shutil
+import traceback
 from alphabetspaths import *
+from matlabutil import format_for_matlab
 from image_anonymizer import deanonymize_image
 
 rejects = {}
+
+DEFAULT_NOT_USE_PROPERTIES = ('^ipAddress', '^annotation',
+                              '^assignmentaccepttime',
+                              '^assignmentapprovaltime', '^assignmentduration',
+                              '^assignmentrejecttime', '^assignments',
+                              '^assignmentstatus', '^assignmentsubmittime',
+                              '^autoapprovaldelay', '^autoapprovaltime',
+                              '^creationtime', '^deadline', '^description',
+                              '^hitlifetime', '^hitstatus', '^hittypeid',
+                              '^keywords', '^numavailable', '^numcomplete',
+                              '^numpending', '^reviewstatus', '^reward',
+                              '^title', '^hitid', '^assignmentid')
 
 def make_reject_bad_file(success_file, reject_file, reject_bad_file='reject-bad', assignmentIdToRejectComment='"Blank submission."'):
     with open(reject_bad_file + '.bat', 'w') as wf:
@@ -88,7 +103,7 @@ def convert_hit(hit, record_submission, message=(lambda submission_dict: 'Saving
         print(message(submission_dict))
         try:
             record_submission(submission_dict, pseudo=pseudo, **kwargs)
-        except AttributeError, ex:
+        except (AttributeError, KeyError) as ex:
             note_bad_hit(submission_dict, ex)
 
 def _parse_table(table):
@@ -117,13 +132,15 @@ def _parse_table(table):
     rtn = [row_to_dict(row) for row in body]
     return rtn
 
-def get_accepted_rejected_status(submission_dict, extra_submission_dict=tuple()):
+def get_accepted_rejected_status(submission_dict, extra_submission_dict=tuple(), exclude_ids=tuple()):
     rejected = (submission_dict.get('reject') == 'y')
     accepted = (submission_dict.get('assignmentstatus', '').lower() == 'Approved'.lower())
     if submission_dict.get('assignmentid', '') in extra_submission_dict:
         props = extra_submission_dict[submission_dict['assignmentid']]
         rejected = 'rejected' in props and props['rejected'].lower() not in ('0', 'false', 'no', 'off')
         accepted = 'accepted' in props and props['accepted'].lower() not in ('0', 'false', 'no', 'off')
+    if submission_dict.get('assignmentid', '') in exclude_ids:
+        rejected = True
     return accepted, rejected
 
 def get_submission_paths(submission_dict, rejected_return, accepted_return, unreviewed_return, extra_submission_dict=tuple()):
@@ -148,9 +165,56 @@ def make_folder_for_submission(uid, path, return_num=True):
     if return_num: return rtn, int(new_dir)
     else: return rtn
 
-def put_summary(folder, properties, file_name, make_summary, quiet=True):
+_BOOL_DICT = {'true':True, 'false':False, 'True':True, 'False':False, '0':False, '1':True, 0:False, 1:True, 'Did Not See':None, 'did not see':None}
+
+def make_default_make_summary(description, prefix='task-', regex_postfix='-time-of-do-task', start_time_postfix='-time-of-do-task',
+                              end_time_postfix='-time-of-finish-task', count_correct=True):
+    def default_make_summary(properties, uid):
+        rtn = []
+        rtn.append('Summary:')
+        task_regex = re.compile('^%s([0-9]+)%s$' % (prefix, regex_postfix))
+        task_start_time = '%s%%d%s' % (prefix, start_time_postfix)
+        task_end_time = '%s%%d%s' % (prefix, end_time_postfix)
+        task_desc = description
+
+        task_numbers = list(sorted(int(task_regex.match(key).groups()[0]) for key in properties if regex_postfix in key and prefix in key))
+        
+        right_count, wrong_count = 0, 0
+        bad = 0
+        for i in task_numbers:
+            desc = task_desc % {'task':i}
+            try:
+                while '%(' in desc:
+                    desc = desc % properties
+            except KeyError:
+                bad += 1
+            rtn.append('\nTask %d: %s' % (i, desc))
+            rtn.append('\nTask %d: ' % i)
+            if count_correct:
+                is_correct = _BOOL_DICT[properties['task-%d-is-correct-answer' % i]]
+                if is_correct:
+                    right_count += 1
+                    rtn.append('Right')
+                else:
+                    wrong_count += 1
+                    rtn.append('Wrong')
+            if (task_end_time % i) in properties and properties[task_end_time % i]:
+                start_time = int(properties[task_start_time % i])
+                end_time = int(properties[task_end_time % i])
+                rtn.append('\nTask %d duration: %d' % (i, end_time - start_time))
+        if bad:
+            print('Bad %d HIT: %s, %s' % (bad, properties.get('assignmentid', ''), uid))
+        if count_correct:
+            rtn.append('\n\nNumber Right: %d\nNumber Wrong: %d\nPercent Right: %d%%' % (right_count, wrong_count, 100.0 * right_count / (right_count + wrong_count)))
+        rtn.append('\nDuration: %s' % properties['duration'].replace('0y 0d ', '').replace('0h ', ''))
+        rtn.append('\nComments: %s' % (properties['feedback'] if 'feedback' in properties else ''))
+        return ''.join(rtn)
+
+    return default_make_summary
+
+def put_summary(folder, properties, file_name, make_summary, uid, quiet=True):
     push_dir(folder)
-    summary = make_summary(properties)
+    summary = make_summary(properties, uid)
     if not quiet and os.path.exists(file_name):
         input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
     with open(file_name, 'w') as f:
@@ -158,15 +222,7 @@ def put_summary(folder, properties, file_name, make_summary, quiet=True):
     pop_dir()
 
 def put_properties(folder, properties, file_name,
-                   not_use=('^ipAddress',
-                            '^annotation', '^assignmentaccepttime', '^assignmentapprovaltime',
-                            '^assignmentduration', '^assignmentrejecttime', '^assignments',
-                            '^assignmentstatus', '^assignmentsubmittime', '^autoapprovaldelay',
-                            '^autoapprovaltime', '^creationtime', '^deadline', '^description',
-                            '^hitlifetime', '^hitstatus', '^hittypeid', '^keywords',
-                            '^numavailable', '^numcomplete', '^numpending', '^reviewstatus',
-                            '^reward', '^title', '^hitid', '^assignmentid'),
-                    quiet=True):
+                   not_use=DEFAULT_NOT_USE_PROPERTIES, quiet=True):
     push_dir(folder)
     write_to_file = ''
     def can_use(key):
@@ -181,6 +237,32 @@ def put_properties(folder, properties, file_name,
         input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
     with open(file_name, 'w') as f:
         f.write(write_to_file)
+    pop_dir()
+
+def put_matlab(folder, properties, file_name, uid,
+               not_use=DEFAULT_NOT_USE_PROPERTIES, quiet=True, zero_based_num=0):
+    matlab_lines = []
+    uid = uid.replace('-', 'm')
+    def can_use(key):
+        for bad_key in not_use:
+            if re.match(bad_key, key):
+                return False
+        return True
+    for key in sorted(properties.keys()):
+        if can_use(key):
+            use_key = key.replace('-', '_')
+            if 'task_' in use_key:
+                tag = use_key[:len('task_')+use_key.index('task_')-1]
+                rest = use_key[len(tag)+1:].split('_')
+                use_key = '%s(%d).%s' % (tag, int(rest[0]) + 1, '_'.join(rest[1:]))
+            matlab_lines.append('results.for_%s(%d).%s = %s;' % (uid, zero_based_num+1, use_key,
+                                format_for_matlab(string_to_object(properties[key]))))
+    push_dir(folder)
+    matlab = '\n'.join(matlab_lines)
+    if not quiet and os.path.exists(file_name):
+        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
+    with open(file_name, 'w') as f:
+        f.write(matlab)
     pop_dir()
 
 def deanonymize_urls(properties, tail_tag='-anonymous_url'):
@@ -225,3 +307,41 @@ def string_to_object(string):
     except ValueError:
         pass
     return string
+
+def make_file_name(uid, summary=False, matlab=False):
+    if summary:
+        return uid.replace('-', 'm') + '_summary.txt'
+    elif matlab:
+        return uid.replace('-', 'm') + '_matlab.m'
+    else:
+        return uid.replace('-', 'm') + '_results.txt'
+
+
+def record_submission(form_dict, path, make_summary, preprocess_form=None, prepreprocess_form=None, many_dirs=True,
+                      verbose=True, pseudo=False, quiet=True, exclude_rejected=False, exclude_ids=tuple()):
+    accepted, rejected = get_accepted_rejected_status(form_dict, exclude_ids=exclude_ids)
+    if rejected and exclude_rejected:
+        print('Submission rejected.')
+        return False
+    if verbose: print('Hashing IP address...')
+    uid = make_uid(form_dict)
+    results_num = 0
+    if many_dirs:
+        if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
+        path, results_num = make_folder_for_submission(uid, path=path, return_num=True)
+    if verbose: print('Done<br>')
+    if verbose: print('Done<br>Storing your responses...')
+    if prepreprocess_form: form_dict = prepreprocess_form(form_dict)
+    form_dict = fix_str_dict(form_dict)
+    form_dict = deanonymize_urls(form_dict)
+    if preprocess_form: form_dict = preprocess_form(form_dict)
+    put_properties(path, form_dict, make_file_name(uid), quiet=quiet)
+    if not pseudo:
+        if verbose: print('Done<br>Summarizing your responses...')
+        put_summary(path, form_dict, make_file_name(uid, summary=True), make_summary, uid, quiet=quiet)
+        if verbose: print('Done<br>Making a matlab file for your responses...')
+        put_matlab(path, form_dict, make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
+    if many_dirs:
+        log_success(path)
+    if verbose: print('Done<br>You may now leave this page.<br>')
+    if verbose: print('<a href="http://jgross.scripts.mit.edu/alphabets/">Return to home page</a>')

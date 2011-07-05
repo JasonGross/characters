@@ -31,7 +31,7 @@ var backupCanvasHeight = '200px';
 var backupCanvasWidth = '300px';
 var defaultFallBackDimen = HEIGHT;
 
-var formAction = 'scripts/python/record-submission.py';
+var formAction = 'scripts/python/record-request-submission.py';
 
 
 function getCharacterId(tag) 

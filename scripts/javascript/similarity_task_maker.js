@@ -127,7 +127,16 @@ var SimilarityTasks;
         .keydown(function () { selectAnswer($similarityInput.attr('value'), false); });
 
       $continueButton
-        .click(function () { self.finishTask(curTask, $similarityInput.attr('value')); return true; }, false);
+        .click(function () {
+            $continueButton.attr('disabled', 'disabled');
+            if ($similarityInput.attr('value') !== '' && $similarityInput.attr('value') !== undefined) {
+              self.finishTask(curTask, $similarityInput.attr('value'));
+              return true;
+            } else {
+              selectAnswer('');
+              return false;
+            }
+          });
     }
 
     jQuery.each(data['tasks'], function (index, task) {

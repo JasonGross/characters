@@ -172,7 +172,7 @@ window.onload=function(){
 	<script type="text/javascript">
 	document.writeln('<form action="' + getFormAction() + '" method="post" id="input_form">');
 	</script>
-	<!--form action="scripts/python/record-submission.py" method="post" id="input_form"-->
+	<!--form action="scripts/python/record-request-submission.py" method="post" id="input_form"-->
 	<!--form action="https://www.mturk.com/mturk/externalSubmit" method="post" id="input_form"-->
 	<!--form action="http://workersandbox.mturk.com/mturk/externalSubmit" method="post" id="input_form"-->
 	<input type="hidden" id="ipAddress" name="ipAddress" />

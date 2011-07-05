@@ -137,7 +137,7 @@ for _path in _paths:
             __all__.append('%s_%s_URL' % (_path, name_part))
 
 CHARACTER_REQUEST_URL = urllib.parse.urljoin(BASE_URL, 'CharacterRequest.shtml')
-CHARACTER_REQUEST_SUBMISSION_URL = urllib.parse.urljoin(BASE_URL, 'scripts/python/record-submission.py')
+CHARACTER_REQUEST_SUBMISSION_URL = urllib.parse.urljoin(BASE_URL, 'scripts/python/record-request-submission.py')
 #FORM_SUBMISSION_URL = CHARACTER_REQUEST_SUBMISSION_URL
 
 PNGOUT_PATH = os.path.join(BASE_PATH, 'scripts', 'pngout')

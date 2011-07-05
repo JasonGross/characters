@@ -1,25 +1,10 @@
 #!/usr/bin/python
 # recordcategorizationsubmission.py -- Stores the data from the categorization submission
-from __future__ import with_statement
-import os, re
-import sys
+import re
 from alphabetspaths import *
+import turkutil
 
-
-def _make_folder_for_submission(uid, path=CATEGORIZATION_UNREVIEWED_PATH):
-    if not isinstance(uid, str):
-        uid = str(uid)
-    push_dir(path)
-    if not os.path.exists(uid.replace('-', 'm')):
-        os.mkdir(uid.replace('-', 'm'))
-    os.chdir(uid.replace('-', 'm'))
-    existing = map(int, [i for i in os.listdir(os.getcwd()) if os.path.isdir(i)] + [-1])
-    new_dir = str(1 + max(existing))
-    os.mkdir(new_dir)
-    pop_dir()
-    return os.path.join(path, uid.replace('-', 'm'), new_dir)
-
-def _make_summary(properties):
+def _make_summary(properties, uid=None):
     rtn = []
     rtn.append('\n\nSummary:')
     regex = re.compile('question_([0-9]+)-group_([0-9]+)-questionImagePath')
@@ -68,75 +53,6 @@ def _make_summary(properties):
     rtn.append('Correct: %d\nIncorrect: %d' % (right_count, wrong_count))
     rtn.append('\nDuration: %s' % properties['duration'].replace('0y 0d ', '').replace('0h ', ''))
     return '\n'.join(rtn)
-            
-def _put_summary(folder, properties, file_name, quiet=True):
-    push_dir(folder)
-    summary = _make_summary(properties)
-    if not quiet and os.path.exists(file_name):
-        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
-    with open(file_name, 'w') as f:
-        f.write(summary)
-    pop_dir()
-    
-    
-    
 
-def _put_properties(folder, properties, file_name,
-                   not_use=('^ipAddress',
-                            '^annotation', '^assignmentaccepttime', '^assignmentapprovaltime',
-                            '^assignmentduration', '^assignmentrejecttime', '^assignments',
-                            '^assignmentstatus', '^assignmentsubmittime', '^autoapprovaldelay',
-                            '^autoapprovaltime', '^creationtime', '^deadline', '^description',
-                            '^hitlifetime', '^hitstatus', '^hittypeid', '^keywords',
-                            '^numavailable', '^numcomplete', '^numpending', '^reviewstatus',
-                            '^reward', '^title', '^hitid', '^assignmentid'),
-                    quiet=True):
-    push_dir(folder)
-    write_to_file = ''
-    def can_use(key):
-        for bad_key in not_use:
-            if re.match(bad_key, key):
-                return False
-        return True
-    for key in sorted(properties.keys()):
-        if can_use(key):
-            write_to_file += '%s: %s\n' % (key, properties[key].replace('\n', '\\n'))
-    if not quiet and os.path.exists(file_name):
-        input("The file `%s' in `%s' already exists.  Press enter to continue, or ^c (ctrl + c) to break." % (file_name, folder))
-    with open(file_name, 'w') as f:
-        f.write(write_to_file)
-    pop_dir()
-
-def _log_success(folder):
-    push_dir(folder)
-    with open('success.log', 'w') as f:
-        f.write('')
-    pop_dir()
-
-def make_uid(form_dict):
-    if 'workerid' in form_dict and form_dict['workerid']:
-        return form_dict['workerid']
-    else:
-        return str(hash(form_dict['ipAddress']))
-
-def _make_file_name(uid, summary=False):
-    if summary:
-        return uid.replace('-', 'm') + '_summary.txt'
-    return uid.replace('-', 'm') + '_results.txt'
-
-def record_categorization_submission(form_dict, many_dirs=False, path=CATEGORIZATION_UNREVIEWED_PATH,
-                      verbose=True, pseudo=False, quiet=True):
-    if verbose: print('Hashing IP address...')
-    uid = make_uid(form_dict)
-    if many_dirs:
-        if verbose: print('Done.  It\'s %s.<br>Making folder for your submission...' % uid)
-        path = _make_folder_for_submission(uid, path=path)
-    if verbose: print('Done<br>Storing your responses...')
-    _put_properties(path, form_dict, _make_file_name(uid), quiet=quiet)
-    if not pseudo:
-        if verbose: print('Done<br>Summarizing your responses...')
-        _put_summary(path, form_dict, _make_file_name(uid, summary=True), quiet=quiet)
-    if many_dirs:
-        _log_success(path)
-    if verbose: print('Done<br>You may now leave this page.<br>')
-    if verbose: print('<a href="http://scripts.mit.edu/~jgross/alphabets/">Return to home page</a>')
+def record_categorization_submission(form_dict, path=CATEGORIZATION_UNREVIEWED_PATH, **kwargs):
+    turkutil.record_submission(form_dict, path=path, make_summary=_make_summary, **kwargs)

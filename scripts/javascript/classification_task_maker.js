@@ -403,7 +403,15 @@ var ClassificationTasks;
                   .attr('type', 'button')
                   .attr('disabled', 'disabled')
                   .append('continue to the next task')
-                  .click(function () { self.finishTask(curTask, $characterInput.attr('value')); return true; }));
+                  .click(function () {
+                    $continueButton.attr('disabled', 'disabled');
+                    if ($characterInput.attr('value') !== '' && $characterInput.attr('value') !== undefined) {
+                      self.finishTask(curTask, $characterInput.attr('value'));
+                      return true;
+                    } else {
+                      selectAnswer('');
+                      return false;
+                    }}));
 
       if (confirmToContinue) taskHolder.append(continueDiv);
 

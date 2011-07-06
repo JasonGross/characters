@@ -16,6 +16,6 @@ popd 1>/dev/null
 pushd "$MTURK_CMD_HOME/bin" 1>/dev/null
 # from http://fritzthomas.com/open-source/linux/384-how-to-get-the-absolute-path-within-the-running-bash-script/
 echo Uploading HIT in $SCRIPTPATH to turk $SANDBOX
-./loadHITs.sh -input "$SCRIPTPATH/$HITNAME$SANDBOX.input" -question "$SCRIPTPATH/$HITNAME.question" -properties "$SCRIPTPATH/$HITNAME.properties" $SANDBOX >> "$SCRIPTPATH/upload-results$SANDBOX.txt"
+./loadHITs.sh -input "$SCRIPTPATH/$HITNAME$SANDBOX.input" -question "$SCRIPTPATH/$HITNAME.question" -properties "$SCRIPTPATH/$HITNAME.properties" $SANDBOX | tee "$SCRIPTPATH/upload-results$SANDBOX.txt"
 popd 1>/dev/null
 

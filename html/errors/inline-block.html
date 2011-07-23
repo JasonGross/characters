@@ -12,9 +12,10 @@
       Firefox</a>, or download <a
       href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
   </p>
+  <div style="height:0px; display:block; display:inline-block;" id="test-inline-block"/>
   <script type="text/javascript">
     //<![CDATA[
-    var elem = $('<div>').css({'display':'inline-block'});
+    var elem = $('#test-inline-block');
     if (elem.css('display') == 'inline-block')
       $('#no-inline-block').remove();
     //]]>

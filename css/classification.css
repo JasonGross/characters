@@ -1,3 +1,5 @@
+@import url("hinted.css");
+
 /*
 .alphabet-set, .alphabet-image-holder {
   text-align: center;
@@ -113,26 +115,6 @@ img {
 
 .class-label {
   text-align: center;
-}
-
-.prompt-holder-long {
-  border:thick red solid;
-}
-
-.prompt-holder-medium {
-  border:thick yellow solid;
-}
-
-.prompt-holder-short {
-  border:thick green solid;
-}
-
-.prompt-holder-doing {
-  border:thick white solid;
-}
-
-.prompt-holder-done {
-  border:thick white solid;
 }
 
 .task-overlay-progress-bar-holder {

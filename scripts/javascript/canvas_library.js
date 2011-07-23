@@ -10,24 +10,23 @@
       canvas = "<canvas>Your browser must support the &lt;canvas&gt; element in order to use this site.</canvas>";
     this.canvas = canvas = $(canvas)
       .attr('id', name)
-      .attr('unselectable', 'on')
       .attr('width', width)
       .attr('height', height);
     var clearLink = $('<a/>')
       .attr('id', 'clear')
       .attr('href', '#')
       .append('clear')
-      .click(function () { self.clear() });
+      .click(function () { self.clear(); return false; });
     var undoLink = $('<a/>')
       .attr('id', 'undo')
       .attr('href', '#')
 //      .append('undo')
-      .click(function () { self.undo() });
+      .click(function () { self.undo(); return false; });
     var redoLink = $('<a/>')
       .attr('id', 'redo')
       .attr('href', '#')
 //      .append('redo')
-      .click(function () { self.redo() });
+      .click(function () { self.redo(); return false; });
     this.DOMElement = $('<div/>')
       .append($('<div/>')
                 .attr('id', name + '_div')
@@ -253,10 +252,10 @@
     })(ctx, canvasLineWidth, canvasLineCap);
     
     self.clear = function clear(doRedraw) {
-      self.clearState(doRedraw);
+      self.clearState();
       ctx.strokeStyle = "rgb(0, 0, 0)";
       ctx.clearRect(0, 0, canvas.width(), canvas.height());
-      if (doRedraw || doRedraw === undefined)
+      if (onRedraw !== undefined && (doRedraw || doRedraw === undefined))
         onRedraw(ctx);
     }
     self.clear(false);

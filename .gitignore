@@ -38,5 +38,6 @@ scripts/python/MySQL-python-1.2.3/
 scripts/python/MySQL-python-1.2.3/*
 results/*strokes/
 results/*images/
-object-storage/get_{accepted,extra,original,rejected,turk,unreviewed}_{image,stroke}_list.obj
+results/*/unreviewed/*/*/*.html
+object-storage/get_*_*_list.obj
 object-storage/get_hashed_images_dict

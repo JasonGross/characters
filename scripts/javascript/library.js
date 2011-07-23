@@ -342,7 +342,7 @@ function convertDateToDateTimeInputString(date) {
 //=============================================================
 // From http://www.shawnolson.net/a/503/altering-css-class-attributes-with-javascript.html.
 if (this['changecss'] === undefined)
-  changecss = function (theClass, element, value, onError) {
+  changecss = function changecss(theClass, element, value, onError) {
     // Last Updated by original author on June 23, 2009
     // documentation for this script at
     // http://www.shawnolson.net/a/503/altering-css-class-attributes-with-javascript.html

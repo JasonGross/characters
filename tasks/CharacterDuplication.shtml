@@ -7,39 +7,42 @@
   <!--style type="text/css">@import 'fauxconsole.css';</style-->
   <!--script src="../scripts/javascript/fauxconsole.js" type="text/javascript"></script-->
   <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script-->
   <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
   <script src="../scripts/javascript/library.js" type="text/javascript"></script>
   <script src="../scripts/javascript/patches.js" type="text/javascript"></script>
   <!--[if lt IE 9]><script src="../scripts/javascript/ie_patches.js" type="text/javascript"></script><![endif]-->
   <!--[if lt IE 8]><script src="../scripts/javascript/ie7-_patches.js" type="text/javascript"></script><![endif]-->
+  <script src="../scripts/javascript/fix_radios.js" type="text/javascript"></script>
   <script src="../scripts/javascript/browser.js" type="text/javascript"></script>
   <script src="../scripts/javascript/loading.js" type="text/javascript"></script>
   <script src="../scripts/javascript/turk_library.js" type="text/javascript"></script>
   <script src="../scripts/javascript/form_setup.js" type="text/javascript"></script>
   <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
-  <!--script src="../scripts/javascript/make_drag_and_drop_warning.js" type="text/javascript"></script-->
   <script src="../scripts/javascript/refcounter.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/autosuggest.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/autosuggest-languages.js" type="text/javascript"></script>
   <script src="../scripts/javascript/generic_data_loader.js" type="text/javascript"></script>
   <script src="../scripts/javascript/task_progress.js" type="text/javascript"></script>
   <script src="../scripts/javascript/task_break.js" type="text/javascript"></script>
   <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>
   <script src="../scripts/javascript/hinted_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/canvas_library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/character_resize_images.js" type="text/javascript"></script>
   <script src="../scripts/javascript/duplication_task_maker.js" type="text/javascript"></script>
   <script src="../scripts/javascript/duplication_data_loader.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/escape_feedback.js" type="text/javascript"></script>
-  <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
+  <script src="../scripts/javascript/escape_form_text.js" type="text/javascript"></script>
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/autosuggest.css" rel="stylesheet" type="text/css" />
   <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
   <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
-  <link href="../css/classification.css" rel="stylesheet" type="text/css" />
+  <link href="../css/canvas.css" rel="stylesheet" type="text/css" />
+  <link href="../css/duplication.css" rel="stylesheet" type="text/css" />
 
-  <title>Character Classification</title>
+  <title>Character Duplication</title>
 </head>
 
 <body>
@@ -47,6 +50,7 @@
     <!--#include virtual="../html/errors/noscript.html" -->
     <!--#include virtual="../html/errors/setTimeout.html" -->
     <!--#include virtual="../html/errors/inline-block.html" -->
+    <!--#include virtual="../html/errors/canvas.html" -->
     <!--#include virtual="../html/errors/seen-HIT-before.html" -->
     <!--#include virtual="../html/errors/loading.html" -->
     <!--#include virtual="../html/errors/turk-preview.html" -->
@@ -56,38 +60,49 @@
       <h3>Instructions</h3>
       <p class="show-if-timed">You must use the Mozilla Firefox web browser.</p>
       <p>
+        Please close any other tabs and any other windows you have open; your drawings will be smoother if
+        your computer has fewer things to worry about.
+      </p>
+      <p>
         This HIT consists of <span class="task-count">50</span> subtasks, and
-        you must complete every subtask to submit the form.  I expect this HIT
+        you must complete every subtask to submit the form.  <!--I expect this HIT
         to take you approximately <span class="expected-duration">5-10</span>
-        minutes.
+        minutes.-->
       </p>
-      <p>
-        This task tests your ability to pick out a matching character from
-        <span class="n">20</span> characters you've likely never seen before.
-        You will be shown an image of a character, such as
-        <img src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' /><span class="show-if-timed">
-          for a fraction of a second, after which it
-          will be replaced by noise</span>.  You will then be shown <span
-          class="n">20</span> other images, and you should click on the click
-        on the image which you think is the same character, such as <img
-        src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1kj5bqqwzijjt.png"
-        alt='another "b"' style="height:1.25em" title='another "b"' />
+      <p class="show-if-timed">
+        This task tests your ability to draw a character, which you have likely never
+        seen before, from memory.  Do not worry if you can't duplicate the character
+        exactly; just try your best.
       </p>
-      <p>
+      <p class="show-if-untimed">
+        This task tests your ability to hallucinate a character that is similar to examples in a particular group.
+        You will be shown <span class="show-if-multiple-per-class"><span class="example-per-class-count">2</span> different
+        images of each of </span><span class="example-class-count">2</span> characters from the same group of
+        characters.  You will be asked to draw another, original, character that you think could belong in the same group.
+      </p>
+      <p class="show-if-untimed">
+        For example, if you were shown some examples of things that looked like Chinese characters, your drawing
+        should look something like a Chinese character, and should not be identical to any of the characters you were shown.
+      </p>
+      <p class="show-if-timed">
         Each subtask has the following structure:
       </p>
       <ol class="show-if-timed">
-        <li>A red square appears in the box labeled "Anchor Character" to cue your attention.</li>
-        <li>Shortly after the cue, the anchor character is quickly flashed in that red square.</li>
+        <li>A red square appears to cue your attention.</li>
+        <li>The red square disappears and a green square appears in the same place to to cue your attention.</li>
+        <li>Shortly after the cue, the example character is quickly flashed in that square.</li>
         <li>After the flash, the character disappears and is replaced by a nonsense scribble image.</li>
-        <li><span class="n">20</span> images of characters then appear <span class="position">below</span> the anchor box.</li>
       </ol>
       <p>Please note:</p>
       <ul>
         <li>
           You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
         </li>
-        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to guess correctly, your submission will be accepted regardless of how accurate you are.</li>
+        <li class="show-if-timed">
+          Do <strong>NOT</strong> copy the nonsense scribble image. <span
+            class="show-if-turk">Your submission will be rejected if you
+            do.</span>
+        </li>
       </ul>
     </div>
     <!--#include virtual="../html/disclaimer.html" -->
@@ -107,7 +122,8 @@
       </form>
     </div>
   </div>
-  <div id="extra-options-form" class="tasks">
+
+  <div id="extra-options-form" class="tasks show-if-untimed">
     <form id="extra-options">
       <div id="form-resize">
         <label>
@@ -126,20 +142,32 @@
       <fieldset id="task">
         <legend>Task <span class="task-number">1</span> of <span class="task-count">200</span></legend>
         <p class="show-if-timed">
-          Please draw, as well as you can remember, the character that flashes below.
-          Do <em>not</em> leave the box blank, copy the noise image, or draw a few dots.
+          Please draw, as well as you can remember, the character that flashes
+          below.  Do <strong>NOT</strong> leave the box blank, do
+          <strong>NOT</strong> copy the nonsense scribble image (which will
+          look something like <img
+          src="https://jgross.scripts.mit.edu/alphabets/images/strokeNoise0.png"
+          alt="a nonsense scribble image" style="height:1.25em" />, and do
+          <strong>NOT</strong> just draw a few dots.
         </p>
         <p class="show-if-untimed">
-          Below you see <span class="n">5</span> characters from a particular group.
-          Try to draw a new character that you think might fit in the same group.
+          Below you see <span class="show-if-multiple-per-class"><span
+              class="example-per-class-count">5</span> examples of each of
+          </span> <span class="example-class-count">5</span> characters from a
+          particular group.  Draw a new character that you think might fit in
+          the same group.  Do <strong>NOT</strong> just copy one of the
+          characters that you are given.
         </p>
         <div class="examples-holder task-holder" id="examples-holder">
-          <div class="image-box show-if-timed">
-            <div class="image-holder" id="example-image-holder">
-            </div>
-          </div>
         </div>
+        <br />
         <div class="task-holder" id="canvas-holder">
+        </div>
+        <div class="task-holder character-question">
+          <button id="next-task-button" class="character-question" disabled="disabled" type="button">continue to the next task</button>
+        </div>
+        <div class="show-if-timed task-holder character-question" style="display:none">
+          <button id="did-not-see-button" class="character-question" type="button">I was not looking at my computer screen</button>
         </div>
       </fieldset>
     </div>
@@ -172,7 +200,7 @@
 
   <div id="main_form-div">
     <form id="main_form"
-          action="../scripts/python/record-classification-submission.py"
+          action="../scripts/python/record-duplication-submission.py"
           method="post">
       <div id="hidden-inputs">
         <script type="text/javascript">
@@ -186,10 +214,28 @@
       <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>
-          <label>
-            Please enter any feedback you have in the text box below. <br />
-            <textarea rows="10" cols="30" id="feedback" name="feedback"></textarea>  
-          </label>
+          <fieldset class="inline" style="width:30%; text-align:left">
+            <legend>What is your native language?</legend>
+            <p>If you have more than one response, please separate your responses by commas (,).</p>
+            <label><input type="text" name="native-language" id="native-language" style="width:100%"/></label>
+            <script type="text/javascript"> new autosuggest("native-language", language_array); </script>
+          </fieldset>
+          <fieldset class="inline option-group">
+            <legend>Input Device</legend>
+            <label><input type="radio" name="input-device" id="input-device" value="mouse" /> Mouse</label><br />
+            <label><input type="radio" name="input-device" id="input-device" value="touchpad" /> Touchpad</label><br />
+            <label><input type="radio" name="input-device" id="input-device" value="tablet-pen" /> Tablet Pen</label><br />
+            <label><input type="radio" name="input-device" id="input-device" value="other" /> Other:
+              <input type="text" size="10" name="other-input-text" />
+            </label>
+          </fieldset>
+          <br />
+          <div class="inline" style="text-align:left">
+            <label>
+              Please enter any feedback you have in the text box below. <br />
+              <textarea rows="10" cols="30" id="feedback" name="feedback"></textarea>
+            </label>
+          </div>
         </fieldset>
       </div>
       
@@ -204,13 +250,16 @@
 
   <script type="text/javascript">
     //<![CDATA[
-    if (urlParameters.getURLParameter('pauseToNoise') == '' ||
-        parseInt(urlParameters.getURLParameter('pauseToNoise')) <= 0) {
-      $('.show-if-timed').remove();
-      $('.show-if-untimed').show();
-    } else {
+    var examplePerClassCount = urlParameters.getURLParameter('examplePerClassCount');
+    var exampleClassCount = urlParameters.getURLParameter('exampleClassCount');
+    examplePerClassCount = (examplePerClassCount === '' ? 1 : parseInt(examplePerClassCount));
+    exampleClassCount = (exampleClassCount === '' ? 1 : parseInt(exampleClassCount));
+    if (examplePerClassCount <= 1 || exampleClassCount <= 1) {
       $('.show-if-untimed').remove();
       $('.show-if-timed').show();
+    } else {
+      $('.show-if-timed').remove();
+      $('.show-if-untimed').show();
     }
     //]]>
   </script>

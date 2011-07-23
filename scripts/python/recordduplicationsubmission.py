@@ -1,6 +1,7 @@
 #!/usr/bin/python
-# recordcompletionsubmission.py -- Stores the data from the completion submission
+# recordduplicationsubmission.py -- Stores the data from the duplication submission
 import os, tempfile
+import re
 import cairo
 from alphabetspaths import *
 import htmlcanvas
@@ -11,48 +12,16 @@ alphabets_strokes_dict = get_accepted_stroke_list()
 alphabets_images_dict = get_accepted_image_list(from_path='.')
 
 def record_submission(form_dict, path=CLASSIFICATION_UNREVIEWED_PATH, **kwargs):
-    desc =  'GIVEN %%(task-%(task)d-image-alphabet)s, %%(task-%(task)d-image-character-number)s, %%(task-%(task)d-image-id)s'
-    make_summary = turkutil.make_default_make_summary(desc, count_correct=False)
-    turkutil.record_submission(form_dict, path=path, make_summary=make_summary, preprocess_form=fixup_images,
+    turkutil.record_submission(form_dict, path=path, make_summary=None, preprocess_form=fixup_images,
                                put_extras=put_extras, extra_matlab_code=generate_matlab_image_code, **kwargs)
 
-def fixup_images(form_dict, width=105, height=105):
+def fixup_images(form_dict, width=100, height=100, offset=None):
     tasks_data = turkutil.form_dict_to_tasks_dict(form_dict)['task']
     image_dict = {}
     for n, task in tasks_data.iteritems():
-        original_strokes_path = alphabets_strokes_dict[task['image-alphabet']][task['image-id']][int(task['image-character-number']) - 1]
-        image_half = task['image-show_half']
         strokes = task['strokes']
 
-        image = cairo.ImageSurface.create_from_png(alphabets_images_dict[task['image-alphabet']][task['image-id']][int(task['image-character-number']) - 1])
-        ctx = cairo.Context(image)
-
-        # unpaint the half-image
-
-        # paint white
-        ctx.set_source_rgb(1.0, 1.0, 1.0)
-        if image_half == 'top':
-            ctx.rectangle(0, height / 2, width, height)
-        elif image_half == 'bottom':
-            ctx.rectangle(0, 0, width, height / 2)
-        elif image_half == 'left':
-            ctx.rectangle(width / 2, 0, width, height)
-        elif image_half == 'right':
-            ctx.rectangle(0, 0, width / 2, height)
-        ctx.fill()
-
-        # and clip
-        if image_half == 'top':
-            ctx.rectangle(0, height / 2 - 2.5, width, height)
-        elif image_half == 'bottom':
-            ctx.rectangle(0, 0, width, height / 2 + 2.5)
-        elif image_half == 'left':
-            ctx.rectangle(width / 2 - 2.5, 0, width, height)
-        elif image_half == 'right':
-            ctx.rectangle(0, 0, width / 2 + 2.5, height)
-        ctx.clip()
-
-        image, ctx = htmlcanvas.paint_image_with_strokes_cairo(strokes, size=(width,height), offset=0, image=image, ctx=ctx, clear=False)
+        image, ctx = htmlcanvas.paint_image_with_strokes_cairo(strokes, size=(width,height), offset=offset)
         
         with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as f:
             image.write_to_png(f)
@@ -65,6 +34,7 @@ def fixup_images(form_dict, width=105, height=105):
 
     return form_dict
 
+CLASS_REGEX = re.compile('class-([0-9]+)-example-image-([0-9]+)-anonymous_url')
 def put_extras(path, form_dict, uid, quiet=True):
     html_file_name = os.path.join(path, uid.replace('-', 'm') + '_drawings.html')
     image_file_base_name = os.path.join(path, uid.replace('-', 'm') + '_image_')
@@ -76,10 +46,39 @@ def put_extras(path, form_dict, uid, quiet=True):
 <head>
     <title>Images Drawn By %s</title>
     <style type="text/css">
-        div {
+        div.task {
             display: inline-block;
             border: thin solid black;
         }
+
+        .image-holder {
+              padding: 2.5px;
+              width: 100px;
+              height: 100px;
+        }
+
+        .class-holder {
+              display: inline-block;
+              padding: 0px;
+        }
+
+        .class-box {
+              display: inline-block;
+              padding: 0px;
+        }
+
+        .image-box {
+              margin: 2.5px;
+              border: thin solid #C0C0C0; //lightgray
+              text-align: center;
+              vertical-align: middle;
+              display: block;
+        }
+
+        .class-box-untimed {
+              border: thin black solid;
+        }
+
     </style>
 </head>
 <body>""" % uid]
@@ -87,8 +86,33 @@ def put_extras(path, form_dict, uid, quiet=True):
     for n, task in tasks_data.iteritems():
         image_name = image_file_base_name + '%d.png' % (int(n) + 1)
         uri_to_png(task['image'], '%s%d.png' % (image_file_base_name, int(n) + 1))
-        html.append(r"""<div><img src="%s" alt="given" title="given"/><img src="%s_image_%d.png" alt="drawn" title="drawn"/></div>""" %
-                    (task['image-anonymous_url'], uid.replace('-', 'm'), int(n) + 1))
+        drawn_image = r"""<img src="%s_image_%d.png" alt="drawn" title="drawn"/>""" % (uid.replace('-', 'm'), int(n) + 1)
+        if 'class-0-example-image-1-anonymous_url' in task or \
+           'class-1-example-image-0-anonymous_url' in task: # untimed, multiple images
+            task_html = []
+            class_urls = {}
+            for key, value in task.iteritems():
+                if '-anonymous_url' not in key: continue
+                match = CLASS_REGEX.match(key)
+                if not match: continue
+                class_i, example_i = map(int, match.groups())
+                if class_i not in class_urls: class_urls[class_i] = {}
+                class_urls[class_i][example_i] = value
+            for class_i in sorted(class_urls.keys()):
+                task_html.append('<div class="class-box class-box-untimed">')
+                for example_i in sorted(class_urls[class_i].keys()):
+                    task_html.append(r"""<div class="image-box">
+<span class="wraptocenter image-holder">
+<img src="%s" />
+</span>
+</div>""" % class_urls[class_i][example_i])
+                task_html.append('</div>')
+            task_html.append(r'<br />')
+            task_html.append(drawn_image)
+            task_html = '\n'.join(task_html)
+        else: # timed, single image
+            task_html = r"""<img src="%s" alt="given" title="given"/>%s</div>""" % (task['class-0-example-image-0-anonymous_url'], drawn_image)
+        html.append(r"""<div class="task">%s</div>""" % task_html)
         with open('%s%d.cstroke' % (stroke_file_base_name, int(n) + 1), 'wb') as f:
             f.write(compress_stroke(task['strokes']))
 

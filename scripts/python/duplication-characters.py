@@ -24,8 +24,9 @@ FROM_PATH = ACCEPTED_IMAGES_PATH
 def tasks_to_task_images(tasks, verbose=True, random=random, alphabets_dict=None):
     if alphabets_dict is None: alphabets_dict = get_accepted_image_list(from_path=FROM_PATH)
     return [{
-             'images': [anonymize_image(alphabets_dict[alphabet][uid][character_i], from_path=FROM_PATH, include_hash=False, include_original=False)
-                        for alphabet, character_i, uid in task]
+             'images': [[anonymize_image(alphabets_dict[alphabet][uid][character_i], from_path=FROM_PATH, include_hash=False, include_original=False)
+                         for alphabet, character_i, uid in group]
+                        for group in task]
             }
             for task in tasks]
 
@@ -40,30 +41,27 @@ def make_task(foreground_fraction=0.75, verbose=True, random=random, **kwargs):
 def make_task_from_alphabets_list(alphabets_list, alphabets_dict=None, verbose=True, random=random, **kwargs):
     if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
 
-    characters_list = []
+    groups_list = []
     for alphabet in alphabets_list:
         if verbose: print('Collecting characters from %s...' % alphabet)
-        characters_list.extend((alphabet, character_i) for character_i in range(len(alphabets_dict[alphabet].values()[0])))
+        groups_list.append([(alphabet, character_i) for character_i in range(len(alphabets_dict[alphabet].values()[0]))])
 
-    return make_task_from_characters_list(characters_list, alphabets_dict=alphabets_dict, verbose=verbose, random=random, **kwargs)
+    return make_task_from_groups_list(groups_list, alphabets_dict=alphabets_dict, verbose=verbose, random=random, **kwargs)
 
-def make_task_from_characters_list(characters_list, unique=True, example_count=1, task_count=200,
-                                   alphabets_dict=None, verbose=True, random=random, **kwargs):
-    if same_character_fraction < 0: same_character_fraction = None
-    if different_alphabet_fraction < 0: different_alphabet_fraction = None
+def make_task_from_groups_list(groups_list, example_class_count=1, example_per_class_count=1, task_count=200, unique_classes=True,
+                               alphabets_dict=None, verbose=True, random=random, **kwargs):
     if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
 
-    if example_count != 1: raise Exception("We don't handle large example counts yet.")
+    if unique_classes:
+        pre_classes = random.sample(groups_list, task_count)
+    else:
+        pre_classes = (random.choice(groups_list) for i in range(task_count))
 
-    random.shuffle(characters_list)
+    classes = (random.sample(group, example_class_count) for group in pre_classes)
 
-    if len(characters_list) < task_count * example_count: raise Exception("Not enough characters")
-
-    tasks = [[(alphabet, character, random.choice(alphabets_dict[alphabet].keys()))
-              for alphabet, character in characters_list[i*example_count:(i+1)*example_count]]
-             for i in range(task_count)]
-
-    random.shuffle(tasks)
+    tasks = [[[(alphabet, character, uid) for uid in random.sample(alphabets_dict[alphabet].keys(), example_per_class_count)]
+              for alphabet, character in group]
+             for group in classes]
 
     return tasks_to_task_images(tasks, verbose=verbose, random=random, alphabets_dict=alphabets_dict)
 
@@ -76,7 +74,7 @@ def make_task_from_alphabet_set(alias, alphabets_dict=None, **kwargs):
     if not isinstance(list_of_stuff[0], (list, tuple)):
         return make_task_from_alphabets_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
     else: # is string
-        return make_task_from_characters_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
+        return make_task_from_groups_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
 #    else:
 #        print(list_of_stuff)
 #        raw_input(list_of_stuff[0])
@@ -88,17 +86,13 @@ def create_first_task(form, args, verbose=False):
                     'pauseToFirstHint':[500],
                     'pauseToSecondHint':[500],
                     'pauseToExample':[1000],
-                    'pauseToNoise':[50],
-                    'pauseToTest':[1000],
-                    'tasksPerFeedbackGroup':[10],
-                    'pauseToNextGroup':[-1],
-                    'displayProgressBarDuringTask':False,
-                    'allowDidNotSeeCount':[1],
-                    'taskCount':20,
+                    'pauseToNoise':[500],
+                    'taskCount':-1,
                     'exampleClassCount':1,
                     'examplePerClassCount':1,
-                    'uniqueClasses':False,
+                    'uniqueClasses':True,
                     'characterSize':'100px',
+                    'canvasSize':'100px',
                     'characterSet':''
                     }
 
@@ -106,13 +100,27 @@ def create_first_task(form, args, verbose=False):
 
     rtn['imagesPerTask'] = rtn['exampleClassCount'] * rtn['examplePerClassCount'] * 2;
 
-    if rtn['characterSet']:
-        rtn['tasks'] = make_task_from_alphabet_set(rtn['characterSet'], verbose=verbose, same_character_fraction=rtn['sameFraction'],
-                                                   different_alphabet_fraction=rtn['differentAlphabetFraction'], task_count=rtn['taskCount'],
-                                                   unique=rtn['unique'])
+    if rtn['exampleClassCount'] > 1 or rtn['examplePerClassCount'] > 1: # untimed
+        if rtn['taskCount'] == -1: # no value given
+            rtn['taskCount'] = 15
+        rtn['uniqueClasses'] = True # we should check to see if something is given...
     else:
-        rtn['tasks'] = make_task(verbose=verbose, same_character_fraction=rtn['sameFraction'], different_alphabet_fraction=rtn['differentAlphabetFraction'],
-                                 task_count=rtn['taskCount'], unique=rtn['unique'])
+        if rtn['taskCount'] == -1: # no value given
+            rtn['taskCount'] = 15
+        rtn['uniqueClasses'] = False # we should check to see if something is given...
+
+
+
+    if rtn['characterSet']:
+        rtn['tasks'] = make_task_from_alphabet_set(rtn['characterSet'], verbose=verbose,
+                                                   example_class_count=rtn['exampleClassCount'], example_per_class_count=rtn['examplePerClassCount'],
+                                                   task_count=rtn['taskCount'],
+                                                   unique_classes=rtn['uniqueClasses'])
+    else:
+        rtn['tasks'] = make_task(verbose=verbose,
+                                 example_class_count=rtn['exampleClassCount'], example_per_class_count=rtn['examplePerClassCount'],
+                                 task_count=rtn['taskCount'],
+                                 unique_classes=rtn['uniqueClasses'])
     return rtn
 
 def main():

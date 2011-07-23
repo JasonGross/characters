@@ -1,4 +1,5 @@
 var SequentialTasks;
+var foo;
 (function (defaultDisplayEvery, $, jQuery, undefined) {
   SequentialTasks = function SequentialTasks(taskList, currentTaskNumberSelector, taskCountSelector, allTasksSelector, resultsSelector, displayEvery, tag) {
     if (taskList === undefined) taskList = [];
@@ -14,7 +15,8 @@ var SequentialTasks;
     this.insertTask = function (index) {
       if (index === undefined)
         index = Math.floor(Math.random() * (tasksLeft.length + 1));
-      tasksLeft.splice.apply(tasksLeft, [index, 0] + arguments.slice(1));
+      foo = arguments;
+      tasksLeft.splice.apply(tasksLeft, [index, 0].concat(Array.prototype.slice.call(arguments, 1)));
     };
     this.tasksLeftCount = function () { return tasksLeft.length; };
     this.doneWithTasks = function () { return self.tasksLeftCount() <= 0; };
@@ -23,6 +25,7 @@ var SequentialTasks;
     /* methods for display */
     var currentTaskNumberDisplay;
     var taskCountDisplay;
+    var inputQueue;
     this.tasksDisplay = undefined;
     var results;
     if (displayEvery === undefined) displayEvery = defaultDisplayEvery;
@@ -30,7 +33,7 @@ var SequentialTasks;
 
     this.recordInput = function recordInput(input, value) {
       if (value !== undefined) $(input).attr('value', value);
-      results.append(input);
+      inputQueue = inputQueue.add(input);
     }
 
     this.recordInfo = function recordInfo(nameFunc, value) {
@@ -48,6 +51,8 @@ var SequentialTasks;
     this.doNextTask = function doNextTask() {
       if (self.doneWithTasks()) return false;
       var task = self.takeNextTask();
+      if (task['deferCount'] === undefined) task['deferCount'] = 0;
+      inputQueue = $();
       self.beforeTask(task, function () {
         self.prepTask.apply(self, [task].concat(Array.prototype.slice.call(arguments)));
         currentTaskNumberDisplay.html(self.getCurrentTaskNumber() + 1);
@@ -63,8 +68,11 @@ var SequentialTasks;
 
     this.finishTask = function finishTask(task, answer, shouldShowResults) {
       self.recordInfo(function (num) { return tag + 'task-' + num + '-time-of-finish-task'; }, dateUTC(new Date()));
+      self.recordInfo(function (num) { return tag + 'task-' + num + '-defer-count'; }, task['deferCount']);
       if (shouldShowResults === undefined) shouldShowResults = true;
       self.onFinishTask(task, answer, shouldShowResults);
+      results.append(inputQueue);
+      console.log(results);
       if (self.doneWithTasks()) {
         self.showResults(task, answer, 
                          function () { self.tasksDisplay.hide(); self.onDoneTasks(); });
@@ -76,6 +84,17 @@ var SequentialTasks;
           self.doNextTask();
       }
     };
+
+    this.deferTask = function deferTask(task) {
+      task['deferCount'] += 1;
+      curTaskNumber--;
+      self.insertTask(undefined, task);
+      self.doNextTask();
+    };
+
+    this.getDeferredCount = function getDeferredCount(task) {
+      return task['deferCount'];
+    }
 
     this.onBeginTasks = function onBeginTasks() {};
     this.onBeginTasksAfterDisplay = function onBeginTasksAfterDisplay() {};

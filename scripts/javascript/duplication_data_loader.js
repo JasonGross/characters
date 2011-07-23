@@ -2,10 +2,9 @@
   var dataLoader;
   var tasks;
 
-  var allUrlParameters = ['taskCount', 'exampleCount',
-    'pauseToFirstHint', 'pauseToSecondHint', 'pauseToAnchor', 'pauseToNoise', 'pauseToTest', 'pauseToNextGroup',
-    'confirmToContinue', 'characterSize', 'characterSet',
-    'allowDidNotSeeCount', 'sameAlphabetClassCount'];
+  var allUrlParameters = ['taskCount', 'exampleClassCount', 'examplePerClassCount', 'uniqueClasses',
+    'pauseToFirstHint', 'pauseToSecondHint', 'pauseToExample', 'pauseToNoise',
+    'characterSize', 'canvasSize', 'characterSet'];
 
   function retrieveData(loadData) {
     $.getJSON("../scripts/python/duplication-characters.py",
@@ -31,12 +30,12 @@
     saveUrlParameters(data);
     $(function () {
       $('.task-count').html(data['tasks'].length);
-      $('.expected-duration').html((data['tasks'].length / 10) + '-' + (Math.floor(data['tasks'].length / 2.5))); // minutes
-      $('.n').html(data['tasks'][0]['classes'].length);
-      if (data['tasks'][0]['anchors'].length > 1) $('.s-if-multiple-anchors').html('s');
+//      $('.expected-duration').html((data['tasks'].length / 10) + '-' + (Math.floor(data['tasks'].length / 2.5))); // minutes
+      $('.example-class-count').html(data['exampleClassCount']);
+      $('.example-per-class-count').html(data['examplePerClassCount']);
+      if (data['examplePerClassCount'] <= 1) $('.show-if-multiple-per-class').remove();
     });
-    tasks = new ClassificationTasks(data, data['tasks'].length, dataLoader,
-        onDoneTasks);
+    tasks = new DuplicationTasks(data, data['tasks'].length, dataLoader, onDoneTasks);
     var checkBox = setupResizeImages(tasks.resizeImages, tasks.resetImageSizes);
     tasks.extraTaskInfo = function () {
         var rtn = {

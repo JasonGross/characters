@@ -1,3 +1,9 @@
+@import url("hinted.css");
+
+.show-if-untimed {
+  display: none;
+}
+
 .inline {
   text-align: center;
   vertical-align: middle;
@@ -5,13 +11,17 @@
 }
 
 .character-question {
-  font-size: 16pt;
+/*  font-size: 16pt;*/
 }
 
 .task-holder {
   text-align: center;
 }
-  
+
+.option-group {
+  text-align: left;
+}
+
 .image-holder {
   padding: 2.5px;
   width: 100px;
@@ -23,12 +33,21 @@
   padding: 0px;
 }
 
+.class-box {
+  display: inline-block;
+  padding: 0px;
+}
+
 .image-box {
   margin: 2.5px;
   border: thin solid #C0C0C0; //lightgray
   text-align: center;
   vertical-align: middle;
-  display: inline-block;
+  display: block;
+}
+
+.class-box-untimed {
+  border: thin black solid;
 }
 
 img.character, canvas.character {
@@ -49,27 +68,8 @@ img {
 .class-label {
   text-align: center;
 }
+
 /*
-.prompt-holder-long {
-  border:thick red solid;
-}
-
-.prompt-holder-medium {
-  border:thick yellow solid;
-}
-
-.prompt-holder-short {
-  border:thick green solid;
-}
-
-.prompt-holder-doing {
-  border:thick white solid;
-}
-
-.prompt-holder-done {
-  border:thick white solid;
-}
-
 .task-overlay-progress-bar-holder {
   opacity: 0.5;
   filter:alpha(opacity=50);

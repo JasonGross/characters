@@ -55,7 +55,6 @@ var CompletionTasks;
     };
 
     this.prepTask = function (task) {
-      curTask = task;
       $canvasHolder.children().remove();
 
       updateContinueButton = function updateContinueButton() {
@@ -67,7 +66,7 @@ var CompletionTasks;
 
       doFinishTask = function doFinishTask() {
         if (task['canvas'].canUndo() && getCheckedValue($seenBeforeInputs) !== '') {
-          self.finishTask(curTask, task['canvas']);
+          self.finishTask(task, task['canvas']);
           return true;
         } else {
           return false;

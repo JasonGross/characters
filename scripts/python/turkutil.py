@@ -356,8 +356,9 @@ def record_submission(form_dict, path, make_summary, preprocess_form=None, prepr
     if preprocess_form: form_dict = preprocess_form(form_dict)
     put_properties(path, form_dict, make_file_name(uid), quiet=quiet)
     if not pseudo:
-        if verbose: print('Done<br>Summarizing your responses...')
-        put_summary(path, form_dict, make_file_name(uid, summary=True), make_summary, uid, quiet=quiet)
+        if make_summary is not None:
+            if verbose: print('Done<br>Summarizing your responses...')
+            put_summary(path, form_dict, make_file_name(uid, summary=True), make_summary, uid, quiet=quiet)
         if verbose: print('Done<br>Making a matlab file for your responses...')
         put_matlab(path, form_dict, make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num, extra_code_generator=extra_matlab_code)
         if put_extras is not None:

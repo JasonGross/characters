@@ -1,9 +1,9 @@
 ﻿function getCharacterTags()
 {
   rtn = [];
-  if (getURLParameter('image') != '') rtn.push('');
-  if (getURLParameter('image0') != '') rtn.push('0');
-  for (var i = 1; getURLParameter('image'+i) != ''; i++)
+  if (urlParameters.getURLParameter('image') != '') rtn.push('');
+  if (urlParameters.getURLParameter('image0') != '') rtn.push('0');
+  for (var i = 1; urlParameters.getURLParameter('image'+i) != ''; i++)
     rtn.push(i);
   if (getRandomizeOrder()) rtn = sample(rtn, rtn.length);
   return rtn;
@@ -38,13 +38,13 @@ function getImgId(tag) { return 'img_' + getCharacterId(tag); }
 function makeImg(tag)
 {
   var rtn = '';
-  if (getURLParameter('image'+tag) != '') {
-    rtn = rtn + '<img src="results/originals/'+getURLParameter('image'+tag)+'"';
+  if (urlParameters.getURLParameter('image'+tag) != '') {
+    rtn = rtn + '<img src="results/originals/'+urlParameters.getURLParameter('image'+tag)+'"';
     if (!hasURLParameter('noscaling')) {
-      if (getURLParameter('image'+tag+'Width') != '')
-        rtn = rtn + ' width="'+getURLParameter('image'+tag+'Width')+'"';
-      else if (getURLParameter('image'+tag+'Height') != '')
-        rtn = rtn + ' height="'+getURLParameter('image'+tag+'Height')+'"';
+      if (urlParameters.getURLParameter('image'+tag+'Width') != '')
+        rtn = rtn + ' width="'+urlParameters.getURLParameter('image'+tag+'Width')+'"';
+      else if (urlParameters.getURLParameter('image'+tag+'Height') != '')
+        rtn = rtn + ' height="'+urlParameters.getURLParameter('image'+tag+'Height')+'"';
       else
         rtn = rtn + getImageSize();
     }
@@ -57,8 +57,8 @@ function makeCanvasWidth(param, tag, canvasId)
 {
   var rtn;
   var img = document.getElementById(getImgId(tag));
-  if (getURLParameter(param).toLowerCase() == 'fit' ||
-      (getURLParameter(param) == '' && getCanvasWidth().toLowerCase() == 'fit')) {
+  if (urlParameters.getURLParameter(param).toLowerCase() == 'fit' ||
+      (urlParameters.getURLParameter(param) == '' && getCanvasWidth().toLowerCase() == 'fit')) {
     if (img.width != 0) rtn = img.width;
     else {
       rtn = backupCanvasWidth;
@@ -73,8 +73,8 @@ function makeCanvasWidth(param, tag, canvasId)
         img.addEventListener('load', function(){fixW();}, false);
       }
     }
-  } else if (getURLParameter(param) != '')
-    rtn = getURLParameter(param);
+  } else if (urlParameters.getURLParameter(param) != '')
+    rtn = urlParameters.getURLParameter(param);
   else
     rtn = getCanvasWidth();
   return ' width="' + rtn + '"';
@@ -84,8 +84,8 @@ function makeCanvasHeight(param, tag, canvasId)
 {
   var rtn;
   var img = document.getElementById(getImgId(tag));
-  if (getURLParameter(param).toLowerCase() == 'fit' ||
-      (getURLParameter(param) == '' && getCanvasHeight().toLowerCase() == 'fit')) {
+  if (urlParameters.getURLParameter(param).toLowerCase() == 'fit' ||
+      (urlParameters.getURLParameter(param) == '' && getCanvasHeight().toLowerCase() == 'fit')) {
     if (img.height != 0 && img.width != 0) rtn = img.height; // because in Firefox, unloaded images have height 19 and width 0 (alt text)!
     else {
       rtn = backupCanvasHeight;
@@ -100,8 +100,8 @@ function makeCanvasHeight(param, tag, canvasId)
         img.addEventListener('load', function(){fixH();}, false);
       }
     }
-  } else if (getURLParameter(param) != '')
-    rtn = getURLParameter(param);
+  } else if (urlParameters.getURLParameter(param) != '')
+    rtn = urlParameters.getURLParameter(param);
   else
     rtn = getCanvasHeight();
   return ' height="' + rtn + '"';
@@ -116,14 +116,14 @@ function makeCharacterInput(name, tag)
   rtn += '<div id="'+name+'_div">';
     
   rtn += '<canvas id="'+name+'" unselectable="on"';
-  if (getURLParameter('canvas'+tag+'Size') != '')
+  if (urlParameters.getURLParameter('canvas'+tag+'Size') != '')
     rtn += makeCanvasWidth('canvas'+tag+'Size', tag) + makeCanvasHeight('canvas'+tag+'Size', tag, name);
   else {
-    if (getURLParameter('canvas'+tag+'Height') != '')
+    if (urlParameters.getURLParameter('canvas'+tag+'Height') != '')
       rtn += makeCanvasHeight('canvas'+tag+'Height', tag, name);
     else
       rtn += makeCanvasHeight('image'+tag+'Height', tag, name);
-    if (getURLParameter('canvas'+tag+'Width') != '')
+    if (urlParameters.getURLParameter('canvas'+tag+'Width') != '')
       rtn += makeCanvasWidth('canvas'+tag+'Width', tag, name);
     else
       rtn += makeCanvasWidth('image'+tag+'Width', tag, name);
@@ -141,8 +141,8 @@ function makeCharacterInput(name, tag)
 
   var addC = function() { addCanvas(document.getElementById(name)); };
   var makeD;
-  if (getURLParameter('lineWidth'+tag) != '') 
-    makeD = function() { makeDrawable(document.getElementById(name), parseFloat(getURLParameter('lineWidth'+tag)), document.getElementsByName(name + '_undo')[0], document.getElementsByName(name + '_redo')[0]); };
+  if (urlParameters.getURLParameter('lineWidth'+tag) != '') 
+    makeD = function() { makeDrawable(document.getElementById(name), parseFloat(urlParameters.getURLParameter('lineWidth'+tag)), document.getElementsByName(name + '_undo')[0], document.getElementsByName(name + '_redo')[0]); };
   else
     makeD = function() { makeDrawable(document.getElementById(name), undefined, document.getElementsByName(name + '_undo')[0], document.getElementsByName(name + '_redo')[0]); };  
   if (window.attachEvent) {window.attachEvent('onload', function(){addC(); makeD();});}
@@ -157,12 +157,12 @@ function makeCharacterInputs(tag, count)
 {
   if (count === undefined) count = getSampleCount();
   var rtn = '';
-  if (getURLParameter('image'+tag) != '') {
-    rtn += '<input type="hidden" name="image'+tag+'" id="image'+tag+'" value="'+getURLParameter('image'+tag)+'">';
-    if (getURLParameter('character'+tag+'ID') != '')
-      rtn += '<input type="hidden" name="character'+tag+'Id" id="character'+tag+'Id" value="'+getURLParameter('character'+tag+'ID')+'">';
-    else if (getURLParameter('image'+tag+'ID') != '')
-      rtn += '<input type="hidden" name="character'+tag+'Id" id="character'+tag+'Id" value="'+getURLParameter('image'+tag+'ID')+'">';
+  if (urlParameters.getURLParameter('image'+tag) != '') {
+    rtn += '<input type="hidden" name="image'+tag+'" id="image'+tag+'" value="'+urlParameters.getURLParameter('image'+tag)+'">';
+    if (urlParameters.getURLParameter('character'+tag+'ID') != '')
+      rtn += '<input type="hidden" name="character'+tag+'Id" id="character'+tag+'Id" value="'+urlParameters.getURLParameter('character'+tag+'ID')+'">';
+    else if (urlParameters.getURLParameter('image'+tag+'ID') != '')
+      rtn += '<input type="hidden" name="character'+tag+'Id" id="character'+tag+'Id" value="'+urlParameters.getURLParameter('image'+tag+'ID')+'">';
     
     rtn += '<table><tr>';
     for (var i = 0; i < count; i++) {

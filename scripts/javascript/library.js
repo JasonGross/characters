@@ -390,6 +390,81 @@ if (this['changecss'] === undefined)
   } 
 //=============================================================
 
+
+//===================================================================
+// From http://www.somacon.com/p143.php
+
+// return the value of the radio button that is checked
+// return an empty string if none are checked, or
+// there are no radio buttons
+function getCheckedValue(radioObj) {
+  if (!radioObj)
+    return "";
+  var radioLength = radioObj.length;
+  if (radioLength === undefined)
+    if (radioObj.checked)
+      return radioObj.value;
+    else
+      return "";
+  for (var i = 0; i < radioLength; i++) {
+    if (radioObj[i].checked) {
+      return radioObj[i].value;
+    }
+  }
+  return "";
+}
+
+// set the radio button with the given value as being checked
+// do nothing if there are no radio buttons
+// if the given value does not exist, all the radio buttons
+// are reset to unchecked
+function setCheckedValue(radioObj, newValue) {
+  if (!radioObj)
+    return;
+  var radioLength = radioObj.length;
+  newValue = '' + newValue;
+  if (radioLength === undefined) {
+    radioObj.checked = (newValue == radioObj.value);
+    return;
+  }
+  for (var i = 0; i < radioLength; i++) {
+    radioObj[i].checked = (newValue == radioObj[i].value);
+  }
+}
+//===================================================================
+
+//===================================================================
+//From http://skuld.bmsc.washington.edu/~merritt/gnuplot/canvas_demos/
+function getMouseCoordsWithinTarget(event) {
+  var coords = {x: 0, y: 0};
+
+  if (!event) { // then we're in a non-DOM (probably IE) browser
+    event = window.event;
+    if (event) {
+      coords.x = event.offsetX;
+      coords.y = event.offsetY;
+    }
+  } else {		// we assume DOM modeled javascript
+    var Element = event.target;
+    var CalculatedTotalOffsetLeft = 0;
+    var CalculatedTotalOffsetTop = 0;
+
+    while (Element.offsetParent) {
+      CalculatedTotalOffsetLeft += Element.offsetLeft;
+      CalculatedTotalOffsetTop += Element.offsetTop;
+      Element = Element.offsetParent;
+    }
+
+    coords.x = event.pageX - CalculatedTotalOffsetLeft;
+    coords.y = event.pageY - CalculatedTotalOffsetTop;
+  }
+
+  return coords;
+}
+//===================================================================
+
+
+
 function makeInput(id, value, type) {
   if (value === undefined) value = '';
   if (type === undefined) type = 'hidden';

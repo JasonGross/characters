@@ -36,10 +36,10 @@ var formAction = 'scripts/python/record-request-submission.py';
 
 function getCharacterId(tag) 
 {
-  if (getURLParameter('character'+tag+'ID') != '')
-    return 'character_'+getURLParameter('character'+tag+'ID');
-  if (getURLParameter('image'+tag+'ID') != '')
-    return 'character_'+getURLParameter('image'+tag+'ID');
+  if (urlParameters.getURLParameter('character'+tag+'ID') != '')
+    return 'character_'+urlParameters.getURLParameter('character'+tag+'ID');
+  if (urlParameters.getURLParameter('image'+tag+'ID') != '')
+    return 'character_'+urlParameters.getURLParameter('image'+tag+'ID');
   return 'character-'+tag;
 }
 
@@ -146,19 +146,19 @@ function toBool(value, nullValue)
 }
 
 
-if (getURLParameter('thickness') != '')
-  setLineWidth(getURLParameter('thickness'));
+if (urlParameters.getURLParameter('thickness') != '')
+  setLineWidth(urlParameters.getURLParameter('thickness'));
   
-if (getURLParameter('sampleCount') != '')
-  setSampleCount(getURLParameter('sampleCount'));
+if (urlParameters.getURLParameter('sampleCount') != '')
+  setSampleCount(urlParameters.getURLParameter('sampleCount'));
   
-if (getURLParameter('globalLineWidth') != '')
-  setLineWidth(parseFloat(getURLParameter('globalLineWidth')));
+if (urlParameters.getURLParameter('globalLineWidth') != '')
+  setLineWidth(parseFloat(urlParameters.getURLParameter('globalLineWidth')));
 
 
   
-if (getURLParameter('orientation') != '') {
-  orient = getURLParameter('orientation').toLowerCase()
+if (urlParameters.getURLParameter('orientation') != '') {
+  orient = urlParameters.getURLParameter('orientation').toLowerCase()
   if (orient == '0') // horizontal
     setHorizontal();
   else if (orient == '1') // vertical
@@ -169,46 +169,46 @@ if (getURLParameter('orientation') != '') {
     setVertical();
 }
 
-if (getURLParameter('alertStyle') != '') setAlertStyle(getURLParameter('alertStyle'));
-if (getURLParameter('alertBorderWidth') != '') setAlertBorderWidth(getURLParameter('alertBorderWidth'));
-if (getURLParameter('alertBorderStyle') != '') setAlertBorderStyle(getURLParameter('alertBorderStyle'));
-if (getURLParameter('alertBorderColor') != '') setAlertBorderColor(getURLParameter('alertBorderColor'));
+if (urlParameters.getURLParameter('alertStyle') != '') setAlertStyle(urlParameters.getURLParameter('alertStyle'));
+if (urlParameters.getURLParameter('alertBorderWidth') != '') setAlertBorderWidth(urlParameters.getURLParameter('alertBorderWidth'));
+if (urlParameters.getURLParameter('alertBorderStyle') != '') setAlertBorderStyle(urlParameters.getURLParameter('alertBorderStyle'));
+if (urlParameters.getURLParameter('alertBorderColor') != '') setAlertBorderColor(urlParameters.getURLParameter('alertBorderColor'));
 
-if (getURLParameter('globalWidth') != '' || getURLParameter('globalHeight') != '' || 
-    getURLParameter('globalImageHeight') != '' || getURLParameter('globalImageWidth') != '')
+if (urlParameters.getURLParameter('globalWidth') != '' || urlParameters.getURLParameter('globalHeight') != '' || 
+    urlParameters.getURLParameter('globalImageHeight') != '' || urlParameters.getURLParameter('globalImageWidth') != '')
    setImageSize('');
 
-if (getURLParameter('globalWidth') != '') {
-  if (getURLParameter('globalImageWidth') == '') 
-    setImageSize(getImageSize()+' width="'+getURLParameter('globalWidth')+'"');
-  setCanvasWidth(getURLParameter('globalWidth'));
+if (urlParameters.getURLParameter('globalWidth') != '') {
+  if (urlParameters.getURLParameter('globalImageWidth') == '') 
+    setImageSize(getImageSize()+' width="'+urlParameters.getURLParameter('globalWidth')+'"');
+  setCanvasWidth(urlParameters.getURLParameter('globalWidth'));
 }
 
-if (getURLParameter('globalHeight') != '') {
-  if (getURLParameter('globalImageHeight') == '') 
-    setImageSize(getImageSize()+' height="'+getURLParameter('globalHeight')+'"');
-  setCanvasHeight(getURLParameter('globalHeight'));
+if (urlParameters.getURLParameter('globalHeight') != '') {
+  if (urlParameters.getURLParameter('globalImageHeight') == '') 
+    setImageSize(getImageSize()+' height="'+urlParameters.getURLParameter('globalHeight')+'"');
+  setCanvasHeight(urlParameters.getURLParameter('globalHeight'));
 }
 
-if (getURLParameter('globalImageWidth') != '')
-  setImageSize(getImageSize()+' width="'+getURLParameter('globalImageWidth')+'"');
-if (getURLParameter('globalImageHeight') != '')
-  setImageSize(getImageSize()+' height="'+getURLParameter('globalImageHeight')+'"');
+if (urlParameters.getURLParameter('globalImageWidth') != '')
+  setImageSize(getImageSize()+' width="'+urlParameters.getURLParameter('globalImageWidth')+'"');
+if (urlParameters.getURLParameter('globalImageHeight') != '')
+  setImageSize(getImageSize()+' height="'+urlParameters.getURLParameter('globalImageHeight')+'"');
 
 
-if (getURLParameter('globalCanvasWidth') != '')
-  setCanvasWidth(getURLParameter('globalCanvasWidth'));
-if (getURLParameter('globalCanvasHeight') != '')
-  setCanvasHeight(getURLParameter('globalCanvasHeight'));
-if (getURLParameter('globalCanvasSize') != '') {
-  setCanvasHeight(getURLParameter('globalCanvasSize'));
-  setCanvasWidth(getURLParameter('globalCanvasSize'));
+if (urlParameters.getURLParameter('globalCanvasWidth') != '')
+  setCanvasWidth(urlParameters.getURLParameter('globalCanvasWidth'));
+if (urlParameters.getURLParameter('globalCanvasHeight') != '')
+  setCanvasHeight(urlParameters.getURLParameter('globalCanvasHeight'));
+if (urlParameters.getURLParameter('globalCanvasSize') != '') {
+  setCanvasHeight(urlParameters.getURLParameter('globalCanvasSize'));
+  setCanvasWidth(urlParameters.getURLParameter('globalCanvasSize'));
 }
 
-if (getURLParameter('submitTo') != '')
-  setFormAction(unquote(getURLParameter('submitTo')));
-else if (getURLParameter('turkSubmitTo') != '')
-  setFormAction(unquote(getURLParameter('turkSubmitTo')) + '/mturk/externalSubmit');
+if (urlParameters.getURLParameter('submitTo') != '')
+  setFormAction(unquote(urlParameters.getURLParameter('submitTo')));
+else if (urlParameters.getURLParameter('turkSubmitTo') != '')
+  setFormAction(unquote(urlParameters.getURLParameter('turkSubmitTo')) + '/mturk/externalSubmit');
 //alert(getFormAction());
 //.replace('%3A%2F%2F','://')
 
@@ -219,33 +219,33 @@ var col_params = ['numCols', 'num_cols', 'number_of_cols', 'numberOfCols',
 var has_row_param = false; var has_col_param = false;
 
 for (var i = 0; i < row_params.length; i++) {
-  if (getURLParameter(row_params[i]) != '') {
+  if (urlParameters.getURLParameter(row_params[i]) != '') {
     has_row_param = true;
-    setNumRows(parseInt(getURLParameter(row_params[i])));
+    setNumRows(parseInt(urlParameters.getURLParameter(row_params[i])));
   }
 }
 
 for (var i = 0; i < col_params.length; i++) {
-  if (getURLParameter(col_params[i]) != '') {
+  if (urlParameters.getURLParameter(col_params[i]) != '') {
     has_col_param = true;
-    setNumCols(parseInt(getURLParameter(col_params[i])));
+    setNumCols(parseInt(urlParameters.getURLParameter(col_params[i])));
   }
 }
 
 if (has_row_param && !has_col_param) setNumCols(null);
 if (!has_row_param && has_col_param) setNumRows(null);
 
-if (getURLParameter('characterOrder') != '') {
-  if (getURLParameter('characterOrder').toLowerCase().charAt(0) == 'r')
+if (urlParameters.getURLParameter('characterOrder') != '') {
+  if (urlParameters.getURLParameter('characterOrder').toLowerCase().charAt(0) == 'r')
     setCharacterOrder(ROWS_FIRST);
-  if (getURLParameter('characterOrder').toLowerCase().charAt(0) == 'c')
+  if (urlParameters.getURLParameter('characterOrder').toLowerCase().charAt(0) == 'c')
     setCharacterOrder(COLS_FIRST); 
 }*/
 
 
-setRandomizeOrder(getURLParameter('randomize'));
-setCheckAll(getURLParameter('checkAll'));
+setRandomizeOrder(urlParameters.getURLParameter('randomize'));
+setCheckAll(urlParameters.getURLParameter('checkAll'));
 
-setAskFeedback(getURLParameter('askFeedback'));
-setAskInputDevice(getURLParameter('askInputDevice'));
-setAskSeenBefore(getURLParameter('askSeenBefore'));
+setAskFeedback(urlParameters.getURLParameter('askFeedback'));
+setAskInputDevice(urlParameters.getURLParameter('askInputDevice'));
+setAskSeenBefore(urlParameters.getURLParameter('askSeenBefore'));

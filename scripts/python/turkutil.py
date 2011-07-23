@@ -23,6 +23,22 @@ DEFAULT_NOT_USE_PROPERTIES = ('^ipAddress', '^annotation',
                               '^numpending', '^reviewstatus', '^reward',
                               '^title', '^hitid', '^assignmentid')
 
+_FORM_DICT_TASK_REGEX = re.compile('^((?:.*?-)?task)-([0-9]+)-(.+)$')
+def form_dict_to_tasks_dict(form_dict, extra_data_dict=None):
+    data_by_tasks = {}
+    if extra_data_dict is None: extra_data_dict = {}
+    for key, value in form_dict.iteritems():
+        if 'task-' in key:
+            match = _FORM_DICT_TASK_REGEX.match(key)
+            if match is not None:
+                task_group, task, key = match.groups()
+                if task_group not in data_by_tasks: data_by_tasks[task_group] = {}
+                if task not in data_by_tasks[task_group]: data_by_tasks[task_group][task] = {}
+                data_by_tasks[task_group][task][key] = value
+            else:
+                extra_data_dict[key] = value
+    return data_by_tasks
+
 def make_reject_bad_file(success_file, reject_file, reject_bad_file='reject-bad', assignmentIdToRejectComment='"Blank submission."'):
     with open(reject_bad_file + '.bat', 'w') as wf:
         with open(reject_bad_file + '.sh', 'w') as lf:
@@ -239,7 +255,7 @@ def put_properties(folder, properties, file_name,
         f.write(write_to_file)
     pop_dir()
 
-def put_matlab(folder, properties, file_name, uid,
+def put_matlab(folder, properties, file_name, uid, extra_code_generator=None,
                not_use=DEFAULT_NOT_USE_PROPERTIES, quiet=True, zero_based_num=0):
     matlab_lines = []
     uid = uid.replace('-', 'm')
@@ -257,6 +273,8 @@ def put_matlab(folder, properties, file_name, uid,
                 use_key = '%s(%d).%s' % (tag, int(rest[0]) + 1, '_'.join(rest[1:]))
             matlab_lines.append('results.for_%s(%d).%s = %s;' % (uid, zero_based_num+1, use_key,
                                 format_for_matlab(string_to_object(properties[key]))))
+    if extra_code_generator is not None:
+        matlab_lines.append(extra_code_generator(folder, properties, file_name, uid, quiet=quiet, zero_based_num=zero_based_num, not_use=not_use))
     push_dir(folder)
     matlab = '\n'.join(matlab_lines)
     if not quiet and os.path.exists(file_name):
@@ -318,7 +336,8 @@ def make_file_name(uid, summary=False, matlab=False):
 
 
 def record_submission(form_dict, path, make_summary, preprocess_form=None, prepreprocess_form=None, many_dirs=True,
-                      verbose=True, pseudo=False, quiet=True, exclude_rejected=False, exclude_ids=tuple()):
+                      verbose=True, pseudo=False, quiet=True, exclude_rejected=False, exclude_ids=tuple(), put_extras=None,
+                      extra_matlab_code=None):
     accepted, rejected = get_accepted_rejected_status(form_dict, exclude_ids=exclude_ids)
     if rejected and exclude_rejected:
         print('Submission rejected.')
@@ -340,7 +359,10 @@ def record_submission(form_dict, path, make_summary, preprocess_form=None, prepr
         if verbose: print('Done<br>Summarizing your responses...')
         put_summary(path, form_dict, make_file_name(uid, summary=True), make_summary, uid, quiet=quiet)
         if verbose: print('Done<br>Making a matlab file for your responses...')
-        put_matlab(path, form_dict, make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num)
+        put_matlab(path, form_dict, make_file_name(uid, matlab=True), uid, quiet=quiet, zero_based_num=results_num, extra_code_generator=extra_matlab_code)
+        if put_extras is not None:
+            if verbose: print('Done<br>Making extra files for your responses...')
+            put_extras(path, form_dict, uid, quiet=quiet)
     if many_dirs:
         log_success(path)
     if verbose: print('Done<br>You may now leave this page.<br>')

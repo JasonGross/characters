@@ -78,7 +78,7 @@ def deanonymize_image(anonymous_url):
     return {
             'alphabet': _REWRITE_DICT['%s%s%s%s' % (image[2], image[5], image[8], image[11])],
             'character-number': image[12:14],
-            'id': '%s%s%s%s%s' % (image[:2], image[3:5], image[6:8], image[9:11], image[15:-4])
+            'id': '%s%s%s%s%s' % (image[:2], image[3:5], image[6:8], image[9:11], image[14:-4])
            }
     return rtn
 #    return '%s%s%s%s_%s_%s%s%s%s%s' % (image[2], image[5], image[8], image[11], image[12:14], image[0:2], image[3:5], image[6:8], image[9:11], image[15:])

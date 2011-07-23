@@ -123,19 +123,19 @@ We have added the following new features to this version of the Command Line Too
 <ul>
 	<li>A new operation <a href="#maketemplate">Make Template</a> copies a Command Line Tools sample application. You can then modify the files and create your own application.</li>
 	<li>A new operation <a href="#reviewResults">Review Results</a> allows you to approve and reject multiple assignments with one operation.</li>
-	<li>We have made some changes to the <a href="#getresults">Get Results</a> operation. Each HIT in the output file now has a link to your <strong>Manage HITs</strong> page in the <a href="http://requester.mturk.com" target="_blank">Requester web site</a>. Use these links if you want to manually reject assignments, pay bonuses, or send emails to Workers. We have also added some new information to the output on the screen.</li>
+	<li>We have made some changes to the <a href="#getresults">Get Results</a> operation. Each HIT in the output file now has a link to your <strong>Manage HITs</strong> page in the <a href="https://requester.mturk.com" target="_blank">Requester web site</a>. Use these links if you want to manually reject assignments, pay bonuses, or send emails to Workers. We have also added some new information to the output on the screen.</li>
 	<li>The <a href="#imagecategory">Image Categorization Sample Application</a> and the <a href="#sitefilter">Running the Web Site Filtering Sample Application</a> provide a command to generate a summary report of the HIT results.</li>
 	
 </ul>
 <h2>Amazon Mechanical Turk Concepts and Additional Information</h2>
-Before getting started, you should first familiarize yourself with the key concepts of Amazon Mechanical Turk by reading the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-02-14/ConceptsArticle.html" target="_blank">Mechanical Turk Concepts</a> section in the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-02-14/" target="_blank">Amazon Mechanical Turk Developer Guide</a>.<p/>
+Before getting started, you should first familiarize yourself with the key concepts of Amazon Mechanical Turk by reading the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-02-14/ConceptsArticle.html" target="_blank">Mechanical Turk Concepts</a> section in the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-02-14/" target="_blank">Amazon Mechanical Turk Developer Guide</a>.<p/>
 For additional information, check out these resources:
 <ul>
 	
 </ul>
-<li>The <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-02-14/" target="_blank">Amazon Mechanical Turk Developer Guide</a> provides full details on all functionality available on Amazon Mechanical Turk.</li>
-<li>The <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkGettingStartedGuide/2008-02-14/" target="_blank">Amazon Mechanical Turk Getting Started Guide</a> provides information about how to get started using Amazon Mechanical Turk. It includes step-by-step information about how to create a HIT using the Command Line Tools.</li>
-<li>The <a href="http://requester.mturk.com/mturk/tutorials" target="_blank">Command Line Tools Tutorial</a> provides video instructions to help you get started creating HITs.</li>
+<li>The <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2008-02-14/" target="_blank">Amazon Mechanical Turk Developer Guide</a> provides full details on all functionality available on Amazon Mechanical Turk.</li>
+<li>The <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkGettingStartedGuide/2008-02-14/" target="_blank">Amazon Mechanical Turk Getting Started Guide</a> provides information about how to get started using Amazon Mechanical Turk. It includes step-by-step information about how to create a HIT using the Command Line Tools.</li>
+<li>The <a href="https://requester.mturk.com/mturk/tutorials" target="_blank">Command Line Tools Tutorial</a> provides video instructions to help you get started creating HITs.</li>
   </ul>
 </div>
 
@@ -241,13 +241,13 @@ The instructions below assume that the downloaded file was uncompressed in a dir
 
 <ol>
   <li>Sign up for an Amazon Web Services (AWS) account at the <a href="https://aws-portal.amazon.com/gp/aws/developer/registration/index.html" target="_blank">AWS web site</a>.</li>
-  <li>Sign up for an Amazon Mechanical Turk Requester account at the <a href="http://requester.mturk.com" target="_blank">Requester web site</a>.</li>
-  <li>Configure the Command Line Tools to use your <a href="http://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html" target="_blank">AWS access identifiers</a> information.<p/>
+  <li>Sign up for an Amazon Mechanical Turk Requester account at the <a href="https://requester.mturk.com" target="_blank">Requester web site</a>.</li>
+  <li>Configure the Command Line Tools to use your <a href="https://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html" target="_blank">AWS access identifiers</a> information.<p/>
   &nbsp;&nbsp;&nbsp;a. Open the following file:
   <span class="programlisting">
     [Command Line Tools Installation Directory]\bin\mturk.properties
   </span>
-  &nbsp;&nbsp;&nbsp;b. Set the following properties to reflect your <a href="http://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html" target="_blank">AWS access identifiers</a>:<p/>
+  &nbsp;&nbsp;&nbsp;b. Set the following properties to reflect your <a href="https://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html" target="_blank">AWS access identifiers</a>:<p/>
 <span class="programlisting">
   access_key=[Your AWS Access Key]<br/>
   secret_key=[Your Secret Key]
@@ -268,18 +268,18 @@ If you have installed the JRE and elect not to use the included JRE (Windows dis
 <a name="sandbox"/>
 <h2>Using the Amazon Mechanical Turk Developer Sandbox for Testing</h2>
 
-By default, the Command Line Tools are configured to work against the production site (<a href="http://www.mturk.com" target="_blank">http://www.mturk.com</a>).  When creating HITs on the Production site, you will need to have a funded Amazon Mechanical Turk account. Visit the following link to fund your account: <a href=" http://requester.mturk.com/mturk/youraccount" target="_blank"> http://requester.mturk.com/mturk/youraccount</a>.<p/>
+By default, the Command Line Tools are configured to work against the production site (<a href="https://www.mturk.com" target="_blank">https://www.mturk.com</a>).  When creating HITs on the Production site, you will need to have a funded Amazon Mechanical Turk account. Visit the following link to fund your account: <a href=" https://requester.mturk.com/mturk/youraccount" target="_blank"> https://requester.mturk.com/mturk/youraccount</a>.<p/>
 
-Optionally, you can configure the Command Line tools to work against the Developer Sandbox environment.  The Developer Sandbox is a simulated environment that allows developers to test their Amazon Mechanical Turk solutions for free.  To view HITs created in the sandbox, go to the Developer Sandbox worker site (<a href="http://workersandbox.mturk.com" target="_blank"> http://workersandbox.mturk.com</a>).<p/>
+Optionally, you can configure the Command Line tools to work against the Developer Sandbox environment.  The Developer Sandbox is a simulated environment that allows developers to test their Amazon Mechanical Turk solutions for free.  To view HITs created in the sandbox, go to the Developer Sandbox worker site (<a href="https://workersandbox.mturk.com" target="_blank"> https://workersandbox.mturk.com</a>).<p/>
 
 To configure the Command Line Tools to work against the Developer Sandbox:
 <ol>
   <li>Open the following file in a text editor:<br/>
     <span class="programlisting">[Command Line Tools Installation Directory]\bin\mturk.properties</span></li>
   <li>Comment out the Production site service_url with a "#":<br/>
-    <span class="programlisting">#service_url=http://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester</span></li>
+    <span class="programlisting">#service_url=https://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester</span></li>
   <li>Uncomment the Developer Sandbox service_url by removing the "#":<br/>
-    <span class="programlisting">service_url=http://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester</span></li>
+    <span class="programlisting">service_url=https://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester</span></li>
   <li>Save and close the file.</li>
 </ol>
 
@@ -298,15 +298,15 @@ There are 4 create HIT sample applications and 7 Qualification related sample ap
 Each create HIT sample application is defined by 3 files:
 <ul>
   <li>Input File - A file containing the variable data to be placed in the HIT.  This is a tab-delimited text file.</li>
-  <li>Question Template File - A file containing the template of the question that contains placeholders for the fields defined in the input file.  This is an XML file that conforms to the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html" target="_blank">QuestionForm</a> schema.</li>
+  <li>Question Template File - A file containing the template of the question that contains placeholders for the fields defined in the input file.  This is an XML file that conforms to the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html" target="_blank">QuestionForm</a> schema.</li>
   <li>HIT Properties File - A file containing the desired properties for the HIT (i.e. title, description, etc.)</li>
 </ul>
 
 Each create HIT sample described in subsequent sections consist of the following steps:
 <ol>
-  <li>For each row in the Input File, the fields will be inserted into the placeholders of the Question Template File and the HIT will be created in the <a href="http://www.mturk.com" target="_blank">production site</a> with the properties defined in the HIT Properties File.  The # of rows in the Input File will determine how many HITs will be created.</li>
+  <li>For each row in the Input File, the fields will be inserted into the placeholders of the Question Template File and the HIT will be created in the <a href="https://www.mturk.com" target="_blank">production site</a> with the properties defined in the HIT Properties File.  The # of rows in the Input File will determine how many HITs will be created.</li>
   <li>A Success File is generated containing identifiers to the HITs that were created.</li>
-  <li>The HITs are accepted, worked on and submitted on the <a href="http://workersandbox.mturk.com" target="_blank">Worker sandbox site</a>.</li>
+  <li>The HITs are accepted, worked on and submitted on the <a href="https://workersandbox.mturk.com" target="_blank">Worker sandbox site</a>.</li>
   <li>The Success File is used to retrieve the results of the HITs which are then written to a Results File.</li>
   <li>The Success File is then used to automatically approve all the HITs and then properly dispose of them.</li>
 </ol>
@@ -405,7 +405,7 @@ Created HIT 3: HITId=2GCM1PYFZJAPHWYDHZQZ
 Created HIT 4: HITId=CAYZVKHRRZRCWMC5XBEZ
 Created HIT 5: HITId=EA1ZQ300GK06TQG70VDZYou may see your HIT(s) with HITTypeId 'VWCZXMY21ARZ0KZHYXN0' here:
 
-<strong>http://www.mturk.com/mturk/preview?groupId=VWCZXMY21ARZ0KZHYXN0</strong>
+<strong>https://www.mturk.com/mturk/preview?groupId=VWCZXMY21ARZ0KZHYXN0</strong>
 
   End time: Wed Aug 22 11:18:44 PDT 2007
 --[Done Loading HITs]----------
@@ -478,7 +478,7 @@ What are you thinking right now?
 The HIT layout is defined in the Question Template File:<br/>
 <ol>
   <li>Open the file called <strong>helloworld.question</strong> in a text editor.</li>
-  <li>Note the following section of the XML file containing <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> content:
+  <li>Note the following section of the XML file containing <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> content:
   <span class="programlisting">    &lt;QuestionContent&gt;<br/>
       &lt;Text&gt;${question}&lt;/Text&gt;<br/>
     &lt;/QuestionContent&gt;<br/>
@@ -536,7 +536,7 @@ To run this sample:
 Created HIT 1: HITId=ZVRZHDYPHWDZXV01YXBZ
 You may see your HIT(s) with HITTypeId 'XSVZVC432ZXZVFCCDKGZ' here:
 
- <strong>http://www.mturk.com/mturk/preview?groupId=XSVZVC432ZXZVFCCDKGZ</strong>
+ <strong>https://www.mturk.com/mturk/preview?groupId=XSVZVC432ZXZVFCCDKGZ</strong>
 
   End time: Wed Aug 22 11:30:20 PDT 2007
 --[Done Loading HITs]----------
@@ -577,7 +577,7 @@ To confirm this operation, please press ENTER (or press Ctrl+C to abort):
 </ol>
 
 <h3>Concepts Covered in this Sample</h3>
-In this sample, a <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QualificationRequirementDataStructureArticle.html" target="_blank">locale qualification</a> (What is a <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/Concepts_QualificationsArticle.html" target="_blank">qualification?</a>) was used:
+In this sample, a <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QualificationRequirementDataStructureArticle.html" target="_blank">locale qualification</a> (What is a <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/Concepts_QualificationsArticle.html" target="_blank">qualification?</a>) was used:
 <ol>
   <li>Navigate to the following directory:<br/>
     <span class="programlisting">[Command Line Tools Installation Directory]\samples\simple_survey</span></li>
@@ -639,7 +639,7 @@ To actually load this HIT:
 Created HIT 1: HITId=NWQMG5ZCBYQZW6CV4W10
 You may see your HIT(s) with HITTypeId 'JXTJ6DXRVYE4VEY3CX60' here:
 
-<strong>http://www.mturk.com/mturk/preview?groupId=JXTJ6DXRVYE4VEY3CX60</strong>
+<strong>https://www.mturk.com/mturk/preview?groupId=JXTJ6DXRVYE4VEY3CX60</strong>
 
   End time: Mon Jun 01 14:00:02 PDT 2007
 --[Done Loading HITs]----------
@@ -678,7 +678,7 @@ To approve and delete the results:
 </ol>
 
 <h3>Concepts Covered in this Sample</h3>
-In this sample, the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_FormattedContentXHTMLArticle.html" target="_blank">&lt;FormattedContent&gt;</a> functionality in the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> was used:
+In this sample, the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_FormattedContentXHTMLArticle.html" target="_blank">&lt;FormattedContent&gt;</a> functionality in the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> was used:
 <ol>
   <li>Navigate to the following directory:<br/>
     <span class="programlisting">[Command Line Tools Installation Directory]\samples\best_image</span></li>
@@ -689,10 +689,10 @@ In this sample, the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurk
     ... some HTML that conforms to the XHTML specification<br/>
     ]]&gt;&lt;/FormattedContent&gt;<br/>
   </span></li>
-  <li>A subset of HTML tags are allowed to be placed within the FormattedContent tags.  Click <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_FormattedContentXHTMLArticle.html" target="_blank">here</a> for a list of what is allowed.</li>
+  <li>A subset of HTML tags are allowed to be placed within the FormattedContent tags.  Click <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_FormattedContentXHTMLArticle.html" target="_blank">here</a> for a list of what is allowed.</li>
 </ol>
 
-Additionally, a <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QualificationRequirementDataStructureArticle.html" target="_blank">system qualification</a> (What is a <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/Concepts_QualificationsArticle.html" target="_blank">qualification?</a>) was used:
+Additionally, a <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QualificationRequirementDataStructureArticle.html" target="_blank">system qualification</a> (What is a <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/Concepts_QualificationsArticle.html" target="_blank">qualification?</a>) was used:
 <ol>
   <li>Open the file called <strong>best_image.properties</strong> in a text editor.</li>
   <li>Note the following section of text:<br/>
@@ -735,7 +735,7 @@ Created HIT 4: HITId=FSG80S1FYZSZV0ZE4JNZ
 Created HIT 5: HITId=Q8QM70ZNR3DZRC43CZZZ
 You may see your HIT(s) with HITTypeId 'Y0ZAWKWKRYCZNMRE7W2Z' here:
 
-<strong>http://www.mturk.com/mturk/preview?groupId=Y0ZAWKWKRYCZNMRE7W2Z</strong>
+<strong>https://www.mturk.com/mturk/preview?groupId=Y0ZAWKWKRYCZNMRE7W2Z</strong>
 
   End time: Mon Jun 01 14:00:03 PDT 2007
 --[Done Loading HITs]----------
@@ -782,7 +782,7 @@ To confirm this operation, please press ENTER (or press Ctrl+C to abort):
 </ol>
 
 <h3>Concepts Covered in this Sample</h3>
-In this sample, the HIT itself is hosted externally (<a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_ExternalQuestionArticle.html" target="_blank">ExternalQuestion</a>) outside of Amazon Mechanical Turk.
+In this sample, the HIT itself is hosted externally (<a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_ExternalQuestionArticle.html" target="_blank">ExternalQuestion</a>) outside of Amazon Mechanical Turk.
 
 <ol>
   <li>Navigate to the following directory:<br/>
@@ -790,8 +790,8 @@ In this sample, the HIT itself is hosted externally (<a href="http://docs.amazon
   <li>Open the file called <strong>external_hit.question</strong> in a text editor.</li>
   <li>Note the following section of text:<br/>
   <span class="programlisting">
-  &lt;ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;<br/>
-    &lt;ExternalURL&gt;http://s3.amazonaws.com/mturk/samples/sitecategory/externalpage.htm?url=${helper.urlencode($urls)}&lt;/ExternalURL&gt;<br/>
+  &lt;ExternalQuestion xmlns="https://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;<br/>
+    &lt;ExternalURL&gt;https://s3.amazonaws.com/mturk/samples/sitecategory/externalpage.htm?url=${helper.urlencode($urls)}&lt;/ExternalURL&gt;<br/>
     &lt;FrameHeight&gt;400&lt;/FrameHeight&gt;<br/>
   &lt;/ExternalQuestion&gt;<br/>
   </span></li>
@@ -833,7 +833,7 @@ Created HIT 6: HITId=J9CRZKZ28J0ZT0XGMG4Z
 
 You may see your HIT(s) with HITTypeId '1HFZ6K8MJ8EZYQYBH0YZ' here:
 
-<strong>http://www.mturk.com/mturk/preview?groupId=1HFZ6K8MJ8EZYQYBH0YZ</strong>
+<strong>https://www.mturk.com/mturk/preview?groupId=1HFZ6K8MJ8EZYQYBH0YZ</strong>
 
   End time: Fri Nov 23 15:52:20 PST 2007
 --[Done Loading HITs]----------
@@ -934,7 +934,7 @@ Created HIT 6: HITId=5XFGW4YAY9RTR7C89WTZ
 
 You may see your HIT(s) with HITTypeId 'SKZZTCZDDY8ZZTYA2YCZ' here:
 
-<strong>http://www.mturk.com/mturk/preview?groupId='SKZZTCZDDY8ZZTYA2YCZ'</strong>
+<strong>https://www.mturk.com/mturk/preview?groupId='SKZZTCZDDY8ZZTYA2YCZ'</strong>
 
 --[Done Loading HITs]----------
   Total load time: 102 seconds.
@@ -1042,7 +1042,7 @@ Created HIT 6: HITId=W08T2Q9QXW7ZXBY4VHF0
 
 You may see your HIT(s) with HITTypeId 'WBTP3SDX5TB8SYZFCZ0Z' here:
 
-<strong>http://www.mturk.com/mturk/preview?groupId='WBTP3SDX5TB8SYZFCZ0Z'</strong>
+<strong>https://www.mturk.com/mturk/preview?groupId='WBTP3SDX5TB8SYZFCZ0Z'</strong>
 
 --[Done Loading HITs]----------
   Total load time: 41 seconds.
@@ -1096,7 +1096,7 @@ To confirm this operation, please press ENTER (or press Ctrl+C to abort):
 
 <h3>Concepts Covered in this Sample</h3>
 
-In this sample, the website to be evaluated is embedded in the HIT using the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_FormattedContentXHTMLArticle.html" target="_blank">&lt;FormattedContent&gt;</a> functionality in the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a>.
+In this sample, the website to be evaluated is embedded in the HIT using the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_FormattedContentXHTMLArticle.html" target="_blank">&lt;FormattedContent&gt;</a> functionality in the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a>.
 
 <ol>
   <li>Navigate to the following directory:<br/>
@@ -1132,12 +1132,12 @@ To run this sample:
   You should see the following output (Note: any IDs, dates or times are illustrative and will differ from your output):<br/>
   <span class="programlisting">
   Created qualification type: KYJ4GZZ5G3M6TDCEWYF0<br/>
-  You can request the qualification here: http://workersandbox.mturk.com/mturk/requestqualification?qualificationId=KYJ4GZZ5G3M6TDCEWYF0<br/>
+  You can request the qualification here: https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=KYJ4GZZ5G3M6TDCEWYF0<br/>
   </span>
   </li>
 </ol>
 
-Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="http://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
+Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="https://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
 
 The next step in this sample is to assign this newly created Qualification to a worker.  Before proceeding further, you should have a worker ID that can be used.  You can find the worker ID by opening one of the results files from any of the create HIT samples above.
 
@@ -1198,12 +1198,12 @@ To run this sample:
   You should see the following output (Note: any IDs, dates or times are illustrative and will differ from your output):<br/>
   <span class="programlisting">
   Created qualification type: 9WKZ0KXWCBAE3WZDFZP0<br/>
-  You can take the test here: http://workersandbox.mturk.com/mturk/requestqualification?qualificationId=9WKZ0KXWCBAE3WZDFZP0<br/>
+  You can take the test here: https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=9WKZ0KXWCBAE3WZDFZP0<br/>
   </span>
   </li>
 </ol>
 
-Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="http://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
+Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="https://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
 
 Since this Qualification has a test as well as an answer key, you will be able to complete the Qualification test and be immediately notified of your results.
 
@@ -1270,12 +1270,12 @@ To run this sample:
   You should see the following output (Note: any IDs, dates or times are illustrative and will differ from your output):<br/>
   <span class="programlisting">
     Created qualification type: YTQJWWYVWTFZG2YZXY20<br/>
-    You can take the test here: http://workersandbox.mturk.com/mturk/requestqualification?qualificationId=YTQJWWYVWTFZG2YZXY20<br/>
+    You can take the test here: https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=YTQJWWYVWTFZG2YZXY20<br/>
   </span>
   </li>
 </ol>
 
-Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="http://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
+Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="https://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
 
 Since this Qualification has a test, you should complete the Qualification test so that a Qualification request is created.<p/>
 
@@ -1360,12 +1360,12 @@ To run this sample:
   You should see the following output (Note: any IDs, dates or times are illustrative and will differ from your output):<br/>
   <span class="programlisting">
   Created qualification type: G2KZ1182ZRHZRDYJA880<br/>
-  You can take the test here: http://workersandbox.mturk.com/mturk/requestqualification?qualificationId=G2KZ1182ZRHZRDYJA880<br/>
+  You can take the test here: https://workersandbox.mturk.com/mturk/requestqualification?qualificationId=G2KZ1182ZRHZRDYJA880<br/>
   </span>
   </li>
 </ol>
 
-Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="http://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
+Your Qualification has been successfully created.  You can visit the Amazon Mechanical Turk <a href="https://workersandbox.mturk.com" target="_blank">Developer Sandbox worker</a> site with the URL provided in the output to view the Qualification.<p/>
 
 Since this Qualification has a test as well as an answer key, you will be able to complete the Qualification test and be immediately notified of your results.
 
@@ -1430,7 +1430,7 @@ The following table describes the key files used by the Command Line Tools.<p/>
           <li><strong>assignmentduration</strong> parameter defines how much time a worker has to complete the assignment.</li>
           <li><strong>hitlifetime</strong> parameter defines how long the HIT will be active before it expires.</li>
           <li><strong>autoapprovaldelay</strong> parameter defines how much time will pass before a submitted assignment is automatically approved.</li>
-          <li>To specify <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QualificationRequirementDataStructureArticle.html" target="_blank">Qualification Requirements</a> for your HIT, you can use the following convention:</br>
+          <li>To specify <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QualificationRequirementDataStructureArticle.html" target="_blank">Qualification Requirements</a> for your HIT, you can use the following convention:</br>
           <ul>
             <li><strong>qualification.1</strong> parameter defines the Qualification Type ID.</li>
             <li><strong>qualification.comparator.1</strong> parameter defines the comparator to use.</li>
@@ -1438,7 +1438,7 @@ The following table describes the key files used by the Command Line Tools.<p/>
             <li><strong>qualification.locale.1</strong> parameter defines the locale value to use.</li>
             <li><strong>qualification.private.1</strong> parameter defines if the HIT can be previewed by workers who not meet the qualification requirements.</li>
             <li>To specify more Qualification requirements, simply increment the .1 suffix to .2 up to .X.</li>
-          <li>For more details on the parameters of a HIT, refer to the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_CreateHITOperation.html" target="_blank">Developer Guide</a>.</li>
+          <li>For more details on the parameters of a HIT, refer to the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_CreateHITOperation.html" target="_blank">Developer Guide</a>.</li>
         </ul>
       </td>
     </tr>
@@ -1447,8 +1447,8 @@ The following table describes the key files used by the Command Line Tools.<p/>
       <td valign="top">[your filename].question</td>
       <td valign="top">
         <ul>
-          <li>A text file containing the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> XML that defines your HIT.</li>
-          <li>Your <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> can be made into a template and merged with values from your Input File by using the following syntax "${the field name}".  Apache Velocity is used to perform the merge.  Refer to <a href="http://velocity.apache.org/" target="_blank">http://velocity.apache.org</a> for advanced merge syntax.</li>
+          <li>A text file containing the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> XML that defines your HIT.</li>
+          <li>Your <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> can be made into a template and merged with values from your Input File by using the following syntax "${the field name}".  Apache Velocity is used to perform the merge.  Refer to <a href="http://velocity.apache.org/" target="_blank">http://velocity.apache.org</a> for advanced merge syntax.</li>
         </ul>
       </td>
     </tr>
@@ -1481,7 +1481,7 @@ The following table describes the key files used by the Command Line Tools.<p/>
         <ul>
           <li>A tab delimited text file containing the results of submitted HITs that are retrieved from Amazon Mechanical Turk.</li>
           <li>Contains all data related to the HIT and assignments submitted.</li>
-          <li>The last column contains a tab delimited set of question/answer pairs for each question field defined in your <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a>.</li>
+          <li>The last column contains a tab delimited set of question/answer pairs for each question field defined in your <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a>.</li>
         </ul>
       </td>
     </tr>
@@ -1506,7 +1506,7 @@ The following table describes the key files used by the Command Line Tools.<p/>
       <td valign="top">[your qualification file name].question</td>
       <td valign="top">
         <ul>
-          <li>A text file containing the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> XML that defines your Qualification test.</li>
+          <li>A text file containing the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_QuestionFormDataStructureArticle.html"  target="_blank">QuestionForm</a> XML that defines your Qualification test.</li>
           <li>This file is similar to the HIT Question File except that templating is not applicable.</li>
         </ul>
       </td>
@@ -1516,7 +1516,7 @@ The following table describes the key files used by the Command Line Tools.<p/>
       <td valign="top">[your qualification file name].answer</td>
       <td valign="top">
         <ul>
-          <li>A text file containing the <a href="http://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_AnswerKeyDataStructureArticle.html"  target="_blank">AnswerKey</a> XML that defines the answer key for your Qualification test that will be automatically scored by the Amazon Mechanical Turk system.</li>
+          <li>A text file containing the <a href="https://docs.amazonwebservices.com/AWSMechanicalTurkRequester/2007-06-21/ApiReference_AnswerKeyDataStructureArticle.html"  target="_blank">AnswerKey</a> XML that defines the answer key for your Qualification test that will be automatically scored by the Amazon Mechanical Turk system.</li>
         </ul>
       </td>
     </tr>
@@ -1830,7 +1830,7 @@ To run the getResults operation:
  When you run GetResults multiple times in the same directory, the latest .results file will override the .results file from the previous GetResults run.
 </p>
 <p>
-  Each HIT in this file has a link to your <strong>Manage HITs</strong> page in the <a href="http://requester.mturk.com" target="_blank">Requester web site</a>.</li>. Use these links if you want to manually reject assignments, pay bonuses, or send emails to Workers.
+  Each HIT in this file has a link to your <strong>Manage HITs</strong> page in the <a href="https://requester.mturk.com" target="_blank">Requester web site</a>.</li>. Use these links if you want to manually reject assignments, pay bonuses, or send emails to Workers.
 </p>
 <p>
  <strong>Note:</strong> When a HIT has multiple questions for each assignment, each answer is returned in its own column, rather than the old format of a comma separate list of answers unless you specify the -namevaluepair parameter.
@@ -3167,7 +3167,7 @@ Portability across SDKs on different programming platforms is a desired goal for
 
 <a name="comments"/>
 <h2>Comments, Questions or Feedback</h2>
-If you have any comments, questions or feedback on the Amazon Mechanical Turk SDK for Java or the service in general, please visit the <a href="http://developer.amazonwebservices.com/connect/forum.jspa?forumID=11" target="_blank">Amazon Mechanical Turk discussion forums</a>.
+If you have any comments, questions or feedback on the Amazon Mechanical Turk SDK for Java or the service in general, please visit the <a href="https://developer.amazonwebservices.com/connect/forum.jspa?forumID=11" target="_blank">Amazon Mechanical Turk discussion forums</a>.
 Alternatively, you can visit the open source project <a href="http://sourceforge.net/projects/mturkclt" target="_blank">home page</a>.
 <p/><a href="#tableofcontents">Return to Table of Contents</a>
 

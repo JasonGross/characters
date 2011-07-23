@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<AnswerKey xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd">
+<AnswerKey xmlns="https://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/AnswerKey.xsd">
 
 	#set( $urls = [ "http://news.bbc.co.uk/", "http://www.hustler.com", "http://www.myspace.com/", "http://www.hasbro.com", "http://www.nbc.com", "http://untamedcinema.com", "http://www.vivid.com/", "http://www.hiphopdx.com/", "http://www.maxim.com/", "http://www.youporn.com/" ] )
 	#set( $answer = [         "no",											 "yes", 										"no",											"no", 										"no", 								"no", 												"yes", 										"no", 											"no", 										"yes" ] ) 

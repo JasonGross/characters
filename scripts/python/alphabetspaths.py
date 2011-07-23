@@ -17,7 +17,7 @@ except SyntaxError:
 import objectstorage
 from library import maplist
 
-_tasks = ['recognition', 'categorization', 'recognition-rt', 'classification', 'similarity']
+_tasks = ['recognition', 'categorization', 'recognition-rt', 'classification', 'similarity', 'duplication', 'completion']
 
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+<QuestionForm xmlns="https://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
   <Overview>
     <FormattedContent><![CDATA[
       <h1 align="center">Select the best image</h1>
@@ -14,7 +14,7 @@
           <li>The image should have good color balance.  (i.e. not tinted)</li>
           <li>The image should be properly exposed.  (i.e. not overexposed/underexposed)</li>
           <li>The image should be composed well.  (i.e. not skewed)</li>
-          <li>Please refer to the following <a href="http://s3.amazonaws.com/mturk/samples/bestimage/best-image-instructions.html" target="_blank" >link</a> for visual examples of the above criteria.</li>
+          <li>Please refer to the following <a href="https://s3.amazonaws.com/mturk/samples/bestimage/best-image-instructions.html" target="_blank" >link</a> for visual examples of the above criteria.</li>
         </ul>
       <h2>Task</h2>
     ]]></FormattedContent>
@@ -38,7 +38,7 @@
                 <Type>image</Type>
                 <SubType>jpg</SubType>
               </MimeType>
-              <DataURL>http://s3.amazonaws.com/mturk/samples/bestimage/${image1}</DataURL>
+              <DataURL>https://s3.amazonaws.com/mturk/samples/bestimage/${image1}</DataURL>
               <AltText>${image1}</AltText>
             </Binary>
           </Selection>
@@ -49,7 +49,7 @@
                 <Type>image</Type>
                 <SubType>jpg</SubType>
               </MimeType>
-              <DataURL>http://s3.amazonaws.com/mturk/samples/bestimage/${image2}</DataURL>
+              <DataURL>https://s3.amazonaws.com/mturk/samples/bestimage/${image2}</DataURL>
               <AltText>${image2}</AltText>
             </Binary>
           </Selection>
@@ -60,7 +60,7 @@
                 <Type>image</Type>
                 <SubType>jpg</SubType>
               </MimeType>
-              <DataURL>http://s3.amazonaws.com/mturk/samples/bestimage/${image3}</DataURL>
+              <DataURL>https://s3.amazonaws.com/mturk/samples/bestimage/${image3}</DataURL>
               <AltText>${image3}</AltText>
             </Binary>
           </Selection>

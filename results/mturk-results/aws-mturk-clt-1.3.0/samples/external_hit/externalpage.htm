@@ -27,7 +27,7 @@ function decode(strToDecode)
 
 </script>
 <body>
-<form id="mturk_form" method="POST" action="http://www.mturk.com/mturk/externalSubmit">
+<form id="mturk_form" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
 <input type="hidden" id="assignmentId" name="assignmentId" value="">
 <table border="0" height="100%" width="100%">
 <tr><td>
@@ -62,7 +62,7 @@ function decode(strToDecode)
     } else {
         var form = document.getElementById('mturk_form');
         if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
-            form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
+            form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
         }
     }
 

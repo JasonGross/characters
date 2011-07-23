@@ -1,18 +1,18 @@
 ﻿var DrawingCanvas;
 (function (defaultLineWidth, defaultLineCap, $, jQuery, undefined) {
-  DrawingCanvas = function (name, width, height, canvasLinewidth, canvasLineCap, canvas, onRedraw, drawAtPoint) {
+  DrawingCanvas = function DrawingCanvas(name, width, height, canvasLineWidth, canvasLineCap, canvas, onRedraw, drawAtPoint, interpolate) {
     if (canvasLineWidth === undefined) canvasLineWidth = defaultLineWidth;
     if (canvasLineCap === undefined) canvasLineCap = defaultLineCap;
     var self = this;
     this.name = name;
-    this.tag = tag;
+    width = parseInt(width); height = parseInt(height);
     if (canvas === undefined)
       canvas = "<canvas>Your browser must support the &lt;canvas&gt; element in order to use this site.</canvas>";
-    this.canvas = $(canvas)
+    this.canvas = canvas = $(canvas)
       .attr('id', name)
       .attr('unselectable', 'on')
-      .width(width)
-      .height(height);
+      .attr('width', width)
+      .attr('height', height);
     var clearLink = $('<a/>')
       .attr('id', 'clear')
       .attr('href', '#')
@@ -21,142 +21,194 @@
     var undoLink = $('<a/>')
       .attr('id', 'undo')
       .attr('href', '#')
-      .append('undo')
+//      .append('undo')
       .click(function () { self.undo() });
     var redoLink = $('<a/>')
       .attr('id', 'redo')
       .attr('href', '#')
-      .append('redo')
+//      .append('redo')
       .click(function () { self.redo() });
-    var _image = $('<input/>')
-      .attr('type', 'hidden')
-      .attr('name', name + '_image')
-      .attr('id', name + '_image');
-    var _stroke = $('<input/>')
-      .attr('type', 'hidden')
-      .attr('name', name + '_stroke')
-      .attr('id', name + '_stroke');
     this.DOMElement = $('<div/>')
-      .append(_image)
-      .append(_stroke)
       .append($('<div/>')
                 .attr('id', name + '_div')
                 .append(this.canvas))
       .append($('<div/>')
                 .attr('id', 'canvascontrols')
-                .append(_clear)
-                .append(_undo)
-                .append(_redo));
+                .append(clearLink)
+                .append(undoLink)
+                .append(redoLink));
 
-    var ctx = canvas.get(0).getContext('2d');
+    (function events() {
+      var events = {'dirty':[], 'dirtyImage':[]};
+      jQuery.each(events, function (key) {
+          self[key] = function (handler) {
+            if (handler === undefined) {
+              var len = events[key].length;
+              for (var i = 0; i < len; i++) {
+                events[key][i]();
+              }
+            } else {
+              events[key].push(handler);
+            }
+          };
+          self[key].name = key;
+        });
+    })();
+    self.dirtyImage(self.dirty);
 
-    var drawStart, drawStroke, drawEnd;
+    var ctx = canvas[0].getContext('2d');
 
-    (function (ctx) {
+    var drawStroke, drawEnd, clearDrawing;
+    (function drawing(ctx) {
       var isDrawing = false;
+      var lastPt = undefined;
 
-      drawStart = function (x, y) {
-        ctx.fillRect(x-ctx.lineWidth/2, y-ctx.lineWidth/2, ctx.lineWidth, ctx.lineWidth);
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        isDrawing = true;
-      };
-
-      drawStroke = function (x, y, force) {
-        if (isDrawing) {
-          ctx.lineTo(x, y);
-          ctx.stroke();
-        } else if (force) {
-          drawStart(x, y);
+      drawStroke = function drawStroke(x, y, force) {
+        if (drawAtPoint === undefined || drawAtPoint(x, y) || force) {
+          if (isDrawing) {
+            ctx.lineTo(x, y);
+            ctx.stroke();
+          } else {
+            ctx.fillRect(x-ctx.lineWidth/2, y-ctx.lineWidth/2, ctx.lineWidth, ctx.lineWidth);
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            isDrawing = true;
+          }
+          lastPt = {'x':x, 'y':y};
+        } else if (isDrawing) {
+          isDrawing = false;
+          if (lastPt !== undefined && interpolate) {
+            var pt = interpolate(lastPt.x, lastPt.y, x, y);
+            if (pt !== undefined) {
+              ctx.lineTo(pt.x, pt.y);
+              ctx.stroke();
+            }
+          }
         }
+        lastPt = {'x': x, 'y': y};
         return isDrawing;
       };
 
-      drawEnd = function () {
+      drawEnd = function drawEnd() {
         isDrawing = false;
+        lastPt = undefined;
       };
+
+      clearDrawing = function clearDrawing(lineWidth, lineCap) {
+        if (lineWidth === undefined) lineWidth = canvasLineWidth;
+        if (lineCap === undefined) lineCap = canvasLineCap;
+        
+        ctx.lineWidth = lineWidth;
+        ctx.lineCap = lineCap;
+
+        ctx.strokeStyle = "rgb(0, 0, 0)";
+        ctx.clearRect(0, 0, canvas.width(), canvas.height());
+        if (onRedraw !== undefined) onRedraw(ctx);
+      };
+
+      self.paintWithStroke = function (strokes, lineWidth, lineCap) {
+        clearDrawing(lineWidth, lineCap);
+
+        for (var stroke_i = 0; stroke_i < strokes.length; stroke_i++) {
+          for (var point_i = 0; point_i < strokes[stroke_i].length; point_i++) {
+            var point = strokes[stroke_i][point_i];
+            drawStroke(point.x, point.y);
+          }
+          drawEnd();
+        }
+      };
+
+      self.dirtyImage(function () { self.paintWithStroke(self.getStrokes()); });
     })(ctx);
 
 
-    this.paintWithStroke = function (strokes, lineWidth, lineCap) {
-      if (lineWidth === undefined) lineWidth = canvasLineWidth;
-      if (lineCap === undefined) lineCap = canvasLineCap;
+    var pushStroke;
+    (function makeCanvasMemoryful() {
+      var strokes = [];
+      var future_strokes = [];
 
-      ctx.lineWidth = lineWidth;
-      ctx.lineCap = lineCap;
-
-      ctx.strokeStyle = "rgb(0, 0, 0)";
-      ctx.clearRect(0, 0, canvas.width(), canvas.height());
-      if (onRedraw !== undefined) onRedraw(ctx);
-
-      for (var stroke_i = 0; stroke_i < strokes.length; stroke_i++) {
-        var x = strokes[stroke_i][0].x; var y = strokes[stroke_i][0].y;
-
-        if (drawAtPoint === undefined || drawAtPoint(x, y))
-          drawStart(x, y);
-
-        for (point_i = 0; point_i < strokes[stroke_i].length; point_i++) {
-          point = strokes[stroke_i][point_i];
-          x = point.x; y = point.y;
-          if (drawAtPoint === undefined || drawAtPoint(x, y)) {
-            drawStroke(x, y, true);
-          } else {
-            drawEnd();
-          }
-        }
+      function styleDisableLink(link, name) {
+        link
+          .css({
+               'color':'gray',
+               'background':'url(../images/'+name+'-gray.png) no-repeat 2px 1px'
+               });
       }
-    };
+      function styleEnableLink(link, name) {
+        link
+          .css({
+               'color':'blue',
+               'background':'url(../images/'+name+'.png) no-repeat 2px 1px'
+               });
+      }
 
-    var strokes = {};
+      function disableUndo() { styleDisableLink(undoLink, 'undo'); }
+      function enableUndo() { styleEnableLink(undoLink, 'undo'); }
+      function disableRedo() { styleDisableLink(redoLink, 'redo'); }
+      function enableRedo() { styleEnableLink(redoLink, 'redo'); }
 
-    function makeCanvasMemoryful(strokes_name) {
-      if (strokes_name === undefined) strokes_name = 'strokes';
-      future_strokes_name = 'future_' + strokes_name;
-      strokes[future_strokes_name] = [];
+      function dirtyDoButtons() {
+        if (self.canUndo())
+          enableUndo();
+        else
+          disableUndo();
+        if (self.canRedo())
+          enableRedo();
+        else
+          disableRedo();
+      }
+      self.dirty(dirtyDoButtons);
 
-      self.canUndo = function () { return strokes[strokes_name].length > 0; };
-      self.canRedo = function () { return strokes[future_strokes_name].length > 0; };
+      self.canUndo = function canUndo() { return strokes.length > 0; };
+      self.canRedo = function canRedo() { return future_strokes.length > 0; };      
 
-      self.undo = function () {
+      self.undo = function undo() {
         if (!self.canUndo()) throw 'Error: Attempt to undo canvas ' + canvas + ' failed; no state to undo.';
-        strokes[future_strokes_name].push(strokes[strokes_name].pop());
-        self.paintWithStroke(strokes[strokes_name]);
-        if (strokes[strokes_name].length == 0 && disableUndo !== undefined) disableUndo();
-        if (enableRedo !== undefined) enableRedo();
-      };
+        future_strokes.push(strokes.pop());
+        self.dirtyImage();
+      }
 
-      self.redo = function () {
+      self.redo = function redo() {
         if (!self.canRedo()) throw 'Error: Attempt to redo canvas ' + canvas + ' failed; no state to redo.';
-        strokes[strokes_name].push(strokes[future_strokes_name].pop());
-        self.paintWithStroke(strokes[strokes_name]);
-        if (strokes[future_strokes_name].length == 0 && disableRedo !== undefined) disableRedo();
-        if (enableUndo !== undefined) enableUndo();
+        strokes.push(future_strokes.pop());
+        self.dirtyImage();
       };
 
-      self.clearFuture = function () {
-        strokes[future_strokes_name] = [];
-        if (disableRedo !== undefined) disableRedo();
+      self.clearFuture = function clearFuture() {
+        future_strokes = [];
+        self.dirty();
       };
 
-      self.clearPast = function () {
-        strokes[strokes_name] = [];
-        if (disableUndo !== undefined) disableUndo();
+      self.clearPast = function clearPast() {
+        strokes = [];
+        self.dirty();
       };
 
-      self.clearState = function () {
+      self.clearState = function clearState() {
         self.clearFuture();
         self.clearPast();
       };
-    }
+
+      self.getStrokes = function getStrokes() {
+        return strokes.slice(0);
+      };
+
+      pushStroke = function pushStroke(stroke) {
+        strokes.push(stroke);
+        self.dirty();
+      };
+    })();
 
 
+
+      
 
     //===================================================================
     //Canvas Drawing - From http://detexify.kirelabs.org/js/canvassify.js
     // make a canvas drawable and give the stroke to some function after each stroke
     // better canvas.drawable({start: startcallback, stop: stopcallback, stroke: strokecallback})
     //function makeDrawable(canvas, lineWidth, undoLink, redoLink) {
-    (function (ctx, canvasLineWidth, canvasLineCap, strokesDict, strokesKey) {
+    (function (ctx, canvasLineWidth, canvasLineCap) {
       // Initilize canvas context values
       ctx.lineWidth = canvasLineWidth;
       ctx.lineCap = canvasLineCap;
@@ -164,135 +216,66 @@
       var is_stroking = false;
       var has_drawn = false;
       var current_stroke;
-      strokesDict[strokesKey] = [];
       function point(x, y) {
         return {"x":x, "y":y, "t": (new Date()).getTime()};
       }
 
-      function start(evt) {
+      var start = function start(evt) {
         is_stroking = true;
         var coords = getMouseCoordsWithinTarget(evt);
-        has_drawn = (drawAtPoint === undefined || drawAtPoint(coords.x, coords.y));
-        if (has_drawn)
-          drawStart(coords.x, coords.y);
+        has_drawn = drawStroke(coords.x, coords.y);
         current_stroke = [point(coords.x, coords.y)];
         // initialize new stroke
-      }
+      };
 
-      function stroke(evt) {
+      var stroke = function stroke(evt) {
         if (is_stroking) {
           var coords = getMouseCoordsWithinTarget(evt);
-          if (drawAtPoint === undefined || drawAtPoint(coords.x, coords.y))
-            has_drawn = drawStroke(coords.x, coords.y) || has_drawn; // drawStroke returns true if we actually draw this stroke.  reverse the order to make it so drawStroke is always called.
+          has_drawn = drawStroke(coords.x, coords.y) || has_drawn; // drawStroke returns true if we actually draw this stroke.  reverse the order to make it so drawStroke is always called.
           current_stroke.push(point(coords.x, coords.y));
         }
-      }
+      };
 
-      function stop(evt) {
+      var stop = function stop(evt) {
         drawEnd();
         if (is_stroking && has_drawn) {
-          strokesDict[strokesKey].push(current_stroke);
+          pushStroke(current_stroke);
           self.clearFuture();
-          if (enableUndo !== undefined) enableUndo();
         }
         is_stroking = false;
-      }
-    })(ctx, canvasLineWidth, canvasLineCap, strokes, 'strokes');
+      };
     
-    // canvas addons
-    makeCanvasMemoryful('strokes');
-
-    self.clear = function() {
-      self.clearState();
+      canvas
+        .mousedown(start)
+        .mousemove(stroke)
+        .mouseup(stop)
+        .mouseout(stop);
+    })(ctx, canvasLineWidth, canvasLineCap);
+    
+    self.clear = function clear(doRedraw) {
+      self.clearState(doRedraw);
       ctx.strokeStyle = "rgb(0, 0, 0)";
       ctx.clearRect(0, 0, canvas.width(), canvas.height());
+      if (doRedraw || doRedraw === undefined)
+        onRedraw(ctx);
     }
-    self.clear();
-    canvas
-      .mousedown(start)
-      .mousemove(stroke)
-      .mouseup(stop)
-      .mouseout(stop);
+    self.clear(false);
 
-    function styleDisableLink(link, name) {
-      link
-        .css({
-             'color':'gray',
-             'background':'url(../images/'+name+'-gray.png) no-repeat 2px 1px'
-             });
-    }
-    function styleEnableLink(link, name) {
-      link
-        .css({
-             'color':'blue',
-             'background':'url(../images/'+name+'.png) no-repeat 2px 1px'
-             });
-    }
-
-    var self_undo = self.undo;
-    var self_redo = self.redo;
-    
-    if (undoLink !== undefined) {
-      disableUndo = function () {
-        styleDisableLink(undoLink, 'undo');
-        self.undo = function () { return false; };
-      };
-      enableUndo = function () {
-        styleEnableLink(undoLink, 'undo');
-        self.undo = self_undo;
-      };
-    }
-
-    if (redoLink !== undefined) {
-      disableRedo = function () {
-        styleDisableLink(redoLink, 'redo');
-        self.redo = function () { return false; };
-      };
-      enableRedo = function () {
-        styleEnableLink(redoLink, 'redo');
-        self.redo = self_redo;
-      };
-    }
     //===================================================================
 
 
-    //===================================================================
-    //From http://skuld.bmsc.washington.edu/~merritt/gnuplot/canvas_demos/
-    function getMouseCoordsWithinTarget(event) {
-      var coords = {x: 0, y: 0};
+    this.getImage = function getImage() {
+      return canvas[0].toDataURL();
+    };
 
-      if (!event) { // then we're in a non-DOM (probably IE) browser
-        event = window.event;
-        if (event) {
-          coords.x = event.offsetX;
-          coords.y = event.offsetY;
-        }
-      } else {		// we assume DOM modeled javascript
-        var Element = event.target;
-        var CalculatedTotalOffsetLeft = 0;
-        var CalculatedTotalOffsetTop = 0;
-
-        while (Element.offsetParent) {
-          CalculatedTotalOffsetLeft += Element.offsetLeft;
-          CalculatedTotalOffsetTop += Element.offsetTop;
-          Element = Element.offsetParent;
-        }
-
-        coords.x = event.pageX - CalculatedTotalOffsetLeft;
-        coords.y = event.pageY - CalculatedTotalOffsetTop;
-      }
-
-      return coords;
-    }
-    //===================================================================
-
-    self.strokesToString = function (extraDelimiter) {
+    this.strokesToString = function (extraDelimiter) {
       if (extraDelimiter === undefined) extraDelimiter = '';
       var cur_stroke;
       var rtn = '[';
-      for (var j = 0; j < strokes.strokes.length; j++) {
+      var strokes = self.getStrokes();
+      for (var j = 0; j < strokes.length; j++) {
         rtn += '[';
-        cur_stroke = strokes.strokes[j];
+        cur_stroke = strokes[j];
         for (var k = 0; k < cur_stroke.length; k++) {
           rtn += "{'x':" + cur_stroke[k].x + ",'y':" + cur_stroke[k].y + ",'t':" + cur_stroke[k].t + '}'
             rtn += (k + 1 == cur_stroke.length ? '' : ','+extraDelimiter);
@@ -302,10 +285,13 @@
       return rtn + ']';
     };
 
+    this.height = function height() { return self.canvas.height(); };
+    this.width = function width() { return self.canvas.width(); };
+
     return this;
   };
 
-})(getLineWidth(), getLineCap(), jQuery, jQuery);
+})(5, 'butt', jQuery, jQuery);
 
 
 

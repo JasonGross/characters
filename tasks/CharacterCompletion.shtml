@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="en-us" http-equiv="Content-Language" />
+  <meta content="text/html; charset=us-ascii" http-equiv="Content-Type" />
+  <!--script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script-->
+  <!--style type="text/css">@import 'fauxconsole.css';</style-->
+  <!--script src="../scripts/javascript/fauxconsole.js" type="text/javascript"></script-->
+  <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script-->
+  <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
+  <script src="../scripts/javascript/library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/patches.js" type="text/javascript"></script>
+  <!--[if lt IE 9]><script src="../scripts/javascript/ie_patches.js" type="text/javascript"></script><![endif]-->
+  <!--[if lt IE 8]><script src="../scripts/javascript/ie7-_patches.js" type="text/javascript"></script><![endif]-->
+  <script src="../scripts/javascript/fix_radios.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/browser.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/loading.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/turk_library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/form_setup.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/refcounter.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/autosuggest.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/autosuggest-languages.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/generic_data_loader.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/canvas_library.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/completion_canvas.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/completion_task_maker.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/completion_data_loader.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/escape_feedback.js" type="text/javascript"></script>
+  <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/autosuggest.css" rel="stylesheet" type="text/css" />
+  <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
+  <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
+  <link href="../css/canvas.css" rel="stylesheet" type="text/css" />
+  <link href="../css/completion.css" rel="stylesheet" type="text/css" />
+
+  <title>Character Completion</title>
+</head>
+
+<body>
+  <div id="pre-page-checks" class="pre-page-checks">
+    <!--#include virtual="../html/errors/noscript.html" -->
+    <!--#include virtual="../html/errors/canvas.html" -->
+    <!--#include virtual="../html/errors/seen-HIT-before.html" -->
+    <!--#include virtual="../html/errors/loading.html" -->
+    <!--#include virtual="../html/errors/turk-preview.html" -->
+  </div>
+  <div class="pre-task">
+    <div id="instructions">
+      <h3>Instructions</h3>
+      <p>
+        Please close any other tabs and any other windows you have open; your drawings will be smoother if
+        your computer has fewer things to worry about.
+      </p>
+      <p>
+        This HIT consists of <span class="task-count">25</span> subtasks, and
+        you must complete every subtask to submit the form.  I expect this HIT
+        to take you approximately <span class="expected-duration">25</span>
+        minutes.
+      </p>
+      <p>
+        This task asks you to complete the second half of a character that
+        you've likely never seen before.
+      </p>
+      <p>Please note:</p>
+      <ul>
+        <li>
+          You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
+        </li>
+      </ul>
+    </div>
+    <!--#include virtual="../html/disclaimer.html" -->
+    <!--#include virtual="../html/learn-more.html" -->
+  
+    <div id="accept_task-div">
+      <form id="accept_task-form">
+        <p>
+          To complete this task, you must read the instructions, the disclaimer, and click "Accept" below.
+          You will not be able to click "Accept" until the necesary data has been loaded.
+        </p>
+        <div class="loading-progress" id="loading_progess-div">
+          <div class="loading-message" id="loading_message"></div>
+          <div id="loading_progress"></div>
+        </div>
+        <input id="accept_task-button" type="submit" value="Accept" disabled="disabled" />
+      </form>
+    </div>
+  </div>
+
+  <div class="task-break" id="task_break">
+  </div>
+
+  <div id="task_display">
+    <div id="all-tasks" class="tasks">
+      <fieldset id="task">
+        <legend>Task <span class="task-number">1</span> of <span class="task-count">200</span></legend>
+        <p>
+          Although this task is not timed, please respond in a timely manner.
+          Draw what you think the other half of this character might look like.
+          To continue, you must both draw something and answer the question beneath your drawing.
+        </p>
+        <div class="task-holder" id="canvas-holder">
+        </div>
+        <div class="task-holder">
+          <fieldset class="inline task-holder option-group">
+            <legend>Do you think that you've seen this character before?</legend>
+            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="never" />
+              I have never seen a character like this.</label><br />
+            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="probably" />
+              I'm not sure, but I think I recognized the character.</label><br />
+            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="definitely" />
+              I recognized the character, and drew the other half from memory.</label>
+          </fieldset>
+        </div>
+        <div class="task-holder character-question">
+          <button id="next-task-button" class="character-question" disabled="disabled" type="button">continue to the next task</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <br class="tasks" />
+
+  </div>
+
+  <div id="main_form-div">
+    <form id="main_form"
+          action="../scripts/python/record-completion-submission.py"
+          method="post">
+      <div id="hidden-inputs">
+        <script type="text/javascript">
+          var ip = '<!--#echo var="REMOTE_ADDR"-->';
+        </script>
+        <!--#include virtual="../html/extra-inputs.html" -->
+      </div>
+
+      <div id="task-results"></div>
+
+      <div class="post-task">
+        <fieldset>
+          <legend>Extra Questions</legend>
+          <fieldset class="inline" style="width:30%; text-align:left">
+            <legend>What is your native language?</legend>
+            <p>If you have more than one response, please separate your responses by commas (,).</p>
+            <label><input type="text" name="native-language" id="native-language" style="width:100%"/></label>
+            <script type="text/javascript"> new autosuggest("native-language", language_array); </script>
+          </fieldset>
+          <fieldset class="inline option-group">
+            <legend>Input Device</legend>
+            <label><input type="radio" name="input-device" id="input-device" value="mouse" /> Mouse</label><br />
+            <label><input type="radio" name="input-device" id="input-device" value="touchpad" /> Touchpad</label><br />
+            <label><input type="radio" name="input-device" id="input-device" value="tablet-pen" /> Tablet Pen</label><br />
+            <label><input type="radio" name="input-device" id="input-device" value="other" /> Other:
+              <input type="text" size="10" name="other-input-text" />
+            </label>
+          </fieldset>
+          <br />
+          <div class="inline" style="text-align:left">
+            <label>
+              Please enter any feedback you have in the text box below. <br />
+              <textarea rows="10" cols="30" id="feedback" name="feedback"></textarea>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      
+      
+
+      <p><input id="submitButton" class="post-task"
+               type="submit"
+               name="submit"
+               value="Submit" /></p>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    $('.show-if-timed').remove();
+    $('.show-if-untimed').show();
+    //]]>
+  </script>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    setUpForm('main_form');
+    $('.post-task').hide()
+    $('.tasks').hide();
+
+    if (!isTurkPreview())
+      $('.show-if-preview-mode').remove();
+    if (!isTurk())
+      $('.show-if-turk').remove();
+    else
+      $('.show-if-not-turk').remove();
+    //]]>
+  </script>
+</body>
+</html>

@@ -23,7 +23,7 @@ def average(seq):
 
 def paint_image_with_strokes_cairo(strokes, line_width=5, line_cap='round', image=None, size=None, line_join='miter',
                                    scale_factor=1, offset=None, tuple_to_dict=(lambda t: {'x':t[0], 'y':t[1]}),
-                                   smooth=2, name=None):
+                                   smooth=2, name=None, ctx=None, clear=True):
 ##    import cPickle
 ##    print(list(map(repr, [strokes, line_width, line_cap, image, size, line_join, scale_factor, offset])))
 ##    cPickle.dump('paint_image_with_strokes_cairo' + repr((strokes, line_width, line_cap, image, size, line_join, scale_factor, offset)),
@@ -74,14 +74,16 @@ def paint_image_with_strokes_cairo(strokes, line_width=5, line_cap='round', imag
     
     if not image:
         image = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
-    ctx = cairo.Context(image)
+    if not ctx:
+        ctx = cairo.Context(image)
 
     ctx.set_antialias(cairo.ANTIALIAS_NONE)
 
-    # Make the background white
-    ctx.set_source_rgb(1.0, 1.0, 1.0)
-    ctx.rectangle(0, 0, width, height)
-    ctx.fill()
+    if clear:
+        # Make the background white
+        ctx.set_source_rgb(1.0, 1.0, 1.0)
+        ctx.rectangle(0, 0, width, height)
+        ctx.fill()
 
     ctx.set_line_cap(_LINE_CAPS[line_cap])
     ctx.set_line_join(_LINE_JOINS[line_join])

@@ -130,16 +130,20 @@
           and
           <div id="image-holder-1" class="image-box image-holder"></div>
           are
-          <select id="similarity-input" class="character-question" autofocus>
-            <option value="">(pick a similarity)</option>
-            <option value="1">extremely different</option>
-            <option value="2">moderately different</option>
-            <option value="3">somewhat different</option>
-            <option value="4">neither similar nor different</option>
-            <option value="5">somewhat similar</option>
-            <option value="6">moderately similar</option>
-            <option value="7">extremely similar</option>
-          </select>
+          <div id="input-holder" class="inline">
+            <fieldset id="task-input">
+              <legend>Pick a Similarity</legend>
+              <div style="text-align:left">
+                <p><label>7 <input type="radio" name="similarity-input" class="similarity-input" value="7" /> extremely similar</label></p>
+                <p><label>6 <input type="radio" name="similarity-input" class="similarity-input" value="6" /></label></p>
+                <p><label>5 <input type="radio" name="similarity-input" class="similarity-input" value="5" /></label></p>
+                <p><label>4 <input type="radio" name="similarity-input" class="similarity-input" value="4" /></label></p>
+                <p><label>3 <input type="radio" name="similarity-input" class="similarity-input" value="3" /></label></p>
+                <p><label>2 <input type="radio" name="similarity-input" class="similarity-input" value="2" /></label></p>
+                <p><label>1 <input type="radio" name="similarity-input" class="similarity-input" value="1" /> extremely different</label></p>
+              </div>
+            </fieldset>
+          </div>
         </div>
         <div class="task-holder character-question">
           <button id="next-task-button" class="character-question" disabled="disabled" type="button">continue to the next task</button>

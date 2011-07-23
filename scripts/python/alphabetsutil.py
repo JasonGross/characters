@@ -5,6 +5,7 @@ from alphabetspaths import *
 import math
 import os, sys
 import base64
+import urllib
 try:
     from htmlcanvas import *
 except ImportError:
@@ -14,6 +15,12 @@ def png_to_uri(name):
     with open(name, 'rb') as f:
         png = f.read()
     return 'data:image/png;base64,' + base64.b64encode(png)
+
+def uri_to_png(uri, filename=None):
+    if filename is not None:
+        urllib.urlretrieve(uri, filename)
+    else:
+        return urllib.urlopen(uri).read()
 
 def compress_images(folder=None, image_list=None, image_magick=True, big_size=2000, do_color_change=True):
     submission_log_path = SUBMISSION_LOG_PATH

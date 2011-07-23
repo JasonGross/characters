@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+<QuestionForm xmlns="https://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
     <Overview>
         <Title>Is this an adult porn site?</Title>
 

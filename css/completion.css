@@ -1,0 +1,17 @@
+.inline {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.character-question {
+/*  font-size: 16pt;*/
+}
+
+.task-holder {
+  text-align: center;
+}
+
+.option-group {
+  text-align: left;
+}

@@ -31,7 +31,7 @@
   <script src="../scripts/javascript/classification_resize_images.js" type="text/javascript"></script>
   <script src="../scripts/javascript/classification_task_maker.js" type="text/javascript"></script>
   <script src="../scripts/javascript/classification_data_loader.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/classification_validate_form.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/escape_feedback.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->

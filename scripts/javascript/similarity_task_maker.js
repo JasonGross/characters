@@ -15,7 +15,7 @@ var SimilarityTasks;
 
     var imageHolders = [];
     var $imageHolders = $();
-    var similarityInput;
+    var $similarityInputs;
     var $continueButton;
 
     var sameCount = 0, differentCount = 0, sameSum = 0, differentSum = 0;
@@ -80,21 +80,22 @@ var SimilarityTasks;
         });
 
       $continueButton.attr('disabled', 'disabled');
-      $similarityInput.attr('value', '').attr('disabled', 'disabled');
+      setCheckedValue($similarityInputs, '');
+      $similarityInputs.attr('disabled', 'disabled');
     };
 
     this.doTask = function doTask(task) {
       jQuery.each(task['images'], function (index, image) {
           imageHolders[index].append(image.show());
         });
-      $similarityInput.attr('disabled', '');
+      $similarityInputs.attr('disabled', '');
     };
 
     function selectAnswer(answer, changeFocus) {
       if (changeFocus === undefined) changeFocus = true;
       if (answer === undefined) answer = '';
-      if ($similarityInput.attr('value') != answer)
-        $similarityInput.attr('value', answer);
+      if (getCheckedValue($similarityInputs) != answer)
+        setCheckedValue($similarityInputs, answer);
       if (answer === '') {
         $continueButton.attr('disabled', 'disabled');
         return;
@@ -116,21 +117,19 @@ var SimilarityTasks;
     this.onBeginTasks = function onBeginTasks() {
       self.resetImageSizes();
       self.taskDisplay = $(taskDisplaySelector);
-      $similarityInput = $('#similarity-input');
+      $similarityInputs = $('.similarity-input');
       imageHolders = [$('#image-holder-0'), $('#image-holder-1')];
       $imageHolders = $('#image-holder-0,#image-holder-1');
       $continueButton = $('#next-task-button');
       
-      $similarityInput
-        .change(function () { selectAnswer(this.value); })
-        .keyup(function () { selectAnswer($similarityInput.attr('value'), false); })
-        .keydown(function () { selectAnswer($similarityInput.attr('value'), false); });
+      $similarityInputs
+        .change(function () { selectAnswer(this.value); });
 
       $continueButton
         .click(function () {
             $continueButton.attr('disabled', 'disabled');
-            if ($similarityInput.attr('value') !== '' && $similarityInput.attr('value') !== undefined) {
-              self.finishTask(curTask, $similarityInput.attr('value'));
+            if (getCheckedValue($similarityInputs) !== '') {
+              self.finishTask(curTask, getCheckedValue($similarityInputs));
               return true;
             } else {
               selectAnswer('');

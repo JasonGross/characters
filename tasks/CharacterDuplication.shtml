@@ -3,221 +3,95 @@
 <head>
   <meta content="en-us" http-equiv="Content-Language" />
   <meta content="text/html; charset=us-ascii" http-equiv="Content-Type" />
-  <meta content="Allowable url parameters: turkSubmitTo, assignmentId, workerId, hitId, submitTo" />
   <!--script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script-->
   <!--style type="text/css">@import 'fauxconsole.css';</style-->
   <!--script src="../scripts/javascript/fauxconsole.js" type="text/javascript"></script-->
   <script src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js" type="text/javascript"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js" type="text/javascript"></script>
   <script src="../scripts/javascript/ahpi.imgload.js" type="text/javascript"></script>
   <script src="../scripts/javascript/modernizr-1.5.min.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/external.js" type="text/javascript"></script-->
-  <script src="http://www.shawnolson.net/scripts/public_smo_scripts.js" type="text/javascript"></script>
   <script src="../scripts/javascript/library.js" type="text/javascript"></script>
   <script src="../scripts/javascript/patches.js" type="text/javascript"></script>
   <!--[if lt IE 9]><script src="../scripts/javascript/ie_patches.js" type="text/javascript"></script><![endif]-->
   <!--[if lt IE 8]><script src="../scripts/javascript/ie7-_patches.js" type="text/javascript"></script><![endif]-->
+  <script src="../scripts/javascript/browser.js" type="text/javascript"></script>
   <script src="../scripts/javascript/loading.js" type="text/javascript"></script>
   <script src="../scripts/javascript/turk_library.js" type="text/javascript"></script>
   <script src="../scripts/javascript/form_setup.js" type="text/javascript"></script>
   <script src="../scripts/javascript/show_hide.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/make_drag_and_drop_warning.js" type="text/javascript"></script-->
   <script src="../scripts/javascript/refcounter.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/browser.js" type="text/javascript"></script>
-  <script src="scripts/javascript/canvas_library.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/duplication_parse_url_parameters.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/generic_data_loader.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/task_progress.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/task_break.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/sequential_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/hinted_tasks.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/duplication_task_maker.js" type="text/javascript"></script>
   <script src="../scripts/javascript/duplication_data_loader.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/duplication_validate_form.js" type="text/javascript"></script>
-  <script src="../scripts/javascript/duplication_example_task.js" type="text/javascript"></script>
+  <script src="../scripts/javascript/escape_feedback.js" type="text/javascript"></script>
   <!--script src="../scripts/javascript/recognition_drag_and_drop.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_make_input_clickable.js" type="text/javascript"></script>
   <script src="../scripts/javascript/recognition_resize_images.js" type="text/javascript"></script-->
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <link href="../css/show_hide.css" rel="stylesheet" type="text/css" />
   <link href="../css/alphabets.css" rel="stylesheet" type="text/css" />
-  <link href="../css/recognition.css" rel="stylesheet" type="text/css" />
-  <!--[if lt IE 8]><link href="../css/ie7-_categorization.css" rel="stylesheet" type="text/css" /><![endif]-->
+  <link href="../css/classification.css" rel="stylesheet" type="text/css" />
 
-  <title>Character Recognition</title>
+  <title>Character Classification</title>
 </head>
 
 <body>
-  <div id="pre-page-checks">
-    <noscript>
-      <div id="noscript" class="error">
-        <h2>Please enable JavaScript!</h2>
-        <p>
-          JavaScript is disabled in your browser. You must enable
-          JavaScript to complete this form.
-        </p>
-      </div>
-    </noscript>
-    <!--[if lt IE 9]>
-      <div id="ie8-" class="error">
-        <h2>You are using Internet Explorer <span id="ie-version" name="ie-version"></span></h2>
-        <p>
-          If you want it to be able to complete this form, please update your browser, or use a
-          different (standards compliant) browser, such as Firefox, Google Chrome, or Safari.
-          If you do not have one of these browsers or do not know what this means, please visit
-          <a href="http://utilu.com/UtiluMF/" rel="external" target="_blank">Utilu Silent Setup for Mozilla Firefox</a>,
-          or download <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
-        </p>
-        <p>
-          While <tt>window.setTimeout</tt> works and has sufficient accuracy in Internet Explorer
-          9, earlier versions of Internet Explorer do not have a sufficiently accurate timer to
-          perform this experiment.
-        </p>
-        <script type="text/javascript">
-          $('#ie-version').html(jQuery.browser.version);
-          if ('overrideAccept' in urlParameters.getURLParameters('overrideAccept'))
-            $('#ie8-').remove();
-          else
-            $('submit').attr("disabled", "disabled");
-        </script>
-      </div>
-    <![endif]-->
-    <![if !IE]>
-      <div id="not-firefox" class="error">
-        <h2>You are not using Firefox.  You are using <span id="browser" name="browser"></span>.</h2>
-        <p>
-          If you want to be able to complete this form, please use Firefox.  If you do not have Firefox
-          or do not know what this means, pease visit
-          <a href="http://utilu.com/UtiluMF/" rel="external" target="_blank">Utilu Silent Setup for Mozilla Firefox</a>,
-          or download <a href="http://utilu.com/UtiluMF/UtiluMF.exe">this</a>.
-        </p>
-        <p> 
-          While <tt>window.setTimeout</tt> may work in your browser, it has insufficient or untested
-          accuracy for complex visual elements.  <span id="contact-me-timeout">Please contact me at
-          jgross AT mit DOT edu if you think your browser has sufficient accuracy and you want me to
-          permit it.</span>
-        <p>
-        <script type="text/javascript">
-          if (jQuery.browser.mozilla || 'overrideAccept' in urlParameters.getURLParameters('overrideAccept'))
-            $('#not-firefox').remove();
-          else {
-            $('#browser').html(browser.browserName);
-            $('submit').attr("disabled", "disabled");
-          }
-        </script>
-      </div>
-    <![endif]>
-    <div id="seen-HIT-before" class="error show-if-turk">
-      <h2>You have completed a HIT like this one before.</h2>
-      <p>
-        Our experiments rely on you not having seen the characters we are testing before.  Since you have already completed a HIT like this one,
-        we would not be able to use your data in our analysis.  If you believe that you are recieving this message in error, please contact me
-        at jgross AT mit DOT edu. 
-      </p>
-      <script type="text/javascript">
-        var rejectIds = urlParameters.getURLParameters('rejectIds');
-        if ('rejectIds' in rejectIds)
-          rejectIds = rejectIds['rejectIds'];
-        else
-          rejectIds = '';
-        if (hasURLParameter('workerId')) { 
-          var workerId = getURLParameter('workerId');
-          if (rejectIds.indexOf(workerId) == -1)
-            $('#seen-HIT-before').remove();
-          else
-            $('submit').attr("disabled", "disabled");
-        } else
-          $('#seen-HIT-before').remove();
-      </script>
-    </div>
-    <div id="loading" class="warning">
-      <h2>Please wait while the page loads&#8230;</h2>
-      <p>
-        If this message stays here for more than 120 seconds after the page stops changing, 
-        you should not attempt to complete this assignment. Try refreshing or enabling JavaScript.
-      </p>
-    </div>
-
-    <div class="warning show-if-turk show-if-preview-mode" id="maybe-done-before">
-      <p>You will not be able to complete this HIT if you have already completed a HIT similar to this one before.</p>
-      <script type="text/javascript">
-        if (!(hasURLParameter('rejectIds')) || hasURLParameter('workerId'))
-          $('#maybe-done-before').remove();
-      </script>
-    </div>
-    <div class="warning show-if-turk show-if-preview-mode" id="preview-mode">
-      <p>You are in preview mode. Remember to accept the HIT before working on it!</p>
-    </div>
-    <div id="drag-and-drop-warnings">
-    </div>
+  <div id="pre-page-checks" class="pre-page-checks">
+    <!--#include virtual="../html/errors/noscript.html" -->
+    <!--#include virtual="../html/errors/setTimeout.html" -->
+    <!--#include virtual="../html/errors/inline-block.html" -->
+    <!--#include virtual="../html/errors/seen-HIT-before.html" -->
+    <!--#include virtual="../html/errors/loading.html" -->
+    <!--#include virtual="../html/errors/turk-preview.html" -->
   </div>
   <div class="pre-task">
     <div id="instructions">
       <h3>Instructions</h3>
-      <p>You must use the Mozilla Firefox web browser.</p>
-      <p>This HIT consists of many subtasks, and you must complete every subtask to submit the form.</p>
+      <p class="show-if-timed">You must use the Mozilla Firefox web browser.</p>
       <p>
-        This task tests your ability to draw characters from writing systems
-        around the world.  You will be shown an image of a character, such as
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
-        for a fraction of a second, after which it will be replaced by noise.
-        You will then be asked to draw the character you have seen.
+        This HIT consists of <span class="task-count">50</span> subtasks, and
+        you must complete every subtask to submit the form.  I expect this HIT
+        to take you approximately <span class="expected-duration">5-10</span>
+        minutes.
       </p>
       <p>
-        You will see a sequence of <span id="num-trials" class="num-trials">200</span> subtasks each requiring a response.
+        This task tests your ability to pick out a matching character from
+        <span class="n">20</span> characters you've likely never seen before.
+        You will be shown an image of a character, such as
+        <img src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' /><span class="show-if-timed">
+          for a fraction of a second, after which it
+          will be replaced by noise</span>.  You will then be shown <span
+          class="n">20</span> other images, and you should click on the click
+        on the image which you think is the same character, such as <img
+        src="https://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1kj5bqqwzijjt.png"
+        alt='another "b"' style="height:1.25em" title='another "b"' />
+      </p>
+      <p>
         Each subtask has the following structure:
       </p>
-      <ol>
-        <li>A red square appears in the left box "Example Image" to cue your attention.</li>
-        <li class="show-if-timed">Shortly after the cue, an example character is quickly flashed in that red square.</li>
-        <li class="show-if-timed">After the flash, the character disappears and is replaced by a nonsense scribble image.</li>
-        <li class="show-if-untimed" style="display:none;">Shortly after the cue, an example character appears in that red square.</li>
-        <li>A box labeled "Drawing" then appears, in which you can draw what you think the character looked like.</li>
+      <ol class="show-if-timed">
+        <li>A red square appears in the box labeled "Anchor Character" to cue your attention.</li>
+        <li>Shortly after the cue, the anchor character is quickly flashed in that red square.</li>
+        <li>After the flash, the character disappears and is replaced by a nonsense scribble image.</li>
+        <li><span class="n">20</span> images of characters then appear <span class="position">below</span> the anchor box.</li>
       </ol>
       <p>Please note:</p>
       <ul>
         <li>
           You must complete every subtask to submit the form.  (The questions at the end, however, are optional.)
-          <ul class="show-if-turk">
-            <li>If you submit the task <strong>with scribbles or single dots in the boxes</strong>, your submission will be rejected.</li>
-          </ul>
         </li>
-        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to draw the characters accurately, your submission will be accepted regardless of how accurate you are.</li>
+        <li class="show-if-turk">So long as you complete every subtask, and you make an effort to guess correctly, your submission will be accepted regardless of how accurate you are.</li>
       </ul>
     </div>
-    <div id="example-task">
-      <div class="mouse-cursor" id="example-mouse-cursor-holder" name="example-mouse-cursor-holder"><img src="http://scripts.mit.edu/~jgross/alphabets/images/mouse-cursor-icon.png" class="mouse-cursor" alt="&#8598;" id="example-mouse-cursor" name="example-mouse-cursor" /></div>
-    </div>
-    <div id="disclaimer-box">
-      <p><a id="disclaimer-show" class="showLink" href="#" onclick="showHide('disclaimer');return false;">Show Disclaimer</a></p>
-  
-      <div id="disclaimer" class="more">
-        <h3>Disclaimer</h3>
-        <p>By answering the following questions, you are participating in a study
-        being performed by cognitive scientists in the MIT Department of Brain and
-        Cognitive Science. If you have questions about this research, please contact
-        Josh Tenenbaum at jbt AT mit DOT edu. Your participation in this research is
-        voluntary. You may decline to answer any or all of the following questions
-        <span class="show-if-turk">
-          by clicking the &#39;Return HIT&#39; button at the top of this page.
-        </span>
-        <span class="show-if-not-turk">
-          by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively,
-          you may click <a href="http://scripts.mit.edu/~jgross/alphabets/">here</a>.)
-        </span>
-        You may decline further participation, at any time, without adverse consequences. 
-        Your anonymity is assured; the researchers who have requested your participation
-        will not receive any personal information about you.</p>
-  
-        <p><a id="disclaimer-hide" class="hideLink" href="#" onclick="showHide('disclaimer');return false;">Hide Disclaimer</a></p>
-      </div>
-      <script id="init-show-hide-disclaimer" type="text/javascript">
-      //<![CDATA[
-      showHide('disclaimer');
-      //]]>
-      </script>
-      <br />
-    </div>
-    <p id="interest">
-    	If you are interested in learning more about this research, please visit 
-    	<a href="http://scripts.mit.edu/~jgross/alphabets/" rel="external" target="_blank">http://scripts.mit.edu/~jgross/alphabets/</a>
-        (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
-    </p>
+    <!--#include virtual="../html/disclaimer.html" -->
+    <!--#include virtual="../html/learn-more.html" -->
   
     <div id="accept_task-div">
       <form id="accept_task-form">
@@ -233,64 +107,82 @@
       </form>
     </div>
   </div>
-  <div id="extra-options-form">
+  <div id="extra-options-form" class="tasks">
     <form id="extra-options">
-      <!--div id="form-resize">
+      <div id="form-resize">
         <label>
           <input type="checkbox" id="resize-images-on-page-resize" name="resize-images-on-page-resize" />
           Resize images to fit screen
         </label>
-      </div-->
+      </div>
     </form>
   </div>
 
   <div class="task-break" id="task_break">
   </div>
 
-  <div id="character_recognition_form-div">
-    <form id="character_recognition_form"
-          action="../scripts/python/record-duplication-submission.py"
-          method="post">
-      <div id="hidden-inputs">
-          <input id="assignmentId" name="assignmentId" type="hidden" value="" />
-          <input id="form-load-time" name="form-load-time" type="hidden" value="" />
-          <input id="form-submit-time" name="form-submit-time" type="hidden" value="" />
-          <input id="duration" name="duration" type="hidden" value="" />
-          <input id="ipAddress" name="ipAddress" type="hidden" />
-          <input id="screenWidth" name="screenWidth" type="hidden" />
-          <input id="screenHeight" name="screenHeight" type="hidden" />
-          <input id="screenAavilWidth" name="screenAvailWidth" type="hidden" />
-          <input id="screenAavilHeight" name="screenAvailHeight" type="hidden" />
-          <input id="windowWidth" name="windowWidth" type="hidden" />
-          <input id="windowHeight" name="windowHeight" type="hidden" />
-          <input id="navigator.appName" name="navigator.appName" type="hidden" />
-          <input id="navigator.appCodeName" name="navigator.appCodeName" type="hidden" />
-          <input id="navigator.userAgent" name="navigator.userAgent" type="hidden" />
-          <input id="navigator.appVersion" name="navigator.appVersion" type="hidden" />
-          <input id="navigator.vendor" name="navigator.vendor" type="hidden" />
-          <input id="window.opera" name="window.opera" type="hidden" />
-          <input id="navigator.platform" name="navigator.platform" type="hidden" />
-          <input id="jQuery.browser.webkit" name="jQuery.browser.webkit" type="hidden" />
-          <input id="jQuery.browser.version" name="jQuery.browser.version" type="hidden" />
-          <input id="jQuery.browser.safari" name="jQuery.browser.safari" type="hidden" />
-          <input id="jQuery.browser.opera" name="jQuery.browser.opera" type="hidden" />
-          <input id="jQuery.browser.msie" name="jQuery.browser.msie" type="hidden" />
-          <input id="jQuery.browser.mozilla" name="jQuery.browser.mozilla" type="hidden" />
-      </div>
-
-      <div id="all-tasks" class="tasks">
-      </div>
-
-      <br class="tasks" />
-       
-      <div class="task-progress" id="task_progess-div">
-        <div class="task-progress-bar-holder" id="task_progress">
-          <div class="task-actual-progress-bar-holder">
-            <div class="task-actual-progress-bar"></div>
+  <div id="task_display">
+    <div id="all-tasks" class="tasks">
+      <fieldset id="task">
+        <legend>Task <span class="task-number">1</span> of <span class="task-count">200</span></legend>
+        <p class="show-if-timed">
+          Please draw, as well as you can remember, the character that flashes below.
+          Do <em>not</em> leave the box blank, copy the noise image, or draw a few dots.
+        </p>
+        <p class="show-if-untimed">
+          Below you see <span class="n">5</span> characters from a particular group.
+          Try to draw a new character that you think might fit in the same group.
+        </p>
+        <div class="examples-holder task-holder" id="examples-holder">
+          <div class="image-box show-if-timed">
+            <div class="image-holder" id="example-image-holder">
+            </div>
           </div>
         </div>
+        <div class="task-holder" id="canvas-holder">
+        </div>
+      </fieldset>
+    </div>
+
+    <br class="tasks" />
+       
+    <div class="task-progress" id="task_progess-div">
+      <div class="task-progress-bar-holder" id="task_progress">
+        <div class="task-actual-progress-bar-holder">
+          <div class="task-actual-progress-bar"></div>
+        </div>
+        <div class="task-overlay-progress-bar-holder ui-widget ui-progressbar ui-widget-content ui-corner-all">
+          <div class="task-correct-progress-bar ui-corner-left ui-progressbar"></div>
+          <div class="task-incorrect-progress-bar ui-progressbar"></div>
+        </div>
       </div>
-      
+      <div class="task-message" id="task_message">
+        Out of the first <span id="task-progress-message-num-tasks-known" name="task-progress-message-num-tasks-known">0</span> tasks: <br />
+        Number Right: <span id="task-progress-message-num-tasks-correct" name="task-progress-message-num-tasks-correct">0</span> <br />
+        Number Wrong: <span id="task-progress-message-num-tasks-incorrect" name="task-progress-message-num-tasks-incorrect">0</span>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      $('.task-progress').html($('.task-progress').html().replace(/>(\s|\n)+</g, '><')).hide();
+      //]]>
+    </script>
+  </div>
+
+  <div id="main_form-div">
+    <form id="main_form"
+          action="../scripts/python/record-classification-submission.py"
+          method="post">
+      <div id="hidden-inputs">
+        <script type="text/javascript">
+          var ip = '<!--#echo var="REMOTE_ADDR"-->';
+        </script>
+        <!--#include virtual="../html/extra-inputs.html" -->
+      </div>
+
+      <div id="task-results"></div>
+
       <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>
@@ -310,14 +202,14 @@
     </form>
   </div>
 
-  <script id="choose-instructions" type="text/javascript">
+  <script type="text/javascript">
     //<![CDATA[
-    if (urlParameters.getURLParameters('pauseToNoise')['pauseToNoise'] != '' &&
-        parseInt(urlParameters.getURLParameters('pauseToNoise')['pauseToNoise']) <= 0) {
-      $('.show-if-timed').hide();
+    if (urlParameters.getURLParameter('pauseToNoise') == '' ||
+        parseInt(urlParameters.getURLParameter('pauseToNoise')) <= 0) {
+      $('.show-if-timed').remove();
       $('.show-if-untimed').show();
     } else {
-      $('.show-if-untimed').hide();
+      $('.show-if-untimed').remove();
       $('.show-if-timed').show();
     }
     //]]>
@@ -325,56 +217,16 @@
 
   <script type="text/javascript">
     //<![CDATA[
-    var ipAddress_field = document.getElementById('ipAddress');
-    var ip = '<!--#echo var="REMOTE_ADDR"-->';
-    ipAddress_field.value = ip;
-    var fields = {
-        'screenWidth':screen.width,
-        'screenHeight':screen.height,
-        'screenAavilWidth':screen.availWidth,
-        'screenAavilHeight':screen.availHeight,
-        'windowWidth':$(window).width(),
-        'windowHeight':$(window).height(),
-        'navigator.appName':navigator.appName,
-        'navigator.appCodeName':navigator.appCodeName,
-        'navigator.userAgent':navigator.userAgent,
-        'navigator.appVersion':navigator.appVersion,
-        'navigator.vendor':navigator.vendor,
-        'window.opera':window.opera,
-        'navigator.platform':navigator.platform,
-        'jQuery.browser.webkit':jQuery.browser.webkit,
-        'jQuery.browser.version':jQuery.browser.version,
-        'jQuery.browser.safari':jQuery.browser.safari,
-        'jQuery.browser.opera':jQuery.browser.opera,
-        'jQuery.browser.msie':jQuery.browser.msie,
-        'jQuery.browser.mozilla':jQuery.browser.mozilla
-      };
-    for (var id in fields)
-      if (document.getElementById(id) && fields[id] !== undefined)
-        document.getElementById(id).value = fields[id];
-    $('#form-load-time').attr('value', dateUTC(new Date()));
-    //$('#form-load-time').hide();
-    //$('#form-submit-time').hide();
-    setUpForm('character_recognition_form');
+    setUpForm('main_form');
     $('.post-task').hide()
-    //]]>
-  </script>
-  <script id="check-working-scripts" type="text/javascript">
-    //<![CDATA[
-    if (!isTurkSandbox())
-      $('#preview-mode').remove();
-    else if (isTurk())
-      unansweredInput();
+    $('.tasks').hide();
+
+    if (!isTurkPreview())
+      $('.show-if-preview-mode').remove();
     if (!isTurk())
       $('.show-if-turk').remove();
     else
       $('.show-if-not-turk').remove();
-    $(function () {
-      $('input').each(function (index) { 
-        if (!$(this).attr('name'))
-          $(this).attr('name', this.id);
-      });
-    });
     //]]>
   </script>
 </body>

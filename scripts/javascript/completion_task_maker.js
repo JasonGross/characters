@@ -14,7 +14,7 @@ var CompletionTasks;
     var onLoadImage = dataLoader.thingDone;
 
     var $canvasHolder;
-    var $seenBeforeInputs;
+//    var $seenBeforeInputs;
     var $continueButton;
     var updateContinueButton;
     var doFinishTask;
@@ -46,7 +46,7 @@ var CompletionTasks;
     this.onFinishTask = function (task, canvas, willShowResults) {
       self.recordInfo(function (index) { return tag + 'task-' + index + '-strokes'; }, canvas.strokesToString());
       self.recordInfo(function (index) { return tag + 'task-' + index + '-image'; }, canvas.getImage());
-      self.recordInfo(function (index) { return tag + 'task-' + index + '-seen-before'; }, getCheckedValue($seenBeforeInputs));
+//      self.recordInfo(function (index) { return tag + 'task-' + index + '-seen-before'; }, getCheckedValue($seenBeforeInputs));
       var extraInfo = self.extraTaskInfo(task);
       if (extraInfo)
         jQuery.each(extraInfo, function (key, value) {
@@ -58,14 +58,14 @@ var CompletionTasks;
       $canvasHolder.children().remove();
 
       updateContinueButton = function updateContinueButton() {
-        if (task['canvas'].canUndo() && getCheckedValue($seenBeforeInputs) !== '')
+        if (task['canvas'].canUndo()) // && getCheckedValue($seenBeforeInputs) !== '')
           $continueButton.attr('disabled', '');
         else
           $continueButton.attr('disabled', 'disabled');
       };
 
       doFinishTask = function doFinishTask() {
-        if (task['canvas'].canUndo() && getCheckedValue($seenBeforeInputs) !== '') {
+        if (task['canvas'].canUndo()) { // && getCheckedValue($seenBeforeInputs) !== '') {
           self.finishTask(task, task['canvas']);
           return true;
         } else {
@@ -83,8 +83,9 @@ var CompletionTasks;
         });
 
       $continueButton.attr('disabled', 'disabled');
-      setCheckedValue($seenBeforeInputs, '');
-      $seenBeforeInputs.change();
+//      setCheckedValue($seenBeforeInputs, '');
+//      $seenBeforeInputs.change();
+      updateContinueButton();
     };
 
     this.doTask = function doTask(task) {
@@ -94,8 +95,8 @@ var CompletionTasks;
 
     this.onBeginTasks = function onBeginTasks() {
       self.taskDisplay = $(taskDisplaySelector);
-      $seenBeforeInputs = $('.seen-before')
-        .change(function () { updateContinueButton(); });
+//      $seenBeforeInputs = $('.seen-before')
+//        .change(function () { updateContinueButton(); });
       $canvasHolder = $('#canvas-holder');
       $continueButton = $('#next-task-button');
       

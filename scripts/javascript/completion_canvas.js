@@ -63,7 +63,30 @@
       .attr('width', width)
       .attr('height', height)
       .load(function fixCompletionCanvas() {
-        halfImage.getContext('2d').drawImage($(image)[0], 0, 0, width, height);
+        var ctx = halfImage.getContext('2d');
+        ctx.drawImage($(image)[0], 0, 0, width, height);
+        var canvasData = ctx.getImageData(0, 0, width, height);
+
+        // MAke half the image gray
+        for (var x = 0; x < canvasData.width; x++)  {
+            for (var y = 0; y < canvasData.height; y++)  {
+
+              // Index of the pixel in the array
+              var idx = (x + y * width) * 4;
+
+              var r = canvasData.data[idx + 0];
+              var g = canvasData.data[idx + 1];
+              var b = canvasData.data[idx + 2];
+              var a = canvasData.data[idx + 3];
+              
+              if (r == 255 && g == 255 && b == 255) {
+                canvasData.data[idx + 0] = canvasData.data[idx + 1] = canvasData.data[idx + 2] = 225;
+                canvasData.data[idx + 3] = 255;
+              }
+            }
+          }
+
+        ctx.putImageData(canvasData, 0, 0)
 
         if (showImageHalf == 'left')
           halfImage.getContext('2d').clearRect(halfWidth, 0, halfWidth, height);

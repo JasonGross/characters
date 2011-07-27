@@ -1,0 +1,14 @@
+@import url("canvas.css");
+
+img#character {
+  width: 400px;
+}
+
+div.table {
+  float: left;
+  border: 1px solid black;
+}
+
+div.feedback {
+  float: left;
+}

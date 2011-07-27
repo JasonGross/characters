@@ -110,17 +110,6 @@
         </p>
         <div class="task-holder" id="canvas-holder">
         </div>
-        <div class="task-holder">
-          <fieldset class="inline task-holder option-group">
-            <legend>Do you think that you've seen this character before?</legend>
-            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="never" />
-              I have never seen a character like this.</label><br />
-            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="probably" />
-              I'm not sure, but I think I recognized the character.</label><br />
-            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="definitely" />
-              I recognized the character, and drew the other half from memory.</label>
-          </fieldset>
-        </div>
         <div class="task-holder character-question">
           <button id="next-task-button" class="character-question" disabled="disabled" type="button">continue to the next task</button>
         </div>
@@ -162,6 +151,97 @@
               <input type="text" size="10" name="other-input-text" />
             </label>
           </fieldset>
+          <fieldset class="inline task-holder option-group">
+            <legend>Do you think that you've seen any of the characters that you had to complete before?</legend>
+            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="never" />
+              I have never seen any characters like these.</label><br />
+            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="probably" />
+              I recognized some of the characters.</label><br />
+            <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="definitely" />
+              I recognized most/all of the characters, and drew most of the other halves from memory.</label>
+          </fieldset>
+          <br />
+          <fieldset class="inline task-holder option-group" id="familiar-alphabets-fieldset">
+            <legend>What alphabets are you familiar with?</legend>
+          </fieldset>
+          <script type="text/javascript">
+            var nPerColumn = 25;
+            var alphabets = [
+                             ['Angelic', 'angelic'],
+                             ['Arcadian', 'arcadian'],
+                             ['Armenian', 'armenian'],
+                             ['Asomtavruli (Georgian)', 'asomtavruli'],
+                             ['Atemayar Qelisay&eacute;r', 'atemayar'],
+                             ['Atlantean', 'atlantean'],
+                             ['Aurek-Besh', 'aurek_besh'],
+                             ['Avesta', 'avesta'],
+                             ['Balinese', 'balinese'],
+                             ['Bengali', 'bengali'],
+                             ['Blackfoot (Canadian Aboriginal Syllabics)', 'blackfoot'],
+                             ['Braille', 'braille'],
+                             ['Cyrillic', 'cyrillic'],
+                             ['Early Aramaic', 'earlyaramaic'],
+                             ['Syriac (Estrangelo)', 'estrangelo'],
+                             ['Anglo-Saxon Futhorc', 'futhorc'],
+                             ['Futurama', 'futurama'],
+                             ["Ge'ez", 'ge_ez'],
+                             ['Glagolitic', 'glagolitic'],
+                             ['Grantha', 'grantha'],
+                             ['Greek', 'greek'],
+                             ['Gujarati', 'gujarati'],
+                             ['Gurmukhi', 'gurmukhi'],
+                             ['Hebrew', 'hebrew'],
+                             ['Japanese (hiragana)', 'hiragana'],
+                             ['Inuktitut (Canadian Aboriginal Syllabics)', 'inuktitut'],
+                             ['Malay (Jawi - Arabic)', 'jawi'],
+                             ['Kannada', 'kannada'],
+                             ['Japanese (katakana)', 'katakana'],
+                             ['Keble', 'keble'],
+                             ['Korean', 'korean'],
+                             ['Latin', 'latin'],
+                             ['Alphabet of the Magi', 'magi'],
+                             ['Malayalam', 'malayalam'],
+                             ['Manipuri', 'manipuri'],
+                             ['Mkhedruli (Georgian)', 'mkhedruli'],
+                             ['Mongolian', 'mongolian'],
+                             ['Burmese (Myanmar)', 'myanmar'],
+                             ["N'Ko", 'nko'],
+                             ['Ojibwe (Canadian Aboriginal Syllabics)', 'ojibwe'],
+                             ['Old Church Slavonic (Cyrillic)', 'old_cyrillic'],
+                             ['Oriya', 'oriya'],
+                             ['Sanskrit', 'sanskrit'],
+                             ['Syriac (Serto)', 'serto'],
+                             ['Sylheti', 'sylheti'],
+                             ['Tagalog', 'tagalog'],
+                             ['Tengwar', 'tengwar'],
+                             ['Tibetan', 'tibetan'],
+                             ['Tifinagh', 'tifinagh'],
+                             ['ULOG', 'ulog']
+                            ];
+              alphabets.sort();
+              var familiarAlphabets = $('#familiar-alphabets-fieldset');
+              var colCount = -1;
+              var curCol = '';
+              jQuery.each(alphabets, function (index, alphabet) {
+                colCount++;
+                if (colCount % nPerColumn == 0) {
+                  familiarAlphabets.append(curCol = $('<div>')
+                                           .css({'display':'inline-block'}));
+                }
+                var tag = alphabet[1]; var name = alphabet[0];
+                curCol.append($('<label>')
+                              .append($('<input>')
+                                      .attr('type', 'checkbox')
+                                      .attr('name', 'familiar-alphabets')
+                                      .attr('id', 'familiar-alphabets')
+                                      .addClass('familiar-alphabets')
+                                      .attr('value', tag)
+                                     )
+                              .append(name))
+                  .append($('<br>'));
+              });
+            </script>
+
           <br />
           <div class="inline" style="text-align:left">
             <label>

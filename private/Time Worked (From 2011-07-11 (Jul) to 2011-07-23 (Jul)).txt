@@ -1,0 +1,38 @@
+Start: Monday, July 11, 2011 12:52.53
+End: Monday, July 11, 2011 14:55.53
+Time Spent: 2:03:00.133380
+
+Start: Friday, July 15, 2011 11:53.03
+End: Friday, July 15, 2011 16:19.36
+Time Spent: 4:26:33.330295
+
+Start: Friday, July 15, 2011 16:33.16
+End: Friday, July 15, 2011 17:08.16
+Time Spent: 0:35:00.618648
+
+Start: Friday, July 15, 2011 17:23.16
+End: Friday, July 15, 2011 18:44.22
+Time Spent: 1:21:06.914416
+
+Start: Friday, July 22, 2011 12:05.30
+End: Friday, July 22, 2011 15:58.00
+Time Spent: 3:52:30.177344
+
+Start: Friday, July 22, 2011 16:19.44
+End: Friday, July 22, 2011 16:43.46
+Time Spent: 0:24:02.856661
+
+Start: Friday, July 22, 2011 18:46.19
+End: Friday, July 22, 2011 21:10.28
+Time Spent: 2:24:09.214540
+
+Start: Saturday, July 23, 2011 12:14.26
+End: Saturday, July 23, 2011 18:28.59
+Time Spent: 6:14:33.237841
+
+Start: Saturday, July 23, 2011 18:38.46
+End: Saturday, July 23, 2011 19:11.05
+Time Spent: 0:32:19.775658
+
+
+Total Time: 21:53:16.258783

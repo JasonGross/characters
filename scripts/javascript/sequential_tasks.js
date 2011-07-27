@@ -72,7 +72,6 @@ var foo;
       if (shouldShowResults === undefined) shouldShowResults = true;
       self.onFinishTask(task, answer, shouldShowResults);
       results.append(inputQueue);
-      console.log(results);
       if (self.doneWithTasks()) {
         self.showResults(task, answer, 
                          function () { self.tasksDisplay.hide(); self.onDoneTasks(); });

@@ -472,12 +472,12 @@ function makeDrawable(canvas, lineWidth, undoLink, redoLink) {
   if (undoLink !== undefined) {
     canvas.disableUndo = function () { 
       undoLink.style.color = 'gray'; 
-      undoLink.style.background = 'url(undo-gray.png) no-repeat 2px 1px'; 
+      undoLink.style.background = 'url(../images/undo-gray.png) no-repeat 2px 1px'; 
       undoLink.onclick = function () {return false;};
     };
     canvas.enableUndo = function () {
       undoLink.style.color = 'blue'; 
-      undoLink.style.background = 'url(undo.png) no-repeat 2px 1px'; 
+      undoLink.style.background = 'url(../images/undo.png) no-repeat 2px 1px'; 
       undoLink.onclick = function () {return true;};
     };
   }
@@ -485,12 +485,12 @@ function makeDrawable(canvas, lineWidth, undoLink, redoLink) {
   if (!(redoLink === undefined)) {
     canvas.disableRedo = function () { 
       redoLink.style.color = 'gray';
-       redoLink.style.background = 'url(redo-gray.png) no-repeat 2px 1px'; 
+       redoLink.style.background = 'url(../images/redo-gray.png) no-repeat 2px 1px'; 
        redoLink.onclick = function () {return false;};
      };
     canvas.enableRedo = function () { 
       redoLink.style.color = 'blue'; 
-      redoLink.style.background = 'url(redo.png) no-repeat 2px 1px'; 
+      redoLink.style.background = 'url(../images/redo.png) no-repeat 2px 1px'; 
       redoLink.onclick = function () {return true;};
     };
   }

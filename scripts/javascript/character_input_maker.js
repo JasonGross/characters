@@ -39,7 +39,7 @@ function makeImg(tag)
 {
   var rtn = '';
   if (urlParameters.getURLParameter('image'+tag) != '') {
-    rtn = rtn + '<img src="results/originals/'+urlParameters.getURLParameter('image'+tag)+'"';
+    rtn = rtn + '<img src="../results/originals/'+urlParameters.getURLParameter('image'+tag)+'"';
     if (!hasURLParameter('noscaling')) {
       if (urlParameters.getURLParameter('image'+tag+'Width') != '')
         rtn = rtn + ' width="'+urlParameters.getURLParameter('image'+tag+'Width')+'"';

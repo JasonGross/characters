@@ -74,4 +74,4 @@
 			$.event.special.load = newLoad;
 			$(this).remove();
 		});
-})(jQuery, 'https://jgross.scripts.mit.edu/alphabets/images/down.gif');
+})(jQuery, '//jgross.scripts.mit.edu/alphabets/images/down.gif');

@@ -1,0 +1,81 @@
+<fieldset style="display:inline-block" id="familiar-alphabets-fieldset">
+  <legend>What alphabets are you familiar with?</legend>
+</fieldset>
+<script type="text/javascript">
+  var nPerColumn = 25;
+  var alphabets = [
+                   ['Angelic', 'angelic'],
+                   ['Arcadian', 'arcadian'],
+                   ['Armenian', 'armenian'],
+                   ['Asomtavruli (Georgian)', 'asomtavruli'],
+                   ['Atemayar Qelisay&eacute;r', 'atemayar'],
+                   ['Atlantean', 'atlantean'],
+                   ['Aurek-Besh', 'aurek_besh'],
+                   ['Avesta', 'avesta'],
+                   ['Balinese', 'balinese'],
+                   ['Bengali', 'bengali'],
+                   ['Blackfoot (Canadian Aboriginal Syllabics)', 'blackfoot'],
+                   ['Braille', 'braille'],
+                   ['Cyrillic', 'cyrillic'],
+                   ['Early Aramaic', 'earlyaramaic'],
+                   ['Syriac (Estrangelo)', 'estrangelo'],
+                   ['Anglo-Saxon Futhorc', 'futhorc'],
+                   ['Futurama', 'futurama'],
+                   ["Ge'ez", 'ge_ez'],
+                   ['Glagolitic', 'glagolitic'],
+                   ['Grantha', 'grantha'],
+                   ['Greek', 'greek'],
+                   ['Gujarati', 'gujarati'],
+                   ['Gurmukhi', 'gurmukhi'],
+                   ['Hebrew', 'hebrew'],
+                   ['Japanese (hiragana)', 'hiragana'],
+                   ['Inuktitut (Canadian Aboriginal Syllabics)', 'inuktitut'],
+                   ['Malay (Jawi - Arabic)', 'jawi'],
+                   ['Kannada', 'kannada'],
+                   ['Japanese (katakana)', 'katakana'],
+                   ['Keble', 'keble'],
+                   ['Korean', 'korean'],
+                   ['Latin', 'latin'],
+                   ['Alphabet of the Magi', 'magi'],
+                   ['Malayalam', 'malayalam'],
+                   ['Manipuri', 'manipuri'],
+                   ['Mkhedruli (Georgian)', 'mkhedruli'],
+                   ['Mongolian', 'mongolian'],
+                   ['Burmese (Myanmar)', 'myanmar'],
+                   ["N'Ko", 'nko'],
+                   ['Ojibwe (Canadian Aboriginal Syllabics)', 'ojibwe'],
+                   ['Old Church Slavonic (Cyrillic)', 'old_cyrillic'],
+                   ['Oriya', 'oriya'],
+                   ['Sanskrit', 'sanskrit'],
+                   ['Syriac (Serto)', 'serto'],
+                   ['Sylheti', 'sylheti'],
+                   ['Tagalog', 'tagalog'],
+                   ['Tengwar', 'tengwar'],
+                   ['Tibetan', 'tibetan'],
+                   ['Tifinagh', 'tifinagh'],
+                   ['ULOG', 'ulog']
+                  ];
+  alphabets.sort();
+  var familiarAlphabets = $('#familiar-alphabets-fieldset');
+  var colCount = -1;
+  var curCol = '';
+  jQuery.each(alphabets, function (index, alphabet) {
+    colCount++;
+    if (colCount % nPerColumn == 0) {
+      familiarAlphabets.append(curCol = $('<div>')
+        .css({'display':'inline-block'}));
+    }
+    var tag = alphabet[1]; var name = alphabet[0];
+    curCol.append($('<label>')
+                    .append($('<input>')
+                              .attr('type', 'checkbox')
+                              .attr('name', 'familiar-alphabets')
+                              .attr('id', 'familiar-alphabets')
+                              .attr('value', tag)
+                           )
+                    .append(name)
+                 )
+    .append($('<br>'));
+  });
+</script>
+

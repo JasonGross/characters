@@ -140,8 +140,10 @@ def make_task_from_alphabet_set(alias, alphabets_dict=None, **kwargs):
     list_of_stuff = get_object('recognition-tasks_character-set_%s' % alias, bad_alias)
     if not isinstance(list_of_stuff[0], (list, tuple)):
         return make_task_from_alphabets_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
-    else: # is string
+    elif len(list_of_stuff[0]) == 2: # is not string
         return make_task_from_characters_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
+    else:
+        return make_task_from_drawers_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
 #    else:
 #        print(list_of_stuff)
 #        raw_input(list_of_stuff[0])

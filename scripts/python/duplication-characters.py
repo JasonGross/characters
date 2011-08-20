@@ -59,11 +59,21 @@ def make_task_from_groups_list(groups_list, example_class_count=1, example_per_c
 
     classes = (random.sample(group, example_class_count) for group in pre_classes)
 
-    tasks = [[[(alphabet, character, uid) for uid in random.sample(alphabets_dict[alphabet].keys(), example_per_class_count)]
-              for alphabet, character in group]
+    tasks = [[group_to_character_list(group_elem, alphabets_dict, example_per_class_count=example_per_class_count)
+              for group_elem in group]
              for group in classes]
 
     return tasks_to_task_images(tasks, verbose=verbose, random=random, alphabets_dict=alphabets_dict)
+
+def group_to_character_list(group, alphabets_dict, example_per_class_count=None):
+    if len(group) == 2:
+        alphabet, character = group
+        return [(alphabet, character, uid) for uid in random.sample(alphabets_dict[alphabet].keys(), example_per_class_count)]
+    elif len(group) == 3:
+        alphabet, character_glob, uid = group
+        rtn = [(alphabet, character_i, uid) for character_i in range(len(alphabets_dict[alphabet].values()[0]))]
+        random.shuffle(rtn)
+        return rtn
 
 def make_task_from_alphabet_set(alias, alphabets_dict=None, **kwargs):
     if alphabets_dict is None: alphabets_dict = get_accepted_image_list()
@@ -73,7 +83,7 @@ def make_task_from_alphabet_set(alias, alphabets_dict=None, **kwargs):
     list_of_stuff = get_object('recognition-tasks_character-set_%s' % alias, bad_alias)
     if not isinstance(list_of_stuff[0], (list, tuple)):
         return make_task_from_alphabets_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
-    else: # is string
+    else:
         return make_task_from_groups_list(list_of_stuff, alphabets_dict=alphabets_dict, **kwargs)
 #    else:
 #        print(list_of_stuff)

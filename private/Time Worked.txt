@@ -1,5 +1,12 @@
-Start: Tuesday, July 26, 2011 20:22.57
-End: Tuesday, July 26, 2011 21:23.49
-Time Spent: 1:00:52.418143
+Start: Tuesday, August 02, 2011 20:07.46
+End: Tuesday, August 02, 2011 21:02.50
+Time Spent: 0:55:04.039961
 
-Start: Wednesday, July 27, 2011 15:26.33
+Start: Saturday, August 20, 2011 15:14.33
+End: Saturday, August 20, 2011 15:30.37
+Time Spent: 0:16:04.709507
+
+Start: Saturday, August 20, 2011 15:30.41
+End: Saturday, August 20, 2011 17:21.07
+Time Spent: 1:50:26.146969
+

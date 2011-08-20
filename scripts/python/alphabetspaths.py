@@ -17,7 +17,7 @@ except SyntaxError:
 import objectstorage
 from library import maplist
 
-_tasks = ['recognition', 'categorization', 'recognition-rt', 'classification', 'similarity', 'duplication', 'completion']
+_tasks = ['recognition', 'categorization', 'recognition-rt', 'classification', 'similarity', 'duplication', 'completion', 'duplication-completion']
 
 __all__ = ['BASE_PATH', 'BASE_URL', 'UNREVIEWED_PATH', 'UNREVIEWED_URL', 'FILE_NAME_REGEX',
            'get_original_image_list',
@@ -71,7 +71,7 @@ _normal_path_names = [] + \
                       if _path not in ('ORIGINAL', 'UNREVIEWED') and is_not_from_tasks(_path)]
 
 BASE_PATH = os.path.join(os.path.expanduser('~/'), 'web_scripts/', 'alphabets/')
-BASE_URL = 'https://jgross.scripts.mit.edu/alphabets/'
+BASE_URL = '//jgross.scripts.mit.edu/alphabets/'
 
 _self = sys.modules[globals()['__name__']]
 

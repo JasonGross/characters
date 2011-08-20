@@ -6,7 +6,7 @@ var ClassificationTasks;
            $, jQuery, undefined) {
   var noiseImageURLs = [];
   for (var i = 0; i < 10; i++) {
-    noiseImageURLs.push('https://jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
+    noiseImageURLs.push('//jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
   }
   var tasksDiv;
   $(function () { tasksDiv = $(tasksDivSelector).hide(); });

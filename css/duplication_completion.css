@@ -1,0 +1,50 @@
+@import url("hinted.css");
+.show-if-untimed {
+  display: none;
+}
+
+.inline {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.character-question {
+/*  font-size: 16pt;*/
+}
+
+.task-holder {
+  text-align: center;
+}
+
+.option-group {
+  text-align: left;
+}
+
+.example-holder {
+  display: inline-block;
+  padding: 0px;
+}
+
+.image-holder {
+  padding: 2.5px;
+  width: 100px;
+  height: 100px;
+}
+
+.image-box {
+  margin: 2.5px;
+  border: thin solid #C0C0C0; //lightgray
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+img.character, canvas.character {
+  height: 100%;
+  width: 100%;
+}
+
+img {
+  display: inline;
+}

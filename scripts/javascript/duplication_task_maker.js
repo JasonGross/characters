@@ -6,7 +6,7 @@ var DuplicationTasks;
            $, jQuery, undefined) {
   var noiseImageURLs = [];
   for (var i = 0; i < 10; i++) {
-    noiseImageURLs.push('https://jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
+    noiseImageURLs.push('//jgross.scripts.mit.edu/alphabets/images/strokeNoise' + i + '.png');
   }
   DuplicationTasks = function DuplicationTasks(data, totalTasks, dataLoader, onDoneTasks) {
     SequentialTasks.call(this, undefined, taskNumberSelector, taskTotalSelector, tasksDivSelector, resultsDivSelector,

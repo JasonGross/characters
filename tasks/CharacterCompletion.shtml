@@ -136,21 +136,8 @@
       <div class="post-task">
         <fieldset>
           <legend>Extra Questions</legend>
-          <fieldset class="inline" style="width:30%; text-align:left">
-            <legend>What is your native language?</legend>
-            <p>If you have more than one response, please separate your responses by commas (,).</p>
-            <label><input type="text" name="native-language" id="native-language" style="width:100%"/></label>
-            <script type="text/javascript"> new autosuggest("native-language", language_array); </script>
-          </fieldset>
-          <fieldset class="inline option-group">
-            <legend>Input Device</legend>
-            <label><input type="radio" name="input-device" id="input-device" value="mouse" /> Mouse</label><br />
-            <label><input type="radio" name="input-device" id="input-device" value="touchpad" /> Touchpad</label><br />
-            <label><input type="radio" name="input-device" id="input-device" value="tablet-pen" /> Tablet Pen</label><br />
-            <label><input type="radio" name="input-device" id="input-device" value="other" /> Other:
-              <input type="text" size="10" name="other-input-text" />
-            </label>
-          </fieldset>
+          <!--#include virtual="../html/inputs/native-language.html" -->
+          <!--#include virtual="../html/inputs/input-device.html" -->
           <fieldset class="inline task-holder option-group">
             <legend>Do you think that you've seen any of the characters that you had to complete before?</legend>
             <label><input type="radio" name="seen-before" id="seen-before" class="seen-before" value="never" />
@@ -161,94 +148,9 @@
               I recognized most/all of the characters, and drew most of the other halves from memory.</label>
           </fieldset>
           <br />
-          <fieldset class="inline task-holder option-group" id="familiar-alphabets-fieldset">
-            <legend>What alphabets are you familiar with?</legend>
-          </fieldset>
-          <script type="text/javascript">
-            var nPerColumn = 25;
-            var alphabets = [
-                             ['Angelic', 'angelic'],
-                             ['Arcadian', 'arcadian'],
-                             ['Armenian', 'armenian'],
-                             ['Asomtavruli (Georgian)', 'asomtavruli'],
-                             ['Atemayar Qelisay&eacute;r', 'atemayar'],
-                             ['Atlantean', 'atlantean'],
-                             ['Aurek-Besh', 'aurek_besh'],
-                             ['Avesta', 'avesta'],
-                             ['Balinese', 'balinese'],
-                             ['Bengali', 'bengali'],
-                             ['Blackfoot (Canadian Aboriginal Syllabics)', 'blackfoot'],
-                             ['Braille', 'braille'],
-                             ['Cyrillic', 'cyrillic'],
-                             ['Early Aramaic', 'earlyaramaic'],
-                             ['Syriac (Estrangelo)', 'estrangelo'],
-                             ['Anglo-Saxon Futhorc', 'futhorc'],
-                             ['Futurama', 'futurama'],
-                             ["Ge'ez", 'ge_ez'],
-                             ['Glagolitic', 'glagolitic'],
-                             ['Grantha', 'grantha'],
-                             ['Greek', 'greek'],
-                             ['Gujarati', 'gujarati'],
-                             ['Gurmukhi', 'gurmukhi'],
-                             ['Hebrew', 'hebrew'],
-                             ['Japanese (hiragana)', 'hiragana'],
-                             ['Inuktitut (Canadian Aboriginal Syllabics)', 'inuktitut'],
-                             ['Malay (Jawi - Arabic)', 'jawi'],
-                             ['Kannada', 'kannada'],
-                             ['Japanese (katakana)', 'katakana'],
-                             ['Keble', 'keble'],
-                             ['Korean', 'korean'],
-                             ['Latin', 'latin'],
-                             ['Alphabet of the Magi', 'magi'],
-                             ['Malayalam', 'malayalam'],
-                             ['Manipuri', 'manipuri'],
-                             ['Mkhedruli (Georgian)', 'mkhedruli'],
-                             ['Mongolian', 'mongolian'],
-                             ['Burmese (Myanmar)', 'myanmar'],
-                             ["N'Ko", 'nko'],
-                             ['Ojibwe (Canadian Aboriginal Syllabics)', 'ojibwe'],
-                             ['Old Church Slavonic (Cyrillic)', 'old_cyrillic'],
-                             ['Oriya', 'oriya'],
-                             ['Sanskrit', 'sanskrit'],
-                             ['Syriac (Serto)', 'serto'],
-                             ['Sylheti', 'sylheti'],
-                             ['Tagalog', 'tagalog'],
-                             ['Tengwar', 'tengwar'],
-                             ['Tibetan', 'tibetan'],
-                             ['Tifinagh', 'tifinagh'],
-                             ['ULOG', 'ulog']
-                            ];
-              alphabets.sort();
-              var familiarAlphabets = $('#familiar-alphabets-fieldset');
-              var colCount = -1;
-              var curCol = '';
-              jQuery.each(alphabets, function (index, alphabet) {
-                colCount++;
-                if (colCount % nPerColumn == 0) {
-                  familiarAlphabets.append(curCol = $('<div>')
-                                           .css({'display':'inline-block'}));
-                }
-                var tag = alphabet[1]; var name = alphabet[0];
-                curCol.append($('<label>')
-                              .append($('<input>')
-                                      .attr('type', 'checkbox')
-                                      .attr('name', 'familiar-alphabets')
-                                      .attr('id', 'familiar-alphabets')
-                                      .addClass('familiar-alphabets')
-                                      .attr('value', tag)
-                                     )
-                              .append(name))
-                  .append($('<br>'));
-              });
-            </script>
-
+          <!--#include virtual="../html/inputs/alphabets-seen.html" -->
           <br />
-          <div class="inline" style="text-align:left">
-            <label>
-              Please enter any feedback you have in the text box below. <br />
-              <textarea rows="10" cols="30" id="feedback" name="feedback"></textarea>
-            </label>
-          </div>
+          <!--#include virtual="../html/inputs/feedback.html" -->
         </fieldset>
       </div>
       

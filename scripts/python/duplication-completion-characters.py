@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Filename: completion-characters.py
+# Filename: duplication-completion-characters.py
 from __future__ import with_statement
 import cgi, cgitb
 cgitb.enable(format='nohtml')
@@ -24,10 +24,11 @@ FROM_PATH = ACCEPTED_IMAGES_PATH
 def tasks_to_task_images(tasks, verbose=True, random=random, alphabets_dict=None):
     if alphabets_dict is None: alphabets_dict = get_accepted_image_list(from_path=FROM_PATH)
     return [{
-             'image': anonymize_image(alphabets_dict[alphabet][uid][character_i], from_path=FROM_PATH, include_hash=False, include_original=False),
+             'completionImage': anonymize_image(alphabets_dict[alphabet][completion_uid][character_i], from_path=FROM_PATH, include_hash=False, include_original=False),
+             'duplicationImage': anonymize_image(alphabets_dict[alphabet][duplication_uid][character_i], from_path=FROM_PATH, include_hash=False, include_original=False),
              'imageHalf': image_half
             }
-            for alphabet, character_i, uid, image_half in tasks]
+            for alphabet, character_i, (completion_uid, duplication_uid), image_half in tasks]
 
 def make_task(foreground_fraction=0.75, verbose=True, random=random, **kwargs):
     if verbose: print('Getting list of alphabets...')
@@ -60,14 +61,8 @@ def make_task_from_characters_list(characters_list, task_count=200, image_half='
     else:
         image_half = [image_half]
 
-    if len(characters_list[0]) == 2: # (alphabet, char_num)
-        tasks = [(alphabet, character, random.choice(alphabets_dict[alphabet].keys()), random.choice(image_half))
-                 for alphabet, character in characters_list[:task_count]]
-    elif len(characters_list[0]) == 3: # (alphabet, char_glob, uid)
-        new_characters_list = []
-        for alphabet, char_glob, uid in characters_list:
-            new_characters_list.extend((alphabet, character_i, uid) for character_i in range(len(alphabets_dict[alphabet].values()[0])))
-        tasks = random.sample(new_characters_list, task_count)
+    tasks = [(alphabet, character, tuple(random.sample(alphabets_dict[alphabet].keys(), 2)), random.choice(image_half))
+             for alphabet, character in characters_list[:task_count]]
 
     return tasks_to_task_images(tasks, verbose=verbose, random=random, alphabets_dict=alphabets_dict)
 
@@ -89,15 +84,20 @@ def make_task_from_alphabet_set(alias, alphabets_dict=None, **kwargs):
 
 def create_first_task(form, args, verbose=False):
     passOnValues = {
+                    'pauseToFirstHint':[500],
+                    'pauseToSecondHint':[500],
+                    'pauseToExample':[1000],
+                    'pauseToNoise':[500],
                     'imageHalf':'left,right',
                     'taskCount':20,
                     'characterSize':'105px',
+                    'canvasSize':'105px',
                     'characterSet':''
                     }
 
     rtn = aggregate_values(passOnValues, args, form);
 
-    rtn['imagesPerTask'] = 1
+    rtn['imagesPerTask'] = 3
 
     if rtn['characterSet']:
         rtn['tasks'] = make_task_from_alphabet_set(rtn['characterSet'], verbose=verbose, task_count=rtn['taskCount'], image_half=rtn['imageHalf'])

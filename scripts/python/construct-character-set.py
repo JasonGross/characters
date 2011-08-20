@@ -31,6 +31,11 @@ def construct_character_set(form, args, reset=False, verbose=False, help=False):
     <span style="color:red"><strong>Note that the quotes (") are mandatory.</strong></span>
   </li>
   <li>
+    <b>drawers</b> - A list of alphabet/drawer pairs that must be used, in the form [<em>alphabet</em>, <em>id</em>].
+    For example, <tt>?drawers=[["latin", "a1j8s7giuyto4a"], ["latin", "a1kj5bqqwzijjt"], ["greek", "a2pfktghhg1ofp"]]</tt>.
+    <span style="color:red"><strong>Note that the quotes (") are mandatory.</strong></span>
+  </li>
+  <li>
     <b>nonAlphabets</b> - A list of alphabets from which characters may not be drawn.  For example, 
     <tt>?constructCharacterSet&amp;nonAlphabets=["latin", "greek", "hebrew"]</tt>.  Does not work well with <b>alphabets</b>.
     <span style="color:red"><strong>Note that the quotes (") are mandatory.</strong></span>
@@ -47,6 +52,7 @@ def construct_character_set(form, args, reset=False, verbose=False, help=False):
             def do_error():
                 raise ValueError('No structure with alias "%s" exists.' % get_alias)
             return get_object(CHARACTER_SET_NAME_FORMAT % get_alias, do_error, is_old=(lambda x: False))
+        drawers = get_list_of_values(form, 'drawers', args.drawers)
         characters = get_list_of_values(form, 'characters', args.characters)
         alphabets = get_list_of_values(form, 'alphabets', args.alphabets)
         non_alphabets = get_list_of_values(form, 'nonAlphabets', args.non_alphabets)
@@ -57,6 +63,8 @@ def construct_character_set(form, args, reset=False, verbose=False, help=False):
             rtn = [(alphabet, int(ch_num) - 1) for alphabet, ch_num in characters]
         elif alphabets:
             rtn = alphabets
+        elif drawers:
+            rtn = [(alphabet, '*', uid) for alphabet, uid in drawers]
         elif non_alphabets:
             rtn = [alphabet for alphabet in get_accepted_image_list() 
                    if alphabet not in nonAlphabets and alphabet.lower() not in nonAlphabets]
@@ -92,6 +100,11 @@ def str2alphabet_tuple(string):
     if len(lst) != 2: raise ValueError('value should be an (alphabet, character number) pair: %s' % string)
     return (lst[0], int(lst[1]))
 
+def str2drawers_tuple(string):
+    lst = str2list(string)
+    if len(lst) != 2: raise ValueError('value should be an (alphabet, character number) pair: %s' % string)
+    return (lst[0], lst[1])
+
 def str2list(string):
     if (string[0], string[-1]) not in (('[', ']'), ('(', ')')):
         raise ValueError('invalid start/end delimiters for list: %s and %s' % (string[0], string[-1]))
@@ -102,6 +115,8 @@ parser.add_argument('--verbose', '-v', action='store_true',
                     help='print status on recreating tasks')
 parser.add_argument('--characters', metavar='[A,N]', type=str2alphabet_tuple, nargs='*',
                     help='Characters that must be used, in the form "[alphabet, number]", where "number" is a one-based index.')
+parser.add_argument('--drawers', metavar='[A,N]', type=str2drawers_tuple, nargs='*',
+                    help='Drawers that must be used, in the form "[alphabet, id]"')
 parser.add_argument('--alphabets', metavar='A', type=str, nargs='*',
                     help='Alphabets from which to draw the characters')
 parser.add_argument('--non-alphabets', metavar='A', type=str, nargs='*',

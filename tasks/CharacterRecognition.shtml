@@ -155,13 +155,13 @@
         the Latin alphabet A, B, C, and D are different characters.  In each subtask, you will see pairs of character images, and 
         no two images are exactly the same.  <strong>Importantly, your task is not to judge whether the two images are literally 
         the same, but rather whether they are images of the same type of character (for example, 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
+        <img src="//jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
         and 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_azdw60621ia38.png" alt='another "b"' style="height:1.25em" title='another "b"' />)
+        <img src="//jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_azdw60621ia38.png" alt='another "b"' style="height:1.25em" title='another "b"' />)
         or instead of two different types of characters (for example, 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
+        <img src="//jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_02_a1j8s7giuyto4a.png" alt='a "b"' style="height:1.25em" title='a "b"' />
         and 
-        <img src="http://jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_04_a1z59eb58sfxpy.png" alt='a "d"' style="height:1.25em" title='a "d"' />).</strong>
+        <img src="//jgross.scripts.mit.edu/alphabets/results/accepted-images/latin/latin_04_a1z59eb58sfxpy.png" alt='a "d"' style="height:1.25em" title='a "d"' />).</strong>
         If the two images contain the same type of
         character, mark "Yes, they are the same." Otherwise, if they contain different types of characters, mark "No, they are 
         different.  The exact characters you will see should be new to you, so make your best guess.
@@ -205,7 +205,7 @@
       </ul>
     </div>
     <div id="example-task">
-      <div class="mouse-cursor" id="example-mouse-cursor-holder" name="example-mouse-cursor-holder"><img src="http://jgross.scripts.mit.edu/alphabets/images/mouse-cursor-icon.png" class="mouse-cursor" alt="&#8598;" id="example-mouse-cursor" name="example-mouse-cursor" /></div>
+      <div class="mouse-cursor" id="example-mouse-cursor-holder" name="example-mouse-cursor-holder"><img src="//jgross.scripts.mit.edu/alphabets/images/mouse-cursor-icon.png" class="mouse-cursor" alt="&#8598;" id="example-mouse-cursor" name="example-mouse-cursor" /></div>
     </div>
     <div id="disclaimer-box">
       <p><a id="disclaimer-show" class="showLink" href="#" onclick="showHide('disclaimer');return false;">Show Disclaimer</a></p>
@@ -222,7 +222,7 @@
         </span>
         <span class="show-if-not-turk">
           by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively,
-          you may click <a href="http://jgross.scripts.mit.edu/alphabets/">here</a>.)
+          you may click <a href="//jgross.scripts.mit.edu/alphabets/">here</a>.)
         </span>
         You may decline further participation, at any time, without adverse consequences. 
         Your anonymity is assured; the researchers who have requested your participation
@@ -239,7 +239,7 @@
     </div>
     <p id="interest">
     	If you are interested in learning more about this research, please visit 
-    	<a href="http://jgross.scripts.mit.edu/alphabets/" rel="external" target="_blank">http://jgross.scripts.mit.edu/alphabets/</a>
+    	<a href="//jgross.scripts.mit.edu/alphabets/" rel="external" target="_blank">//jgross.scripts.mit.edu/alphabets/</a>
         (this link will open in a new window or tab, so you do not need to worry about losing your submisison).
     </p>
   

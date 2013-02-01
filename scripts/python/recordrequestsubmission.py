@@ -186,4 +186,4 @@ def record_submission(form_dict, names=('get_unreviewed_image_list', 'get_unrevi
     if many_dirs:
         _log_success(folder)
     if verbose: print('Done<br>You may now leave this page.<br>')
-    if verbose: print('<a href="http://jgross.scripts.mit.edu/alphabets/">Return to home page</a>')
+    if verbose: print('<a href="//jgross.scripts.mit.edu/alphabets/">Return to home page</a>')

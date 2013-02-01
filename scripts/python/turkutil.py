@@ -367,4 +367,4 @@ def record_submission(form_dict, path, make_summary, preprocess_form=None, prepr
     if many_dirs:
         log_success(path)
     if verbose: print('Done<br>You may now leave this page.<br>')
-    if verbose: print('<a href="http://jgross.scripts.mit.edu/alphabets/">Return to home page</a>')
+    if verbose: print('<a href="//jgross.scripts.mit.edu/alphabets/">Return to home page</a>')

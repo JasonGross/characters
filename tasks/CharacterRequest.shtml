@@ -231,7 +231,7 @@ document.writeln('If you make a mistake, click &#39;clear&#39;.  When you have f
 if (urlParameters.getURLParameter('hitId') != '') {
     document.write(' by clicking the &#39;Return HIT&#39; button at the top of this page.  ');
 } else {
-    document.write(' by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively, you may click <a href="http://jgross.scripts.mit.edu/alphabets/">here</a>.)');
+    document.write(' by clicking the &#39;Back&#39; button at the top of your browser. (Alternatively, you may click <a href="//jgross.scripts.mit.edu/alphabets/">here</a>.)');
 }
 </script>
                 You may decline 
@@ -356,7 +356,7 @@ showHide('disclaimer');
 	
 	<div class="feedback">
 	  <p>
-        If you are interested in learning more about this research, please visit <a href="http://jgross.scripts.mit.edu/alphabets/" target="_blank">http://jgross.scripts.mit.edu/alphabets/</a> (this link will open in a new window or tab, so you do not need to worry about loosing your submisison).
+        If you are interested in learning more about this research, please visit <a href="//jgross.scripts.mit.edu/alphabets/" target="_blank">//jgross.scripts.mit.edu/alphabets/</a> (this link will open in a new window or tab, so you do not need to worry about loosing your submisison).
       </p>
 		<input type="submit" value="Submit" /> </div>
 </div>

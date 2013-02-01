@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-        <ExternalURL>https://scripts.mit.edu/~jgross/alphabets/tasks/CharacterSimilarity.shtml?${parameters}</ExternalURL>
+        <ExternalURL>https://jgross.scripts.mit.edu/alphabets/tasks/CharacterSimilarity.shtml?${parameters}</ExternalURL>
   <FrameHeight>2400</FrameHeight>
 </ExternalQuestion>
 

@@ -1,0 +1,40 @@
+=== Instructions ===
+
+1. Clone this repository to some place on a server.  Make sure you got a
+   version with the image data (mine is at
+   https://bitbucket.org/JasonGross/alphabets-with-data)
+
+2. Make sure the files and .htaccess are readable by the world.  (On afs, this
+   is
+     fsr sa . system:anyuser read
+
+   You might want to replace system:anyuser with www, if that's appropriate to
+   your server.)
+
+3. Make sure that working-directory/, results/, and object-storage/ are
+   writable by your server daemon (for MIT scripts, this is daemon.scripts; for
+   csail, this is www.  The command on afs, for MIT scripts, is:
+
+     fsr sa working-directory/ daemon.scripts write
+     fsr sa results/ daemon.scripts write
+     fsr sa object-storage/ daemon.scripts write
+
+  You should replace daemon.scripts with the name of the user profile on the
+  webserver that runs the scripts.)
+
+3. Make sure the server can run python.
+
+  3a. If the python files are downloaded rather than run, try commenting out
+      the line at the top of the .htaccess file which tells the server to treat
+      .py files as cgi scripts.
+
+4. Replace instances of //jgross.scripts.mit.edu/alphabets/ with the path to
+   this folder over the internet.  Note that the leading '//' says "if you
+   access me over https, use https://; if you access me over http, use
+   http://".  Alternatively, fix everything to use the appropriate relative
+   paths, figure out how to get python to automatically figure out it's
+   web-address (the line in alphabetspaths.py), and then email me at jgross AT
+   mit DOT edu with a patch.
+
+
+For a description of the project, see index.html.

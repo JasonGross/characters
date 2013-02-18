@@ -1,3 +1,5 @@
+# uncomment the next line if your server treats everything as a cgi script, and doesn't recognize .py (e.g., csail)
+# AddHandler cgi-script .py
 RewriteEngine on
 RewriteRule ^results/accepted-images/(..)a(..)n(..)g(..)e([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/angelic/angelic_$5_$1$2$3$4$6.png
 RewriteRule ^results/accepted-images/(..)a(..)r(..)c(..)a([0-9][0-9])([^\.]+)\.png /~jgross/alphabets/results/accepted-images/arcadian/arcadian_$5_$1$2$3$4$6.png

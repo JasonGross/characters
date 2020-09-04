@@ -1,4 +1,4 @@
-﻿var setupResizeImages
+var setupResizeImages
 (function (defaultCheckBoxSelector, $, jQuery, undefined) {
   var baseSize = 80, offset = 125, count = 5, min = 20;
   var calcNewHolderSize = function (width) {

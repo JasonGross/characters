@@ -4,7 +4,7 @@
     <title>Character Request</title>
     <script type="text/javascript">
       window.location = window.location.href.replace(/CharacterRequest.shtml/, "tasks/CharacterRequest.shtml");
-      //document.write('<meta http-equiv="REFRESH" content="0;url=tasks/CharacterRequest.shtml">');
+      document.write('<meta http-equiv="REFRESH" content="0;url=tasks/CharacterRequest.shtml">');
     </script>
   </head>
   <body>

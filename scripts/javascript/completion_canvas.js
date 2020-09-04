@@ -1,4 +1,4 @@
-﻿var CompletionCanvas;
+var CompletionCanvas;
 (function ($, jQuery, undefined) {
   CompletionCanvas = function CompletionCanvas(name, width, height, image, showImageHalf, canvasLinewidth, canvasLineCap, canvas) {
     var self = this;

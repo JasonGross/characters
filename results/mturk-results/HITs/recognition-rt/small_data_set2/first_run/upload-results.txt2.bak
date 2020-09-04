@@ -1,0 +1,18 @@
+Sandbox override
+--[Initializing]----------
+ Input: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/recognition-rt/small_data_set2/first_run/recognition-rt.input
+ Properties: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/recognition-rt/small_data_set2/first_run/recognition-rt.properties
+ Question File: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/recognition-rt/small_data_set2/first_run/recognition-rt.question
+ Preview mode disabled
+--[Loading HITs]----------
+  Start time: Sun Mar 27 09:05:32 EDT 2011
+Created HIT 1: HITId=2EXB0HFL42J1ZIGVEWT7P0IGGAML00
+
+You may see your HIT(s) with HITTypeId '285JK63ZVE3H5KVHLZH9ML5R3GNAZC' here: 
+
+  http://workersandbox.mturk.com/mturk/preview?groupId=285JK63ZVE3H5KVHLZH9ML5R3GNAZC
+
+  End time: Sun Mar 27 09:05:33 EDT 2011
+--[Done Loading HITs]----------
+  Total load time: 0 seconds.
+  Successfully loaded 1 HITs.

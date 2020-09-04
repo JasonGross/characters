@@ -1,0 +1,12 @@
+age: 47
+feedback: Half the characters looks like butts!
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1FE2G3IZMD6ZYC4I13PSUF70NRCQVN
+workerId: A2AKUD1GXDSTSD
+workerid: A2AKUD1GXDSTSD

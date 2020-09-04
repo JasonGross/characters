@@ -1,0 +1,12 @@
+age: 27
+feedback: I didn't fill out the age field for the last hit that I submitted to you. If it helps, my age is 27. I'm very sorry for any inconvenience that I've caused!
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10LNALZ1APEMHEGZOVKJLDGEWHVIVC
+workerId: A2JA8QB8PGYGHJ
+workerid: A2JA8QB8PGYGHJ

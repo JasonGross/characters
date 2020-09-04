@@ -1,0 +1,12 @@
+age: 50
+feedback: all but one or two look like ordinary letters, numbers, or punctuation symbols
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1I8P6KN2X9CNZNVISXM0LK0CSPY3AX
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

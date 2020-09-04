@@ -1,0 +1,6 @@
+feedback: It is very hard
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1JV21YWM00G7C579DWBYKPLSQFBHBQ
+workerid: A2G51HK8O342EZ

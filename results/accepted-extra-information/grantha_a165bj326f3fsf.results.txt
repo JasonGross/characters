@@ -1,0 +1,12 @@
+age: 38
+feedback: it was nice . the shapes are not so well as i used mouse to write it.
+input_device: mouse
+language-read: 
+language-read-write: tamil,hindi,english
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1H6HO5KRZLWRHI3QXB5C2A6X73K873
+workerId: A165BJ326F3FSF
+workerid: A165BJ326F3FSF

@@ -1,0 +1,3 @@
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: mouse
+seen_before: seen_familiar

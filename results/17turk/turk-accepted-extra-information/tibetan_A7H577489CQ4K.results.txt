@@ -1,0 +1,12 @@
+age: 30
+feedback: 
+input_device: mouse
+language-read: none
+language-read-write: French
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1T46IK3SNHH1NAIHJKBKG4IIWDNNNG
+workerId: A7H577489CQ4K
+workerid: A7H577489CQ4K

@@ -1,0 +1,12 @@
+age: 35
+feedback: Its a different HIT which is never faced by me. Thank you.
+input_device: mouse
+language-read: Hindi
+language-read-write: Telugu
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10Y5T8FD7ZXIXPXQNMJH311JSSNKON
+workerId: A2M9DAR91SGO9U
+workerid: A2M9DAR91SGO9U

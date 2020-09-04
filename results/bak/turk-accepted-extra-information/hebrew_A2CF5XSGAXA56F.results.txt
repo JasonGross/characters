@@ -1,0 +1,11 @@
+age: 35
+feedback: Excellent. I enjoyed doing it using a mouse. I had never seen these characters before. Thank you.
+input_device: mouse
+language-read: Marathi
+language-read-write: English, Hindi, Oriya
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1L179UJM147UXMCEA644BXCEXS8KM8
+workerid: A2CF5XSGAXA56F

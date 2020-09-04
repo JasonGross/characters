@@ -1,0 +1,219 @@
+
+
+Summary:Short Summary:
+Correct: 182
+Incorrect: 18
+Percent Correct: 91
+
+Same Correct: 52
+Same Incorrect: 11
+Percent Same Correct: 82
+
+Different Correct: 130
+Different Incorrect: 7
+Percent Different Correct: 94
+
+Long Summary:
+Task 0: correctly said that (atemayar, 10, a3m0kt6kjezd1) and (tagalog, 6, a12rfyr8dbn79) are not the same in 2100 ms.
+Task 1: correctly said that (atemayar, 12, a1j8s7giyto4a) and (atemayar, 12, ax5gghhj0o6g) are the same in 2720 ms.
+Task 2: incorrectly said that (tagalog, 6, a2du3880jbrov) and (inuktitut, 11, a315xddd8j4x8) are the same in 1885 ms.
+Task 3: incorrectly said that (atemayar, 25, a1vzhyp8yvxkz) and (myanmar, 4, a1clejhbx9yyn) are the same in 1572 ms.
+Task 4: correctly said that (tagalog, 15, a1j8s7giyto4a) and (tagalog, 15, a1yovlluv1c9h) are the same in 1221 ms.
+Task 5: correctly said that (korean, 17, a2akud1gdstsd) and (tagalog, 15, avlbkm6qpb1s) are not the same in 1385 ms.
+Task 6: correctly said that (atemayar, 25, avlbkm6qpb1s) and (atemayar, 25, a1poymbentexx) are the same in 1433 ms.
+Task 7: correctly said that (inuktitut, 12, a1s3njxhehcip) and (tagalog, 1, a1j8s7giyto4a) are not the same in 1232 ms.
+Task 8: correctly said that (myanmar, 8, a1umhcrj9zfdp) and (tagalog, 1, aghrkle9vf6z) are not the same in 1222 ms.
+Task 9: correctly said that (sylheti, 4, a3209gno9duil) and (atemayar, 12, a3m0kt6kjezd1) are not the same in 1331 ms.
+Task 10: correctly said that (tagalog, 15, a1j8s7giyto4a) and (sylheti, 4, a1l2fzyn31zvf) are not the same in 1039 ms.
+Task 11: correctly said that (atemayar, 25, a3m0kt6kjezd1) and (tagalog, 15, a1a25pyfoa9ge) are not the same in 1206 ms.
+Task 12: correctly said that (myanmar, 4, a4858n7ggst4) and (myanmar, 8, a3qat9qkqumi2) are not the same in 1160 ms.
+Task 13: correctly said that (myanmar, 16, a6fjbvuzrhm6) and (inuktitut, 2, a315xddd8j4x8) are not the same in 1170 ms.
+Task 14: correctly said that (inuktitut, 3, a12rfyr8dbn79) and (atemayar, 12, avlbkm6qpb1s) are not the same in 1121 ms.
+Task 15: incorrectly said that (inuktitut, 3, ay0bjcgydhix) and (myanmar, 16, avlbkm6qpb1s) are the same in 13860 ms.
+Task 16: correctly said that (inuktitut, 11, aljsxt6v0a30) and (sylheti, 3, aljsxt6v0a30) are not the same in 1198 ms.
+Task 17: incorrectly said that (inuktitut, 11, a1qku9mccvl35) and (sylheti, 3, atvyxlwe5n03) are the same in 1335 ms.
+Task 18: correctly said that (tagalog, 10, a3m0kt6kjezd1) and (myanmar, 16, a6fjbvuzrhm6) are not the same in 1242 ms.
+Task 19: correctly said that (tagalog, 6, a1i92aacrkacw) and (tagalog, 6, a1yovlluv1c9h) are the same in 1198 ms.
+Task 20: correctly said that (atemayar, 6, aljsxt6v0a30) and (korean, 3, a1oh82lwr5hbg) are not the same in 1105 ms.
+Task 21: correctly said that (korean, 3, a3d7xwp0gand5) and (sylheti, 15, amynpl5xzw6q) are not the same in 1033 ms.
+Task 22: correctly said that (tagalog, 6, ajf66jwen7bx) and (tagalog, 15, a1i92aacrkacw) are not the same in 1216 ms.
+Task 23: correctly said that (myanmar, 16, a6fjbvuzrhm6) and (inuktitut, 12, a315xddd8j4x8) are not the same in 794 ms.
+Task 24: correctly said that (korean, 39, aw82oruamauz) and (korean, 39, a1v0p79fynz9j) are the same in 1185 ms.
+Task 25: correctly said that (atemayar, 25, ax5gghhj0o6g) and (atemayar, 25, a1z59eb5sfxpy) are the same in 1250 ms.
+Task 26: incorrectly said that (atemayar, 10, ax5gghhj0o6g) and (atemayar, 10, a1z59eb5sfxpy) are not the same in 1047 ms.
+Task 27: correctly said that (sylheti, 4, a3r9q9wqm1nyz) and (sylheti, 13, aljsxt6v0a30) are not the same in 1281 ms.
+Task 28: correctly said that (inuktitut, 12, a1s3njxhehcip) and (sylheti, 3, aljsxt6v0a30) are not the same in 1089 ms.
+Task 29: incorrectly said that (atemayar, 12, aljsxt6v0a30) and (atemayar, 12, a1vzhyp8yvxkz) are not the same in 1144 ms.
+Task 30: correctly said that (myanmar, 4, a4858n7ggst4) and (myanmar, 4, aljsxt6v0a30) are the same in 1138 ms.
+Task 31: correctly said that (myanmar, 4, adc8vbkoocrr) and (myanmar, 4, amynpl5xzw6q) are the same in 810 ms.
+Task 32: correctly said that (atemayar, 25, a31xqftzcsia2) and (atemayar, 25, awl8tng8e81d) are the same in 826 ms.
+Task 33: correctly said that (sylheti, 3, a1l2fzyn31zvf) and (sylheti, 3, a2du3880jbrov) are the same in 625 ms.
+Task 34: correctly said that (inuktitut, 3, a3mv1jtwep7xn) and (atemayar, 12, avlbkm6qpb1s) are not the same in 1209 ms.
+Task 35: correctly said that (atemayar, 10, a1poymbentexx) and (myanmar, 16, adc8vbkoocrr) are not the same in 743 ms.
+Task 36: correctly said that (korean, 4, a3d7xwp0gand5) and (sylheti, 15, a4858n7ggst4) are not the same in 876 ms.
+Task 37: correctly said that (korean, 3, a1v0p79fynz9j) and (korean, 39, aj6upe9mlarg) are not the same in 817 ms.
+Task 38: correctly said that (myanmar, 8, a1umhcrj9zfdp) and (myanmar, 8, a3j1pp96x14u0) are the same in 1400 ms.
+Task 39: correctly said that (atemayar, 25, a1j8s7giyto4a) and (inuktitut, 12, a3qat9qkqumi2) are not the same in 1093 ms.
+Task 40: correctly said that (sylheti, 15, a1s3njxhehcip) and (sylheti, 13, ay0bjcgydhix) are not the same in 1333 ms.
+Task 41: correctly said that (sylheti, 3, a1j8s7giyto4a) and (tagalog, 6, a12rfyr8dbn79) are not the same in 1402 ms.
+Task 42: correctly said that (myanmar, 34, ajf66jwen7bx) and (inuktitut, 3, a1z59eb5sfxpy) are not the same in 1192 ms.
+Task 43: correctly said that (inuktitut, 3, a3mv1jtwep7xn) and (atemayar, 10, azdw6062ia38) are not the same in 432784 ms.
+Task 44: correctly said that (sylheti, 4, a3209gno9duil) and (korean, 4, a1v0p79fynz9j) are not the same in 1058 ms.
+Task 45: incorrectly said that (inuktitut, 2, a1j8s7giyto4a) and (inuktitut, 11, a1qku9mccvl35) are the same in 1573 ms.
+Task 46: correctly said that (atemayar, 12, a1j8s7giyto4a) and (tagalog, 6, aljsxt6v0a30) are not the same in 1055 ms.
+Task 47: correctly said that (atemayar, 12, a1j8s7giyto4a) and (sylheti, 4, a4858n7ggst4) are not the same in 1142 ms.
+Task 48: correctly said that (inuktitut, 12, avlbkm6qpb1s) and (atemayar, 6, a31xqftzcsia2) are not the same in 822 ms.
+Task 49: correctly said that (inuktitut, 11, a2ernxe6jlm4x) and (tagalog, 10, a3mv1jtwep7xn) are not the same in 889 ms.
+Task 50: incorrectly said that (atemayar, 10, ax5gghhj0o6g) and (atemayar, 10, agst3co6usf8) are not the same in 1149 ms.
+Task 51: correctly said that (atemayar, 25, avlbkm6qpb1s) and (korean, 39, a1s3njxhehcip) are not the same in 929 ms.
+Task 52: incorrectly said that (korean, 4, a2nm1qzuh14ls) and (korean, 4, a1s3njxhehcip) are not the same in 1189 ms.
+Task 53: correctly said that (tagalog, 6, aghrkle9vf6z) and (myanmar, 4, a1aegunf6e081) are not the same in 648 ms.
+Task 54: incorrectly said that (tagalog, 15, aljsxt6v0a30) and (tagalog, 15, a3m0kt6kjezd1) are not the same in 736 ms.
+Task 55: correctly said that (myanmar, 16, adc8vbkoocrr) and (inuktitut, 3, a1s3njxhehcip) are not the same in 617 ms.
+Task 56: correctly said that (inuktitut, 3, a2ernxe6jlm4x) and (korean, 4, a5379luit3pc) are not the same in 3068 ms.
+Task 57: correctly said that (tagalog, 1, a1yovlluv1c9h) and (sylheti, 13, a3r9q9wqm1nyz) are not the same in 621 ms.
+Task 58: correctly said that (tagalog, 6, a1s3njxhehcip) and (tagalog, 6, a1a25pyfoa9ge) are the same in 1198 ms.
+Task 59: correctly said that (inuktitut, 12, a1j8s7giyto4a) and (atemayar, 10, a1manxzopzden) are not the same in 1049 ms.
+Task 60: correctly said that (atemayar, 6, a1poymbentexx) and (tagalog, 6, ay0bjcgydhix) are not the same in 856 ms.
+Task 61: correctly said that (atemayar, 6, ae0ibwt7asth) and (atemayar, 6, a6fjbvuzrhm6) are the same in 1102 ms.
+Task 62: correctly said that (myanmar, 34, a1j8s7giyto4a) and (myanmar, 34, amynpl5xzw6q) are the same in 1445 ms.
+Task 63: correctly said that (tagalog, 15, a1yovlluv1c9h) and (atemayar, 12, ae0ibwt7asth) are not the same in 1183 ms.
+Task 64: correctly said that (inuktitut, 12, a2pfktghg1ofp) and (atemayar, 12, a1qku9mccvl35) are not the same in 737 ms.
+Task 65: correctly said that (atemayar, 25, a1poymbentexx) and (atemayar, 25, ax5gghhj0o6g) are the same in 3166 ms.
+Task 66: correctly said that (inuktitut, 3, ay0bjcgydhix) and (myanmar, 8, ajf66jwen7bx) are not the same in 1083 ms.
+Task 67: correctly said that (inuktitut, 2, a315xddd8j4x8) and (tagalog, 1, asu813kb7bv1) are not the same in 842 ms.
+Task 68: correctly said that (tagalog, 15, a1l2fzyn31zvf) and (tagalog, 10, ajf66jwen7bx) are not the same in 1442 ms.
+Task 69: correctly said that (myanmar, 16, a1ehrxjplsq0r) and (korean, 3, a2akud1gdstsd) are not the same in 769 ms.
+Task 70: correctly said that (inuktitut, 2, a3mv1jtwep7xn) and (tagalog, 1, a1s3njxhehcip) are not the same in 1028 ms.
+Task 71: correctly said that (tagalog, 10, a1ehrxjplsq0r) and (tagalog, 10, a12rfyr8dbn79) are the same in 1194 ms.
+Task 72: incorrectly said that (atemayar, 12, azdw6062ia38) and (atemayar, 25, a1j8s7giyto4a) are the same in 955 ms.
+Task 73: correctly said that (inuktitut, 2, avlbkm6qpb1s) and (myanmar, 16, a1foggtlgo7n4) are not the same in 953 ms.
+Task 74: correctly said that (inuktitut, 12, a1manxzopzden) and (inuktitut, 12, a2qnqd7m8zfbo) are the same in 919 ms.
+Task 75: correctly said that (tagalog, 1, a2du3880jbrov) and (tagalog, 6, amynpl5xzw6q) are not the same in 949429 ms.
+Task 76: correctly said that (inuktitut, 12, a12rfyr8dbn79) and (sylheti, 13, a3m0kt6kjezd1) are not the same in 1385 ms.
+Task 77: correctly said that (inuktitut, 3, a1s3njxhehcip) and (tagalog, 6, a12rfyr8dbn79) are not the same in 33500 ms.
+Task 78: correctly said that (korean, 17, a1manxzopzden) and (tagalog, 6, a3qat9qkqumi2) are not the same in 733 ms.
+Task 79: correctly said that (sylheti, 3, ay0bjcgydhix) and (sylheti, 15, a1j8s7giyto4a) are not the same in 1346 ms.
+Task 80: incorrectly said that (atemayar, 6, a1manxzopzden) and (myanmar, 4, adc8vbkoocrr) are the same in 1501 ms.
+Task 81: correctly said that (sylheti, 4, aljsxt6v0a30) and (inuktitut, 11, a1manxzopzden) are not the same in 1190 ms.
+Task 82: correctly said that (sylheti, 3, a3pkun3onkucn) and (korean, 17, a3mv1jtwep7xn) are not the same in 1687 ms.
+Task 83: correctly said that (myanmar, 16, a1j8s7giyto4a) and (myanmar, 16, a3pkun3onkucn) are the same in 1376 ms.
+Task 84: correctly said that (korean, 3, a1s3njxhehcip) and (sylheti, 15, a1j8s7giyto4a) are not the same in 1061 ms.
+Task 85: correctly said that (inuktitut, 11, aljsxt6v0a30) and (inuktitut, 11, a1z59eb5sfxpy) are the same in 1646 ms.
+Task 86: correctly said that (myanmar, 4, a1umhcrj9zfdp) and (sylheti, 3, a3r9q9wqm1nyz) are not the same in 1102 ms.
+Task 87: correctly said that (sylheti, 13, a2du3880jbrov) and (tagalog, 6, a1a25pyfoa9ge) are not the same in 835 ms.
+Task 88: correctly said that (myanmar, 16, a3pkun3onkucn) and (myanmar, 16, a4858n7ggst4) are the same in 1615 ms.
+Task 89: incorrectly said that (tagalog, 1, a1yovlluv1c9h) and (tagalog, 1, a3mv1jtwep7xn) are not the same in 1191 ms.
+Task 90: correctly said that (atemayar, 6, a1vzhyp8yvxkz) and (sylheti, 4, amynpl5xzw6q) are not the same in 1161 ms.
+Task 91: correctly said that (sylheti, 15, atvyxlwe5n03) and (sylheti, 15, a3np21apfa18b) are the same in 1139 ms.
+Task 92: correctly said that (myanmar, 34, avlbkm6qpb1s) and (myanmar, 34, a1j8s7giyto4a) are the same in 958 ms.
+Task 93: correctly said that (korean, 17, a1v0p79fynz9j) and (inuktitut, 3, a1z59eb5sfxpy) are not the same in 995 ms.
+Task 94: correctly said that (tagalog, 1, asu813kb7bv1) and (tagalog, 10, a2du3880jbrov) are not the same in 933 ms.
+Task 95: correctly said that (sylheti, 4, a1j8s7giyto4a) and (myanmar, 34, a1j8s7giyto4a) are not the same in 1535 ms.
+Task 96: correctly said that (myanmar, 4, avlbkm6qpb1s) and (inuktitut, 3, a2pfktghg1ofp) are not the same in 634 ms.
+Task 97: correctly said that (korean, 39, a2akud1gdstsd) and (tagalog, 10, a3qat9qkqumi2) are not the same in 900 ms.
+Task 98: correctly said that (myanmar, 8, adc8vbkoocrr) and (atemayar, 12, a1yovlluv1c9h) are not the same in 758 ms.
+Task 99: correctly said that (atemayar, 10, agst3co6usf8) and (inuktitut, 12, a3noo9k3y1yu5) are not the same in 705 ms.
+Task 100: correctly said that (korean, 39, a1s3njxhehcip) and (myanmar, 16, a1ehrxjplsq0r) are not the same in 1249 ms.
+Task 101: correctly said that (sylheti, 3, atvyxlwe5n03) and (korean, 4, a1udqv4pfypkn) are not the same in 613 ms.
+Task 102: correctly said that (korean, 3, a2ernxe6jlm4x) and (korean, 3, a39ivbdm1ekue) are the same in 1554 ms.
+Task 103: correctly said that (korean, 39, a3bb99mn3zy37) and (atemayar, 12, a23psx2z4f65q) are not the same in 1041 ms.
+Task 104: correctly said that (inuktitut, 2, a2ernxe6jlm4x) and (sylheti, 15, a4858n7ggst4) are not the same in 1390 ms.
+Task 105: correctly said that (atemayar, 10, a2pfktghg1ofp) and (atemayar, 10, a1poymbentexx) are the same in 1880 ms.
+Task 106: correctly said that (tagalog, 15, a3qat9qkqumi2) and (atemayar, 10, a1vzhyp8yvxkz) are not the same in 877 ms.
+Task 107: correctly said that (korean, 4, ae0ibwt7asth) and (korean, 39, a1umhcrj9zfdp) are not the same in 1566 ms.
+Task 108: correctly said that (tagalog, 10, a1l2fzyn31zvf) and (tagalog, 10, a1j8s7giyto4a) are the same in 1088 ms.
+Task 109: correctly said that (inuktitut, 11, a1w3fo0d7cf5t) and (inuktitut, 11, a2qnqd7m8zfbo) are the same in 1173 ms.
+Task 110: correctly said that (inuktitut, 3, a1j8s7giyto4a) and (inuktitut, 3, a3mv1jtwep7xn) are the same in 36998 ms.
+Task 111: correctly said that (atemayar, 6, a6fjbvuzrhm6) and (tagalog, 1, a2du3880jbrov) are not the same in 1166 ms.
+Task 112: correctly said that (atemayar, 10, a1z59eb5sfxpy) and (sylheti, 3, a2du3880jbrov) are not the same in 1297 ms.
+Task 113: correctly said that (inuktitut, 3, a12rfyr8dbn79) and (myanmar, 4, adc8vbkoocrr) are not the same in 1102 ms.
+Task 114: correctly said that (korean, 4, a2px0aywxngce) and (korean, 4, a1v0p79fynz9j) are the same in 1008 ms.
+Task 115: correctly said that (korean, 3, a3mv1jtwep7xn) and (sylheti, 3, a1l2fzyn31zvf) are not the same in 879 ms.
+Task 116: correctly said that (korean, 39, aw82oruamauz) and (inuktitut, 2, a2pgu4pi93b1q) are not the same in 563 ms.
+Task 117: correctly said that (inuktitut, 3, a1j8s7giyto4a) and (sylheti, 13, a30xq7555spo8) are not the same in 498 ms.
+Task 118: correctly said that (sylheti, 13, avlbkm6qpb1s) and (sylheti, 13, amynpl5xzw6q) are the same in 907 ms.
+Task 119: incorrectly said that (sylheti, 4, a3pkun3onkucn) and (sylheti, 4, a1l2fzyn31zvf) are not the same in 1045 ms.
+Task 120: correctly said that (sylheti, 13, a1l2fzyn31zvf) and (sylheti, 13, atvyxlwe5n03) are the same in 1172 ms.
+Task 121: correctly said that (tagalog, 6, aghrkle9vf6z) and (tagalog, 6, ajf66jwen7bx) are the same in 748 ms.
+Task 122: correctly said that (myanmar, 34, a3j1pp96x14u0) and (tagalog, 6, a12rfyr8dbn79) are not the same in 1219 ms.
+Task 123: correctly said that (sylheti, 3, a3209gno9duil) and (atemayar, 12, a31xqftzcsia2) are not the same in 5006 ms.
+Task 124: correctly said that (tagalog, 6, a1ehrxjplsq0r) and (myanmar, 16, a1j8s7giyto4a) are not the same in 976 ms.
+Task 125: correctly said that (tagalog, 10, a1l2fzyn31zvf) and (tagalog, 10, a1i92aacrkacw) are the same in 2228 ms.
+Task 126: correctly said that (atemayar, 10, agst3co6usf8) and (sylheti, 3, amynpl5xzw6q) are not the same in 1193 ms.
+Task 127: incorrectly said that (korean, 39, a1umhcrj9zfdp) and (korean, 39, ae0ibwt7asth) are not the same in 1403 ms.
+Task 128: correctly said that (myanmar, 4, adc8vbkoocrr) and (inuktitut, 3, avlbkm6qpb1s) are not the same in 834 ms.
+Task 129: incorrectly said that (sylheti, 3, aljsxt6v0a30) and (sylheti, 3, a4858n7ggst4) are not the same in 1358 ms.
+Task 130: correctly said that (myanmar, 34, adc8vbkoocrr) and (myanmar, 34, a1aegunf6e081) are the same in 1546 ms.
+Task 131: correctly said that (inuktitut, 3, aljsxt6v0a30) and (korean, 3, a1v0p79fynz9j) are not the same in 902 ms.
+Task 132: correctly said that (myanmar, 34, a1j8s7giyto4a) and (myanmar, 34, ajf66jwen7bx) are the same in 1118 ms.
+Task 133: correctly said that (inuktitut, 12, a1j8s7giyto4a) and (atemayar, 12, agst3co6usf8) are not the same in 937 ms.
+Task 134: correctly said that (atemayar, 6, avlbkm6qpb1s) and (tagalog, 10, asu813kb7bv1) are not the same in 848 ms.
+Task 135: correctly said that (tagalog, 1, ajf66jwen7bx) and (inuktitut, 11, a12xm86d2nbih) are not the same in 61778 ms.
+Task 136: correctly said that (inuktitut, 12, aljsxt6v0a30) and (korean, 3, aw82oruamauz) are not the same in 1321 ms.
+Task 137: correctly said that (myanmar, 8, a1stvgjqfl5kk) and (tagalog, 6, a3m0kt6kjezd1) are not the same in 651 ms.
+Task 138: correctly said that (sylheti, 4, a3np21apfa18b) and (inuktitut, 2, a2qnqd7m8zfbo) are not the same in 1316 ms.
+Task 139: correctly said that (tagalog, 1, a1i92aacrkacw) and (sylheti, 3, ay0bjcgydhix) are not the same in 712 ms.
+Task 140: correctly said that (atemayar, 12, avlbkm6qpb1s) and (tagalog, 10, ae0ibwt7asth) are not the same in 807 ms.
+Task 141: correctly said that (sylheti, 4, avlbkm6qpb1s) and (atemayar, 6, a31xqftzcsia2) are not the same in 650 ms.
+Task 142: correctly said that (inuktitut, 11, a315xddd8j4x8) and (tagalog, 15, a1a25pyfoa9ge) are not the same in 547 ms.
+Task 143: correctly said that (inuktitut, 2, a3qat9qkqumi2) and (sylheti, 4, a3209gno9duil) are not the same in 329154 ms.
+Task 144: correctly said that (korean, 17, a2ernxe6jlm4x) and (myanmar, 16, avlbkm6qpb1s) are not the same in 640 ms.
+Task 145: correctly said that (tagalog, 6, a3mv1jtwep7xn) and (inuktitut, 12, a2ernxe6jlm4x) are not the same in 729 ms.
+Task 146: correctly said that (sylheti, 4, a3r9q9wqm1nyz) and (sylheti, 4, a1qku9mccvl35) are the same in 1392 ms.
+Task 147: correctly said that (inuktitut, 11, a2pfktghg1ofp) and (korean, 4, a39ivbdm1ekue) are not the same in 1298 ms.
+Task 148: correctly said that (tagalog, 1, a3qat9qkqumi2) and (tagalog, 1, a1ehrxjplsq0r) are the same in 1231 ms.
+Task 149: correctly said that (korean, 3, a2nm1qzuh14ls) and (tagalog, 10, avlbkm6qpb1s) are not the same in 1130 ms.
+Task 150: correctly said that (inuktitut, 11, ae0ibwt7asth) and (inuktitut, 3, a12rfyr8dbn79) are not the same in 933 ms.
+Task 151: correctly said that (sylheti, 13, ay0bjcgydhix) and (sylheti, 13, a3pkun3onkucn) are the same in 1307 ms.
+Task 152: correctly said that (atemayar, 25, a31e6jchki335) and (atemayar, 25, a1poymbentexx) are the same in 1075 ms.
+Task 153: correctly said that (myanmar, 34, a4858n7ggst4) and (myanmar, 34, a1umhcrj9zfdp) are the same in 865 ms.
+Task 154: correctly said that (tagalog, 10, avlbkm6qpb1s) and (tagalog, 15, a1s3njxhehcip) are not the same in 1103 ms.
+Task 155: correctly said that (sylheti, 4, a2du3880jbrov) and (korean, 4, a5379luit3pc) are not the same in 1584 ms.
+Task 156: correctly said that (sylheti, 15, a3209gno9duil) and (sylheti, 15, ay0bjcgydhix) are the same in 1569 ms.
+Task 157: correctly said that (sylheti, 3, a1j8s7giyto4a) and (sylheti, 13, a2du3880jbrov) are not the same in 940 ms.
+Task 158: correctly said that (korean, 3, a1manxzopzden) and (atemayar, 10, avlbkm6qpb1s) are not the same in 1155 ms.
+Task 159: correctly said that (inuktitut, 11, a2qnqd7m8zfbo) and (tagalog, 6, aghrkle9vf6z) are not the same in 784 ms.
+Task 160: correctly said that (atemayar, 10, a3m0kt6kjezd1) and (inuktitut, 3, a1qku9mccvl35) are not the same in 981 ms.
+Task 161: correctly said that (sylheti, 3, atvyxlwe5n03) and (sylheti, 3, a30xq7555spo8) are the same in 1055 ms.
+Task 162: correctly said that (korean, 17, a2px0aywxngce) and (inuktitut, 12, a2ernxe6jlm4x) are not the same in 1054 ms.
+Task 163: correctly said that (tagalog, 1, a1yovlluv1c9h) and (tagalog, 1, a1ehrxjplsq0r) are the same in 1014 ms.
+Task 164: correctly said that (myanmar, 4, a4858n7ggst4) and (myanmar, 34, avlbkm6qpb1s) are not the same in 1057 ms.
+Task 165: correctly said that (korean, 39, a39ivbdm1ekue) and (korean, 39, a5379luit3pc) are the same in 1114 ms.
+Task 166: correctly said that (korean, 17, a5379luit3pc) and (inuktitut, 11, a3noo9k3y1yu5) are not the same in 984 ms.
+Task 167: correctly said that (korean, 3, a2nm1qzuh14ls) and (korean, 3, a39ivbdm1ekue) are the same in 1590 ms.
+Task 168: correctly said that (tagalog, 10, a12rfyr8dbn79) and (myanmar, 16, ajf66jwen7bx) are not the same in 1000 ms.
+Task 169: correctly said that (tagalog, 6, ay0bjcgydhix) and (tagalog, 6, asu813kb7bv1) are the same in 1448 ms.
+Task 170: correctly said that (korean, 3, a3mv1jtwep7xn) and (korean, 3, a2px0aywxngce) are the same in 1411 ms.
+Task 171: correctly said that (korean, 4, a5379luit3pc) and (inuktitut, 12, a315xddd8j4x8) are not the same in 850 ms.
+Task 172: incorrectly said that (myanmar, 8, avlbkm6qpb1s) and (myanmar, 8, ay0bjcgydhix) are not the same in 1440 ms.
+Task 173: correctly said that (myanmar, 16, a1clejhbx9yyn) and (myanmar, 4, ajf66jwen7bx) are not the same in 667 ms.
+Task 174: correctly said that (sylheti, 3, a1j8s7giyto4a) and (sylheti, 3, a6fjbvuzrhm6) are the same in 1227 ms.
+Task 175: correctly said that (myanmar, 34, amynpl5xzw6q) and (myanmar, 34, adc8vbkoocrr) are the same in 939 ms.
+Task 176: correctly said that (atemayar, 6, a1poymbentexx) and (atemayar, 6, a1yovlluv1c9h) are the same in 764 ms.
+Task 177: correctly said that (korean, 39, a1s3njxhehcip) and (atemayar, 25, a31e6jchki335) are not the same in 1111 ms.
+Task 178: correctly said that (sylheti, 13, amynpl5xzw6q) and (inuktitut, 12, a3mv1jtwep7xn) are not the same in 951 ms.
+Task 179: correctly said that (korean, 3, a3dfh6dpi11ip) and (korean, 3, a3d7xwp0gand5) are the same in 1031 ms.
+Task 180: correctly said that (atemayar, 25, awl8tng8e81d) and (sylheti, 3, a1s3njxhehcip) are not the same in 1073 ms.
+Task 181: correctly said that (korean, 39, aav4pzxdoebd) and (myanmar, 16, ajf66jwen7bx) are not the same in 729 ms.
+Task 182: correctly said that (tagalog, 1, a1yovlluv1c9h) and (tagalog, 10, a2du3880jbrov) are not the same in 587 ms.
+Task 183: correctly said that (tagalog, 6, a1l2fzyn31zvf) and (tagalog, 10, a1yovlluv1c9h) are not the same in 952 ms.
+Task 184: correctly said that (inuktitut, 11, a1w3fo0d7cf5t) and (atemayar, 25, a1poymbentexx) are not the same in 521 ms.
+Task 185: correctly said that (sylheti, 13, a1qku9mccvl35) and (inuktitut, 12, a1j8s7giyto4a) are not the same in 542 ms.
+Task 186: correctly said that (korean, 3, a39ivbdm1ekue) and (korean, 3, a3dfh6dpi11ip) are the same in 805 ms.
+Task 187: correctly said that (sylheti, 3, a1j8s7giyto4a) and (sylheti, 3, a3m0kt6kjezd1) are the same in 913 ms.
+Task 188: correctly said that (tagalog, 10, a1s3njxhehcip) and (sylheti, 15, avlbkm6qpb1s) are not the same in 1049 ms.
+Task 189: correctly said that (korean, 3, a1umhcrj9zfdp) and (tagalog, 1, ajf66jwen7bx) are not the same in 652 ms.
+Task 190: correctly said that (inuktitut, 2, a315xddd8j4x8) and (myanmar, 4, aljsxt6v0a30) are not the same in 964 ms.
+Task 191: correctly said that (inuktitut, 11, a12xm86d2nbih) and (atemayar, 12, a1yovlluv1c9h) are not the same in 569 ms.
+Task 192: incorrectly said that (sylheti, 13, avlbkm6qpb1s) and (sylheti, 13, aljsxt6v0a30) are not the same in 1323 ms.
+Task 193: correctly said that (tagalog, 10, a1ehrxjplsq0r) and (inuktitut, 2, a1j8s7giyto4a) are not the same in 730 ms.
+Task 194: correctly said that (sylheti, 4, a1s3njxhehcip) and (inuktitut, 2, a1j8s7giyto4a) are not the same in 633 ms.
+Task 195: correctly said that (korean, 39, a1manxzopzden) and (atemayar, 6, a1vzhyp8yvxkz) are not the same in 574 ms.
+Task 196: correctly said that (atemayar, 25, a1poymbentexx) and (tagalog, 1, a3mv1jtwep7xn) are not the same in 643 ms.
+Task 197: correctly said that (myanmar, 4, a1j8s7giyto4a) and (atemayar, 10, awl8tng8e81d) are not the same in 521 ms.
+Task 198: correctly said that (atemayar, 6, a1manxzopzden) and (myanmar, 8, a3qat9qkqumi2) are not the same in 576 ms.
+Task 199: correctly said that (sylheti, 15, atvyxlwe5n03) and (tagalog, 6, a3m0kt6kjezd1) are not the same in 742 ms.
+
+Duration: 52m 27s 746ms
+Comments: Interesting study. Sometimes it was more difficult than others to follow the quick pace of the flash.

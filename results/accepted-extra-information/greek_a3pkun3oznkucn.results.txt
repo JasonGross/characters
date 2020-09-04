@@ -1,0 +1,12 @@
+age: 
+feedback: 
+input_device: other_input
+language-read: 
+language-read-write: german, hebrew
+native-language: English
+other_input_text: trackball
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZFKOCEZXKDJPQOEYSFCIF0CTAFFGT
+workerId: A3PKUN3OZNKUCN
+workerid: A3PKUN3OZNKUCN

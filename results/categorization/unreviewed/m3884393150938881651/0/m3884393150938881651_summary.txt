@@ -1,0 +1,14 @@
+
+
+Summary:
+Right: Selected "Asomtavruli (Georgian)" from options "Glagolitic", "Greek", "Asomtavruli (Georgian)", "N'Ko", "Old Church Slavonic (Cyrillic)", "Keble", "Futurama", "Mongolian", "Atemayar Qelisayer", "Early Aramaic"
+Wrong: Selected "Avesta" instead of "Hebrew" from options "Mkhedruli (Georgian)", "Tengwar", "Cyrillic", "Grantha", "Avesta", "Gujarati", "Alphabet of the Magi", "Japanese (hiragana)", "Hebrew", "Aurek-Besh"
+Wrong: Selected "Bengali" instead of "Arcadian" from options "Arcadian", "Anglo-Saxon Futhorc", "Inuktitut (Canadian Aboriginal Syllabics)", "Kannada", "Malay (Jawi - Arabic)", "Bengali", "Manipuri", "Atlantean", "Tibetan", "Syriac (Estrangelo)"
+Wrong: Selected "Ge'ez" instead of "Korean" from options "ULOG", "Tifinagh", "Balinese", "Ge'ez", "Armenian", "Gurmukhi", "Malayalam", "Angelic", "Korean", "Ojibwe (Canadian Aboriginal Syllabics)"
+Wrong: Selected "Burmese (Myanmar)" instead of "Latin" from options "Blackfoot (Canadian Aboriginal Syllabics)", "Oriya", "Latin", "Burmese (Myanmar)", "Braille", "Sylheti", "Tagalog", "Syriac (Serto)", "Sanskrit", "Japanese (katakana)"
+
+Totals:
+Correct: 1
+Incorrect: 4
+
+Duration: 2m 43s 255ms

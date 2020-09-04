@@ -1,0 +1,12 @@
+age: 20
+feedback: Many characters were made thicker by going over the strokes multiple times.  The instructions said to not do this.\nplease provide more...
+input_device: mouse
+language-read: none
+language-read-write: English
+native-language: Hindi
+other_input_text: 
+reject: y
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1Y4VH5D2E308DIPLE10KWW61CS0864
+workerId: A2PX0AYWTXNGCE
+workerid: A2PX0AYWTXNGCE

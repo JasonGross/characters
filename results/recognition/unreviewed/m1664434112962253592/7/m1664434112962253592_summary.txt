@@ -1,0 +1,180 @@
+
+
+Summary:Short Summary:
+Correct: 41
+Incorrect: 121
+Percent Correct: 25
+
+Same Correct: 41
+Same Incorrect: 0
+Percent Same Correct: 100
+
+Different Correct: 0
+Different Incorrect: 121
+Percent Different Correct: 0
+
+Long Summary:
+Task 0: incorrectly said that (armenian, 32, dstsd) and (futurama, 15, 3qow7) are the same in 1459 ms.
+Task 1: incorrectly said that (asomtavruli, 34, wfyfm) and (asomtavruli, 22, wfyfm) are the same in 2718 ms.
+Task 2: incorrectly said that (futurama, 16, jezd1) and (myanmar, 32, yto4a) are the same in 209 ms.
+Task 3: incorrectly said that (atlantean, 21, ia38) and (angelic, 19, ep7xn) are the same in 151 ms.
+Task 4: incorrectly said that (bengali, 37, rhm6) and (mongolian, 24, jezd1) are the same in 295 ms.
+Task 5: incorrectly said that (glagolitic, 21, yto4a) and (glagolitic, 31, g1ofp) are the same in 419 ms.
+Task 6: correctly said that (atlantean, 4, pb1s) and (atlantean, 4, yto4a) are the same in 257 ms.
+Task 7: correctly said that (mkhedruli, 17, t3pc) and (mkhedruli, 17, dstsd) are the same in 175 ms.
+Task 8: correctly said that (avesta, 3, pb1s) and (avesta, 3, 3qow7) are the same in 231 ms.
+Task 9: correctly said that (kannada, 32, gyghj) and (kannada, 32, mgtc) are the same in 246 ms.
+Task 10: incorrectly said that (atlantean, 12, oa9ge) and (atlantean, 5, czvx) are the same in 3528 ms.
+Task 11: incorrectly said that (myanmar, 22, 9zfdp) and (myanmar, 33, n7bx) are the same in 186 ms.
+Task 12: correctly said that (grantha, 27, tt4dj) and (grantha, 27, jlm4x) are the same in 211 ms.
+Task 13: incorrectly said that (tibetan, 42, 3zy37) and (aurek_besh, 13, pzden) are the same in 193 ms.
+Task 14: correctly said that (estrangelo, 2, yipxm) and (estrangelo, 2, gst4) are the same in 262 ms.
+Task 15: correctly said that (mkhedruli, 30, ci8m2) and (mkhedruli, 30, h14ls) are the same in 238 ms.
+Task 16: correctly said that (mkhedruli, 9, rdn77) and (mkhedruli, 9, 3zy37) are the same in 156 ms.
+Task 17: incorrectly said that (keble, 25, czvx) and (malayalam, 19, rhm6) are the same in 210 ms.
+Task 18: correctly said that (malayalam, 44, gyghj) and (malayalam, 44, dstsd) are the same in 222 ms.
+Task 19: correctly said that (futhorc, 29, j68f) and (futhorc, 29, io56) are the same in 273 ms.
+Task 20: incorrectly said that (mongolian, 15, twsqi) and (tibetan, 2, gugle) are the same in 209 ms.
+Task 21: incorrectly said that (glagolitic, 9, 4f65q) and (magi, 11, 7cf5t) are the same in 182 ms.
+Task 22: incorrectly said that (mkhedruli, 7, bbohw) and (mkhedruli, 5, ci8m2) are the same in 134 ms.
+Task 23: incorrectly said that (futhorc, 25, jezd1) and (magi, 11, jbrov) are the same in 196 ms.
+Task 24: incorrectly said that (ulog, 24, dhix) and (tibetan, 36, pzden) are the same in 306 ms.
+Task 25: incorrectly said that (futurama, 26, vf6z) and (angelic, 10, rhm6) are the same in 131 ms.
+Task 26: correctly said that (asomtavruli, 22, 3zlo) and (asomtavruli, 22, rkacw) are the same in 337 ms.
+Task 27: incorrectly said that (ulog, 17, sfxpy) and (jawi, 6, t9sjo) are the same in 175 ms.
+Task 28: incorrectly said that (jawi, 40, 088ib) and (jawi, 32, 088ib) are the same in 193 ms.
+Task 29: incorrectly said that (bengali, 17, f3fsf) and (mongolian, 11, l1s1r) are the same in 167 ms.
+Task 30: incorrectly said that (ulog, 3, usf8) and (ulog, 12, m1nyz) are the same in 297 ms.
+Task 31: correctly said that (mongolian, 22, 4f65q) and (mongolian, 22, twsqi) are the same in 144 ms.
+Task 32: incorrectly said that (angelic, 13, io56) and (grantha, 43, 3zlo) are the same in 288 ms.
+Task 33: correctly said that (glagolitic, 25, lmpep) and (glagolitic, 25, ep7xn) are the same in 169 ms.
+Task 34: incorrectly said that (atlantean, 21, ia38) and (keble, 7, bsgxv) are the same in 267 ms.
+Task 35: incorrectly said that (bengali, 35, wfyfm) and (bengali, 14, 3gje) are the same in 13433 ms.
+Task 36: incorrectly said that (kannada, 6, oebd) and (futhorc, 24, j68f) are the same in 119 ms.
+Task 37: incorrectly said that (armenian, 13, ehcip) and (armenian, 29, ia38) are the same in 176 ms.
+Task 38: incorrectly said that (mkhedruli, 18, 6e081) and (asomtavruli, 15, vf6z) are the same in 207 ms.
+Task 39: incorrectly said that (kannada, 6, oebd) and (kannada, 39, vf6z) are the same in 187 ms.
+Task 40: incorrectly said that (atlantean, 19, zw6q) and (keble, 24, 9qrtb) are the same in 292 ms.
+Task 41: incorrectly said that (atlantean, 13, jezd1) and (atlantean, 22, g1ofp) are the same in 147 ms.
+Task 42: incorrectly said that (myanmar, 18, 6e081) and (myanmar, 26, 9zfdp) are the same in 234 ms.
+Task 43: incorrectly said that (futhorc, 11, ep7xn) and (estrangelo, 11, dhix) are the same in 139 ms.
+Task 44: incorrectly said that (mkhedruli, 9, rdn77) and (glagolitic, 4, pzden) are the same in 207 ms.
+Task 45: incorrectly said that (bengali, 46, xhi4x) and (kannada, 39, wfyfm) are the same in 209 ms.
+Task 46: incorrectly said that (kannada, 37, byt4l) and (kannada, 25, ofnar) are the same in 191 ms.
+Task 47: incorrectly said that (futhorc, 24, ehcip) and (mongolian, 1, x9yyn) are the same in 197 ms.
+Task 48: incorrectly said that (atlantean, 22, sfxpy) and (atlantean, 18, czvx) are the same in 189 ms.
+Task 49: incorrectly said that (earlyaramaic, 16, yto4a) and (avesta, 19, 0a30) are the same in 253 ms.
+Task 50: correctly said that (angelic, 13, io56) and (angelic, 13, ep7xn) are the same in 246 ms.
+Task 51: incorrectly said that (keble, 23, vf6z) and (keble, 8, q8izc) are the same in 229 ms.
+Task 52: incorrectly said that (ulog, 11, sfxpy) and (ulog, 23, anv7m) are the same in 146 ms.
+Task 53: correctly said that (malayalam, 32, dstsd) and (malayalam, 32, pzden) are the same in 182 ms.
+Task 54: incorrectly said that (aurek_besh, 2, yto4a) and (bengali, 35, wfyfm) are the same in 125 ms.
+Task 55: incorrectly said that (avesta, 3, pb1s) and (mongolian, 29, cvl35) are the same in 206 ms.
+Task 56: incorrectly said that (tibetan, 31, itmr1) and (earlyaramaic, 19, l1s1r) are the same in 199 ms.
+Task 57: incorrectly said that (ge_ez, 8, pb1s) and (armenian, 8, gand5) are the same in 193 ms.
+Task 58: correctly said that (bengali, 3, jlm4x) and (bengali, 3, gyghj) are the same in 148 ms.
+Task 59: incorrectly said that (asomtavruli, 34, wfyfm) and (asomtavruli, 2, pzden) are the same in 274 ms.
+Task 60: incorrectly said that (malayalam, 33, gyghj) and (tibetan, 32, gugle) are the same in 127 ms.
+Task 61: incorrectly said that (futhorc, 9, sfxpy) and (ulog, 26, wfyfm) are the same in 178 ms.
+Task 62: incorrectly said that (magi, 10, ynz9j) and (armenian, 41, 8gkgu) are the same in 252 ms.
+Task 63: correctly said that (earlyaramaic, 19, g1ofp) and (earlyaramaic, 19, yto4a) are the same in 152 ms.
+Task 64: incorrectly said that (asomtavruli, 10, 75h90) and (ge_ez, 19, qumi2) are the same in 250 ms.
+Task 65: incorrectly said that (futurama, 19, jezd1) and (keble, 14, 9qrtb) are the same in 158 ms.
+Task 66: incorrectly said that (keble, 15, dhix) and (glagolitic, 14, 4f65q) are the same in 224 ms.
+Task 67: incorrectly said that (magi, 17, pzden) and (angelic, 19, nkucn) are the same in 205 ms.
+Task 68: incorrectly said that (tibetan, 7, gyghj) and (grantha, 29, x9yyn) are the same in 269 ms.
+Task 69: incorrectly said that (mkhedruli, 1, t3pc) and (armenian, 34, 8gkgu) are the same in 163 ms.
+Task 70: incorrectly said that (malayalam, 35, b106w) and (malayalam, 10, ehcip) are the same in 185 ms.
+Task 71: incorrectly said that (grantha, 29, txi9f) and (grantha, 38, t3pc) are the same in 139 ms.
+Task 72: incorrectly said that (sylheti, 14, zw6q) and (sylheti, 8, zw6q) are the same in 123 ms.
+Task 73: correctly said that (sylheti, 12, 5n03) and (sylheti, 12, gst4) are the same in 188 ms.
+Task 74: incorrectly said that (mkhedruli, 17, t3pc) and (mkhedruli, 5, 8gkgu) are the same in 202 ms.
+Task 75: incorrectly said that (bengali, 3, jlm4x) and (futhorc, 21, xa56f) are the same in 131 ms.
+Task 76: incorrectly said that (ge_ez, 1, jdx) and (ulog, 11, sfxpy) are the same in 200 ms.
+Task 77: incorrectly said that (kannada, 28, f3fsf) and (asomtavruli, 36, rkacw) are the same in 190 ms.
+Task 78: incorrectly said that (magi, 10, ynz9j) and (glagolitic, 34, 9zfdp) are the same in 209 ms.
+Task 79: incorrectly said that (futhorc, 27, ehcip) and (futhorc, 22, io56) are the same in 263 ms.
+Task 80: incorrectly said that (avesta, 20, sfxpy) and (glagolitic, 43, ci8m2) are the same in 200 ms.
+Task 81: incorrectly said that (jawi, 25, 4f65q) and (jawi, 9, asth) are the same in 131 ms.
+Task 82: incorrectly said that (asomtavruli, 3, xilp1) and (asomtavruli, 22, 8zfbo) are the same in 187 ms.
+Task 83: correctly said that (magi, 14, rhm6) and (magi, 14, 7cf5t) are the same in 238 ms.
+Task 84: correctly said that (jawi, 35, t9sjo) and (jawi, 35, xhi4x) are the same in 128 ms.
+Task 85: incorrectly said that (kannada, 7, yto4a) and (atlantean, 22, cvl35) are the same in 198 ms.
+Task 86: incorrectly said that (ge_ez, 2, yto4a) and (ge_ez, 21, pb1s) are the same in 201 ms.
+Task 87: correctly said that (angelic, 9, 5pbu) and (angelic, 9, io56) are the same in 190 ms.
+Task 88: incorrectly said that (futhorc, 22, t9sjo) and (futhorc, 4, ehcip) are the same in 224 ms.
+Task 89: correctly said that (mongolian, 5, twsqi) and (mongolian, 5, yto4a) are the same in 210 ms.
+Task 90: incorrectly said that (futhorc, 26, xa56f) and (malayalam, 20, lmpep) are the same in 151 ms.
+Task 91: incorrectly said that (bengali, 12, x14u0) and (bengali, 40, wfyfm) are the same in 215 ms.
+Task 92: incorrectly said that (futhorc, 22, t9sjo) and (futhorc, 26, yto4a) are the same in 192 ms.
+Task 93: incorrectly said that (mkhedruli, 9, rdn77) and (grantha, 15, wnkg) are the same in 144 ms.
+Task 94: correctly said that (mkhedruli, 24, ynz9j) and (mkhedruli, 24, i90t4) are the same in 183 ms.
+Task 95: incorrectly said that (mkhedruli, 24, ynz9j) and (atlantean, 7, jbrov) are the same in 222 ms.
+Task 96: incorrectly said that (futhorc, 28, qumi2) and (armenian, 30, rhm6) are the same in 178 ms.
+Task 97: correctly said that (bengali, 36, x14u0) and (bengali, 36, t3pc) are the same in 211 ms.
+Task 98: incorrectly said that (atlantean, 13, jezd1) and (atlantean, 19, nkucn) are the same in 212 ms.
+Task 99: incorrectly said that (avesta, 20, sfxpy) and (myanmar, 26, gst4) are the same in 203 ms.
+Task 100: incorrectly said that (kannada, 26, er8ps) and (kannada, 13, jgo52) are the same in 186 ms.
+Task 101: incorrectly said that (aurek_besh, 1, jgo52) and (earlyaramaic, 4, xa56f) are the same in 241 ms.
+Task 102: incorrectly said that (malayalam, 42, i8h0) and (malayalam, 29, ehcip) are the same in 196 ms.
+Task 103: incorrectly said that (asomtavruli, 32, jlm4x) and (asomtavruli, 30, oebd) are the same in 140 ms.
+Task 104: incorrectly said that (magi, 5, rhm6) and (magi, 7, rhm6) are the same in 185 ms.
+Task 105: correctly said that (armenian, 34, lmpep) and (armenian, 34, g1ofp) are the same in 202 ms.
+Task 106: correctly said that (grantha, 26, 3zy37) and (grantha, 26, 3zlo) are the same in 205 ms.
+Task 107: correctly said that (glagolitic, 25, lmpep) and (glagolitic, 25, czvx) are the same in 178 ms.
+Task 108: incorrectly said that (glagolitic, 21, yto4a) and (glagolitic, 6, xa56f) are the same in 203 ms.
+Task 109: incorrectly said that (kannada, 28, f3fsf) and (kannada, 1, pzden) are the same in 191 ms.
+Task 110: incorrectly said that (asomtavruli, 15, xilp1) and (keble, 10, rhm6) are the same in 203 ms.
+Task 111: incorrectly said that (futhorc, 4, l1s1r) and (futurama, 25, ehcip) are the same in 120 ms.
+Task 112: incorrectly said that (kannada, 11, otcf1) and (earlyaramaic, 19, dbn79) are the same in 169 ms.
+Task 113: incorrectly said that (futhorc, 4, l1s1r) and (malayalam, 4, dstsd) are the same in 166 ms.
+Task 114: incorrectly said that (bengali, 33, rhm6) and (bengali, 37, g1ofp) are the same in 207 ms.
+Task 115: incorrectly said that (tibetan, 22, ofnar) and (myanmar, 34, 6e081) are the same in 207 ms.
+Task 116: incorrectly said that (malayalam, 7, rhm6) and (grantha, 26, oebd) are the same in 250 ms.
+Task 117: incorrectly said that (angelic, 13, io56) and (angelic, 19, 0a30) are the same in 167 ms.
+Task 118: correctly said that (aurek_besh, 21, rhm6) and (aurek_besh, 21, 8j4x8) are the same in 191 ms.
+Task 119: incorrectly said that (kannada, 25, er8ps) and (avesta, 19, yto4a) are the same in 204 ms.
+Task 120: incorrectly said that (jawi, 12, mgtc) and (jawi, 4, dstsd) are the same in 212 ms.
+Task 121: correctly said that (avesta, 24, nkucn) and (avesta, 24, yto4a) are the same in 176 ms.
+Task 122: correctly said that (earlyaramaic, 2, ep7xn) and (earlyaramaic, 2, 0a30) are the same in 175 ms.
+Task 123: correctly said that (magi, 20, jezd1) and (magi, 20, vf6z) are the same in 236 ms.
+Task 124: incorrectly said that (myanmar, 3, x14u0) and (myanmar, 22, gst4) are the same in 108 ms.
+Task 125: incorrectly said that (atlantean, 13, jezd1) and (atlantean, 26, jbrov) are the same in 204 ms.
+Task 126: correctly said that (grantha, 26, 3zy37) and (grantha, 26, 2nbih) are the same in 193 ms.
+Task 127: incorrectly said that (bengali, 13, 3gje) and (tibetan, 9, x9yyn) are the same in 239 ms.
+Task 128: incorrectly said that (ulog, 12, wnkg) and (glagolitic, 22, lmpep) are the same in 134 ms.
+Task 129: incorrectly said that (mkhedruli, 17, t3pc) and (earlyaramaic, 16, 07asa) are the same in 215 ms.
+Task 130: incorrectly said that (bengali, 7, ucfc4) and (mongolian, 8, g1ofp) are the same in 234 ms.
+Task 131: correctly said that (sylheti, 28, jbrov) and (sylheti, 28, yto4a) are the same in 153 ms.
+Task 132: incorrectly said that (futhorc, 21, yto4a) and (grantha, 26, f3fsf) are the same in 228 ms.
+Task 133: incorrectly said that (futhorc, 27, ehcip) and (futhorc, 8, j68f) are the same in 257 ms.
+Task 134: incorrectly said that (aurek_besh, 4, 3qow7) and (mongolian, 16, oa9ge) are the same in 142 ms.
+Task 135: incorrectly said that (mkhedruli, 30, ci8m2) and (mkhedruli, 32, f3fsf) are the same in 171 ms.
+Task 136: incorrectly said that (myanmar, 33, g1ofp) and (myanmar, 34, rhm6) are the same in 203 ms.
+Task 137: correctly said that (futhorc, 18, cua88) and (futhorc, 18, t9sjo) are the same in 174 ms.
+Task 138: incorrectly said that (glagolitic, 31, 9zfdp) and (jawi, 14, wfyfm) are the same in 265 ms.
+Task 139: correctly said that (estrangelo, 9, pzden) and (estrangelo, 9, v1c9h) are the same in 148 ms.
+Task 140: incorrectly said that (myanmar, 3, x14u0) and (malayalam, 29, rhm6) are the same in 191 ms.
+Task 141: incorrectly said that (estrangelo, 22, pzden) and (armenian, 4, xa56f) are the same in 196 ms.
+Task 142: incorrectly said that (atlantean, 5, ia38) and (mkhedruli, 30, qxom0) are the same in 221 ms.
+Task 143: correctly said that (atlantean, 19, zw6q) and (atlantean, 19, jezd1) are the same in 151 ms.
+Task 144: incorrectly said that (asomtavruli, 5, txi9f) and (tibetan, 42, wfyfm) are the same in 244 ms.
+Task 145: incorrectly said that (jawi, 7, 4f65q) and (asomtavruli, 32, n3f8o) are the same in 135 ms.
+Task 146: incorrectly said that (aurek_besh, 11, l1s1r) and (aurek_besh, 21, 0a30) are the same in 187 ms.
+Task 147: correctly said that (malayalam, 14, ehcip) and (malayalam, 14, y2ih4) are the same in 271 ms.
+Task 148: incorrectly said that (grantha, 9, oa9ge) and (grantha, 40, 66938) are the same in 149 ms.
+Task 149: incorrectly said that (mkhedruli, 6, ci8m2) and (myanmar, 10, 0a30) are the same in 209 ms.
+Task 150: incorrectly said that (avesta, 5, pb1s) and (sylheti, 19, yto4a) are the same in 208 ms.
+Task 151: incorrectly said that (armenian, 20, gyghj) and (armenian, 12, 8gkgu) are the same in 206 ms.
+Task 152: correctly said that (asomtavruli, 32, jlm4x) and (asomtavruli, 32, wfyfm) are the same in 213 ms.
+Task 153: incorrectly said that (estrangelo, 2, yipxm) and (myanmar, 20, dhix) are the same in 163 ms.
+Task 154: incorrectly said that (ge_ez, 11, dhix) and (angelic, 9, pb1s) are the same in 177 ms.
+Task 155: incorrectly said that (atlantean, 1, m1nyz) and (armenian, 41, gyghj) are the same in 270 ms.
+Task 156: incorrectly said that (kannada, 9, er8ps) and (jawi, 40, 4f65q) are the same in 141 ms.
+Task 157: correctly said that (malayalam, 29, ehcip) and (malayalam, 29, 8gkgu) are the same in 187 ms.
+Task 158: incorrectly said that (futhorc, 8, 7cf5t) and (malayalam, 41, n1ze6) are the same in 230 ms.
+Task 159: correctly said that (malayalam, 29, ehcip) and (malayalam, 29, b106w) are the same in 176 ms.
+Task 160: incorrectly said that (ulog, 11, sfxpy) and (grantha, 31, oebd) are the same in 262 ms.
+Task 161: correctly said that (malayalam, 23, rhm6) and (malayalam, 23, g1ofp) are the same in 128 ms.
+
+Duration: 1m 43s 626ms

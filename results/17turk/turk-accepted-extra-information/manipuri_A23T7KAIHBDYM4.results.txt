@@ -1,0 +1,12 @@
+age: 40
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: English
+native-language: Hindi
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1P4Z9Y2P1NVBS2SGCBIRRFQ0SSJ3CZ
+workerId: A23T7KAIHBDYM4
+workerid: A23T7KAIHBDYM4

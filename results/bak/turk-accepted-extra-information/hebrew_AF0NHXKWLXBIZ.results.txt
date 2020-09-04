@@ -1,0 +1,11 @@
+age: 18
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: Greek
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1L179UJM147UXMCEA644BXCEXS8KM8
+workerid: AF0NHXKWLXBIZ

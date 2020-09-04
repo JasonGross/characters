@@ -1,0 +1,17 @@
+--[Initializing]----------
+ Input: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/recognition-rt/small_data_set2/first_run/recognition-rt.input
+ Properties: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/recognition-rt/small_data_set2/first_run/recognition-rt.properties
+ Question File: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/recognition-rt/small_data_set2/first_run/recognition-rt.question
+ Preview mode disabled
+--[Loading HITs]----------
+  Start time: Sat Apr 02 02:12:41 EDT 2011
+Created HIT 1: HITId=26L6XBAT2D5N4IYSISH0PG5TH5015A
+
+You may see your HIT(s) with HITTypeId '2R7SCWY2AOO2U6X1JDFGWSCM6M7229' here: 
+
+  http://www.mturk.com/mturk/preview?groupId=2R7SCWY2AOO2U6X1JDFGWSCM6M7229
+
+  End time: Sat Apr 02 02:12:41 EDT 2011
+--[Done Loading HITs]----------
+  Total load time: 0 seconds.
+  Successfully loaded 1 HITs.

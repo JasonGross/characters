@@ -1,0 +1,12 @@
+age: 
+feedback: Submissions are single dots.\n
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: 
+other_input_text: 
+reject: y
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1H6HO5KRZLWRHI3QXB5C2A6X73K873
+workerId: A2O6NBECDTNL1D
+workerid: A2O6NBECDTNL1D

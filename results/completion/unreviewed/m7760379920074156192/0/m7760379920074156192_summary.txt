@@ -1,0 +1,63 @@
+Summary:
+Task 0: GIVEN tengwar, 02, a2lzah9abusyxz
+Task 0: 
+Task 0 duration: 31146
+Task 1: GIVEN futhorc, 10, a2mfs1lc0cua88
+Task 1: 
+Task 1 duration: 8516
+Task 2: GIVEN avesta, 20, a3noo9k3cy1yu5
+Task 2: 
+Task 2 duration: 6673
+Task 3: GIVEN futhorc, 27, a2du3880mjbrov
+Task 3: 
+Task 3 duration: 7964
+Task 4: GIVEN sanskrit, 35, a3c11h09vjb94u
+Task 4: 
+Task 4 duration: 14277
+Task 5: GIVEN old_cyrillic, 32, a3h5su8gfxhi4x
+Task 5: 
+Task 5 duration: 21798
+Task 6: GIVEN glagolitic, 11, a2cf5xsgaxa56f
+Task 6: 
+Task 6 duration: 11159
+Task 7: GIVEN tibetan, 40, a1foggtlwgo7n4
+Task 7: 
+Task 7 duration: 13848
+Task 8: GIVEN atemayar, 07, avlbkm6qipb1s
+Task 8: 
+Task 8 duration: 108226
+Task 9: GIVEN braille, 08, a1jzp5xintwsqi
+Task 9: 
+Task 9 duration: 14038
+Task 10: GIVEN manipuri, 30, a3mv1jtwhep7xn
+Task 10: 
+Task 10 duration: 7882
+Task 11: GIVEN futurama, 16, aghrkle9jvf6z
+Task 11: 
+Task 11 duration: 20582
+Task 12: GIVEN arcadian, 08, aljsxt6vr0a30
+Task 12: 
+Task 12 duration: 18797
+Task 13: GIVEN gujarati, 32, a2botjesx4s3qc
+Task 13: 
+Task 13 duration: 7996
+Task 14: GIVEN kannada, 04, a1j8s7giuyto4a
+Task 14: 
+Task 14 duration: 11379
+Task 15: GIVEN tengwar, 06, a1v73zozm07asa
+Task 15: 
+Task 15 duration: 6590
+Task 16: GIVEN manipuri, 21, a283nw6kthh7dh
+Task 16: 
+Task 16 duration: 7872
+Task 17: GIVEN balinese, 13, a3mv1jtwhep7xn
+Task 17: 
+Task 17 duration: 6910
+Task 18: GIVEN tengwar, 07, ay0bjcgy2dhix
+Task 18: 
+Task 18 duration: 5922
+Task 19: GIVEN futhorc, 09, a2zu0sz3ld1x0n
+Task 19: 
+Task 19 duration: 7677
+Duration: 5m 57s 403ms
+Comments: 

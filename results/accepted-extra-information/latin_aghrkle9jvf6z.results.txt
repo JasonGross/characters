@@ -1,0 +1,12 @@
+age: 21
+feedback: Fun Tasks.
+input_device: touchpad
+language-read: 
+language-read-write: Hindi
+native-language: Bengali, English
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10P9K0PWWBMBZAFW77V53CETRINNLE
+workerId: AGHRKLE9JVF6Z
+workerid: AGHRKLE9JVF6Z

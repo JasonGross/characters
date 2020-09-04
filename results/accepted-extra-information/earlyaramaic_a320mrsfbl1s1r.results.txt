@@ -1,0 +1,12 @@
+age: 
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: 
+native-language: English, Spanish
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=115QYCK2EN5ASBWKCLRK0IAQDOH5U1
+workerId: A320MRSFBL1S1R
+workerid: A320MRSFBL1S1R

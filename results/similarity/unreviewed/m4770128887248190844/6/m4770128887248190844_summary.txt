@@ -1,0 +1,11 @@
+Summary:
+Task 0: gujarati, 20, a1aegunf6e081, magi, 13, a2du3880jbrov, 1
+Task 0 duration: 42032
+Task 1: armenian, 34, a1manxzopzden, ulog, 16, a2obf26c088ib, 1
+Task 1 duration: 19153
+Task 2: atlantean, 10, a1z59eb5sfxpy, atlantean, 10, a3mv1jtwep7xn, 6
+Task 2 duration: 13169
+Task 3: kannada, 25, a2akud1gdstsd, kannada, 25, a1xtebm2ofnar, 6
+Task 3 duration: 7243
+Task 4: latin, 23, a12xm86d2nbih, cyrillic, 14, a1clejhbx9yyn, 3
+Task 4 duration: 18601

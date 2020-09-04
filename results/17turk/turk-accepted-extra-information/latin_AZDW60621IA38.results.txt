@@ -1,0 +1,12 @@
+age: 36
+feedback: 
+input_device: mouse
+language-read: None
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10P9K0PWWBMBZAFW77V53CETRINNLE
+workerId: AZDW60621IA38
+workerid: AZDW60621IA38

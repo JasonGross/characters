@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 3
+Incorrect: 0
+Percent Correct: 100
+
+Same Correct: 0
+Same Incorrect: 0
+Percent Same Correct: -1
+
+Different Correct: 3
+Different Incorrect: 0
+Percent Different Correct: 100
+
+Long Summary:
+Task 0: correctly said that (hebrew, 10, pb1s) and (greek, 1, 9zfdp) are not the same in 1077 ms.
+Task 1: correctly said that (latin, 2, 07asa) and (greek, 1, fbr7l) are not the same in 942 ms.
+Task 2: correctly said that (greek, 1, ehcip) and (hebrew, 10, yto4a) are not the same in 633 ms.
+
+Duration: 0m 20s 20ms

@@ -1,0 +1,12 @@
+age: 26
+feedback: thank you very easy and intresting hit.
+input_device: mouse
+language-read: Hindi
+language-read-write: tamil
+native-language: english
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1VG5CYPQGJQ6WOU8AF361NUZ0IMY76
+workerId: A12XM86DU2NBIH
+workerid: A12XM86DU2NBIH

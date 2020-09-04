@@ -1,0 +1,12 @@
+age: 48
+feedback: Interesting experiment.  I'd like to know what you were trying to learn
+input_device: mouse
+language-read: None
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10LNALZ1APEMHEGZOVKJLDGEWHVIVC
+workerId: A3D1E4E0Y2MN5F
+workerid: A3D1E4E0Y2MN5F

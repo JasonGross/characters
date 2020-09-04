@@ -1,0 +1,12 @@
+age: 19
+feedback: Mouse is hard to write on
+input_device: mouse
+language-read: None
+language-read-write: Spanish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1MJY707EUIXXLHU9OGFF3RDS8N7FIL
+workerId: A1MANXZOLPZDEN
+workerid: A1MANXZOLPZDEN

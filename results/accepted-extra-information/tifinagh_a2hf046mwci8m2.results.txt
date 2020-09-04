@@ -1,0 +1,12 @@
+age: 21
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Tamil, English, Hindi
+native-language: Telugu
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZKKYOIBNS6CD14NRDUOGHQEU0EQWX
+workerId: A2HF046MWCI8M2
+workerid: A2HF046MWCI8M2

@@ -1,0 +1,12 @@
+age: 50
+feedback: some look vaguely familiar, but only vaguely
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1CPWGU52QOKA5QLKHB1PW4C9RVQ5VQ
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

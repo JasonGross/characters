@@ -1,0 +1,12 @@
+age: 19
+feedback: 
+input_device: mouse
+language-read: spanish, french
+language-read-write: spanish, french
+native-language: English Code
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1VG5CYPQGJQ6WOU8AF361NUZ0IMY76
+workerId: A1AK1CUCO597F7
+workerid: A1AK1CUCO597F7

@@ -1,0 +1,32 @@
+Summary:
+Calibration:
+5938
+Average: 5938
+
+
+Tasks:
+Task 0: korean, 28, a2ernxe6jlm4x VS. atemayar, 23, a1qku9mccvl35
+Task 0: Wrong, Are Different
+Task 1: sylheti, 17, a1j8s7giyto4a VS. sylheti, 19, a1foggtlgo7n4
+Task 1: Wrong, Are Different
+Task 2: inuktitut, 01, a1manxzopzden VS. inuktitut, 01, a1w3fo0d7cf5t
+Task 2: Right, Are Same
+Task 3: inuktitut, 01, a1qku9mccvl35 VS. korean, 28, a1manxzopzden
+Task 3: Wrong, Are Different
+Task 4: inuktitut, 11, a1j8s7giyto4a VS. tagalog, 02, a3qat9qkqumi2
+Task 4: Right, Are Different
+Task 4 RT: 769
+Task 5: myanmar, 01, a3pkun3onkucn VS. inuktitut, 11, a315xddd8j4x8
+Task 5: Right, Are Different
+Task 5 RT: 834
+Task 6: myanmar, 31, amynpl5xzw6q VS. myanmar, 31, a3pkun3onkucn
+Task 6: Right, Are Same
+Task 7: sylheti, 17, ay0bjcgydhix VS. inuktitut, 01, avlbkm6qpb1s
+Task 7: Right, Are Different
+Task 7 RT: 680
+Task 8: inuktitut, 01, a3noo9k3y1yu5 VS. inuktitut, 02, aljsxt6v0a30
+Task 8: Right, Are Different
+Task 8 RT: 666
+Task 9: myanmar, 25, a1aegunf6e081 VS. myanmar, 25, ajf66jwen7bx
+Task 9: Wrong, Are Same
+Task 9 RT: 1061

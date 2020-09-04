@@ -1,0 +1,12 @@
+age: 29
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: 
+native-language: chinese
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZKKYOIBNS6CD14NRDUOGHQEU0EQWX
+workerId: AE0IBWT7EASTH
+workerid: AE0IBWT7EASTH

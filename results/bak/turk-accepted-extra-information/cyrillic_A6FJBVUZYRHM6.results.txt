@@ -1,0 +1,12 @@
+age: 20
+feedback: 
+input_device: mouse
+language-read: bengali
+language-read-write: hindi
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: A6FJBVUZYRHM6
+workerid: A6FJBVUZYRHM6

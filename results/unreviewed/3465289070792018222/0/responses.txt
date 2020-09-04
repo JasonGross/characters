@@ -1,0 +1,6 @@
+age: 20
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: tablet_pen
+language-read-write: German, French
+native-language: English
+seen_before: seen_never

@@ -1,0 +1,12 @@
+age: 29
+feedback: 
+input_device: mouse
+language-read: none
+language-read-write: English, Russian
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=115QYCK2EN5ASBWKCLRK0IAQDOH5U1
+workerId: AGST3CO6UUSF8
+workerid: AGST3CO6UUSF8

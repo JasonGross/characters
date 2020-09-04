@@ -1,0 +1,12 @@
+age: 29
+feedback: This was tough
+input_device: mouse
+language-read: kannada
+language-read-write: Telugu,English, kannada
+native-language: Telugu
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10Y5T8FD7ZXIXPXQNMJH311JSSNKON
+workerId: A3J1PP96QX14U0
+workerid: A3J1PP96QX14U0

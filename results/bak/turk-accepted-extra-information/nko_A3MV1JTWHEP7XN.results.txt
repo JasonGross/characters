@@ -1,0 +1,12 @@
+age: 21
+feedback: 
+input_device: mouse
+language-read: latin
+language-read-write: spanish
+native-language: english
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1WIOHYOHW7H4D4K24W8EIWA618T76F
+workerId: A3MV1JTWHEP7XN
+workerid: A3MV1JTWHEP7XN

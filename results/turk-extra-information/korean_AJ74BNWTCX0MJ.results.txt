@@ -1,0 +1,11 @@
+age: 33
+feedback: Thank you for allowing me to participate.
+input_device: mouse
+language-read: None
+language-read-write: None
+native-language: Ennglish
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerid: AJ74BNWTCX0MJ

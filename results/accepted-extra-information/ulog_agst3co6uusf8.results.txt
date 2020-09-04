@@ -1,0 +1,12 @@
+age: 29
+feedback: harder than they look
+input_device: mouse
+language-read: none
+language-read-write: English, Russian
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1Y4VH5D2E308DIPLE10KWW61CS0864
+workerId: AGST3CO6UUSF8
+workerid: AGST3CO6UUSF8

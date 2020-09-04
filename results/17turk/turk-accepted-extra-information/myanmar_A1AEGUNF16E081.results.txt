@@ -1,0 +1,12 @@
+age: 22
+feedback: 
+input_device: mouse
+language-read: gujrati
+language-read-write: hindi,enlish
+native-language: hindi, english
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=18RZJWCKIX7SSM9OVAWRF8D8N8R0GB
+workerId: A1AEGUNF16E081
+workerid: A1AEGUNF16E081

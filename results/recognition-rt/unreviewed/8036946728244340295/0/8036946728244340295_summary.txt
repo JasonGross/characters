@@ -1,0 +1,549 @@
+Summary:
+Calibration:
+4782
+1245
+482
+270
+243
+211
+234
+476
+197
+207
+215
+200
+214
+225
+189
+265
+347
+218
+176
+205
+213
+202
+212
+208
+281
+Average: 468
+
+
+Tasks:
+Task 0: sylheti, 17, ay0bjcgydhix VS. sylheti, 20, a1a25pyfoa9ge
+Task 0: Right, Are Different
+Task 0 RT: 1854
+Task 1: korean, 04, aav4pzxdoebd VS. tagalog, 06, ay0bjcgydhix
+Task 1: Right, Are Different
+Task 1 RT: 823
+Task 2: myanmar, 25, a4858n7ggst4 VS. myanmar, 25, a1stvgjqfl5kk
+Task 2: Right, Are Same
+Task 3: sylheti, 19, a3pkun3onkucn VS. sylheti, 19, a30xq7555spo8
+Task 3: Wrong, Are Same
+Task 3 RT: 1464
+Task 4: sylheti, 20, a1foggtlgo7n4 VS. atemayar, 25, ax5gghhj0o6g
+Task 4: Wrong, Are Different
+Task 5: sylheti, 19, a4858n7ggst4 VS. sylheti, 19, amynpl5xzw6q
+Task 5: Wrong, Are Same
+Task 5 RT: 907
+Task 6: korean, 28, a1umhcrj9zfdp VS. korean, 28, a2ernxe6jlm4x
+Task 6: Wrong, Are Same
+Task 6 RT: 3827
+Task 7: sylheti, 28, a1j8s7giyto4a VS. korean, 29, a3dfh6dpi11ip
+Task 7: Wrong, Are Different
+Task 8: sylheti, 17, amynpl5xzw6q VS. sylheti, 17, a1qku9mccvl35
+Task 8: Wrong, Are Same
+Task 8 RT: 2299
+Task 9: tagalog, 05, a1i92aacrkacw VS. tagalog, 05, a1ehrxjplsq0r
+Task 9: Right, Are Same
+Task 10: atemayar, 23, ax5gghhj0o6g VS. korean, 28, a3d7xwp0gand5
+Task 10: Wrong, Are Different
+Task 11: myanmar, 25, a1stvgjqfl5kk VS. myanmar, 32, a3pkun3onkucn
+Task 11: Right, Are Different
+Task 11 RT: 1854
+Task 12: inuktitut, 01, a2qnqd7m8zfbo VS. inuktitut, 02, a1manxzopzden
+Task 12: Right, Are Different
+Task 12 RT: 1564
+Task 13: sylheti, 28, a1j8s7giyto4a VS. sylheti, 28, a1l2fzyn31zvf
+Task 13: Right, Are Same
+Task 14: korean, 04, ae0ibwt7asth VS. myanmar, 01, a1stvgjqfl5kk
+Task 14: Right, Are Different
+Task 14 RT: 811
+Task 15: sylheti, 19, a30xq7555spo8 VS. tagalog, 06, a3mv1jtwep7xn
+Task 15: Right, Are Different
+Task 15 RT: 798
+Task 16: inuktitut, 03, a2pfktghg1ofp VS. inuktitut, 03, a12xm86d2nbih
+Task 16: Right, Are Same
+Task 17: atemayar, 23, a3m0kt6kjezd1 VS. atemayar, 23, a1manxzopzden
+Task 17: Right, Are Same
+Task 18: tagalog, 02, a1l2fzyn31zvf VS. korean, 29, a2nm1qzuh14ls
+Task 18: Right, Are Different
+Task 18 RT: 795
+Task 19: inuktitut, 11, a1w3fo0d7cf5t VS. inuktitut, 11, a2ernxe6jlm4x
+Task 19: Right, Are Same
+Task 20: atemayar, 25, a1qku9mccvl35 VS. sylheti, 20, a2du3880jbrov
+Task 20: Right, Are Different
+Task 20 RT: 819
+Task 21: inuktitut, 03, a12xm86d2nbih VS. inuktitut, 03, a1w3fo0d7cf5t
+Task 21: Right, Are Same
+Task 22: korean, 29, a5379luit3pc VS. korean, 29, a1s3njxhehcip
+Task 22: Right, Are Same
+Task 23: atemayar, 06, a1yovlluv1c9h VS. atemayar, 06, a6fjbvuzrhm6
+Task 23: Wrong, Are Same
+Task 23 RT: 1484
+Task 24: tagalog, 06, a1a25pyfoa9ge VS. tagalog, 06, a1i92aacrkacw
+Task 24: Right, Are Same
+Task 25: korean, 29, a1udqv4pfypkn VS. atemayar, 23, aljsxt6v0a30
+Task 25: Right, Are Different
+Task 25 RT: 722
+Task 26: sylheti, 28, a1qku9mccvl35 VS. sylheti, 28, a3r9q9wqm1nyz
+Task 26: Right, Are Same
+Task 27: korean, 29, a1umhcrj9zfdp VS. korean, 29, a1oh82lwr5hbg
+Task 27: Right, Are Same
+Task 28: inuktitut, 02, a2qnqd7m8zfbo VS. inuktitut, 02, aljsxt6v0a30
+Task 28: Right, Are Same
+Task 29: tagalog, 02, aghrkle9vf6z VS. tagalog, 02, a1s3njxhehcip
+Task 29: Right, Are Same
+Task 30: tagalog, 02, ae0ibwt7asth VS. tagalog, 02, a1j8s7giyto4a
+Task 30: Right, Are Same
+Task 31: myanmar, 01, a1j8s7giyto4a VS. inuktitut, 01, a1s3njxhehcip
+Task 31: Right, Are Different
+Task 31 RT: 671
+Task 32: tagalog, 02, a1ehrxjplsq0r VS. tagalog, 02, a3qat9qkqumi2
+Task 32: Right, Are Same
+Task 33: korean, 39, aj6upe9mlarg VS. sylheti, 19, aljsxt6v0a30
+Task 33: Right, Are Different
+Task 33 RT: 2333
+Task 34: atemayar, 25, ax5gghhj0o6g VS. atemayar, 25, a31xqftzcsia2
+Task 34: Wrong, Are Same
+Task 34 RT: 1562
+Task 35: inuktitut, 02, aljsxt6v0a30 VS. sylheti, 28, ay0bjcgydhix
+Task 35: Right, Are Different
+Task 35 RT: 783
+Task 36: korean, 28, a5379luit3pc VS. atemayar, 25, a1poymbentexx
+Task 36: Right, Are Different
+Task 36 RT: 818
+Task 37: tagalog, 05, a1ehrxjplsq0r VS. tagalog, 05, amynpl5xzw6q
+Task 37: Right, Are Same
+Task 38: atemayar, 23, azdw6062ia38 VS. atemayar, 23, a23psx2z4f65q
+Task 38: Right, Are Same
+Task 39: atemayar, 25, a1yovlluv1c9h VS. korean, 39, a39ivbdm1ekue
+Task 39: Right, Are Different
+Task 39 RT: 728
+Task 40: sylheti, 20, a3209gno9duil VS. myanmar, 01, ajf66jwen7bx
+Task 40: Right, Are Different
+Task 40 RT: 830
+Task 41: korean, 39, aw82oruamauz VS. atemayar, 25, agst3co6usf8
+Task 41: Right, Are Different
+Task 41 RT: 937
+Task 42: inuktitut, 03, a3noo9k3y1yu5 VS. atemayar, 10, a31e6jchki335
+Task 42: Right, Are Different
+Task 42 RT: 1111
+Task 43: sylheti, 17, aljsxt6v0a30 VS. sylheti, 17, a1l2fzyn31zvf
+Task 43: Right, Are Same
+Task 44: atemayar, 25, awl8tng8e81d VS. atemayar, 25, azdw6062ia38
+Task 44: Right, Are Same
+Task 45: atemayar, 23, aljsxt6v0a30 VS. atemayar, 23, a3m0kt6kjezd1
+Task 45: Right, Are Same
+Task 46: myanmar, 31, a6fjbvuzrhm6 VS. myanmar, 31, a3j1pp96x14u0
+Task 46: Right, Are Same
+Task 47: sylheti, 28, amynpl5xzw6q VS. sylheti, 28, a1foggtlgo7n4
+Task 47: Right, Are Same
+Task 48: tagalog, 06, avlbkm6qpb1s VS. tagalog, 06, a1ehrxjplsq0r
+Task 48: Right, Are Same
+Task 49: myanmar, 01, a3qat9qkqumi2 VS. myanmar, 01, adc8vbkoocrr
+Task 49: Right, Are Same
+Task 50: sylheti, 19, a30xq7555spo8 VS. myanmar, 31, aljsxt6v0a30
+Task 50: Right, Are Different
+Task 50 RT: 694
+Task 51: atemayar, 10, a1qku9mccvl35 VS. myanmar, 25, ajf66jwen7bx
+Task 51: Right, Are Different
+Task 51 RT: 870
+Task 52: tagalog, 02, a3m0kt6kjezd1 VS. tagalog, 02, a3mv1jtwep7xn
+Task 52: Right, Are Same
+Task 53: korean, 04, a1s3njxhehcip VS. myanmar, 01, amynpl5xzw6q
+Task 53: Right, Are Different
+Task 53 RT: 741
+Task 54: inuktitut, 03, a12xm86d2nbih VS. inuktitut, 03, a2pgu4pi93b1q
+Task 54: Right, Are Same
+Task 55: myanmar, 32, avlbkm6qpb1s VS. myanmar, 32, a1umhcrj9zfdp
+Task 55: Right, Are Same
+Task 56: tagalog, 06, a1a25pyfoa9ge VS. inuktitut, 01, ay0bjcgydhix
+Task 56: Right, Are Different
+Task 56 RT: 753
+Task 57: myanmar, 01, avlbkm6qpb1s VS. korean, 39, a1s3njxhehcip
+Task 57: Right, Are Different
+Task 57 RT: 1235
+Task 58: sylheti, 17, a3209gno9duil VS. korean, 28, a2nm1qzuh14ls
+Task 58: Right, Are Different
+Task 58 RT: 884
+Task 59: atemayar, 06, avlbkm6qpb1s VS. tagalog, 02, a2du3880jbrov
+Task 59: Right, Are Different
+Task 59 RT: 755
+Task 60: myanmar, 31, a6fjbvuzrhm6 VS. myanmar, 31, a2pfktghg1ofp
+Task 60: Right, Are Same
+Task 61: korean, 04, a1manxzopzden VS. korean, 04, a2px0aywxngce
+Task 61: Right, Are Same
+Task 62: korean, 39, ae0ibwt7asth VS. korean, 39, a2nm1qzuh14ls
+Task 62: Right, Are Same
+Task 63: sylheti, 20, a1foggtlgo7n4 VS. sylheti, 20, ay0bjcgydhix
+Task 63: Right, Are Same
+Task 64: korean, 04, aav4pzxdoebd VS. tagalog, 10, aljsxt6v0a30
+Task 64: Right, Are Different
+Task 64 RT: 2577
+Task 65: atemayar, 10, a31e6jchki335 VS. korean, 04, a1manxzopzden
+Task 65: Right, Are Different
+Task 65 RT: 876
+Task 66: inuktitut, 11, a12xm86d2nbih VS. inuktitut, 11, a2pgu4pi93b1q
+Task 66: Right, Are Same
+Task 67: korean, 28, a1oh82lwr5hbg VS. myanmar, 25, a1umhcrj9zfdp
+Task 67: Right, Are Different
+Task 67 RT: 792
+Task 68: atemayar, 25, a1manxzopzden VS. atemayar, 25, agst3co6usf8
+Task 68: Right, Are Same
+Task 69: inuktitut, 02, ae0ibwt7asth VS. atemayar, 25, a31e6jchki335
+Task 69: Right, Are Different
+Task 69 RT: 662
+Task 70: atemayar, 25, a3m0kt6kjezd1 VS. atemayar, 25, a1yovlluv1c9h
+Task 70: Wrong, Are Same
+Task 70 RT: 2696
+Task 71: inuktitut, 11, a1qku9mccvl35 VS. tagalog, 05, a2du3880jbrov
+Task 71: Right, Are Different
+Task 71 RT: 866
+Task 72: korean, 29, a1umhcrj9zfdp VS. korean, 29, a1manxzopzden
+Task 72: Wrong, Are Same
+Task 72 RT: 1983
+Task 73: tagalog, 10, a1a25pyfoa9ge VS. tagalog, 05, a1i92aacrkacw
+Task 73: Right, Are Different
+Task 73 RT: 1365
+Task 74: sylheti, 17, aljsxt6v0a30 VS. sylheti, 17, ay0bjcgydhix
+Task 74: Right, Are Same
+Task 75: korean, 28, a1umhcrj9zfdp VS. korean, 39, a2nm1qzuh14ls
+Task 75: Wrong, Are Different
+Task 76: tagalog, 10, ajf66jwen7bx VS. tagalog, 10, ae0ibwt7asth
+Task 76: Right, Are Same
+Task 77: korean, 39, a1oh82lwr5hbg VS. korean, 39, a2ernxe6jlm4x
+Task 77: Right, Are Same
+Task 78: tagalog, 06, a1ehrxjplsq0r VS. tagalog, 06, avlbkm6qpb1s
+Task 78: Right, Are Same
+Task 79: myanmar, 01, a1ehrxjplsq0r VS. sylheti, 20, a2du3880jbrov
+Task 79: Right, Are Different
+Task 79 RT: 931
+Task 80: tagalog, 06, a3qat9qkqumi2 VS. tagalog, 06, ajf66jwen7bx
+Task 80: Right, Are Same
+Task 81: korean, 28, a39ivbdm1ekue VS. korean, 28, ae0ibwt7asth
+Task 81: Right, Are Same
+Task 82: korean, 28, a1s3njxhehcip VS. myanmar, 32, amynpl5xzw6q
+Task 82: Right, Are Different
+Task 82 RT: 856
+Task 83: atemayar, 10, a31e6jchki335 VS. inuktitut, 02, a2pfktghg1ofp
+Task 83: Right, Are Different
+Task 83 RT: 1010
+Task 84: korean, 29, a1udqv4pfypkn VS. korean, 29, a5379luit3pc
+Task 84: Right, Are Same
+Task 85: inuktitut, 03, a2qnqd7m8zfbo VS. inuktitut, 03, a3qat9qkqumi2
+Task 85: Right, Are Same
+Task 86: inuktitut, 02, a2pfktghg1ofp VS. atemayar, 23, a1yovlluv1c9h
+Task 86: Right, Are Different
+Task 86 RT: 806
+Task 87: korean, 04, ae0ibwt7asth VS. korean, 04, a5379luit3pc
+Task 87: Right, Are Same
+Task 88: atemayar, 23, avlbkm6qpb1s VS. atemayar, 23, agst3co6usf8
+Task 88: Right, Are Same
+Task 89: inuktitut, 11, a2qnqd7m8zfbo VS. inuktitut, 02, a1z59eb5sfxpy
+Task 89: Right, Are Different
+Task 89 RT: 616
+Task 90: tagalog, 05, a1j8s7giyto4a VS. tagalog, 05, a3qat9qkqumi2
+Task 90: Right, Are Same
+Task 91: myanmar, 31, a1clejhbx9yyn VS. myanmar, 31, a4858n7ggst4
+Task 91: Right, Are Same
+Task 92: myanmar, 25, a4858n7ggst4 VS. tagalog, 06, aghrkle9vf6z
+Task 92: Right, Are Different
+Task 92 RT: 1090
+Task 93: myanmar, 31, a1umhcrj9zfdp VS. myanmar, 31, a1j8s7giyto4a
+Task 93: Right, Are Same
+Task 94: atemayar, 10, a23psx2z4f65q VS. atemayar, 10, avlbkm6qpb1s
+Task 94: Right, Are Same
+Task 95: atemayar, 23, a1poymbentexx VS. korean, 28, a1oh82lwr5hbg
+Task 95: Right, Are Different
+Task 95 RT: 1975
+Task 96: korean, 29, a3mv1jtwep7xn VS. korean, 29, aw82oruamauz
+Task 96: Right, Are Same
+Task 97: atemayar, 10, a6fjbvuzrhm6 VS. tagalog, 05, a3qat9qkqumi2
+Task 97: Right, Are Different
+Task 97 RT: 670
+Task 98: tagalog, 05, a1yovlluv1c9h VS. atemayar, 25, a1qku9mccvl35
+Task 98: Right, Are Different
+Task 98 RT: 887
+Task 99: sylheti, 28, atvyxlwe5n03 VS. sylheti, 28, a6fjbvuzrhm6
+Task 99: Right, Are Same
+Task 100: korean, 28, a2nm1qzuh14ls VS. atemayar, 25, a1yovlluv1c9h
+Task 100: Right, Are Different
+Task 100 RT: 893
+Task 101: tagalog, 05, a1j8s7giyto4a VS. sylheti, 20, a1a25pyfoa9ge
+Task 101: Right, Are Different
+Task 101 RT: 875
+Task 102: korean, 04, a3mv1jtwep7xn VS. korean, 04, a2ernxe6jlm4x
+Task 102: Right, Are Same
+Task 103: inuktitut, 11, a1s3njxhehcip VS. inuktitut, 11, a1j8s7giyto4a
+Task 103: Right, Are Same
+Task 104: atemayar, 25, a1qku9mccvl35 VS. atemayar, 25, a23psx2z4f65q
+Task 104: Right, Are Same
+Task 105: sylheti, 20, atvyxlwe5n03 VS. sylheti, 20, a3m0kt6kjezd1
+Task 105: Right, Are Same
+Task 106: sylheti, 28, a3np21apfa18b VS. sylheti, 28, a1s3njxhehcip
+Task 106: Right, Are Same
+Task 107: myanmar, 32, a1j8s7giyto4a VS. myanmar, 32, a3j1pp96x14u0
+Task 107: Right, Are Same
+Task 108: tagalog, 05, amynpl5xzw6q VS. myanmar, 01, a3qat9qkqumi2
+Task 108: Right, Are Different
+Task 108 RT: 717
+Task 109: korean, 28, a3d7xwp0gand5 VS. atemayar, 06, aljsxt6v0a30
+Task 109: Right, Are Different
+Task 109 RT: 672
+Task 110: atemayar, 25, a23psx2z4f65q VS. atemayar, 25, a1vzhyp8yvxkz
+Task 110: Right, Are Same
+Task 111: atemayar, 23, a1qku9mccvl35 VS. atemayar, 10, a1qku9mccvl35
+Task 111: Right, Are Different
+Task 111 RT: 3272
+Task 112: korean, 39, a1oh82lwr5hbg VS. korean, 39, a3d7xwp0gand5
+Task 112: Right, Are Same
+Task 113: korean, 04, a3mv1jtwep7xn VS. korean, 04, a1oh82lwr5hbg
+Task 113: Right, Are Same
+Task 114: myanmar, 31, aljsxt6v0a30 VS. korean, 29, a2nm1qzuh14ls
+Task 114: Right, Are Different
+Task 114 RT: 1016
+Task 115: sylheti, 17, a4858n7ggst4 VS. tagalog, 02, ay0bjcgydhix
+Task 115: Right, Are Different
+Task 115 RT: 733
+Task 116: tagalog, 10, a12rfyr8dbn79 VS. tagalog, 10, a3mv1jtwep7xn
+Task 116: Right, Are Same
+Task 117: sylheti, 28, a2du3880jbrov VS. sylheti, 28, a30xq7555spo8
+Task 117: Right, Are Same
+Task 118: sylheti, 19, ay0bjcgydhix VS. sylheti, 19, a1j8s7giyto4a
+Task 118: Right, Are Same
+Task 119: sylheti, 19, aljsxt6v0a30 VS. korean, 04, a3mv1jtwep7xn
+Task 119: Right, Are Different
+Task 119 RT: 864
+Task 120: atemayar, 25, aljsxt6v0a30 VS. inuktitut, 01, a1qku9mccvl35
+Task 120: Right, Are Different
+Task 120 RT: 588
+Task 121: atemayar, 23, a1vzhyp8yvxkz VS. atemayar, 23, a31xqftzcsia2
+Task 121: Right, Are Same
+Task 122: sylheti, 17, a1j8s7giyto4a VS. sylheti, 17, a6fjbvuzrhm6
+Task 122: Right, Are Same
+Task 123: myanmar, 01, aljsxt6v0a30 VS. myanmar, 01, a1ehrxjplsq0r
+Task 123: Right, Are Same
+Task 124: sylheti, 19, ay0bjcgydhix VS. sylheti, 28, a1l2fzyn31zvf
+Task 124: Right, Are Different
+Task 124 RT: 1681
+Task 125: atemayar, 10, a1poymbentexx VS. atemayar, 10, ax5gghhj0o6g
+Task 125: Right, Are Same
+Task 126: tagalog, 02, ay0bjcgydhix VS. atemayar, 06, a31e6jchki335
+Task 126: Right, Are Different
+Task 126 RT: 611
+Task 127: inuktitut, 02, a1w3fo0d7cf5t VS. inuktitut, 02, avlbkm6qpb1s
+Task 127: Right, Are Same
+Task 128: korean, 39, a3d7xwp0gand5 VS. korean, 39, a1v0p79fynz9j
+Task 128: Right, Are Same
+Task 129: sylheti, 19, ay0bjcgydhix VS. sylheti, 19, aljsxt6v0a30
+Task 129: Right, Are Same
+Task 130: tagalog, 06, a3qat9qkqumi2 VS. myanmar, 25, a1umhcrj9zfdp
+Task 130: Right, Are Different
+Task 130 RT: 1685
+Task 131: myanmar, 25, adc8vbkoocrr VS. tagalog, 02, a12rfyr8dbn79
+Task 131: Right, Are Different
+Task 131 RT: 1066
+Task 132: sylheti, 19, a3r9q9wqm1nyz VS. inuktitut, 11, a12xm86d2nbih
+Task 132: Right, Are Different
+Task 132 RT: 802
+Task 133: sylheti, 20, avlbkm6qpb1s VS. atemayar, 23, a1j8s7giyto4a
+Task 133: Right, Are Different
+Task 133 RT: 943
+Task 134: sylheti, 19, a3np21apfa18b VS. korean, 28, aw82oruamauz
+Task 134: Right, Are Different
+Task 134 RT: 1948
+Task 135: inuktitut, 11, a2pgu4pi93b1q VS. inuktitut, 02, a3mv1jtwep7xn
+Task 135: Right, Are Different
+Task 135 RT: 644
+Task 136: sylheti, 28, atvyxlwe5n03 VS. sylheti, 28, a3209gno9duil
+Task 136: Right, Are Same
+Task 137: atemayar, 25, aljsxt6v0a30 VS. atemayar, 25, a1qku9mccvl35
+Task 137: Right, Are Same
+Task 138: myanmar, 25, a2pfktghg1ofp VS. myanmar, 25, a1ehrxjplsq0r
+Task 138: Right, Are Same
+Task 139: myanmar, 32, a1aegunf6e081 VS. tagalog, 10, ajf66jwen7bx
+Task 139: Right, Are Different
+Task 139 RT: 1064
+Task 140: korean, 29, a2nm1qzuh14ls VS. korean, 29, a2px0aywxngce
+Task 140: Right, Are Same
+Task 141: myanmar, 31, adc8vbkoocrr VS. myanmar, 31, a1stvgjqfl5kk
+Task 141: Right, Are Same
+Task 142: tagalog, 05, a12rfyr8dbn79 VS. inuktitut, 02, a2ernxe6jlm4x
+Task 142: Right, Are Different
+Task 142 RT: 614
+Task 143: myanmar, 25, adc8vbkoocrr VS. myanmar, 25, a3j1pp96x14u0
+Task 143: Right, Are Same
+Task 144: sylheti, 17, a6fjbvuzrhm6 VS. korean, 28, a1v0p79fynz9j
+Task 144: Right, Are Different
+Task 144 RT: 792
+Task 145: sylheti, 17, a2du3880jbrov VS. sylheti, 17, a1j8s7giyto4a
+Task 145: Right, Are Same
+Task 146: korean, 29, a2akud1gdstsd VS. korean, 39, a1s3njxhehcip
+Task 146: Right, Are Different
+Task 146 RT: 674
+Task 147: myanmar, 25, ay0bjcgydhix VS. tagalog, 05, a3m0kt6kjezd1
+Task 147: Right, Are Different
+Task 147 RT: 863
+Task 148: tagalog, 02, aljsxt6v0a30 VS. sylheti, 17, atvyxlwe5n03
+Task 148: Right, Are Different
+Task 148 RT: 666
+Task 149: sylheti, 20, ay0bjcgydhix VS. sylheti, 20, a30xq7555spo8
+Task 149: Right, Are Same
+Task 150: inuktitut, 01, avlbkm6qpb1s VS. inuktitut, 01, a315xddd8j4x8
+Task 150: Right, Are Same
+Task 151: korean, 39, a3d7xwp0gand5 VS. sylheti, 19, atvyxlwe5n03
+Task 151: Right, Are Different
+Task 151 RT: 659
+Task 152: atemayar, 10, agst3co6usf8 VS. tagalog, 02, amynpl5xzw6q
+Task 152: Right, Are Different
+Task 152 RT: 615
+Task 153: tagalog, 06, aghrkle9vf6z VS. tagalog, 06, a1yovlluv1c9h
+Task 153: Right, Are Same
+Task 154: atemayar, 10, a1j8s7giyto4a VS. atemayar, 10, a1qku9mccvl35
+Task 154: Right, Are Same
+Task 155: korean, 29, a3mv1jtwep7xn VS. sylheti, 17, ay0bjcgydhix
+Task 155: Right, Are Different
+Task 155 RT: 688
+Task 156: korean, 39, aw82oruamauz VS. korean, 39, a1v0p79fynz9j
+Task 156: Right, Are Same
+Task 157: myanmar, 01, a1ehrxjplsq0r VS. myanmar, 01, a6fjbvuzrhm6
+Task 157: Right, Are Same
+Task 158: korean, 29, a2px0aywxngce VS. korean, 29, a2akud1gdstsd
+Task 158: Right, Are Same
+Task 159: korean, 28, a1manxzopzden VS. korean, 28, a2ernxe6jlm4x
+Task 159: Right, Are Same
+Task 160: myanmar, 32, a6fjbvuzrhm6 VS. myanmar, 32, a1s3njxhehcip
+Task 160: Right, Are Same
+Task 161: korean, 29, a2px0aywxngce VS. inuktitut, 02, a1s3njxhehcip
+Task 161: Right, Are Different
+Task 161 RT: 559
+Task 162: korean, 39, a2px0aywxngce VS. korean, 29, a2px0aywxngce
+Task 162: Right, Are Different
+Task 162 RT: 703
+Task 163: korean, 39, a3bb99mn3zy37 VS. korean, 39, aav4pzxdoebd
+Task 163: Right, Are Same
+Task 164: tagalog, 02, ay0bjcgydhix VS. tagalog, 02, aghrkle9vf6z
+Task 164: Right, Are Same
+Task 165: tagalog, 06, a3mv1jtwep7xn VS. tagalog, 06, a1yovlluv1c9h
+Task 165: Right, Are Same
+Task 166: inuktitut, 03, avlbkm6qpb1s VS. myanmar, 32, a1ehrxjplsq0r
+Task 166: Right, Are Different
+Task 166 RT: 551
+Task 167: tagalog, 02, a1l2fzyn31zvf VS. tagalog, 02, aljsxt6v0a30
+Task 167: Right, Are Same
+Task 168: inuktitut, 03, avlbkm6qpb1s VS. tagalog, 05, a1ehrxjplsq0r
+Task 168: Right, Are Different
+Task 168 RT: 558
+Task 169: korean, 04, a2px0aywxngce VS. myanmar, 25, a1ehrxjplsq0r
+Task 169: Right, Are Different
+Task 169 RT: 494
+Task 170: myanmar, 25, a1clejhbx9yyn VS. myanmar, 25, amynpl5xzw6q
+Task 170: Right, Are Same
+Task 171: inuktitut, 02, aljsxt6v0a30 VS. inuktitut, 02, ae0ibwt7asth
+Task 171: Right, Are Same
+Task 172: atemayar, 23, a1qku9mccvl35 VS. atemayar, 23, a1poymbentexx
+Task 172: Right, Are Same
+Task 173: tagalog, 10, a1s3njxhehcip VS. tagalog, 10, a1yovlluv1c9h
+Task 173: Right, Are Same
+Task 174: atemayar, 10, a31xqftzcsia2 VS. atemayar, 10, a1yovlluv1c9h
+Task 174: Right, Are Same
+Task 175: tagalog, 06, a3qat9qkqumi2 VS. korean, 29, aw82oruamauz
+Task 175: Right, Are Different
+Task 175 RT: 557
+Task 176: myanmar, 32, a4858n7ggst4 VS. korean, 04, a1v0p79fynz9j
+Task 176: Right, Are Different
+Task 176 RT: 618
+Task 177: atemayar, 25, a1vzhyp8yvxkz VS. atemayar, 25, awl8tng8e81d
+Task 177: Right, Are Same
+Task 178: korean, 28, a1s3njxhehcip VS. korean, 04, a2ernxe6jlm4x
+Task 178: Right, Are Different
+Task 178 RT: 489
+Task 179: myanmar, 25, a1s3njxhehcip VS. sylheti, 28, amynpl5xzw6q
+Task 179: Right, Are Different
+Task 179 RT: 609
+Task 180: tagalog, 06, a1l2fzyn31zvf VS. tagalog, 06, ajf66jwen7bx
+Task 180: Right, Are Same
+Task 181: myanmar, 25, a2pfktghg1ofp VS. myanmar, 25, ay0bjcgydhix
+Task 181: Right, Are Same
+Task 182: sylheti, 28, a1j8s7giyto4a VS. sylheti, 28, a4858n7ggst4
+Task 182: Right, Are Same
+Task 183: tagalog, 10, a1i92aacrkacw VS. myanmar, 31, aljsxt6v0a30
+Task 183: Right, Are Different
+Task 183 RT: 668
+Task 184: korean, 04, a3dfh6dpi11ip VS. sylheti, 19, a30xq7555spo8
+Task 184: Right, Are Different
+Task 184 RT: 834
+Task 185: inuktitut, 11, a315xddd8j4x8 VS. inuktitut, 11, a12xm86d2nbih
+Task 185: Right, Are Same
+Task 186: atemayar, 10, a31xqftzcsia2 VS. atemayar, 10, ax5gghhj0o6g
+Task 186: Wrong, Are Same
+Task 186 RT: 1099
+Task 187: tagalog, 05, ajf66jwen7bx VS. sylheti, 17, amynpl5xzw6q
+Task 187: Right, Are Different
+Task 187 RT: 786
+Task 188: tagalog, 06, a3m0kt6kjezd1 VS. korean, 04, a2px0aywxngce
+Task 188: Right, Are Different
+Task 188 RT: 596
+Task 189: atemayar, 23, a1vzhyp8yvxkz VS. atemayar, 23, a31xqftzcsia2
+Task 189: Right, Are Same
+Task 190: korean, 04, a1s3njxhehcip VS. korean, 04, a3dfh6dpi11ip
+Task 190: Right, Are Same
+Task 191: sylheti, 17, a30xq7555spo8 VS. inuktitut, 02, a3mv1jtwep7xn
+Task 191: Right, Are Different
+Task 191 RT: 586
+Task 192: tagalog, 02, aghrkle9vf6z VS. tagalog, 02, a1ehrxjplsq0r
+Task 192: Right, Are Same
+Task 193: sylheti, 28, a2du3880jbrov VS. korean, 28, aj6upe9mlarg
+Task 193: Right, Are Different
+Task 193 RT: 520
+Task 194: korean, 28, a3mv1jtwep7xn VS. korean, 29, a5379luit3pc
+Task 194: Wrong, Are Different
+Task 195: sylheti, 17, a3m0kt6kjezd1 VS. sylheti, 17, a1l2fzyn31zvf
+Task 195: Right, Are Same
+Task 196: sylheti, 17, amynpl5xzw6q VS. sylheti, 17, a1foggtlgo7n4
+Task 196: Right, Are Same
+Task 197: myanmar, 31, a1s3njxhehcip VS. myanmar, 31, a6fjbvuzrhm6
+Task 197: Right, Are Same
+Task 198: korean, 28, a1oh82lwr5hbg VS. sylheti, 20, a1foggtlgo7n4
+Task 198: Right, Are Different
+Task 198 RT: 1350
+Task 199: korean, 29, a3bb99mn3zy37 VS. inuktitut, 11, a12rfyr8dbn79
+Task 199: Right, Are Different
+Task 199 RT: 564
+Task 200: atemayar, 06, a31xqftzcsia2 VS. inuktitut, 11, ae0ibwt7asth
+Task 200: Right, Are Different
+Task 200 RT: 554
+Task 201: korean, 29, a1udqv4pfypkn VS. korean, 04, a1umhcrj9zfdp
+Task 201: Wrong, Are Different
+Task 202: sylheti, 20, ay0bjcgydhix VS. tagalog, 05, aghrkle9vf6z
+Task 202: Right, Are Different
+Task 202 RT: 754
+Task 203: sylheti, 19, a1l2fzyn31zvf VS. sylheti, 19, a30xq7555spo8
+Task 203: Right, Are Same
+Task 204: myanmar, 31, aljsxt6v0a30 VS. inuktitut, 11, a12xm86d2nbih
+Task 204: Right, Are Different
+Task 204 RT: 536
+Task 205: korean, 28, a1umhcrj9zfdp VS. tagalog, 02, a3mv1jtwep7xn
+Task 205: Right, Are Different
+Task 205 RT: 584
+Task 206: myanmar, 25, a1s3njxhehcip VS. myanmar, 25, a3j1pp96x14u0
+Task 206: Right, Are Same
+Task 207: korean, 04, a2px0aywxngce VS. korean, 28, ae0ibwt7asth
+Task 207: Right, Are Different
+Task 207 RT: 577
+Task 208: myanmar, 01, ay0bjcgydhix VS. atemayar, 06, avlbkm6qpb1s
+Task 208: Right, Are Different
+Task 208 RT: 656
+Task 209: atemayar, 23, a1vzhyp8yvxkz VS. tagalog, 10, ae0ibwt7asth
+Task 209: Right, Are Different
+Task 209 RT: 568

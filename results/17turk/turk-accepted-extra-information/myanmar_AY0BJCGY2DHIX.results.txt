@@ -1,0 +1,12 @@
+age: 50
+feedback: Most of this batch remind me of numbers.
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: none
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=18RZJWCKIX7SSM9OVAWRF8D8N8R0GB
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

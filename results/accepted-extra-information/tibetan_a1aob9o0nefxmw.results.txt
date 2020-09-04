@@ -1,0 +1,12 @@
+age: 39
+feedback: 
+input_device: mouse
+language-read: Bengali
+language-read-write: Hindi,English
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1T46IK3SNHH1NAIHJKBKG4IIWDNNNG
+workerId: A1AOB9O0NEFXMW
+workerid: A1AOB9O0NEFXMW

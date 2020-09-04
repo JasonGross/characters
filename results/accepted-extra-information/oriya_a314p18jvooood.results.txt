@@ -1,0 +1,11 @@
+age: 29
+feedback: It is really difficult write using the mouse. At the end I was really tired, in fact I think that the first letters are much more better than the last...
+input_device: mouse
+language-read: none
+language-read-write: English, French, Spanish
+native-language: Italian
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10LNALZ1APEMHEGZOVKJLDGEWHVIVC
+workerid: A314P18JVOOOOD

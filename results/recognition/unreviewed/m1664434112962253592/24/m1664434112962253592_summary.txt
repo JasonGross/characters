@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 3
+Incorrect: 0
+Percent Correct: 100
+
+Same Correct: 3
+Same Incorrect: 0
+Percent Same Correct: 100
+
+Different Correct: 0
+Different Incorrect: 0
+Percent Different Correct: -1
+
+Long Summary:
+Task 0: correctly said that (hebrew, 10, 59icz) and (hebrew, 10, 9zfdp) are the same in 844 ms.
+Task 1: correctly said that (greek, 1, ep7xn) and (greek, 1, qumi2) are the same in 1321 ms.
+Task 2: correctly said that (greek, 1, fbr7l) and (greek, 1, 0a30) are the same in 660 ms.
+
+Duration: 0m 24s 673ms

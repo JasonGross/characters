@@ -1,0 +1,12 @@
+age: 26
+feedback: hands got cramped up lol
+input_device: touchpad
+language-read: none
+language-read-write: spanish partially
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerId: AW82ORUAFMAUZ
+workerid: AW82ORUAFMAUZ

@@ -1,0 +1,12 @@
+age: 50
+feedback: Some of these remind me of Hebrew, some of Arabic.  Not that I can write a word in either.
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1HFUL19DOEIAF2VE09G7T62KLG4T7C
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

@@ -1,0 +1,10 @@
+Summary:
+Calibration:
+337
+Average: 337
+
+
+Tasks:
+Task 0: atemayar, 23, a1vzhyp8yvxkz VS. inuktitut, 11, a2ernxe6jlm4x
+Task 0: Right, Are Different
+Task 0 RT: 380

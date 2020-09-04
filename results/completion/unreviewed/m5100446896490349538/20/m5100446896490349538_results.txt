@@ -1,0 +1,32 @@
+duration: 0y 0d 0h 0m 31s 399ms
+form-load-time: 1309909303374
+form-submit-time: 1309909335208
+jQuery.browser.safari: true
+jQuery.browser.version: 535.1
+jQuery.browser.webkit: true
+navigator.appCodeName: Mozilla
+navigator.appName: Netscape
+navigator.appVersion: 5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1
+navigator.platform: Win32
+navigator.userAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1
+navigator.vendor: Google Inc.
+screenAavilHeight: 760
+screenAavilWidth: 1280
+screenHeight: 800
+screenWidth: 1280
+submitButton: Submit
+task-0-image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAABpAQAAAAAR+TCXAAAAaUlEQVR4Xu3TIQ7AIAyF4ZKJyh2Bo3A0SHax7iYcYXKCwGx/s2RigoS6z7yXiifDX5mUiz2ATbJnJY0spCREBRR1BRtp+ysjWBKZwWPMx43U+bl9ef8kLZMKVomel6jnTXZyGDn035UtPhrTUHssb0uPAAAAAElFTkSuQmCC
+task-0-image-alphabet: mkhedruli
+task-0-image-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a3m7lkvchjee4148gkgu.png
+task-0-image-character-number: 41
+task-0-image-id: a37lvcje48gkgu
+task-0-image-show_half: right
+task-0-seen-before: never
+task-0-strokes: [[{'x':51,'y':80,'t':1311378126928},{'x':50,'y':79,'t':1311378126930},{'x':50,'y':79,'t':1311378126935},{'x':49,'y':79,'t':1311378126976},{'x':48,'y':79,'t':1311378127015},{'x':47,'y':79,'t':1311378127040},{'x':45,'y':79,'t':1311378127065},{'x':44,'y':79,'t':1311378127103},{'x':44,'y':78,'t':1311378127116},{'x':43,'y':78,'t':1311378127142},{'x':42,'y':78,'t':1311378127166},{'x':41,'y':78,'t':1311378127204},{'x':40,'y':77,'t':1311378127228},{'x':38,'y':76,'t':1311378127255},{'x':37,'y':75,'t':1311378127279},{'x':36,'y':74,'t':1311378127304},{'x':36,'y':72,'t':1311378127317},{'x':35,'y':71,'t':1311378127342},{'x':35,'y':70,'t':1311378127406},{'x':35,'y':69,'t':1311378127470},{'x':35,'y':68,'t':1311378127481},{'x':35,'y':67,'t':1311378127494},{'x':35,'y':65,'t':1311378127519},{'x':35,'y':64,'t':1311378127532},{'x':35,'y':63,'t':1311378127545},{'x':35,'y':62,'t':1311378127560},{'x':35,'y':61,'t':1311378127569},{'x':35,'y':60,'t':1311378127608},{'x':35,'y':58,'t':1311378127621},{'x':35,'y':58,'t':1311378127702},{'x':35,'y':57,'t':1311378127861},{'x':35,'y':56,'t':1311378127924},{'x':36,'y':42,'t':1311378128368},{'x':36,'y':42,'t':1311378128686},{'x':37,'y':42,'t':1311378128752},{'x':39,'y':42,'t':1311378128782},{'x':39,'y':41,'t':1311378128807},{'x':40,'y':41,'t':1311378128820},{'x':40,'y':40,'t':1311378128850},{'x':41,'y':40,'t':1311378128896},{'x':41,'y':39,'t':1311378128923},{'x':42,'y':39,'t':1311378128973},{'x':42,'y':37,'t':1311378129010},{'x':43,'y':37,'t':1311378129097},{'x':43,'y':36,'t':1311378129124},{'x':44,'y':35,'t':1311378129150},{'x':46,'y':34,'t':1311378129187},{'x':47,'y':34,'t':1311378129264},{'x':48,'y':34,'t':1311378129301},{'x':48,'y':33,'t':1311378129313},{'x':49,'y':33,'t':1311378129351},{'x':55,'y':33,'t':1311378129818}]]
+task-0-time-of-do-task: 1309909306087
+task-0-time-of-finish-task: 1309909332740
+url-parameter-characterSize: 100px
+url-parameter-imageHalf: left,right
+url-parameter-taskCount: 1
+windowHeight: 333
+windowWidth: 1263

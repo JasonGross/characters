@@ -1,0 +1,7 @@
+age: 35
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: mouse
+language-read: None
+language-read-write: None
+native-language: English
+seen_before: seen_familiar

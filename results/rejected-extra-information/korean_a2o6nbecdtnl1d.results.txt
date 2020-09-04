@@ -1,0 +1,12 @@
+age: 
+feedback: All submissions are single dots.  This is not what the images were.\n
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: 
+other_input_text: 
+reject: y
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerId: A2O6NBECDTNL1D
+workerid: A2O6NBECDTNL1D

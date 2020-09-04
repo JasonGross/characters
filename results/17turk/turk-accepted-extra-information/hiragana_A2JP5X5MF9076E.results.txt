@@ -1,0 +1,12 @@
+age: 29
+feedback: this was kinda fun :)
+input_device: mouse
+language-read: 
+language-read-write: Tagalog
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1P1HS3E1YOZM4ZRZJ5AEPREVIAMIUN
+workerId: A2JP5X5MF9076E
+workerid: A2JP5X5MF9076E

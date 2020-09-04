@@ -1,0 +1,12 @@
+age: 50
+feedback: again, a percentage seem like numbers, letters and punctuation marks.  And ankhs.
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1WIOHYOHW7H4D4K24W8EIWA618T76F
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

@@ -1,0 +1,12 @@
+age: 24
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Hindi, English
+native-language: Telugu
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1UQXMLWGYCY74MCAJ0K4KVSTZWFITW
+workerId: A30XQ755N5SPO8
+workerid: A30XQ755N5SPO8

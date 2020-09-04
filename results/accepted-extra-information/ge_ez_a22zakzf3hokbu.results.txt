@@ -1,0 +1,11 @@
+age: 30
+feedback: These looked familiar because I think they are one of the fonts used.
+input_device: mouse
+language-read: NA
+language-read-write: Gujarati, Hindi, Marathi
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1CEJ5YI1V1UNSOG3R5YEV9U3572Y67
+workerid: A22ZAKZF3HOKBU

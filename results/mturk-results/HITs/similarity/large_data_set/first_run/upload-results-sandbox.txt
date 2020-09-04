@@ -1,0 +1,18 @@
+Sandbox override
+--[Initializing]----------
+ Input: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/similarity/large_data_set/first_run/similarity-sandbox.input
+ Properties: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/similarity/large_data_set/first_run/similarity.properties
+ Question File: /afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/mturk-results/HITs/similarity/large_data_set/first_run/similarity.question
+ Preview mode disabled
+--[Loading HITs]----------
+  Start time: Fri Jul 15 12:46:57 EDT 2011
+Created HIT 1: HITId=2UNNQYN5F3Q0X0GG1BECZYB4B6N9DW
+
+You may see your HIT(s) with HITTypeId '2Y9YQ4J3NAB6PZX2IDPYLT1TJHFDQ5' here: 
+
+  http://workersandbox.mturk.com/mturk/preview?groupId=2Y9YQ4J3NAB6PZX2IDPYLT1TJHFDQ5
+
+  End time: Fri Jul 15 12:46:57 EDT 2011
+--[Done Loading HITs]----------
+  Total load time: 0 seconds.
+  Successfully loaded 1 HITs.

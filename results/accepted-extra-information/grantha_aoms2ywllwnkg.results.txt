@@ -1,0 +1,12 @@
+age: 28
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: English,Tamil,Hindi,
+native-language: Tamil,
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1H6HO5KRZLWRHI3QXB5C2A6X73K873
+workerId: AOMS2YWLLWNKG
+workerid: AOMS2YWLLWNKG

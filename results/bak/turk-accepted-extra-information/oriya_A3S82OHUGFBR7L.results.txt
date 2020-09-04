@@ -1,0 +1,12 @@
+age: 34
+feedback: This was a much harder task than the other character task.  I have never seen these characters before and they were very difficult to copy!  I needed more space.
+input_device: mouse
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10LNALZ1APEMHEGZOVKJLDGEWHVIVC
+workerId: A3S82OHUGFBR7L
+workerid: A3S82OHUGFBR7L

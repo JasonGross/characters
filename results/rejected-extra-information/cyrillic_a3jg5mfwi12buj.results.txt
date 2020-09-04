@@ -1,0 +1,12 @@
+age: 
+feedback: All submissions were single dots.\n
+input_device: touchpad
+language-read: 
+language-read-write: 
+native-language: 
+other_input_text: 
+reject: y
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: A3JG5MFWI12BUJ
+workerid: A3JG5MFWI12BUJ

@@ -1,0 +1,7 @@
+actual_input_device: mouse
+actual_seen_before: seen_never
+age: 18
+ipAddress: 71.240.22.10
+language-read: Chinese, English
+language-read-write: English
+native-language: Chinese

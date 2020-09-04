@@ -1,0 +1,11 @@
+age: 27
+feedback: Some characters were made thicker by going over the strokes multiple times.  The instructions said to not do this.\nIs this Chinese calligraphy? Anyway I've enjoyed it.\n\nThnks
+input_device: mouse
+language-read: 
+language-read-write: Hindi, English
+native-language: Malayalam
+other_input_text: 
+reject: y
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerid: A22HMS7CLTRLYG

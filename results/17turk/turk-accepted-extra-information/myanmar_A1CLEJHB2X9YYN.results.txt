@@ -1,0 +1,12 @@
+age: 32
+feedback: I think it would have been easier to draw the characters with a pen than with a mouse.
+input_device: mouse
+language-read: 
+language-read-write: German, Norwegian, Danish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=18RZJWCKIX7SSM9OVAWRF8D8N8R0GB
+workerId: A1CLEJHB2X9YYN
+workerid: A1CLEJHB2X9YYN

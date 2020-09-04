@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 0
+Incorrect: 2
+Percent Correct: 0
+
+Same Correct: 0
+Same Incorrect: 0
+Percent Same Correct: -1
+
+Different Correct: 0
+Different Incorrect: 2
+Percent Different Correct: 0
+
+Long Summary:
+Task 0: incorrectly said that (hebrew, 10, a1z59eb5sfxpy) and (greek, 1, a1yovlluv1c9h) are the same in 5741 ms.
+Task 1: incorrectly said that (hebrew, 10, a6fjbvuzrhm6) and (hebrew, 10, a2pfktghg1ofp) are the same in 676 ms.
+
+Duration: 0m 21s 440ms
+Comments: 

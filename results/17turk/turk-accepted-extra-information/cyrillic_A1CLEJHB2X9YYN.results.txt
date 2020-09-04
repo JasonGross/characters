@@ -1,0 +1,12 @@
+age: 32
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: German, Norwegian, Danish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: A1CLEJHB2X9YYN
+workerid: A1CLEJHB2X9YYN

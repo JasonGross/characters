@@ -1,0 +1,25 @@
+12O6NQU5N6M5GZTFAV6ZYZL2AZ8LZH accepted=False rejected=True
+14IIHZ56E5C9U4LD0R80PPPSLXJ39W accepted=False rejected=True
+1BHC62DZMM7CHF0G9BDAGPMORM7S4M accepted=False rejected=True
+191O99ZAR7YT3FZYMLCFW0ONQQOE55 accepted=False rejected=True reason=block_letters
+1U4J0BUAXA3Q0P27R0S8T46U0BGDBL accepted=False rejected=True
+1KRHH1KBATZVG3D8CVBHU9EGU78PGP accepted=False rejected=True
+17CO2V2SCHB33MFKTI3CL0CP8G4HGI accepted=False rejected=True
+1R5M2FEYDCM6PMZVU0FEAQW7W4CSI5 accepted=False rejected=True reason=dotted_letters
+1K49K2LPQ0W9JKNBPEHO4GNIZXPM44 accepted=False rejected=True reason=dotted_letters
+14426N9W2G04WBIWFU3OQ2JE4I9F8X accepted=False rejected=True
+1EYUXP53Z8WJ795UNHKKON3TJK1XV4 accepted=False rejected=True
+18ENC6R1ZCEGL8AYSVSJUNST8D8OST accepted=False rejected=True
+173ATC6VITXUYVL7VD75ZYMNFSY840 accepted=False rejected=True
+1OWBL8ALD73VLI22P24NKZSBDL52WD accepted=False rejected=False reason=old_latin_(wrong_size)
+1OWBL8ALD73VLI22P24NKZSBDL5W27 accepted=False rejected=False reason=old_latin_(wrong_size)
+13Q24OZ0PEWOP8ZOAF091BZWGNM0WS accepted=False rejected=False reason=old_latin_(wrong_size)
+16XXHACFKVH9DEW6GMG7BKLMJ4MNHQ accepted=False rejected=True reason=dotted_letters
+1I372HFQDJERATJNT9JVL4VI11WZEV accepted=False rejected=True
+1KTQPG3K755K9MPUWRUV6FK0PG792J accepted=False rejected=True
+1I372HFQDJERATJNT9JVL4VI11WZEV accepted=False rejected=True
+17UQ4FNKFTN5930DWHJ8UG0132NVDY accepted=False rejected=True reason=no_loops
+1P006481IIR29A3WY3WS26NGEM1H38 accepted=False rejected=True reason=no_loops
+1F73QAC60WXTGSEF6Y0FFSSSKSXJFD accepted=False rejected=True reason=no_loops
+11KQVGZHGSGPMJZCR4MKO62NWY3E6P accepted=False rejected=True reason=dotted_letters
+1Z0PJ6DK8G74FRL7Y3Q0H6UUO3HALO accepted=False rejected=False reason=accidental_extra_characters

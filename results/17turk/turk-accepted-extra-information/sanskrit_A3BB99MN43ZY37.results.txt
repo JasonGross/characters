@@ -1,0 +1,12 @@
+age: 20
+feedback: 
+input_device: tablet_pen
+language-read: 
+language-read-write: German, French
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=15DR1EBNFR1S2IZV7Q1633YOGHAABU
+workerId: A3BB99MN43ZY37
+workerid: A3BB99MN43ZY37

@@ -1,0 +1,12 @@
+age: 33
+feedback: 
+input_device: mouse
+language-read: Punjabi
+language-read-write: English
+native-language: Hindi
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZFKOCEZXKDJPQOEYSFCIF0CTAFFGT
+workerId: AVLBKM6QIPB1S
+workerid: AVLBKM6QIPB1S

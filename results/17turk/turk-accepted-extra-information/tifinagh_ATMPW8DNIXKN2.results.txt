@@ -1,0 +1,11 @@
+age: 27
+feedback: good drawings
+input_device: mouse
+language-read: gujrati
+language-read-write: hindi, marathi
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZKKYOIBNS6CD14NRDUOGHQEU0EQWX
+workerid: ATMPW8DNIXKN2

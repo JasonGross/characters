@@ -1,0 +1,12 @@
+age: 50
+feedback: Look like the pips on dominoes
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=16LTVYDVPIICUEP79IQF4QS1GXP85O
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

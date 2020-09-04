@@ -1,0 +1,12 @@
+age: 22
+feedback: Terrible performance with my tablet notebook.  Back to the mouse!
+input_device: tablet_pen
+language-read: Spanish
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=15F7HF03UNOM7KWX8B4M85L8MEIC2W
+workerId: A3B031YKKWFYFM
+workerid: A3B031YKKWFYFM

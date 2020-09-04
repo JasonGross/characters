@@ -1,0 +1,12 @@
+age: 22
+feedback: Alright, so I have tried this on three different computers with three different input types:  wired optical mouse, wireless optical mouse and tablet pen.  Moving over to my fourth system and going to try with a bluetooth mouse.
+input_device: mouse
+language-read: Spanish
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1FE2G3IZMD6ZYC4I13PSUF70NRCQVN
+workerId: A3B031YKKWFYFM
+workerid: A3B031YKKWFYFM

@@ -1,0 +1,12 @@
+age: 21
+feedback: i tired hard to draw..i draw my level best....
+input_device: mouse
+language-read: no  language
+language-read-write: English
+native-language: tamil
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1MJY707EUIXXLHU9OGFF3RDS8N7FIL
+workerId: A3UXAUQ8SY2IH4
+workerid: A3UXAUQ8SY2IH4

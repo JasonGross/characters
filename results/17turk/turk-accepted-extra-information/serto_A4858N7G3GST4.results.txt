@@ -1,0 +1,12 @@
+age: 29
+feedback: 
+input_device: mouse
+language-read: n/a
+language-read-write: Spanish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1IFER2JL19QSIX0AYBMWGVKIA7J3BS
+workerId: A4858N7G3GST4
+workerid: A4858N7G3GST4

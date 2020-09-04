@@ -1,0 +1,11 @@
+age: 22
+feedback: 
+input_device: mouse
+language-read: Sindhi
+language-read-write: Hindi, English
+native-language: Sindhi
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1CPWGU52QOKA5QLKHB1PW4C9RVQ5VQ
+workerid: A12RFYR8EDBN79

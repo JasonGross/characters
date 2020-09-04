@@ -1,0 +1,12 @@
+Summary:
+Calibration:
+689
+Average: 689
+
+
+Tasks:
+Task 0: korean, 28, a1oh82lwr5hbg VS. myanmar, 32, a1ehrxjplsq0r
+Task 0: Wrong, Are Different
+Task 1: inuktitut, 01, a1manxzopzden VS. atemayar, 23, a1vzhyp8yvxkz
+Task 1: Right, Are Different
+Task 1 RT: 2810

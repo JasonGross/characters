@@ -1,0 +1,12 @@
+age: 21
+feedback: 
+input_device: mouse
+language-read: English
+language-read-write: English
+native-language: tamil
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1P4Z9Y2P1NVBS2SGCBIRRFQ0SSJ3CZ
+workerId: A1UB6RQORN1ZE6
+workerid: A1UB6RQORN1ZE6

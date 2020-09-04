@@ -1,0 +1,33 @@
+Summary:
+Task 0: GIVEN old_cyrillic, 05, a1xtebm29ofnar
+Task 0: 
+Task 0 duration: 21982
+Task 1: GIVEN gurmukhi, 16, a165bj326f3fsf
+Task 1: 
+Task 1 duration: 8014
+Task 2: GIVEN oriya, 09, a1aegunf16e081
+Task 2: 
+Task 2 duration: 4365
+Task 3: GIVEN glagolitic, 21, a1j8s7giuyto4a
+Task 3: 
+Task 3 duration: 10200
+Task 4: GIVEN cyrillic, 12, a1w3fo0d77cf5t
+Task 4: 
+Task 4 duration: 4379
+Task 5: GIVEN ge_ez, 23, a1s3njxhcehcip
+Task 5: 
+Task 5 duration: 22535
+Task 6: GIVEN old_cyrillic, 35, a1manxzolpzden
+Task 6: 
+Task 6 duration: 5602
+Task 7: GIVEN futhorc, 23, a1s3njxhcehcip
+Task 7: 
+Task 7 duration: 4735
+Task 8: GIVEN cyrillic, 23, a2cf5xsgaxa56f
+Task 8: 
+Task 8 duration: 6227
+Task 9: GIVEN angelic, 14, aiq1i6odsio56
+Task 9: 
+Task 9 duration: 10979
+Duration: 1m 42s 575ms
+Comments: 

@@ -1,0 +1,6 @@
+feedback: 
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1LAME9SSHLJTGPCPK3P3ETWWYQ96N3
+workerid: A2N57RT3GTCJHM

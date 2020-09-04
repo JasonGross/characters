@@ -1,0 +1,12 @@
+age: 29
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Tagalog
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10Y5T8FD7ZXIXPXQNMJH311JSSNKON
+workerId: A2JP5X5MF9076E
+workerid: A2JP5X5MF9076E

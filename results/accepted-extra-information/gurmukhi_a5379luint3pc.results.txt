@@ -1,0 +1,12 @@
+age: 28
+feedback: 
+input_device: mouse
+language-read: none
+language-read-write: English
+native-language: Vietnamese
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1FKAOYV6HPDNH4Y7N6D6OAA2WJD77E
+workerId: A5379LUINT3PC
+workerid: A5379LUINT3PC

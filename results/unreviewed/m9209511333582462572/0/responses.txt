@@ -1,0 +1,6 @@
+age: 30
+feedback: Interesting task. I enjoyed a lot. I've one request only please make your "submission of the hit" easy.   
+input_device: mouse
+language-read-write: Hindi
+native-language: English
+seen_before: seen_familiar

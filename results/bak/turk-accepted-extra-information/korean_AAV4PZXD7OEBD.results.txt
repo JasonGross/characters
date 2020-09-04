@@ -1,0 +1,12 @@
+age: 31
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: English,Arabic
+native-language: Persian
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerId: AAV4PZXD7OEBD
+workerid: AAV4PZXD7OEBD

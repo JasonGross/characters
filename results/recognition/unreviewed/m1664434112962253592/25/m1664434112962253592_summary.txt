@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 2
+Incorrect: 1
+Percent Correct: 66
+
+Same Correct: 1
+Same Incorrect: 1
+Percent Same Correct: 50
+
+Different Correct: 1
+Different Incorrect: 0
+Percent Different Correct: 100
+
+Long Summary:
+Task 0: correctly said that (latin, 2, pb1s) and (greek, 1, yto4a) are not the same in 919 ms.
+Task 1: incorrectly said that (hebrew, 10, g1ofp) and (hebrew, 10, xbiz) are not the same in 1721 ms.
+Task 2: correctly said that (greek, 1, ep7xn) and (greek, 1, sfxpy) are the same in 830 ms.
+
+Duration: 0m 17s 727ms

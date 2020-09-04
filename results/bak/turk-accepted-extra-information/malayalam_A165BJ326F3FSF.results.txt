@@ -1,0 +1,12 @@
+age: 
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1MJY707EUIXXLHU9OGFF3RDS8N7FIL
+workerId: A165BJ326F3FSF
+workerid: A165BJ326F3FSF

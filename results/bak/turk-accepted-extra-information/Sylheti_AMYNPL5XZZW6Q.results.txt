@@ -1,0 +1,6 @@
+feedback: what is these?
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=16AI2UR4KORW0L22H0NJ9OAHRMWOU2
+workerid: AMYNPL5XZZW6Q

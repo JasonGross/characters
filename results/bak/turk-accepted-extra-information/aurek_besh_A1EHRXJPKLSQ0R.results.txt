@@ -1,0 +1,12 @@
+age: 63
+feedback: hard to control for any precision!
+input_device: touchpad
+language-read: 
+language-read-write: some spanish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1V6ZF8JIWFR0F4XEM7J4OC1E2IINKB
+workerId: A1EHRXJPKLSQ0R
+workerid: A1EHRXJPKLSQ0R

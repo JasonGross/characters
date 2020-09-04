@@ -1,0 +1,12 @@
+age: 37
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: German, Catalan
+native-language: English, spanish
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=12H6RHT60U8F6O1KQ8YWYSTN2HCAQ7
+workerId: A320MRSFBL1S1R
+workerid: A320MRSFBL1S1R

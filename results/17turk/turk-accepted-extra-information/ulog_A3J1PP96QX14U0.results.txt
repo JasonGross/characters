@@ -1,0 +1,12 @@
+age: 29
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Telugu
+native-language: Telugu
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1Y4VH5D2E308DIPLE10KWW61CS0864
+workerId: A3J1PP96QX14U0
+workerid: A3J1PP96QX14U0

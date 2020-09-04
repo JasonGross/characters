@@ -1,0 +1,12 @@
+age: 
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Telugu, English
+native-language: Telugu
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YVM2FEYDCM6PMZVU0FEAQW7XD1IS7
+workerId: A3J1PP96QX14U0
+workerid: A3J1PP96QX14U0

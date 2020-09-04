@@ -1,0 +1,12 @@
+age: 28
+feedback: These characters are Japanese for sure.\n\nIt was very difficult writing
+input_device: touchpad
+language-read: French
+language-read-write: English
+native-language: Arabic
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1P1HS3E1YOZM4ZRZJ5AEPREVIAMIUN
+workerId: A3DFH6DPDI11IP
+workerid: A3DFH6DPDI11IP

@@ -1,0 +1,6 @@
+feedback: It's quite hard to draw the characters since I am not familiar with it. But it is fun to try drawing the characters as accurate as possible. :)
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1JVIPNH18GOFIZE1P7483MB3RBFC1T
+workerid: A2GQTJ5N0I90T4

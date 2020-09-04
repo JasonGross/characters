@@ -1,0 +1,7 @@
+age: 25
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: mouse
+language-read: German, Russian
+language-read-write: English
+native-language: Bulgarian
+seen_before: seen_never

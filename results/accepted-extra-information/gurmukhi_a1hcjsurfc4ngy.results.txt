@@ -1,0 +1,6 @@
+feedback: Some of the characters resemble the Hindi Devan&#257;gar&#299; script. Devan&#257;gar&#299; script is used in Sanskrit also. some resemble Sanskrit characters.
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1K9Y0VPI6UHFBATJTO08PHSTMJ9C0Q
+workerid: A1HCJSURFC4NGY

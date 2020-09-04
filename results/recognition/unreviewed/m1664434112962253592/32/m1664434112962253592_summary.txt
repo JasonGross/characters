@@ -1,0 +1,20 @@
+
+
+Summary:Short Summary:
+Correct: 0
+Incorrect: 2
+Percent Correct: 0
+
+Same Correct: 0
+Same Incorrect: 2
+Percent Same Correct: 0
+
+Different Correct: 0
+Different Incorrect: 0
+Percent Different Correct: -1
+
+Long Summary:
+Task 0: incorrectly said that (greek, 1, a3mv1jtwep7xn) and (greek, 1, a3pkun3onkucn) are not the same in 979 ms.
+Task 1: incorrectly said that (greek, 1, a2pfktghg1ofp) and (greek, 1, a3odp26ht9sjo) are not the same in 22121 ms.
+
+Duration: 1m 7s 741ms

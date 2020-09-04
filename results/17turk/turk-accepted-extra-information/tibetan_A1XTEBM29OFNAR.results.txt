@@ -1,0 +1,12 @@
+age: 52
+feedback: Few of this script have little similarity with some Indian scripts
+input_device: mouse
+language-read: Tamil
+language-read-write: Kannada,  Devan&#257;gar&#299;
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1T46IK3SNHH1NAIHJKBKG4IIWDNNNG
+workerId: A1XTEBM29OFNAR
+workerid: A1XTEBM29OFNAR

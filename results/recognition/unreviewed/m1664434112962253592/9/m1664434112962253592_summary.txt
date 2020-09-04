@@ -1,0 +1,20 @@
+
+
+Summary:Short Summary:
+Correct: 1
+Incorrect: 1
+Percent Correct: 50
+
+Same Correct: 1
+Same Incorrect: 0
+Percent Same Correct: 100
+
+Different Correct: 0
+Different Incorrect: 1
+Percent Different Correct: 0
+
+Long Summary:
+Task 0: correctly said that (malayalam, 47, ehcip) and (malayalam, 47, rkacw) are the same in 716 ms.
+Task 1: incorrectly said that (armenian, 14, ia38) and (armenian, 39, t3pc) are the same in 959 ms.
+
+Duration: 0m 13s 274ms

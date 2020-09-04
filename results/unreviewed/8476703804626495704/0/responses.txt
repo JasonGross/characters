@@ -1,0 +1,6 @@
+age: 19
+input_device: tablet_pen
+language-read: Some Japanese (kanji)
+language-read-write: Spanish, French, Portuguese, German, some Korean, some Japanese
+native-language: English
+seen_before: seen_never

@@ -1,0 +1,12 @@
+age: 26
+feedback: 
+input_device: tablet_pen
+language-read: 
+language-read-write: Japanese, Korean, Spanish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1HAPWBBDHKF5JK1KI426HFMFJTS5IR
+workerId: A2O33TORRUAQE1
+workerid: A2O33TORRUAQE1

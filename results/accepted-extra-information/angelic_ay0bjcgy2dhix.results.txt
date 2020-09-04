@@ -1,0 +1,12 @@
+age: 50
+feedback: A lot remind me again of ordinary letters and numbers, manipulated.
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1W36VMIMUCQU6C05QVJ7YN3DXLQAPG
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

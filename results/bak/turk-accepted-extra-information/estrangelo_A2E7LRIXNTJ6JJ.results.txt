@@ -1,0 +1,12 @@
+age: 21
+feedback: This is the most interesting thing I've done on this website.  I'd be very interested in the results of this research.  RxJosh@gmail.com
+input_device: mouse
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1CPWGU52QOKA5QLKHB1PW4C9RVQ5VQ
+workerId: A2E7LRIXNTJ6JJ
+workerid: A2E7LRIXNTJ6JJ

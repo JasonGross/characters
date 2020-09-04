@@ -1,0 +1,12 @@
+age: 31
+feedback: Very good exercise
+input_device: touchpad
+language-read: Nahuatl
+language-read-write: English
+native-language: Spanish
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10Y5T8FD7ZXIXPXQNMJH311JSSNKON
+workerId: A2SM10KIKX8O5J
+workerid: A2SM10KIKX8O5J

@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 2
+Incorrect: 1
+Percent Correct: 66
+
+Same Correct: 0
+Same Incorrect: 0
+Percent Same Correct: -1
+
+Different Correct: 2
+Different Incorrect: 1
+Percent Different Correct: 66
+
+Long Summary:
+Task 0: incorrectly said that (hebrew, 10, a1s3njxhehcip) and (latin, 2, a2pfktghg1ofp) are the same in 1640 ms.
+Task 1: correctly said that (hebrew, 10, a1j8s7giyto4a) and (latin, 2, a2du3880jbrov) are not the same in 942 ms.
+Task 2: correctly said that (hebrew, 10, a3mv1jtwep7xn) and (greek, 1, atvyxlwe5n03) are not the same in 1103 ms.
+
+Duration: 0m 19s 503ms

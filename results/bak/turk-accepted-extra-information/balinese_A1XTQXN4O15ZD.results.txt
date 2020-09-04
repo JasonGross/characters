@@ -1,0 +1,12 @@
+age: 34
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: Russian, French
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1KXDE8Y2JZZS97HK36IFRC6VRZSV48
+workerId: A1XTQXN4O15ZD
+workerid: A1XTQXN4O15ZD

@@ -1,0 +1,12 @@
+age: 47
+feedback: looks like Inuktitut or something similar.  It looks complicated but it's very easy to write compared to the other ones.
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1MJY707EUIXXLHU9OGFF3RDS8N7FIL
+workerId: A2AKUD1GXDSTSD
+workerid: A2AKUD1GXDSTSD

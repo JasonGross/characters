@@ -1,0 +1,12 @@
+age: 21
+feedback: 
+input_device: touchpad
+language-read: None
+language-read-write: English, Hindi
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1WVEYF5ER3KNKFLP7L6LI6VNY4S5W0
+workerId: A3EBT12SNRDN77
+workerid: A3EBT12SNRDN77

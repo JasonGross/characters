@@ -1,0 +1,54 @@
+calibration_task-0-keypress: {"altKey":false,"charCode":32,"ctrlKey":false,"keyCode":32,"metaKey":false,"shiftKey":false,"timeStamp":1301237527648,"which":32}
+calibration_task-0-keypress_before_show_prompt_count: 0
+calibration_task-0-reaction-time: 468
+calibration_task-0-time-of-doTask: 1298904726120
+calibration_task-0-time-of-keypress: 1298904727649
+calibration_task-0-time-of-showCharacters: 1298904727181
+duration: 0y 0d 0h 0m 10s 561ms
+form-load-time: 1298904723775
+form-submit-time: 1298904735399
+jQuery.browser.safari: true
+jQuery.browser.version: 534.24
+jQuery.browser.webkit: true
+navigator.appCodeName: Mozilla
+navigator.appName: Netscape
+navigator.appVersion: 5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.16 Safari/534.24
+navigator.platform: Win32
+navigator.userAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.16 Safari/534.24
+navigator.vendor: Google Inc.
+screenAavilHeight: 760
+screenAavilWidth: 1280
+screenHeight: 800
+screenWidth: 1280
+submitButton: Submit
+task-0-are-same: true
+task-0-character-0-alphabet: inuktitut
+task-0-character-0-anonymous_url: http://scripts.mit.edu/~jgross/alphabets/results/accepted-images/a1iz5n9eub5k028sfxpy.png
+task-0-character-0-character-number: 02
+task-0-character-0-id: a1z59eb5sfxpy
+task-0-character-1-alphabet: inuktitut
+task-0-character-1-anonymous_url: http://scripts.mit.edu/~jgross/alphabets/results/accepted-images/avilbnkmu6qk02ipb1s.png
+task-0-character-1-character-number: 02
+task-0-character-1-id: avlbkm6qpb1s
+task-0-is-correct-answer: false
+task-0-keypress: {"altKey":false,"charCode":32,"ctrlKey":false,"keyCode":32,"metaKey":false,"shiftKey":false,"timeStamp":1301237531890,"which":32}
+task-0-keypress_before_show_prompt_count: 0
+task-0-noise-image-0-url: http://jgross.scripts.mit.edu/alphabets/images/strokeNoise7.png
+task-0-noise-image-1-url: http://jgross.scripts.mit.edu/alphabets/images/strokeNoise6.png
+task-0-noise-image-2-url: http://jgross.scripts.mit.edu/alphabets/images/strokeNoise0.png
+task-0-noise-image-3-url: http://jgross.scripts.mit.edu/alphabets/images/strokeNoise2.png
+task-0-noise-image-4-url: http://jgross.scripts.mit.edu/alphabets/images/strokeNoise8.png
+task-0-reaction-time: 434
+task-0-time-of-doTask: 1298904730340
+task-0-time-of-keypress: 1298904731891
+task-0-time-of-showCharacters: 1298904731457
+url-parameter-calibrationTaskCount: 1
+url-parameter-characterSet: small_experiment2
+url-parameter-displayProgressBarDuringTask: false
+url-parameter-fractionSame: 0.5
+url-parameter-pauseToGroup: -1,0
+url-parameter-random: true
+url-parameter-tasksPerFeedbackGroup: 10,0
+url-parameter-trialsPerExperiment: 1
+windowHeight: 632
+windowWidth: 1263

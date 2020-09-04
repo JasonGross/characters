@@ -1,0 +1,8 @@
+Summary:
+Task 0: GIVEN atlantean, 21, ay0bjcgydhix, CHOSE atlantean, 21, a3r9q9wqm1nyz
+Task 0: Right
+Task 0 duration: 8748
+
+Number Right: 1
+Number Wrong: 0
+Percent Right: 100%

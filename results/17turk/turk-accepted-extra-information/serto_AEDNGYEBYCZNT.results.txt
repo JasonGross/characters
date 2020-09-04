@@ -1,0 +1,11 @@
+age: 
+feedback: 
+input_device: mouse
+language-read: every one but English
+language-read-write: 
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1IFER2JL19QSIX0AYBMWGVKIA7J3BS
+workerid: AEDNGYEBYCZNT

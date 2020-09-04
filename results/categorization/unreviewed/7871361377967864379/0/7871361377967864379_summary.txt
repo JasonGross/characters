@@ -1,0 +1,14 @@
+
+
+Summary:
+Wrong: Selected "Aurek-Besh" instead of "Ojibwe (Canadian Aboriginal Syllabics)" from options "Burmese (Myanmar)", "Gujarati", "Anglo-Saxon Futhorc", "Kannada", "Greek", "Bengali", "Hebrew", "Syriac (Serto)", "Ojibwe (Canadian Aboriginal Syllabics)", "Aurek-Besh"
+Wrong: Selected "Tibetan" instead of "Ge'ez" from options "Angelic", "Ge'ez", "Braille", "Grantha", "Japanese (hiragana)", "Keble", "Futurama", "Armenian", "Tagalog", "Tibetan"
+Wrong: Selected "Balinese" instead of "Syriac (Estrangelo)" from options "Balinese", "Latin", "Mkhedruli (Georgian)", "Glagolitic", "Oriya", "Avesta", "Gurmukhi", "Korean", "Japanese (katakana)", "Syriac (Estrangelo)"
+Right: Selected "Sylheti" from options "Blackfoot (Canadian Aboriginal Syllabics)", "ULOG", "Tengwar", "Sylheti", "Inuktitut (Canadian Aboriginal Syllabics)", "N'Ko", "Old Church Slavonic (Cyrillic)", "Mongolian", "Atlantean", "Atemayar Qelisayer"
+Right: Selected "Alphabet of the Magi" from options "Tifinagh", "Cyrillic", "Asomtavruli (Georgian)", "Arcadian", "Alphabet of the Magi", "Malay (Jawi - Arabic)", "Manipuri", "Malayalam", "Sanskrit", "Early Aramaic"
+
+Totals:
+Correct: 2
+Incorrect: 3
+
+Duration: 7m 44s 81ms

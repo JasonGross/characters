@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 2
+Incorrect: 0
+Percent Correct: 100
+
+Same Correct: 1
+Same Incorrect: 0
+Percent Same Correct: 100
+
+Different Correct: 1
+Different Incorrect: 0
+Percent Different Correct: 100
+
+Long Summary:
+Task 0: correctly said that (latin, 2, a1z59eb5sfxpy) and (latin, 2, avlbkm6qpb1s) are the same in 1191 ms.
+Task 1: correctly said that (hebrew, 10, aljsxt6v0a30) and (greek, 1, aljsxt6v0a30) are not the same in 1176 ms.
+
+Duration: 0m 29s 786ms
+Comments: Feedback\ntab \ttab\nfeedback\n\nfeedback

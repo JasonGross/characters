@@ -1,0 +1,5 @@
+actual_input_device: mouse
+actual_seen_before: seen_familiar
+age: 18
+language-read-write: French, Arabic, Foodtongue, Finnish, German
+native-language: English

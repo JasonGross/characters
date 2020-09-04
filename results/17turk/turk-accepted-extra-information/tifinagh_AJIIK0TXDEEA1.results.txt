@@ -1,0 +1,11 @@
+age: 35
+feedback: I have written these characters and seem familiar
+input_device: mouse
+language-read: English, Hindi, Tamil
+language-read-write: English, Hindi, Tamil
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZKKYOIBNS6CD14NRDUOGHQEU0EQWX
+workerid: AJIIK0TXDEEA1

@@ -1,0 +1,11 @@
+age: 55
+feedback: Very interesting. Wish I knew the answers.
+input_device: mouse
+language-read: None
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1CEJ5YI1V1UNSOG3R5YEV9U3572Y67
+workerid: AR1ME3BT4LAF9

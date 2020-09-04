@@ -1,0 +1,12 @@
+age: 
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: 
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=12H6RHT60U8F6O1KQ8YWYSTN2HCAQ7
+workerId: A1M5XX9G83QOW7
+workerid: A1M5XX9G83QOW7

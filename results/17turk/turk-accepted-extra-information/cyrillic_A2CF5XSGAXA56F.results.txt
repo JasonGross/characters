@@ -1,0 +1,12 @@
+age: 35
+feedback: It was nice to write the characters using the mouse. I was familiar with most of the characters but not all. I enjoyed doing the hit. Thank you.
+input_device: mouse
+language-read: No such languages
+language-read-write: English, Hindi, Oriya
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: A2CF5XSGAXA56F
+workerid: A2CF5XSGAXA56F

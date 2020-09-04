@@ -1,0 +1,21 @@
+
+
+Summary:Short Summary:
+Correct: 0
+Incorrect: 2
+Percent Correct: 0
+
+Same Correct: 0
+Same Incorrect: 0
+Percent Same Correct: -1
+
+Different Correct: 0
+Different Incorrect: 2
+Percent Different Correct: 0
+
+Long Summary:
+Task 0: incorrectly said that (hebrew, 10, a1z59eb5sfxpy) and (greek, 1, a1yovlluv1c9h) are the same in 5741 ms.
+Task 1: incorrectly said that (hebrew, 10, a6fjbvuzrhm6) and (hebrew, 10, a2pfktghg1ofp) are the same in 676 ms.
+
+Duration: 0m 21s 440ms
+Comments: {'navigator.appCodeName': 'Mozilla', 'feedback': 'Comments\r\n\r\nComments', 'task-1-test-character-number': '10', 'task-0-example-alphabet': 'hebrew', 'task-1-time-of-showNoise': '1294206095440', 'url-parameter-displayProgressBarDuringTask': 'false', 'task-1-time-of-showSecondHint': '1294206094379', 'form-submit-time': '1294206103834', 'task-0-is-correct-answer': 'Did Not See', 'url-parameter-fractionSame': '0.25', 'task-0-test-url': 'http://scripts.mit.edu/~jgross/alphabets/results/accepted-images/a1gyorvlelue01yv1c9h.png', 'task-0-example-url': 'http://scripts.mit.edu/~jgross/alphabets/results/accepted-images/a1hz5e9ebb5r108sfxpy.png', 'duration': '0y 0d 0h 0m 21s 440ms', 'screenAavilWidth': '1280', 'screenWidth': '1280', 'task-1-example-url': 'http://scripts.mit.edu/~jgross/alphabets/results/accepted-images/a6hfjebvbuzr10yrhm6.png', 'task-0-example-id': 'a1z59eb5sfxpy', 'screenAavilHeight': '760', 'task-1-test-id': 'a2pfktghg1ofp', 'task-1-example-character-number': '10', 'url-parameter-tasksPerWaitGroup': '10,0', 'navigator.appName': 'Netscape', 'url-parameter-trialsPerExperiment': '2', 'jQuery.browser.safari': 'true', 'task-1-test-url': 'http://scripts.mit.edu/~jgross/alphabets/results/accepted-images/a2hpfektbghr10hg1ofp.png', 'task-1-time-of-doTask': '1294206093328', 'task-1-is-correct-answer': 'Did Not See', 'url-parameter-pauseToSecondHint': '500,0', 'task-0-test-id': 'a1yovlluv1c9h', 'url-parameter-random': 'true', 'task-0-time-of-showTest': '1294206087560', 'task-1_question': '1', 'task-1-test-alphabet': 'hebrew', 'jQuery.browser.version': '534.13', 'task-1-time-of-showTest': '1294206096440', 'url-parameter-pauseToNoise': '60,0', 'task-1-did_not_see-count': '0', 'navigator.userAgent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.13 (KHTML, like Gecko) Chrome/9.0.597.83 Safari/534.13', 'task-1-time-of-showExample': '1294206095379', 'task-0-did_not_see-count': '0', 'navigator.vendor': 'Google Inc.', 'jQuery.browser.webkit': 'true', 'windowWidth': '1263', 'task-1-example-alphabet': 'hebrew', 'url-parameter-pauseToTest': '1000,0', 'task-0-time-of-showSecondHint': '1294206085497', 'navigator.appVersion': '5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.13 (KHTML, like Gecko) Chrome/9.0.597.83 Safari/534.13', 'url-parameter-pauseToExample': '1000,0', 'submitButton': 'Submit', 'form-load-time': '1294206080066', 'task-1-duration-of-see-test': '676', 'task-0-example-character-number': '10', 'url-parameter-tasksPerFeedbackGroup': '10,0', 'task-1-example-id': 'a6fjbvuzrhm6', 'task-0-time-of-doTask': '1294206084438', 'url-parameter-pauseToGroup': '-1,0', 'task-0-duration-of-see-test': '5741', 'task-0_question': '1', 'ipAddress': '18.111.7.229', 'task-1-time-of-doneTask': '1294206097116', 'screenHeight': '800', 'task-0-time-of-showExample': '1294206086498', 'task-0-time-of-showFirstHint': '1294206084998', 'navigator.platform': 'Win32', 'task-0-time-of-doneTask': '1294206093301', 'task-0-test-alphabet': 'greek', 'task-0-time-of-showNoise': '1294206086559', 'windowHeight': '675', 'url-parameter-pauseToFirstHint': '500,0', 'task-0-test-character-number': '01', 'url-parameter-characterSet': 'small', 'task-1-time-of-showFirstHint': '1294206093878'}

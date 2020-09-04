@@ -1,0 +1,6 @@
+actual_input_device: mouse
+actual_seen_before: seen_never
+age: 17
+language-read: Tuscarora
+language-read-write: Spanish
+native-language: English

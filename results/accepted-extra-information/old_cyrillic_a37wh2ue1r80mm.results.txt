@@ -1,0 +1,11 @@
+age: 28
+feedback: 
+input_device: mouse
+language-read: Gujarati
+language-read-write: English, Marathi
+native-language: Hindi
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1RVZX1VUNPD6SI4ZFGE908P92840HA
+workerid: A37WH2UE1R80MM

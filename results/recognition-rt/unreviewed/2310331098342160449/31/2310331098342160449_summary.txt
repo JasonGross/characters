@@ -1,0 +1,22 @@
+Summary:
+Calibration:
+589
+Average: 589
+
+
+Tasks:
+Task 0: myanmar, 25, a3pkun3onkucn VS. sylheti, 20, a3np21apfa18b
+Task 0: Right, Are Different
+Task 0 RT: 555
+Task 1: sylheti, 28, a3r9q9wqm1nyz VS. tagalog, 05, a12rfyr8dbn79
+Task 1: Right, Are Different
+Task 1 RT: 375
+Task 2: korean, 29, ae0ibwt7asth VS. myanmar, 32, adc8vbkoocrr
+Task 2: Right, Are Different
+Task 2 RT: 421
+Task 3: tagalog, 02, a1i92aacrkacw VS. tagalog, 02, amynpl5xzw6q
+Task 3: Wrong, Are Same
+Task 3 RT: 352
+Task 4: tagalog, 10, a3mv1jtwep7xn VS. tagalog, 02, a1a25pyfoa9ge
+Task 4: Right, Are Different
+Task 4 RT: 402

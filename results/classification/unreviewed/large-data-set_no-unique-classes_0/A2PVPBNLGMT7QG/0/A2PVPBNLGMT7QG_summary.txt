@@ -1,0 +1,157 @@
+Summary:
+Task 0: GIVEN ulog, 14, a1z59eb5sfxpy, CHOSE ulog, 14, a1yovlluv1c9h
+Task 0: Right
+Task 0 duration: 19992
+Task 1: GIVEN futhorc, 14, a3odp26ht9sjo, CHOSE futhorc, 14, a320mrsfl1s1r
+Task 1: Right
+Task 1 duration: 11354
+Task 2: GIVEN sylheti, 04, atvyxlwe5n03, CHOSE sylheti, 04, a2du3880jbrov
+Task 2: Right
+Task 2 duration: 27238
+Task 3: GIVEN armenian, 34, a1manxzopzden, CHOSE armenian, 34, a2px0aywxngce
+Task 3: Right
+Task 3 duration: 13982
+Task 4: GIVEN latin, 03, a1z59eb5sfxpy, CHOSE latin, 03, aghrkle9vf6z
+Task 4: Right
+Task 4 duration: 7582
+Task 5: GIVEN manipuri, 04, a3bb99mn3zy37, CHOSE manipuri, 04, a23t7kaibdym4
+Task 5: Right
+Task 5 duration: 14742
+Task 6: GIVEN katakana, 02, a2nm1qzuh14ls, CHOSE katakana, 02, a3bb99mn3zy37
+Task 6: Right
+Task 6 duration: 8519
+Task 7: GIVEN latin, 15, a6fjbvuzrhm6, CHOSE latin, 15, a2ef2hjnx4hm
+Task 7: Right
+Task 7 duration: 6543
+Task 8: GIVEN tagalog, 15, a12rfyr8dbn79, CHOSE tagalog, 15, a1l2fzyn31zvf
+Task 8: Right
+Task 8 duration: 8263
+Task 9: GIVEN atlantean, 14, a3pkun3onkucn, CHOSE atlantean, 14, a1a25pyfoa9ge
+Task 9: Right
+Task 9 duration: 30284
+Task 10: GIVEN gurmukhi, 26, a2pfktghg1ofp, CHOSE gurmukhi, 26, a5379luit3pc
+Task 10: Right
+Task 10 duration: 4984
+Task 11: GIVEN atemayar, 23, a1poymbentexx, CHOSE atemayar, 23, a1j8s7giyto4a
+Task 11: Right
+Task 11 duration: 8743
+Task 12: GIVEN gujarati, 31, aghrkle9vf6z, CHOSE gujarati, 31, a5379luit3pc
+Task 12: Right
+Task 12 duration: 8103
+Task 13: GIVEN atemayar, 02, a1vzhyp8yvxkz, CHOSE atemayar, 02, a2pfktghg1ofp
+Task 13: Right
+Task 13 duration: 16919
+Task 14: GIVEN korean, 25, a5379luit3pc, CHOSE korean, 25, a1v0p79fynz9j
+Task 14: Right
+Task 14 duration: 10966
+Task 15: GIVEN manipuri, 20, a3mv1jtwep7xn, CHOSE manipuri, 20, a23t7kaibdym4
+Task 15: Right
+Task 15 duration: 9118
+Task 16: GIVEN korean, 10, a1umhcrj9zfdp, CHOSE korean, 10, aj6upe9mlarg
+Task 16: Right
+Task 16 duration: 9150
+Task 17: GIVEN manipuri, 31, a3bb99mn3zy37, CHOSE manipuri, 31, a3qwezeps9sb
+Task 17: Right
+Task 17 duration: 13780
+Task 18: GIVEN myanmar, 03, a6fjbvuzrhm6, CHOSE myanmar, 03, amynpl5xzw6q
+Task 18: Right
+Task 18 duration: 33566
+Task 19: GIVEN kannada, 37, a3b031ykwfyfm, CHOSE kannada, 37, a2ja8qb8gyghj
+Task 19: Right
+Task 19 duration: 8166
+Task 20: GIVEN atemayar, 25, awl8tng8e81d, CHOSE atemayar, 25, a1z59eb5sfxpy
+Task 20: Right
+Task 20 duration: 7080
+Task 21: GIVEN gurmukhi, 42, a5379luit3pc, CHOSE gurmukhi, 42, ayn2jagmi8h0
+Task 21: Right
+Task 21 duration: 10790
+Task 22: GIVEN gujarati, 07, ay0bjcgydhix, CHOSE gujarati, 07, a5379luit3pc
+Task 22: Right
+Task 22 duration: 11391
+Task 23: GIVEN myanmar, 16, avlbkm6qpb1s, CHOSE myanmar, 16, adc8vbkoocrr
+Task 23: Right
+Task 23 duration: 9591
+Task 24: GIVEN gujarati, 25, a5379luit3pc, CHOSE gujarati, 25, ajf66jwen7bx
+Task 24: Right
+Task 24 duration: 5735
+Task 25: GIVEN manipuri, 21, a3amenm6txi9f, CHOSE manipuri, 21, a2akud1gdstsd
+Task 25: Right
+Task 25 duration: 10631
+Task 26: GIVEN armenian, 23, a1manxzopzden, CHOSE armenian, 23, a37lvcje8gkgu
+Task 26: Right
+Task 26 duration: 6845
+Task 27: GIVEN cyrillic, 22, a2du3880jbrov, CHOSE cyrillic, 22, a3mv1jtwep7xn
+Task 27: Right
+Task 27 duration: 6630
+Task 28: GIVEN gujarati, 24, a2ujfix71oajm, CHOSE gujarati, 24, a1stvgjqfl5kk
+Task 28: Right
+Task 28 duration: 12422
+Task 29: GIVEN cyrillic, 26, aljsxt6v0a30, CHOSE cyrillic, 26, a1yovlluv1c9h
+Task 29: Right
+Task 29 duration: 37365
+Task 30: GIVEN manipuri, 08, a3mv1jtwep7xn, CHOSE manipuri, 08, a5379luit3pc
+Task 30: Right
+Task 30 duration: 4703
+Task 31: GIVEN old_cyrillic, 09, a1ub6rqon1ze6, CHOSE old_cyrillic, 09, amyau7q7mekh
+Task 31: Right
+Task 31 duration: 41317
+Task 32: GIVEN futhorc, 21, ay0bjcgydhix, CHOSE futhorc, 21, a2zu0sz3d1x0n
+Task 32: Right
+Task 32 duration: 4086
+Task 33: GIVEN ojibwe, 04, a2du3880jbrov, CHOSE ojibwe, 04, a2zgj7iq6zhxe
+Task 33: Right
+Task 33 duration: 7318
+Task 34: GIVEN greek, 24, a3odp26ht9sjo, CHOSE kannada, 08, a1manxzopzden
+Task 34: Wrong
+Task 34 duration: 11958
+Task 35: GIVEN gurmukhi, 31, aav4pzxdoebd, CHOSE gurmukhi, 31, a3h3zl6kegrta
+Task 35: Right
+Task 35 duration: 7870
+Task 36: GIVEN latin, 01, avlbkm6qpb1s, CHOSE latin, 01, a2ef2hjnx4hm
+Task 36: Right
+Task 36 duration: 4500
+Task 37: GIVEN mongolian, 05, a31xqftzcsia2, CHOSE mongolian, 05, aghrkle9vf6z
+Task 37: Right
+Task 37 duration: 7061
+Task 38: GIVEN atlantean, 07, a1a25pyfoa9ge, CHOSE ojibwe, 08, a2sr0exg0uve1
+Task 38: Wrong
+Task 38 duration: 25878
+Task 39: GIVEN korean, 33, a2nm1qzuh14ls, CHOSE korean, 33, a3d7xwp0gand5
+Task 39: Right
+Task 39 duration: 8045
+Task 40: GIVEN korean, 23, aw82oruamauz, CHOSE korean, 23, aj6upe9mlarg
+Task 40: Right
+Task 40 duration: 5368
+Task 41: GIVEN inuktitut, 07, a3noo9k3y1yu5, CHOSE inuktitut, 07, avlbkm6qpb1s
+Task 41: Right
+Task 41 duration: 5262
+Task 42: GIVEN old_cyrillic, 32, amyau7q7mekh, CHOSE old_cyrillic, 32, ae0ibwt7asth
+Task 42: Right
+Task 42 duration: 5966
+Task 43: GIVEN latin, 04, a2zgj7iq6zhxe, CHOSE latin, 04, a6fjbvuzrhm6
+Task 43: Right
+Task 43 duration: 4846
+Task 44: GIVEN kannada, 35, a2hwmbttotcf1, CHOSE kannada, 35, a1xtebm2ofnar
+Task 44: Right
+Task 44 duration: 2622
+Task 45: GIVEN atlantean, 04, a3m0kt6kjezd1, CHOSE atlantean, 04, a1yovlluv1c9h
+Task 45: Right
+Task 45 duration: 33236
+Task 46: GIVEN latin, 09, aljsxt6v0a30, CHOSE latin, 09, a2ef2hjnx4hm
+Task 46: Right
+Task 46 duration: 12388
+Task 47: GIVEN latin, 05, a1j8s7giyto4a, CHOSE latin, 05, a6fjbvuzrhm6
+Task 47: Right
+Task 47 duration: 4485
+Task 48: GIVEN ulog, 25, a2obf26c088ib, CHOSE ulog, 25, a3j1pp96x14u0
+Task 48: Right
+Task 48 duration: 11486
+Task 49: GIVEN cyrillic, 15, a1s3njxhehcip, CHOSE cyrillic, 15, ay0bjcgydhix
+Task 49: Right
+Task 49 duration: 8294
+
+Number Right: 48
+Number Wrong: 2
+Percent Right: 96%
+Duration: 17m 4s 970ms
+Comments: When you clicked on the individual images to submit, some would let the image number appear in the box, some would not. You had to scroll for the correct number to get it to submit.\n\nNot sure if thats an error or part of the test!  Thanks!

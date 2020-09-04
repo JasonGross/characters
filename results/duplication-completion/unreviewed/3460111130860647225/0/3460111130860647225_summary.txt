@@ -1,0 +1,63 @@
+Summary:
+Task 0: FLASHED futhorc, 08, a3mv1jtwhep7xn and GIVEN futhorc, 08, aljsxt6vr0a30
+Task 0: 
+Task 0 duration: 9350
+Task 1: FLASHED tifinagh, 36, a2cf5xsgaxa56f and GIVEN tifinagh, 36, ajiik0txdeea1
+Task 1: 
+Task 1 duration: 371834
+Task 2: FLASHED estrangelo, 21, a2e7lrixntj6jj and GIVEN estrangelo, 21, a1z59eb58sfxpy
+Task 2: 
+Task 2 duration: 10226
+Task 3: FLASHED asomtavruli, 17, a2hvxg9n3n3f8o and GIVEN asomtavruli, 17, aav4pzxd7oebd
+Task 3: 
+Task 3 duration: 6050
+Task 4: FLASHED myanmar, 01, aljsxt6vr0a30 and GIVEN myanmar, 01, a1j8s7giuyto4a
+Task 4: 
+Task 4 duration: 6508
+Task 5: FLASHED glagolitic, 36, a1manxzolpzden and GIVEN glagolitic, 36, a2pfktghhg1ofp
+Task 5: 
+Task 5 duration: 7363
+Task 6: FLASHED bengali, 21, a2ja8qb8pgyghj and GIVEN bengali, 21, a27dyewb1nf3zv
+Task 6: 
+Task 6 duration: 9336
+Task 7: FLASHED earlyaramaic, 12, a12rfyr8edbn79 and GIVEN earlyaramaic, 12, a2cf5xsgaxa56f
+Task 7: 
+Task 7 duration: 6040
+Task 8: FLASHED estrangelo, 11, ay0bjcgy2dhix and GIVEN estrangelo, 11, a1j8s7giuyto4a
+Task 8: 
+Task 8 duration: 6339
+Task 9: FLASHED mkhedruli, 19, a2ja8qb8pgyghj and GIVEN mkhedruli, 19, a37lvcje48gkgu
+Task 9: 
+Task 9 duration: 7494
+Task 10: FLASHED gurmukhi, 25, amyau7q7tmekh and GIVEN gurmukhi, 25, a2b6a8qnxlwrg1
+Task 10: 
+Task 10 duration: 7396
+Task 11: FLASHED glagolitic, 39, a1manxzolpzden and GIVEN glagolitic, 39, a1j8s7giuyto4a
+Task 11: 
+Task 11 duration: 6529
+Task 12: FLASHED kannada, 30, aghrkle9jvf6z and GIVEN kannada, 30, a3bb99mn43zy37
+Task 12: 
+Task 12 duration: 6839
+Task 13: FLASHED kannada, 20, apd0da9xz3zlo and GIVEN kannada, 20, a2akud1gxdstsd
+Task 13: 
+Task 13 duration: 9154
+Task 14: FLASHED cyrillic, 32, a2pfktghhg1ofp and GIVEN cyrillic, 32, a39600k8aanv7m
+Task 14: 
+Task 14 duration: 7454
+Task 15: FLASHED jawi, 19, a2ernxe60jlm4x and GIVEN jawi, 19, aop4ii3onmgtc
+Task 15: 
+Task 15 duration: 10215
+Task 16: FLASHED old_cyrillic, 07, a2ja8qb8pgyghj and GIVEN old_cyrillic, 07, a1ub6rqorn1ze6
+Task 16: 
+Task 16 duration: 6062
+Task 17: FLASHED malayalam, 37, a3uxauq8sy2ih4 and GIVEN malayalam, 37, a3d7xwp0ygand5
+Task 17: 
+Task 17 duration: 5752
+Task 18: FLASHED kannada, 23, aav4pzxd7oebd and GIVEN kannada, 23, a2hwmbtteotcf1
+Task 18: 
+Task 18 duration: 7545
+Task 19: FLASHED manipuri, 06, a3bb99mn43zy37 and GIVEN manipuri, 06, a1manxzolpzden
+Task 19: 
+Task 19 duration: 8343
+Duration: 8m 45s 162ms
+Comments: 

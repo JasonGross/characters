@@ -1,0 +1,6 @@
+feedback: some look like chinese
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1U7GFVZL7SV6275URCFV7S7SOBJM7I
+workerid: AMYNPL5XZZW6Q

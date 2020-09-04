@@ -1,0 +1,12 @@
+age: 26
+feedback: This task was kind of cool, but towards the end my wrist really started to hurt! I think I good idea in the future (if you want more people to participate and/or actually finish the hit before giving up), is to make it a little shorter. 
+input_device: mouse
+language-read: Spanish
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1FKAOYV6HPDNH4Y7N6D6OAA2WJD77E
+workerId: AIF7NBOQSJSTT
+workerid: AIF7NBOQSJSTT

@@ -1,0 +1,22 @@
+Summary:
+Calibration:
+4231
+Average: 4231
+
+
+Tasks:
+Task 0: inuktitut, 11, a315xddd8j4x8 VS. inuktitut, 11, a3mv1jtwep7xn
+Task 0: Wrong, Are Same
+Task 0 RT: 400
+Task 1: myanmar, 32, adc8vbkoocrr VS. myanmar, 32, amynpl5xzw6q
+Task 1: Wrong, Are Same
+Task 1 RT: 486
+Task 2: sylheti, 19, a6fjbvuzrhm6 VS. sylheti, 19, a3209gno9duil
+Task 2: Wrong, Are Same
+Task 2 RT: 625
+Task 3: inuktitut, 11, ay0bjcgydhix VS. sylheti, 28, a2du3880jbrov
+Task 3: Right, Are Different
+Task 3 RT: 762
+Task 4: inuktitut, 11, a2pgu4pi93b1q VS. inuktitut, 11, a1z59eb5sfxpy
+Task 4: Wrong, Are Same
+Task 4 RT: 926

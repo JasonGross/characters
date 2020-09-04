@@ -1,0 +1,10 @@
+Summary:
+Calibration:
+468
+Average: 468
+
+
+Tasks:
+Task 0: inuktitut, 02, a1z59eb5sfxpy VS. inuktitut, 02, avlbkm6qpb1s
+Task 0: Wrong, Are Same
+Task 0 RT: 434

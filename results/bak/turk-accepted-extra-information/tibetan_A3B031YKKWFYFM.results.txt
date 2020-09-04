@@ -1,0 +1,12 @@
+age: 22
+feedback: Wow.  This was so hard to do I had to switch computers just to make things somewhat recognizable.  This is just near impossible to replicate accurately.
+input_device: mouse
+language-read: Spanish
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1T46IK3SNHH1NAIHJKBKG4IIWDNNNG
+workerId: A3B031YKKWFYFM
+workerid: A3B031YKKWFYFM

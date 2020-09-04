@@ -1,0 +1,12 @@
+age: 63
+feedback: 
+input_device: touchpad
+language-read: Spanish some
+language-read-write: Spanish some
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=18RZJWCKIX7SSM9OVAWRF8D8N8R0GB
+workerId: A1EHRXJPKLSQ0R
+workerid: A1EHRXJPKLSQ0R

@@ -1,0 +1,12 @@
+age: 35
+feedback: 
+input_device: mouse
+language-read: none
+language-read-write: English
+native-language: Filipino
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1T46IK3SNHH1NAIHJKBKG4IIWDNNNG
+workerId: A3AMENM6FTXI9F
+workerid: A3AMENM6FTXI9F

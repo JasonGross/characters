@@ -1,0 +1,54 @@
+duration: 0y 0d 0h 0m 10s 734ms
+form-load-time: 1309477059081
+form-submit-time: 1309477074086
+jQuery.browser.safari: true
+jQuery.browser.version: 535.1
+jQuery.browser.webkit: true
+navigator.appCodeName: Mozilla
+navigator.appName: Netscape
+navigator.appVersion: 5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1
+navigator.platform: Win32
+navigator.userAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1
+navigator.vendor: Google Inc.
+screenAavilHeight: 760
+screenAavilWidth: 1280
+screenHeight: 800
+screenWidth: 1280
+submitButton: Submit
+task-0-answer: 7
+task-0-are-same: true
+task-0-character-0-alphabet: korean
+task-0-character-0-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a2knmo1qrzue04fh14ls.png
+task-0-character-0-character-number: 04
+task-0-character-0-id: a2nm1qzuh14ls
+task-0-character-1-alphabet: korean
+task-0-character-1-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a3k9iovbrdme0451ekue.png
+task-0-character-1-character-number: 04
+task-0-character-1-id: a39ivbdm1ekue
+task-0-time-of-do-task: ['1309477064598', '1309477064601']
+task-0-time-of-finish-task: 1309477067632
+task-1-answer: 1
+task-1-are-same: false
+task-1-character-0-alphabet: myanmar
+task-1-character-0-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/avmlbykma6qn15ipb1s.png
+task-1-character-0-character-number: 15
+task-1-character-0-id: avlbkm6qpb1s
+task-1-character-1-alphabet: armenian
+task-1-character-1-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a3abbr99mmne0743zy37.png
+task-1-character-1-character-number: 07
+task-1-character-1-id: a3bb99mn3zy37
+task-1-time-of-do-task: ['1309477067641', '1309477067646']
+task-1-time-of-finish-task: 1309477070766
+url-parameter-allowDidNotSeeCount: 1,0
+url-parameter-characterSet: large_experiment
+url-parameter-characterSize: 100px
+url-parameter-differentAlphabetFraction: -1
+url-parameter-displayProgressBarDuringTask: false
+url-parameter-pauseToNextGroup: -1,0
+url-parameter-sameFraction: 0.5
+url-parameter-taskCount: 2
+url-parameter-tasksPerFeedbackGroup: 10,0
+url-parameter-unique: true
+weirdness: ('task-0-time-of-do-task', <type 'list'>, "['1309477064598', '1309477064601']");('task-1-time-of-do-task', <type 'list'>, "['1309477067641', '1309477067646']")
+windowHeight: 442
+windowWidth: 1263

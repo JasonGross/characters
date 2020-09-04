@@ -1,0 +1,6 @@
+age: 26
+input_device: touchpad
+language-read: Tamil
+language-read-write: English 
+native-language: Malayalam
+seen_before: seen_never

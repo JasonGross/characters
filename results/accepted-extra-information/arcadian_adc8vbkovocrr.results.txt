@@ -1,0 +1,12 @@
+age: 19
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: English, Hindi
+native-language: Gujarati
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=13WGOY9GNFLDBQSJN89U0U00SVFFFU
+workerId: ADC8VBKOVOCRR
+workerid: ADC8VBKOVOCRR

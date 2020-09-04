@@ -1,0 +1,12 @@
+age: 22
+feedback: like to every day 
+input_device: mouse
+language-read: gujrati
+language-read-write: hindi,enlish
+native-language: hindi, english
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1WVEYF5ER3KNKFLP7L6LI6VNY4S5W0
+workerId: A1AEGUNF16E081
+workerid: A1AEGUNF16E081

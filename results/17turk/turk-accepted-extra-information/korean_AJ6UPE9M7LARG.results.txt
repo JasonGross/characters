@@ -1,0 +1,12 @@
+age: 20
+feedback: I believe that those are Chinese or Japanese letters. 
+input_device: mouse
+language-read: None
+language-read-write: Spanish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerId: AJ6UPE9M7LARG
+workerid: AJ6UPE9M7LARG

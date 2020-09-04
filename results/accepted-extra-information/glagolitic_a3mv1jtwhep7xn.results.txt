@@ -1,0 +1,11 @@
+age: 21
+feedback: These were much harder
+input_device: mouse
+language-read: latin
+language-read-write: spanish
+native-language: english
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1GDXXCJU0XTRJ4GXICN1TS8OK5XASW
+workerid: A3MV1JTWHEP7XN

@@ -1,0 +1,12 @@
+age: 30
+feedback: 
+input_device: touchpad
+language-read: Kannada, Gujarati, Marathi
+language-read-write: Hindi
+native-language: Telugu
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=13SZHRKHGIP7H35CMBSKNO9EKW4FOE
+workerId: AI5E50BGAUZH2
+workerid: AI5E50BGAUZH2

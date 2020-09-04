@@ -1,0 +1,12 @@
+age: 2
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Hindi,Assamese
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1Y6VRBX8SNN9EPKY96NACX3YSH7A9K
+workerId: A2PFKTGHHG1OFP
+workerid: A2PFKTGHHG1OFP

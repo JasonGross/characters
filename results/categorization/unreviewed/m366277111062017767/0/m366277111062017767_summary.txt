@@ -1,0 +1,14 @@
+
+
+Summary:
+Wrong: Selected "ULOG" instead of "Greek" from options "ULOG", "Latin", "Burmese (Myanmar)", "Anglo-Saxon Futhorc", "Greek", "Gurmukhi", "Atlantean", "Japanese (katakana)", "Korean", "Early Aramaic"
+Wrong: Selected "Tengwar" instead of "Armenian" from options "Tifinagh", "Tengwar", "Asomtavruli (Georgian)", "Braille", "Alphabet of the Magi", "Malay (Jawi - Arabic)", "Armenian", "Hebrew", "Mkhedruli (Georgian)", "Ojibwe (Canadian Aboriginal Syllabics)"
+Right: Selected "Inuktitut (Canadian Aboriginal Syllabics)" from options "Japanese (hiragana)", "Arcadian", "Inuktitut (Canadian Aboriginal Syllabics)", "Gujarati", "Bengali", "Manipuri", "Malayalam", "Atemayar Qelisayer", "Tibetan", "Mongolian"
+Wrong: Selected "Futurama" instead of "Kannada" from options "Glagolitic", "Ge'ez", "Oriya", "Kannada", "Futurama", "Cyrillic", "Tagalog", "Sanskrit", "Syriac (Estrangelo)", "Aurek-Besh"
+Wrong: Selected "Angelic" instead of "Sylheti" from options "Blackfoot (Canadian Aboriginal Syllabics)", "Balinese", "Angelic", "Sylheti", "Grantha", "Avesta", "N'Ko", "Old Church Slavonic (Cyrillic)", "Keble", "Syriac (Serto)"
+
+Totals:
+Correct: 1
+Incorrect: 4
+
+Duration: 17m 23s 921ms

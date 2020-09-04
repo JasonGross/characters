@@ -1,0 +1,11 @@
+age: 24
+feedback: thank u
+input_device: touchpad
+language-read: no
+language-read-write: Tamil,English,Hindi.
+native-language: Urdu
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=13WGOY9GNFLDBQSJN89U0U00SVFFFU
+workerid: A1HRNE20TP7Q5K

@@ -1,0 +1,7 @@
+age: 21
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: mouse
+language-read: Latin
+language-read-write: spanish
+native-language: english
+seen_before: seen_familiar

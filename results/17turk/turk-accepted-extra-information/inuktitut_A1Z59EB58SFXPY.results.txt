@@ -1,0 +1,12 @@
+age: 38
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: Devan&#257;gar&#299;
+native-language: Marathi
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1I8P6KN2X9CNZNVISXM0LK0CSPY3AX
+workerId: A1Z59EB58SFXPY
+workerid: A1Z59EB58SFXPY

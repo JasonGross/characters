@@ -1,0 +1,6 @@
+age: 21
+input_device: mouse
+language-read: Persian
+language-read-write: Spanish
+native-language: English
+seen_before: seen_never

@@ -1,0 +1,12 @@
+age: 50
+feedback: remind me of the dash marks on digital clocks
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1Y4VH5D2E308DIPLE10KWW61CS0864
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

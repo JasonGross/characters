@@ -1,0 +1,53 @@
+duration: 0y 0d 0h 0m 15s 916ms
+form-load-time: 1309478007562
+form-submit-time: 1309478024053
+jQuery.browser.safari: true
+jQuery.browser.version: 535.1
+jQuery.browser.webkit: true
+navigator.appCodeName: Mozilla
+navigator.appName: Netscape
+navigator.appVersion: 5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1
+navigator.platform: Win32
+navigator.userAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1
+navigator.vendor: Google Inc.
+screenAavilHeight: 760
+screenAavilWidth: 1280
+screenHeight: 800
+screenWidth: 1280
+submitButton: Submit
+task-0-answer: 1
+task-0-are-same: false
+task-0-image-0-alphabet: old_cyrillic
+task-0-image-0-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a1op1ltedpt_03dt2jza.png
+task-0-image-0-character-number: 03
+task-0-image-0-id: a1p1teptt2jza
+task-0-image-1-alphabet: cyrillic
+task-0-image-1-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a2cduy38r80i03mjbrov.png
+task-0-image-1-character-number: 03
+task-0-image-1-id: a2du3880jbrov
+task-0-time-of-do-task: 1309478016588
+task-0-time-of-finish-task: 1309478019004
+task-1-answer: 1
+task-1-are-same: true
+task-1-image-0-alphabet: atlantean
+task-1-image-0-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/agahrtklle9a24jvf6z.png
+task-1-image-0-character-number: 24
+task-1-image-0-id: aghrkle9vf6z
+task-1-image-1-alphabet: atlantean
+task-1-image-1-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a1aj8ts7lgia24uyto4a.png
+task-1-image-1-character-number: 24
+task-1-image-1-id: a1j8s7giyto4a
+task-1-time-of-do-task: 1309478019011
+task-1-time-of-finish-task: 1309478021319
+url-parameter-allowDidNotSeeCount: 1,0
+url-parameter-characterSet: large_experiment
+url-parameter-characterSize: 100px
+url-parameter-differentAlphabetFraction: -1
+url-parameter-displayProgressBarDuringTask: false
+url-parameter-pauseToNextGroup: -1,0
+url-parameter-sameFraction: 0.5
+url-parameter-taskCount: 2
+url-parameter-tasksPerFeedbackGroup: 10,0
+url-parameter-unique: true
+windowHeight: 675
+windowWidth: 1263

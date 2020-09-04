@@ -1,0 +1,12 @@
+age: 40
+feedback: 
+input_device: touchpad
+language-read: None
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=15F7HF03UNOM7KWX8B4M85L8MEIC2W
+workerId: A3PAHKVP7UDNY
+workerid: A3PAHKVP7UDNY

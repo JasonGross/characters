@@ -1,0 +1,12 @@
+age: 36
+feedback: 
+input_device: mouse
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1VG5CYPQGJQ6WOU8AF361NUZ0IMY76
+workerId: A2XL654UQLMPEP
+workerid: A2XL654UQLMPEP

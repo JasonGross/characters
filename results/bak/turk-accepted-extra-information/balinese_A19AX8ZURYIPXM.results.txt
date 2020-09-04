@@ -1,0 +1,12 @@
+age: 25
+feedback: These characters were somewhat familiar. They look like maybe Sanskrit, or based on Sanskrit, so similar to Thai characters.
+input_device: tablet_pen
+language-read: 
+language-read-write: Thai
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=14UWYLXZACRZLXFIWDFNYT5H9K3QUY
+workerId: A19AX8ZURYIPXM
+workerid: A19AX8ZURYIPXM

@@ -1,0 +1,12 @@
+age: 22
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: Russian, Georgian
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1P4Z9Y2P1NVBS2SGCBIRRFQ0SSJ3CZ
+workerId: A2HVXG9N3N3F8O
+workerid: A2HVXG9N3N3F8O

@@ -1,0 +1,35 @@
+Summary:
+Task 0: GIVEN armenian, 01, a39k95xscqgyw, CHOSE armenian, 01, a3d7xwp0gand5
+Task 0: Right
+Task 0 duration: 22346
+Task 1: GIVEN magi, 07, a2du3880jbrov, CHOSE magi, 07, aghrkle9vf6z
+Task 1: Right
+Task 1 duration: 88930
+Task 2: GIVEN katakana, 06, a1jzp5xitwsqi, CHOSE katakana, 06, a2m9dar9sgo9u
+Task 2: Right
+Task 2 duration: 36147
+Task 3: GIVEN old_cyrillic, 02, a1xtebm2ofnar, CHOSE old_cyrillic, 02, aav4pzxdoebd
+Task 3: Right
+Task 3 duration: 21367
+Task 4: GIVEN ulog, 10, a2obf26c088ib, CHOSE ulog, 10, a3j1pp96x14u0
+Task 4: Right
+Task 4 duration: 9725
+Task 5: GIVEN ulog, 11, a3qat9qkqumi2, CHOSE ulog, 11, a3pkun3onkucn
+Task 5: Right
+Task 5 duration: 6138
+Task 6: GIVEN myanmar, 34, ajf66jwen7bx, CHOSE myanmar, 34, amynpl5xzw6q
+Task 6: Right
+Task 6 duration: 14594
+Task 7: GIVEN manipuri, 37, a2ernxe6jlm4x, CHOSE manipuri, 37, a5379luit3pc
+Task 7: Right
+Task 7 duration: 12218
+Task 8: GIVEN gujarati, 13, a3d7xwp0gand5, CHOSE gujarati, 13, a2pfktghg1ofp
+Task 8: Right
+Task 8 duration: 11097
+Task 9: GIVEN gurmukhi, 33, a165bj32f3fsf, CHOSE gurmukhi, 33, a1yovlluv1c9h
+Task 9: Right
+Task 9 duration: 6971
+
+Number Right: 10
+Number Wrong: 0
+Percent Right: 100%

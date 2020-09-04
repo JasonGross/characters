@@ -1,0 +1,12 @@
+age: 28
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: 
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1GDXXCJU0XTRJ4GXICN1TS8OK5XASW
+workerId: A31E6JCH8KI335
+workerid: A31E6JCH8KI335

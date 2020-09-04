@@ -1,0 +1,12 @@
+age: 50
+feedback: Almost all of these look like ordinary numbers or alphabet letters, some turned upside down, flipped backwards, or on their sides.  
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

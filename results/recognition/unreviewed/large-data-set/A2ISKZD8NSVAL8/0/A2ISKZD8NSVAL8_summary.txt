@@ -1,0 +1,219 @@
+
+
+Summary:Short Summary:
+Correct: 191
+Incorrect: 9
+Percent Correct: 95
+
+Same Correct: 42
+Same Incorrect: 6
+Percent Same Correct: 87
+
+Different Correct: 149
+Different Incorrect: 3
+Percent Different Correct: 98
+
+Long Summary:
+Task 0: correctly said that (armenian, 12, apd0da9x3zlo) and (cyrillic, 21, a1j8s7giyto4a) are not the same in 1993 ms.
+Task 1: correctly said that (myanmar, 23, a1umhcrj9zfdp) and (futhorc, 3, a2cf5xsgxa56f) are not the same in 973 ms.
+Task 2: correctly said that (atemayar, 4, a1poymbentexx) and (atemayar, 4, awl8tng8e81d) are the same in 1314 ms.
+Task 3: correctly said that (manipuri, 27, azdw6062ia38) and (latin, 26, awq981npwae0) are not the same in 859 ms.
+Task 4: correctly said that (gurmukhi, 36, a2enkt85b106w) and (aurek_besh, 18, ay0bjcgydhix) are not the same in 1236 ms.
+Task 5: correctly said that (tagalog, 8, asu813kb7bv1) and (tagalog, 8, a12rfyr8dbn79) are the same in 1673 ms.
+Task 6: correctly said that (cyrillic, 29, a2nm1qzuh14ls) and (kannada, 39, a17kqnuhbyt4l) are not the same in 1174 ms.
+Task 7: correctly said that (cyrillic, 31, a2du3880jbrov) and (ojibwe, 13, a2sr0exg0uve1) are not the same in 856 ms.
+Task 8: correctly said that (atlantean, 7, aljsxt6v0a30) and (gurmukhi, 29, a2b6a8qnlwrg1) are not the same in 1224 ms.
+Task 9: correctly said that (aurek_besh, 2, a1hrne20p7q5k) and (myanmar, 33, ajf66jwen7bx) are not the same in 1083 ms.
+Task 10: correctly said that (myanmar, 10, adc8vbkoocrr) and (kannada, 9, aghrkle9vf6z) are not the same in 1366 ms.
+Task 11: correctly said that (tagalog, 2, aljsxt6v0a30) and (gurmukhi, 33, a1hcjsurc4ngy) are not the same in 1073 ms.
+Task 12: correctly said that (arcadian, 5, a3kcinwwx6dcq) and (magi, 19, a320mrsfl1s1r) are not the same in 1211 ms.
+Task 13: correctly said that (katakana, 25, a1jzp5xitwsqi) and (katakana, 25, azdw6062ia38) are the same in 1127 ms.
+Task 14: correctly said that (magi, 9, a315xddd8j4x8) and (gujarati, 2, a3d7xwp0gand5) are not the same in 2961 ms.
+Task 15: correctly said that (futhorc, 12, a2n57rt3tcjhm) and (futhorc, 12, a2zu0sz3d1x0n) are the same in 10078 ms.
+Task 16: correctly said that (greek, 17, a1s3njxhehcip) and (sylheti, 27, aljsxt6v0a30) are not the same in 1020 ms.
+Task 17: correctly said that (futhorc, 18, a3m0kt6kjezd1) and (kannada, 12, a1j8s7giyto4a) are not the same in 1107 ms.
+Task 18: correctly said that (sylheti, 16, amynpl5xzw6q) and (magi, 14, aljsxt6v0a30) are not the same in 2991 ms.
+Task 19: incorrectly said that (ulog, 2, a3ursdgs9sph8) and (ulog, 2, ak5smq4tj68f) are not the same in 1442 ms.
+Task 20: correctly said that (ojibwe, 2, a1a25pyfoa9ge) and (ojibwe, 2, a2sr0exg0uve1) are the same in 1600 ms.
+Task 21: correctly said that (mongolian, 27, a3s9mcrven3w8) and (kannada, 20, a1manxzopzden) are not the same in 1017 ms.
+Task 22: correctly said that (korean, 13, ae0ibwt7asth) and (ulog, 3, a3qat9qkqumi2) are not the same in 806 ms.
+Task 23: incorrectly said that (inuktitut, 5, a2pfktghg1ofp) and (inuktitut, 5, a1s3njxhehcip) are not the same in 2111 ms.
+Task 24: correctly said that (cyrillic, 1, a2du3880jbrov) and (futhorc, 11, a1z59eb5sfxpy) are not the same in 1417 ms.
+Task 25: correctly said that (manipuri, 1, alvg2ey5czvx) and (manipuri, 6, a2akud1gdstsd) are not the same in 2171 ms.
+Task 26: correctly said that (ulog, 23, a1z59eb5sfxpy) and (old_cyrillic, 39, a2ernxe6jlm4x) are not the same in 945 ms.
+Task 27: incorrectly said that (sylheti, 22, amynpl5xzw6q) and (sylheti, 22, a30xq7555spo8) are not the same in 10350 ms.
+Task 28: correctly said that (gurmukhi, 32, aif7nboqjstt) and (cyrillic, 6, a1z59eb5sfxpy) are not the same in 2399 ms.
+Task 29: correctly said that (latin, 25, a2nm1qzuh14ls) and (manipuri, 14, a37lvcje8gkgu) are not the same in 971 ms.
+Task 30: correctly said that (inuktitut, 3, a2pgu4pi93b1q) and (gurmukhi, 20, a1hcjsurc4ngy) are not the same in 1164 ms.
+Task 31: correctly said that (korean, 6, a5379luit3pc) and (cyrillic, 4, a1w3fo0d7cf5t) are not the same in 1229 ms.
+Task 32: correctly said that (manipuri, 38, a3mv1jtwep7xn) and (gujarati, 18, a1gkn5t4kxf68) are not the same in 1209 ms.
+Task 33: correctly said that (inuktitut, 5, ae0ibwt7asth) and (tagalog, 1, aghrkle9vf6z) are not the same in 994 ms.
+Task 34: correctly said that (sylheti, 28, a2du3880jbrov) and (myanmar, 8, avlbkm6qpb1s) are not the same in 961 ms.
+Task 35: correctly said that (mongolian, 3, a1qku9mccvl35) and (mongolian, 3, a320mrsfl1s1r) are the same in 1387 ms.
+Task 36: correctly said that (cyrillic, 8, apd0da9x3zlo) and (tagalog, 4, amynpl5xzw6q) are not the same in 1079 ms.
+Task 37: incorrectly said that (magi, 6, a1umhcrj9zfdp) and (magi, 6, a23t7kaibdym4) are not the same in 2678 ms.
+Task 38: correctly said that (inuktitut, 13, avlbkm6qpb1s) and (inuktitut, 13, a2pfktghg1ofp) are the same in 5923 ms.
+Task 39: correctly said that (myanmar, 30, adc8vbkoocrr) and (gujarati, 10, a3d7xwp0gand5) are not the same in 1050 ms.
+Task 40: correctly said that (futhorc, 7, a2mfs1lccua88) and (armenian, 23, a3bb99mn3zy37) are not the same in 896 ms.
+Task 41: correctly said that (magi, 9, a23t7kaibdym4) and (armenian, 31, a2pfktghg1ofp) are not the same in 1121 ms.
+Task 42: correctly said that (cyrillic, 32, a6fjbvuzrhm6) and (atemayar, 20, ax5gghhj0o6g) are not the same in 1200 ms.
+Task 43: correctly said that (katakana, 40, a218tf4zy4vmu) and (katakana, 40, a5379luit3pc) are the same in 1062 ms.
+Task 44: correctly said that (kannada, 31, a3amenm6txi9f) and (gujarati, 18, azdw6062ia38) are not the same in 2546 ms.
+Task 45: incorrectly said that (inuktitut, 16, a2pfktghg1ofp) and (greek, 3, aljsxt6v0a30) are the same in 835 ms.
+Task 46: correctly said that (mongolian, 25, a3mv1jtwep7xn) and (mongolian, 25, a31xqftzcsia2) are the same in 1276 ms.
+Task 47: correctly said that (arcadian, 22, atvyxlwe5n03) and (greek, 23, aljsxt6v0a30) are not the same in 855 ms.
+Task 48: correctly said that (armenian, 3, a38y85uxvakhn) and (atemayar, 11, a1z59eb5sfxpy) are not the same in 941 ms.
+Task 49: correctly said that (armenian, 41, a1ub6rqon1ze6) and (katakana, 1, a3qx43swxilp1) are not the same in 2913 ms.
+Task 50: correctly said that (katakana, 41, a2m9dar9sgo9u) and (katakana, 36, a1jzp5xitwsqi) are not the same in 1092 ms.
+Task 51: correctly said that (aurek_besh, 18, a1j8s7giyto4a) and (atemayar, 5, a1manxzopzden) are not the same in 994 ms.
+Task 52: correctly said that (aurek_besh, 26, ay0bjcgydhix) and (mongolian, 1, a31xqftzcsia2) are not the same in 878 ms.
+Task 53: correctly said that (latin, 22, a2nm1qzuh14ls) and (myanmar, 4, a3qat9qkqumi2) are not the same in 787 ms.
+Task 54: correctly said that (greek, 19, ay0bjcgydhix) and (cyrillic, 5, a1z59eb5sfxpy) are not the same in 763 ms.
+Task 55: correctly said that (arcadian, 22, a2ernxe6jlm4x) and (latin, 8, a2ef2hjnx4hm) are not the same in 832 ms.
+Task 56: correctly said that (magi, 3, a2n1gvwx4785z) and (latin, 14, a1v73zoz07asa) are not the same in 911 ms.
+Task 57: correctly said that (tagalog, 17, a1yovlluv1c9h) and (greek, 19, aljsxt6v0a30) are not the same in 1040 ms.
+Task 58: correctly said that (arcadian, 25, a3kcinwwx6dcq) and (ojibwe, 9, a6fjbvuzrhm6) are not the same in 839 ms.
+Task 59: incorrectly said that (gujarati, 34, a2o33toruaqe1) and (gujarati, 34, a2pfktghg1ofp) are not the same in 2117 ms.
+Task 60: correctly said that (tagalog, 17, a1i92aacrkacw) and (gujarati, 47, aghrkle9vf6z) are not the same in 1075 ms.
+Task 61: correctly said that (kannada, 1, a23psx2z4f65q) and (futhorc, 9, a3mv1jtwep7xn) are not the same in 585 ms.
+Task 62: correctly said that (myanmar, 25, a1ehrxjplsq0r) and (cyrillic, 5, a2du3880jbrov) are not the same in 609 ms.
+Task 63: correctly said that (mongolian, 23, a1foggtlgo7n4) and (atlantean, 26, aghrkle9vf6z) are not the same in 585 ms.
+Task 64: correctly said that (latin, 21, a1v73zoz07asa) and (gujarati, 12, a1gkn5t4kxf68) are not the same in 509 ms.
+Task 65: correctly said that (old_cyrillic, 17, a3h5su8gxhi4x) and (old_cyrillic, 45, a1ub6rqon1ze6) are not the same in 492 ms.
+Task 66: correctly said that (greek, 20, atvyxlwe5n03) and (gujarati, 32, a4858n7ggst4) are not the same in 520 ms.
+Task 67: correctly said that (tagalog, 17, ay0bjcgydhix) and (mongolian, 30, aghrkle9vf6z) are not the same in 1129 ms.
+Task 68: correctly said that (ojibwe, 11, a1a25pyfoa9ge) and (ulog, 15, atvyxlwe5n03) are not the same in 614 ms.
+Task 69: correctly said that (magi, 18, amynpl5xzw6q) and (myanmar, 31, a4858n7ggst4) are not the same in 1098 ms.
+Task 70: correctly said that (inuktitut, 6, a3noo9k3y1yu5) and (inuktitut, 6, a12xm86d2nbih) are the same in 1098 ms.
+Task 71: correctly said that (inuktitut, 15, ae0ibwt7asth) and (inuktitut, 15, a2pfktghg1ofp) are the same in 745 ms.
+Task 72: correctly said that (ulog, 15, aoms2ywlwnkg) and (korean, 20, aj6upe9mlarg) are not the same in 858 ms.
+Task 73: correctly said that (gurmukhi, 6, a1foggtlgo7n4) and (katakana, 11, a2nm1qzuh14ls) are not the same in 609 ms.
+Task 74: correctly said that (mongolian, 3, a1foggtlgo7n4) and (manipuri, 1, a1ub6rqon1ze6) are not the same in 609 ms.
+Task 75: incorrectly said that (magi, 1, avlbkm6qpb1s) and (magi, 1, amynpl5xzw6q) are not the same in 5504 ms.
+Task 76: correctly said that (armenian, 38, a3bb99mn3zy37) and (armenian, 38, a2akud1gdstsd) are the same in 2917 ms.
+Task 77: correctly said that (sylheti, 1, a1l2fzyn31zvf) and (armenian, 16, a1ak1cuc597f7) are not the same in 693 ms.
+Task 78: correctly said that (sylheti, 26, a1l2fzyn31zvf) and (sylheti, 26, aljsxt6v0a30) are the same in 1065 ms.
+Task 79: correctly said that (atemayar, 1, ae0ibwt7asth) and (greek, 3, a3mv1jtwep7xn) are not the same in 650 ms.
+Task 80: correctly said that (latin, 14, a1z59eb5sfxpy) and (gujarati, 44, a4858n7ggst4) are not the same in 774 ms.
+Task 81: correctly said that (greek, 24, aghrkle9vf6z) and (cyrillic, 20, a1z59eb5sfxpy) are not the same in 890 ms.
+Task 82: correctly said that (latin, 3, a1z59eb5sfxpy) and (gurmukhi, 42, a2pfktghg1ofp) are not the same in 600 ms.
+Task 83: correctly said that (gujarati, 39, a2botjes4s3qc) and (atemayar, 4, agst3co6usf8) are not the same in 1164 ms.
+Task 84: correctly said that (ulog, 1, a3qat9qkqumi2) and (ulog, 1, a39600k8anv7m) are the same in 1159 ms.
+Task 85: correctly said that (mongolian, 13, ay0bjcgydhix) and (cyrillic, 18, a1j8s7giyto4a) are not the same in 639 ms.
+Task 86: correctly said that (atlantean, 26, a3mv1jtwep7xn) and (atlantean, 26, aghrkle9vf6z) are the same in 3497 ms.
+Task 87: correctly said that (arcadian, 16, ay0bjcgydhix) and (arcadian, 13, a2ernxe6jlm4x) are not the same in 1229 ms.
+Task 88: correctly said that (korean, 28, a1s3njxhehcip) and (gurmukhi, 43, alvg2ey5czvx) are not the same in 665 ms.
+Task 89: correctly said that (futhorc, 14, agst3co6usf8) and (cyrillic, 21, a1z59eb5sfxpy) are not the same in 718 ms.
+Task 90: correctly said that (tagalog, 13, a1ehrxjplsq0r) and (gurmukhi, 26, a1manxzopzden) are not the same in 1033 ms.
+Task 91: correctly said that (old_cyrillic, 41, a1xtebm2ofnar) and (greek, 5, a3qat9qkqumi2) are not the same in 921 ms.
+Task 92: correctly said that (katakana, 15, a2nm1qzuh14ls) and (kannada, 19, a220lrhtjgo52) are not the same in 503 ms.
+Task 93: correctly said that (kannada, 12, aop4ii3omgtc) and (ojibwe, 10, avlbkm6qpb1s) are not the same in 621 ms.
+Task 94: correctly said that (sylheti, 13, a1a25pyfoa9ge) and (sylheti, 13, amynpl5xzw6q) are the same in 1077 ms.
+Task 95: correctly said that (manipuri, 4, a2hvxg9nn3f8o) and (manipuri, 4, a1manxzopzden) are the same in 2116 ms.
+Task 96: correctly said that (gurmukhi, 17, ayn2jagmi8h0) and (manipuri, 3, aav4pzxdoebd) are not the same in 1080 ms.
+Task 97: correctly said that (kannada, 29, aop4ii3omgtc) and (kannada, 29, a1ub6rqon1ze6) are the same in 3299 ms.
+Task 98: correctly said that (mongolian, 16, a1a25pyfoa9ge) and (sylheti, 11, a1a25pyfoa9ge) are not the same in 1609 ms.
+Task 99: correctly said that (gujarati, 16, apd0da9x3zlo) and (armenian, 33, apd0da9x3zlo) are not the same in 667 ms.
+Task 100: correctly said that (atlantean, 26, a1a25pyfoa9ge) and (arcadian, 4, a3kcinwwx6dcq) are not the same in 1021 ms.
+Task 101: correctly said that (manipuri, 38, aav4pzxdoebd) and (katakana, 23, a218tf4zy4vmu) are not the same in 590 ms.
+Task 102: correctly said that (greek, 11, atvyxlwe5n03) and (greek, 1, a1umhcrj9zfdp) are not the same in 815 ms.
+Task 103: correctly said that (old_cyrillic, 3, a3mv1jtwep7xn) and (sylheti, 8, aljsxt6v0a30) are not the same in 778 ms.
+Task 104: correctly said that (cyrillic, 7, a2cf5xsgxa56f) and (mongolian, 14, a3s9mcrven3w8) are not the same in 612 ms.
+Task 105: correctly said that (greek, 4, a3s82ohufbr7l) and (arcadian, 4, a3b031ykwfyfm) are not the same in 591 ms.
+Task 106: correctly said that (ulog, 23, a3b031ykwfyfm) and (gurmukhi, 40, a3h3zl6kegrta) are not the same in 731 ms.
+Task 107: correctly said that (old_cyrillic, 22, a1ub6rqon1ze6) and (gujarati, 3, a23psx2z4f65q) are not the same in 587 ms.
+Task 108: correctly said that (aurek_besh, 21, a3ursdgs9sph8) and (kannada, 41, a17kqnuhbyt4l) are not the same in 542 ms.
+Task 109: correctly said that (sylheti, 3, a3np21apfa18b) and (korean, 33, a2akud1gdstsd) are not the same in 608 ms.
+Task 110: correctly said that (futhorc, 18, a1a25pyfoa9ge) and (sylheti, 7, a3m0kt6kjezd1) are not the same in 868 ms.
+Task 111: correctly said that (cyrillic, 13, a1j8s7giyto4a) and (cyrillic, 13, a6fjbvuzrhm6) are the same in 890 ms.
+Task 112: correctly said that (atemayar, 5, a1yovlluv1c9h) and (inuktitut, 7, avlbkm6qpb1s) are not the same in 569 ms.
+Task 113: correctly said that (manipuri, 11, azdw6062ia38) and (magi, 1, a2n1gvwx4785z) are not the same in 739 ms.
+Task 114: correctly said that (atlantean, 11, a1yovlluv1c9h) and (myanmar, 7, a4858n7ggst4) are not the same in 750 ms.
+Task 115: correctly said that (latin, 10, a1v73zoz07asa) and (greek, 17, a2pfktghg1ofp) are not the same in 740 ms.
+Task 116: correctly said that (old_cyrillic, 19, a3bb99mn3zy37) and (gurmukhi, 35, a3h3zl6kegrta) are not the same in 580 ms.
+Task 117: correctly said that (arcadian, 19, a261lg8zc75n7) and (myanmar, 26, avlbkm6qpb1s) are not the same in 712 ms.
+Task 118: correctly said that (mongolian, 1, a2pfktghg1ofp) and (mongolian, 1, a31xqftzcsia2) are the same in 1250 ms.
+Task 119: correctly said that (greek, 20, aghrkle9vf6z) and (greek, 20, a3mv1jtwep7xn) are the same in 1410 ms.
+Task 120: correctly said that (korean, 27, a2akud1gdstsd) and (cyrillic, 30, a1z59eb5sfxpy) are not the same in 812 ms.
+Task 121: correctly said that (kannada, 22, a3i4zmvys91bx) and (atemayar, 2, ae0ibwt7asth) are not the same in 466 ms.
+Task 122: correctly said that (greek, 23, aljsxt6v0a30) and (ulog, 3, a6fjbvuzrhm6) are not the same in 541 ms.
+Task 123: correctly said that (kannada, 22, a3i4zmvys91bx) and (kannada, 22, a3b031ykwfyfm) are the same in 887 ms.
+Task 124: correctly said that (magi, 11, a1w3fo0d7cf5t) and (gujarati, 30, a2o33toruaqe1) are not the same in 1615 ms.
+Task 125: correctly said that (aurek_besh, 24, a6fjbvuzrhm6) and (atemayar, 24, awl8tng8e81d) are not the same in 658 ms.
+Task 126: correctly said that (greek, 1, aghrkle9vf6z) and (greek, 24, a1yovlluv1c9h) are not the same in 542 ms.
+Task 127: correctly said that (aurek_besh, 19, a1w3fo0d7cf5t) and (aurek_besh, 19, a3qat9qkqumi2) are the same in 1015 ms.
+Task 128: correctly said that (atemayar, 1, ax5gghhj0o6g) and (greek, 21, a6fjbvuzrhm6) are not the same in 738 ms.
+Task 129: correctly said that (armenian, 15, a39k95xscqgyw) and (armenian, 15, a2cf5xsgxa56f) are the same in 961 ms.
+Task 130: correctly said that (latin, 11, a2ef2hjnx4hm) and (gujarati, 40, a23psx2z4f65q) are not the same in 760 ms.
+Task 131: correctly said that (atlantean, 17, a1a25pyfoa9ge) and (old_cyrillic, 45, a37wh2uer80mm) are not the same in 1049 ms.
+Task 132: correctly said that (greek, 8, avlbkm6qpb1s) and (kannada, 3, a17kqnuhbyt4l) are not the same in 1078 ms.
+Task 133: correctly said that (old_cyrillic, 10, a1xtebm2ofnar) and (old_cyrillic, 10, a6fjbvuzrhm6) are the same in 1370 ms.
+Task 134: correctly said that (aurek_besh, 25, a1hrne20p7q5k) and (magi, 3, avlbkm6qpb1s) are not the same in 1461 ms.
+Task 135: correctly said that (korean, 27, a1oh82lwr5hbg) and (cyrillic, 20, a2du3880jbrov) are not the same in 780 ms.
+Task 136: correctly said that (myanmar, 18, a1j8s7giyto4a) and (cyrillic, 10, a1w3fo0d7cf5t) are not the same in 713 ms.
+Task 137: correctly said that (katakana, 28, azdw6062ia38) and (futhorc, 4, a3m0kt6kjezd1) are not the same in 658 ms.
+Task 138: correctly said that (kannada, 26, aav4pzxdoebd) and (ulog, 17, a1z59eb5sfxpy) are not the same in 582 ms.
+Task 139: correctly said that (cyrillic, 13, a1yovlluv1c9h) and (sylheti, 25, amynpl5xzw6q) are not the same in 599 ms.
+Task 140: correctly said that (ojibwe, 8, a2pfktghg1ofp) and (manipuri, 27, a1s3njxhehcip) are not the same in 921 ms.
+Task 141: correctly said that (inuktitut, 1, a1qku9mccvl35) and (latin, 13, aghrkle9vf6z) are not the same in 1722 ms.
+Task 142: correctly said that (kannada, 20, a165bj32f3fsf) and (kannada, 20, a2hwmbttotcf1) are the same in 6269 ms.
+Task 143: correctly said that (latin, 6, awq981npwae0) and (futhorc, 14, a1a25pyfoa9ge) are not the same in 795 ms.
+Task 144: correctly said that (greek, 23, atvyxlwe5n03) and (manipuri, 32, alvg2ey5czvx) are not the same in 761 ms.
+Task 145: correctly said that (manipuri, 38, a283nw6khh7dh) and (mongolian, 13, a3s9mcrven3w8) are not the same in 1608 ms.
+Task 146: correctly said that (old_cyrillic, 17, a6fjbvuzrhm6) and (kannada, 12, a17okp0cer8ps) are not the same in 505 ms.
+Task 147: correctly said that (kannada, 7, a1ub6rqon1ze6) and (gurmukhi, 33, amyau7q7mekh) are not the same in 1445 ms.
+Task 148: correctly said that (ojibwe, 10, a2du3880jbrov) and (ojibwe, 10, a1z59eb5sfxpy) are the same in 1221 ms.
+Task 149: correctly said that (greek, 1, ay0bjcgydhix) and (tagalog, 7, a1s3njxhehcip) are not the same in 936 ms.
+Task 150: correctly said that (gujarati, 14, a5379luit3pc) and (mongolian, 12, a1foggtlgo7n4) are not the same in 6289 ms.
+Task 151: correctly said that (aurek_besh, 8, a2du3880jbrov) and (aurek_besh, 8, a6fjbvuzrhm6) are the same in 996 ms.
+Task 152: correctly said that (magi, 15, atvyxlwe5n03) and (aurek_besh, 11, a2pfktghg1ofp) are not the same in 830 ms.
+Task 153: correctly said that (mongolian, 23, a1a25pyfoa9ge) and (gujarati, 44, a3d7xwp0gand5) are not the same in 882 ms.
+Task 154: correctly said that (latin, 24, azdw6062ia38) and (latin, 24, a1z59eb5sfxpy) are the same in 4340 ms.
+Task 155: correctly said that (ulog, 11, a3b031ykwfyfm) and (ulog, 11, a3qat9qkqumi2) are the same in 864 ms.
+Task 156: correctly said that (greek, 10, a2hhr703zpfv0) and (arcadian, 10, a2ernxe6jlm4x) are not the same in 1001 ms.
+Task 157: correctly said that (armenian, 4, a2akud1gdstsd) and (sylheti, 23, a3pkun3onkucn) are not the same in 1325 ms.
+Task 158: correctly said that (aurek_besh, 22, a1yb5s7574uml) and (aurek_besh, 22, a1j8s7giyto4a) are the same in 1035 ms.
+Task 159: correctly said that (arcadian, 26, a3b031ykwfyfm) and (aurek_besh, 4, a1yb5s7574uml) are not the same in 1073 ms.
+Task 160: correctly said that (ulog, 23, aoms2ywlwnkg) and (ulog, 2, atvyxlwe5n03) are not the same in 1184 ms.
+Task 161: incorrectly said that (cyrillic, 10, a2pfktghg1ofp) and (ulog, 19, ay0bjcgydhix) are the same in 1637 ms.
+Task 162: correctly said that (inuktitut, 5, avlbkm6qpb1s) and (inuktitut, 5, a3noo9k3y1yu5) are the same in 872 ms.
+Task 163: correctly said that (magi, 3, a1manxzopzden) and (manipuri, 7, a37lvcje8gkgu) are not the same in 776 ms.
+Task 164: correctly said that (gurmukhi, 19, a3amenm6txi9f) and (atlantean, 12, a1z59eb5sfxpy) are not the same in 719 ms.
+Task 165: correctly said that (gujarati, 28, a2jp5x5m9076e) and (gujarati, 28, apd0da9x3zlo) are the same in 1234 ms.
+Task 166: correctly said that (ojibwe, 4, a2du3880jbrov) and (inuktitut, 12, a1manxzopzden) are not the same in 803 ms.
+Task 167: correctly said that (aurek_besh, 20, a6fjbvuzrhm6) and (aurek_besh, 20, a1s3njxhehcip) are the same in 1976 ms.
+Task 168: correctly said that (sylheti, 19, a4858n7ggst4) and (old_cyrillic, 19, a2sm10kix8o5j) are not the same in 1099 ms.
+Task 169: correctly said that (ulog, 7, a3qat9qkqumi2) and (ulog, 7, a19ax8zuyipxm) are the same in 1120 ms.
+Task 170: correctly said that (kannada, 25, a17kqnuhbyt4l) and (gujarati, 39, apd0da9x3zlo) are not the same in 967 ms.
+Task 171: correctly said that (latin, 23, a3qat9qkqumi2) and (sylheti, 7, ay0bjcgydhix) are not the same in 633 ms.
+Task 172: correctly said that (old_cyrillic, 41, aav4pzxdoebd) and (old_cyrillic, 41, a2zl358o71cx1) are the same in 3093 ms.
+Task 173: correctly said that (kannada, 39, a3b031ykwfyfm) and (armenian, 29, a2px0aywxngce) are not the same in 589 ms.
+Task 174: correctly said that (tagalog, 3, ay0bjcgydhix) and (korean, 34, a3dfh6dpi11ip) are not the same in 598 ms.
+Task 175: correctly said that (gujarati, 1, aav4pzxdoebd) and (atemayar, 20, a1manxzopzden) are not the same in 632 ms.
+Task 176: incorrectly said that (mongolian, 11, a1ehrxjplsq0r) and (myanmar, 27, a1umhcrj9zfdp) are the same in 954 ms.
+Task 177: correctly said that (mongolian, 7, a1jzp5xitwsqi) and (old_cyrillic, 44, ae0ibwt7asth) are not the same in 914 ms.
+Task 178: correctly said that (manipuri, 16, a283nw6khh7dh) and (atlantean, 2, a1clejhbx9yyn) are not the same in 1344 ms.
+Task 179: correctly said that (manipuri, 27, a3qwezeps9sb) and (manipuri, 27, a3amenm6txi9f) are the same in 1263 ms.
+Task 180: correctly said that (magi, 18, avlbkm6qpb1s) and (magi, 18, atvyxlwe5n03) are the same in 1242 ms.
+Task 181: correctly said that (mongolian, 18, a3m0kt6kjezd1) and (korean, 5, a1umhcrj9zfdp) are not the same in 1090 ms.
+Task 182: correctly said that (inuktitut, 4, avlbkm6qpb1s) and (inuktitut, 4, ay0bjcgydhix) are the same in 1533 ms.
+Task 183: correctly said that (atlantean, 7, aljsxt6v0a30) and (aurek_besh, 14, a2pfktghg1ofp) are not the same in 851 ms.
+Task 184: correctly said that (latin, 16, a1z59eb5sfxpy) and (latin, 16, a1s3njxhehcip) are the same in 1060 ms.
+Task 185: correctly said that (armenian, 31, a2px0aywxngce) and (armenian, 31, a5379luit3pc) are the same in 1060 ms.
+Task 186: correctly said that (inuktitut, 10, a3qat9qkqumi2) and (atlantean, 7, a3pkun3onkucn) are not the same in 782 ms.
+Task 187: correctly said that (gujarati, 46, a1aegunf6e081) and (gujarati, 46, a5379luit3pc) are the same in 938 ms.
+Task 188: correctly said that (atlantean, 3, a1yovlluv1c9h) and (futhorc, 8, a2cf5xsgxa56f) are not the same in 813 ms.
+Task 189: correctly said that (latin, 1, a6fjbvuzrhm6) and (manipuri, 2, a1manxzopzden) are not the same in 1167 ms.
+Task 190: correctly said that (inuktitut, 2, a2pfktghg1ofp) and (ojibwe, 14, a2pfktghg1ofp) are not the same in 965 ms.
+Task 191: correctly said that (inuktitut, 11, a1manxzopzden) and (korean, 22, a3mv1jtwep7xn) are not the same in 802 ms.
+Task 192: correctly said that (myanmar, 28, ay0bjcgydhix) and (gujarati, 19, a1stvgjqfl5kk) are not the same in 620 ms.
+Task 193: correctly said that (futhorc, 21, a1z59eb5sfxpy) and (magi, 16, a315xddd8j4x8) are not the same in 633 ms.
+Task 194: correctly said that (korean, 27, a1v0p79fynz9j) and (sylheti, 12, aljsxt6v0a30) are not the same in 734 ms.
+Task 195: correctly said that (mongolian, 15, a1ehrxjplsq0r) and (mongolian, 21, aljsxt6v0a30) are not the same in 759 ms.
+Task 196: correctly said that (kannada, 41, a2hwmbttotcf1) and (futhorc, 28, a320mrsfl1s1r) are not the same in 751 ms.
+Task 197: correctly said that (aurek_besh, 17, a1w3fo0d7cf5t) and (myanmar, 29, a2pfktghg1ofp) are not the same in 698 ms.
+Task 198: correctly said that (arcadian, 20, a1qku9mccvl35) and (kannada, 33, a3amenm6txi9f) are not the same in 679 ms.
+Task 199: correctly said that (korean, 6, a2nm1qzuh14ls) and (futhorc, 1, a1j8s7giyto4a) are not the same in 892 ms.
+
+Duration: 17m 31s 298ms
+Comments: At the beginning I was confused with some of the images thinking they needed to be exact alike, but then as I went on I figured out that they only needed to look ""familiar"" to each other.

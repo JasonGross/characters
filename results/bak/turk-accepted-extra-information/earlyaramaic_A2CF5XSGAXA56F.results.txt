@@ -1,0 +1,11 @@
+age: 35
+feedback: Some of the characters appeared familiar to me where as some others i have not used. I used mouse to draw the characters and tried to draw it as appropriate as possible. Thank you very much.
+input_device: mouse
+language-read: Marathi
+language-read-write: English, Hindi, Oriya
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=115QYCK2EN5ASBWKCLRK0IAQDOH5U1
+workerid: A2CF5XSGAXA56F

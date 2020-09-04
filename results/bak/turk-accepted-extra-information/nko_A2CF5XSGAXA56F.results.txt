@@ -1,0 +1,11 @@
+age: 35
+feedback: I'm familiar with these characters and enjoyed doing it as accurately as possible with mouse. Thank you very much.
+input_device: mouse
+language-read: Marathi
+language-read-write: English, Hindi, Oriya
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1WIOHYOHW7H4D4K24W8EIWA618T76F
+workerid: A2CF5XSGAXA56F

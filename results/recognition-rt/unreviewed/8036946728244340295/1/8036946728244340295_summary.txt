@@ -1,0 +1,9 @@
+Summary:
+Calibration:
+444
+Average: 444
+
+
+Tasks:
+Task 0: inuktitut, 02, ay0bjcgydhix VS. inuktitut, 02, a1j8s7giyto4a
+Task 0: Right, Are Same

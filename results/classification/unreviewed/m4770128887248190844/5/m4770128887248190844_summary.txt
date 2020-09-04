@@ -1,0 +1,11 @@
+Summary:
+Task 0: GIVEN ojibwe, 02, aljsxt6v0a30, CHOSE futhorc, 07, agst3co6usf8
+Task 0: Wrong
+Task 0 duration: 2742
+Task 1: GIVEN atlantean, 26, a1qku9mccvl35, CHOSE inuktitut, 02, a2pgu4pi93b1q
+Task 1: Wrong
+Task 1 duration: 1714
+
+Number Right: 0
+Number Wrong: 2
+Percent Right: 0%

@@ -1,0 +1,14 @@
+
+
+Summary:
+Wrong: Selected "Futurama" instead of "Oriya" from options "Greek", "Oriya", "Inuktitut (Canadian Aboriginal Syllabics)", "Gujarati", "Futurama", "Hebrew", "Syriac (Serto)", "Sanskrit", "Korean", "Aurek-Besh"
+Wrong: Selected "Keble" instead of "Bengali" from options "Angelic", "Burmese (Myanmar)", "Braille", "Arcadian", "Keble", "Armenian", "Gurmukhi", "Mongolian", "Ojibwe (Canadian Aboriginal Syllabics)", "Bengali"
+Right: Selected "Anglo-Saxon Futhorc" from options "Old Church Slavonic (Cyrillic)", "Asomtavruli (Georgian)", "Grantha", "Ge'ez", "Anglo-Saxon Futhorc", "Avesta", "Tengwar", "Alphabet of the Magi", "Malay (Jawi - Arabic)", "Japanese (katakana)"
+Wrong: Selected "Glagolitic" instead of "Kannada" from options "Blackfoot (Canadian Aboriginal Syllabics)", "Balinese", "Latin", "Tifinagh", "Glagolitic", "Cyrillic", "Sylheti", "Kannada", "Atlantean", "Syriac (Estrangelo)"
+Wrong: Selected "Tagalog" instead of "N'Ko" from options "ULOG", "Mkhedruli (Georgian)", "N'Ko", "Japanese (hiragana)", "Tagalog", "Manipuri", "Malayalam", "Atemayar Qelisayer", "Tibetan", "Early Aramaic"
+
+Totals:
+Correct: 1
+Incorrect: 4
+
+Duration: 0m 12s 127ms

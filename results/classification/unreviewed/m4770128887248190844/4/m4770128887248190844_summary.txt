@@ -1,0 +1,11 @@
+Summary:
+Task 0: GIVEN atemayar, 19, a1z59eb5sfxpy, CHOSE gurmukhi, 34, ayn2jagmi8h0
+Task 0: Wrong
+Task 0 duration: 3266
+Task 1: GIVEN magi, 04, a1j8s7giyto4a, CHOSE aurek_besh, 10, a1s3njxhehcip
+Task 1: Wrong
+Task 1 duration: 3853
+
+Number Right: 0
+Number Wrong: 2
+Percent Right: 0%

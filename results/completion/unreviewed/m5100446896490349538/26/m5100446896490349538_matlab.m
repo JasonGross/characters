@@ -1,0 +1,35 @@
+results.for_m5100446896490349538(27).duration = '0y 0d 0h 1m 11s 141ms';
+results.for_m5100446896490349538(27).form_load_time = int64(1309913470073);
+results.for_m5100446896490349538(27).form_submit_time = int64(1309913542191);
+results.for_m5100446896490349538(27).jQuery.browser.safari = true;
+results.for_m5100446896490349538(27).jQuery.browser.version = '535.1';
+results.for_m5100446896490349538(27).jQuery.browser.webkit = true;
+results.for_m5100446896490349538(27).navigator.appCodeName = 'Mozilla';
+results.for_m5100446896490349538(27).navigator.appName = 'Netscape';
+results.for_m5100446896490349538(27).navigator.appVersion = '5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1';
+results.for_m5100446896490349538(27).navigator.platform = 'Win32';
+results.for_m5100446896490349538(27).navigator.userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1';
+results.for_m5100446896490349538(27).navigator.vendor = 'Google Inc.';
+results.for_m5100446896490349538(27).screenAavilHeight = int16(760);
+results.for_m5100446896490349538(27).screenAavilWidth = int16(1280);
+results.for_m5100446896490349538(27).screenHeight = int16(800);
+results.for_m5100446896490349538(27).screenWidth = int16(1280);
+results.for_m5100446896490349538(27).submitButton = 'Submit';
+results.for_m5100446896490349538(27).task(1).image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAABpAQAAAAAR+TCXAAAAWUlEQVR4Xu3TMQqAMBAEwAMLyzwpT4vix3xKnpAyxXFn61osHAoKZruBha1W/JzlOxzsmbEBVW5wgl1LyJnR3+L2HFfkTlkLY7swM/YIFWmUHilrjH+85OABk39etbqdJgEAAAAASUVORK5CYII=';
+results.for_m5100446896490349538(27).task(1).image_alphabet = 'mongolian';
+results.for_m5100446896490349538(27).task(1).image_anonymous_url = 'https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a1mcloejnhbg202x9yyn.png';
+results.for_m5100446896490349538(27).task(1).image_character_number = int8(20);
+results.for_m5100446896490349538(27).task(1).image_id = 'a1clejhb2x9yyn';
+results.for_m5100446896490349538(27).task(1).image_show_half = 'left';
+results.for_m5100446896490349538(27).task(1).seen_before = 'never';
+results.for_m5100446896490349538(27).task(1).strokes = '[[{''x'':48,''y'':30,''t'':1311382334696},{''x'':50,''y'':29,''t'':1311382334729},{''x'':51,''y'':29,''t'':1311382334768},{''x'':52,''y'':29,''t'':1311382334809},{''x'':53,''y'':29,''t'':1311382334820},{''x'':54,''y'':29,''t'':1311382334829},{''x'':55,''y'':29,''t'':1311382334842},{''x'':57,''y'':29,''t'':1311382334855},{''x'':58,''y'':29,''t'':1311382334867},{''x'':59,''y'':29,''t'':1311382334881},{''x'':60,''y'':29,''t'':1311382334893},{''x'':61,''y'':29,''t'':1311382334905},{''x'':62,''y'':28,''t'':1311382334918},{''x'':64,''y'':28,''t'':1311382334931},{''x'':64,''y'':28,''t'':1311382334948},{''x'':65,''y'':28,''t'':1311382334957},{''x'':66,''y'':28,''t'':1311382334969},{''x'':67,''y'':28,''t'':1311382334995},{''x'':68,''y'':28,''t'':1311382335007},{''x'':69,''y'':28,''t'':1311382335031},{''x'':71,''y'':28,''t'':1311382335072},{''x'':70,''y'':28,''t'':1311382335273},{''x'':70,''y'':29,''t'':1311382335284},{''x'':69,''y'':30,''t'':1311382335298},{''x'':68,''y'':33,''t'':1311382335311},{''x'':67,''y'':34,''t'':1311382335335},{''x'':66,''y'':35,''t'':1311382335348},{''x'':66,''y'':36,''t'':1311382335361},{''x'':64,''y'':38,''t'':1311382335379},{''x'':64,''y'':39,''t'':1311382335386},{''x'':63,''y'':40,''t'':1311382335401},{''x'':63,''y'':41,''t'':1311382335411},{''x'':62,''y'':41,''t'':1311382335424},{''x'':61,''y'':42,''t'':1311382335450},{''x'':60,''y'':43,''t'':1311382335475},{''x'':60,''y'':45,''t'':1311382335488},{''x'':59,''y'':45,''t'':1311382335500},{''x'':59,''y'':46,''t'':1311382335515},{''x'':57,''y'':46,''t'':1311382335539},{''x'':57,''y'':47,''t'':1311382335550},{''x'':57,''y'':48,''t'':1311382335563},{''x'':56,''y'':49,''t'':1311382335590},{''x'':56,''y'':50,''t'':1311382335601},{''x'':56,''y'':51,''t'':1311382335614},{''x'':55,''y'':51,''t'':1311382335628},{''x'':55,''y'':53,''t'':1311382335639},{''x'':55,''y'':54,''t'':1311382335652},{''x'':54,''y'':54,''t'':1311382335665},{''x'':54,''y'':55,''t'':1311382335680},{''x'':54,''y'':56,''t'':1311382335703},{''x'':53,''y'':56,''t'':1311382335715},{''x'':53,''y'':57,''t'':1311382335727},{''x'':53,''y'':58,''t'':1311382335767},{''x'':52,''y'':60,''t'':1311382335794},{''x'':52,''y'':61,''t'':1311382335805},{''x'':52,''y'':62,''t'':1311382335830},{''x'':52,''y'':63,''t'':1311382335868},{''x'':50,''y'':66,''t'':1311382335918},{''x'':50,''y'':67,''t'':1311382335932},{''x'':50,''y'':67,''t'':1311382335941},{''x'':49,''y'':68,''t'':1311382335957},{''x'':49,''y'':69,''t'':1311382335994},{''x'':48,''y'':70,''t'':1311382336045}]]';
+results.for_m5100446896490349538(27).task(1).time_of_do_task = int64(1309913533209);
+results.for_m5100446896490349538(27).task(1).time_of_finish_task = int64(1309913539724);
+results.for_m5100446896490349538(27).url_parameter_characterSize = '100px';
+results.for_m5100446896490349538(27).url_parameter_imageHalf = 'left,right';
+results.for_m5100446896490349538(27).url_parameter_taskCount = int8(1);
+results.for_m5100446896490349538(27).windowHeight = int16(357);
+results.for_m5100446896490349538(27).windowWidth = int16(1263);
+
+
+results.for_m5100446896490349538(27).task(1).image = imread('/afs/athena.mit.edu/user/j/g/jgross/web_scripts/alphabets/results/completion/unreviewed/m5100446896490349538/26/m5100446896490349538_image_1.png');

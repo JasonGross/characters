@@ -1,0 +1,12 @@
+age: 35
+feedback: 
+input_device: other_input
+language-read: 
+language-read-write: hebrew
+native-language: english
+other_input_text: trackball
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1KVHJRIU6GCR9KGPMMO933G39CRY5R
+workerId: A3PKUN3OZNKUCN
+workerid: A3PKUN3OZNKUCN

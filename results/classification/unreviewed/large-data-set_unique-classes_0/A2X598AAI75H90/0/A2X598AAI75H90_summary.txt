@@ -1,0 +1,157 @@
+Summary:
+Task 0: GIVEN atlantean, 21, aljsxt6v0a30, CHOSE atlantean, 21, avlbkm6qpb1s
+Task 0: Right
+Task 0 duration: 47837
+Task 1: GIVEN greek, 15, aljsxt6v0a30, CHOSE greek, 15, ay0bjcgydhix
+Task 1: Right
+Task 1 duration: 12421
+Task 2: GIVEN armenian, 21, azdw6062ia38, CHOSE armenian, 21, a2pfktghg1ofp
+Task 2: Right
+Task 2 duration: 8204
+Task 3: GIVEN old_cyrillic, 05, alvg2ey5czvx, CHOSE old_cyrillic, 05, a6fjbvuzrhm6
+Task 3: Right
+Task 3 duration: 9728
+Task 4: GIVEN futhorc, 10, a1s3njxhehcip, CHOSE futhorc, 10, a2cf5xsgxa56f
+Task 4: Right
+Task 4 duration: 8999
+Task 5: GIVEN gujarati, 09, azdw6062ia38, CHOSE gujarati, 09, a1manxzopzden
+Task 5: Right
+Task 5 duration: 7013
+Task 6: GIVEN ulog, 16, a1z59eb5sfxpy, CHOSE ulog, 16, a39600k8anv7m
+Task 6: Right
+Task 6 duration: 17175
+Task 7: GIVEN gujarati, 41, apd0da9x3zlo, CHOSE gujarati, 41, a2pfktghg1ofp
+Task 7: Right
+Task 7 duration: 4565
+Task 8: GIVEN korean, 39, a1manxzopzden, CHOSE korean, 39, a2nm1qzuh14ls
+Task 8: Right
+Task 8 duration: 22135
+Task 9: GIVEN atemayar, 10, aljsxt6v0a30, CHOSE atemayar, 10, a1vzhyp8yvxkz
+Task 9: Right
+Task 9 duration: 12901
+Task 10: GIVEN aurek_besh, 22, a1w3fo0d7cf5t, CHOSE aurek_besh, 22, a1m5xx9g3qow7
+Task 10: Right
+Task 10 duration: 10211
+Task 11: GIVEN magi, 09, a1w3fo0d7cf5t, CHOSE magi, 09, aghrkle9vf6z
+Task 11: Right
+Task 11 duration: 13917
+Task 12: GIVEN latin, 17, a3qat9qkqumi2, CHOSE latin, 17, avlbkm6qpb1s
+Task 12: Right
+Task 12 duration: 13031
+Task 13: GIVEN old_cyrillic, 27, ae0ibwt7asth, CHOSE old_cyrillic, 27, a37wh2uer80mm
+Task 13: Right
+Task 13 duration: 10717
+Task 14: GIVEN armenian, 40, apd0da9x3zlo, CHOSE armenian, 40, a1ub6rqon1ze6
+Task 14: Right
+Task 14 duration: 30196
+Task 15: GIVEN cyrillic, 24, a12xm86d2nbih, CHOSE cyrillic, 24, a1z59eb5sfxpy
+Task 15: Right
+Task 15 duration: 8846
+Task 16: GIVEN ulog, 22, aoms2ywlwnkg, CHOSE ulog, 22, a1j8s7giyto4a
+Task 16: Right
+Task 16 duration: 10565
+Task 17: GIVEN cyrillic, 22, a1yovlluv1c9h, CHOSE cyrillic, 22, a1clejhbx9yyn
+Task 17: Right
+Task 17 duration: 6286
+Task 18: GIVEN atlantean, 24, a1qku9mccvl35, CHOSE atlantean, 24, ay0bjcgydhix
+Task 18: Right
+Task 18 duration: 16247
+Task 19: GIVEN inuktitut, 06, a2pgu4pi93b1q, CHOSE inuktitut, 06, a3noo9k3y1yu5
+Task 19: Right
+Task 19 duration: 10180
+Task 20: GIVEN ulog, 10, atvyxlwe5n03, CHOSE ulog, 10, a1j8s7giyto4a
+Task 20: Right
+Task 20 duration: 10252
+Task 21: GIVEN tagalog, 10, a1ehrxjplsq0r, CHOSE tagalog, 10, a3mv1jtwep7xn
+Task 21: Right
+Task 21 duration: 8750
+Task 22: GIVEN atlantean, 17, azdw6062ia38, CHOSE atlantean, 17, a1z59eb5sfxpy
+Task 22: Right
+Task 22 duration: 16983
+Task 23: GIVEN korean, 38, a2akud1gdstsd, CHOSE korean, 38, a3dfh6dpi11ip
+Task 23: Right
+Task 23 duration: 6142
+Task 24: GIVEN mongolian, 17, a23psx2z4f65q, CHOSE mongolian, 17, aghrkle9vf6z
+Task 24: Right
+Task 24 duration: 14380
+Task 25: GIVEN kannada, 10, a165bj32f3fsf, CHOSE cyrillic, 09, a1j8s7giyto4a
+Task 25: Wrong
+Task 25 duration: 50697
+Task 26: GIVEN myanmar, 15, a1aegunf6e081, CHOSE myanmar, 15, a2pfktghg1ofp
+Task 26: Right
+Task 26 duration: 11451
+Task 27: GIVEN latin, 03, aljsxt6v0a30, CHOSE latin, 03, avlbkm6qpb1s
+Task 27: Right
+Task 27 duration: 19275
+Task 28: GIVEN futhorc, 15, agst3co6usf8, CHOSE futhorc, 15, aiq1i6odio56
+Task 28: Right
+Task 28 duration: 5602
+Task 29: GIVEN greek, 05, a1s3njxhehcip, CHOSE greek, 05, ae0ibwt7asth
+Task 29: Right
+Task 29 duration: 5888
+Task 30: GIVEN katakana, 07, a3mv1jtwep7xn, CHOSE katakana, 07, a2m9dar9sgo9u
+Task 30: Right
+Task 30 duration: 11994
+Task 31: GIVEN katakana, 08, a3j1pp96x14u0, CHOSE katakana, 08, a1ub6rqon1ze6
+Task 31: Right
+Task 31 duration: 5776
+Task 32: GIVEN myanmar, 07, a1foggtlgo7n4, CHOSE myanmar, 07, a3pkun3onkucn
+Task 32: Right
+Task 32 duration: 11199
+Task 33: GIVEN myanmar, 01, amynpl5xzw6q, CHOSE myanmar, 01, ajf66jwen7bx
+Task 33: Right
+Task 33 duration: 6123
+Task 34: GIVEN katakana, 34, a2jp5x5m9076e, CHOSE katakana, 34, a3qx43swxilp1
+Task 34: Right
+Task 34 duration: 15353
+Task 35: GIVEN sylheti, 27, atvyxlwe5n03, CHOSE sylheti, 27, aljsxt6v0a30
+Task 35: Right
+Task 35 duration: 12375
+Task 36: GIVEN katakana, 20, a1rwnyjax25yh, CHOSE katakana, 20, a3bb99mn3zy37
+Task 36: Right
+Task 36 duration: 9269
+Task 37: GIVEN gurmukhi, 05, a1hcjsurc4ngy, CHOSE gurmukhi, 05, a1yovlluv1c9h
+Task 37: Right
+Task 37 duration: 5381
+Task 38: GIVEN magi, 02, avlbkm6qpb1s, CHOSE magi, 02, aghrkle9vf6z
+Task 38: Right
+Task 38 duration: 5796
+Task 39: GIVEN kannada, 29, aghrkle9vf6z, CHOSE kannada, 29, a23psx2z4f65q
+Task 39: Right
+Task 39 duration: 5413
+Task 40: GIVEN myanmar, 02, a3qat9qkqumi2, CHOSE myanmar, 02, a3j1pp96x14u0
+Task 40: Right
+Task 40 duration: 3661
+Task 41: GIVEN ulog, 25, ak5smq4tj68f, CHOSE ulog, 25, a1yovlluv1c9h
+Task 41: Right
+Task 41 duration: 3424
+Task 42: GIVEN magi, 20, a1mgrdp59k2i2, CHOSE magi, 20, a315xddd8j4x8
+Task 42: Right
+Task 42 duration: 4047
+Task 43: GIVEN armenian, 38, a2cf5xsgxa56f, CHOSE armenian, 38, a3d7xwp0gand5
+Task 43: Right
+Task 43 duration: 19597
+Task 44: GIVEN myanmar, 23, a2pfktghg1ofp, CHOSE myanmar, 23, a1aegunf6e081
+Task 44: Right
+Task 44 duration: 4231
+Task 45: GIVEN katakana, 19, a3d7xwp0gand5, CHOSE katakana, 19, a2px0aywxngce
+Task 45: Right
+Task 45 duration: 5780
+Task 46: GIVEN tagalog, 13, a1yovlluv1c9h, CHOSE tagalog, 13, a1j8s7giyto4a
+Task 46: Right
+Task 46 duration: 4430
+Task 47: GIVEN futhorc, 17, a2n57rt3tcjhm, CHOSE futhorc, 17, a2mfs1lccua88
+Task 47: Right
+Task 47 duration: 3805
+Task 48: GIVEN korean, 06, a3bb99mn3zy37, CHOSE korean, 06, a3mv1jtwep7xn
+Task 48: Right
+Task 48 duration: 8207
+Task 49: GIVEN arcadian, 07, a1j8s7giyto4a, CHOSE arcadian, 07, a2pfktghg1ofp
+Task 49: Right
+Task 49 duration: 5560
+
+Number Right: 49
+Number Wrong: 1
+Percent Right: 98%
+Duration: 16m 11s 857ms
+Comments: I tried my best in classifying the characters.

@@ -1,0 +1,12 @@
+age: 39
+feedback: 
+input_device: touchpad
+language-read: None
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1FE2G3IZMD6ZYC4I13PSUF70NRCQVN
+workerId: A220LRHT4JGO52
+workerid: A220LRHT4JGO52

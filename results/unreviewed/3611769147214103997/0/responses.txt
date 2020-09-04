@@ -1,0 +1,6 @@
+age: 24
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: tablet_pen
+language-read-write: Vietnamese, French
+native-language: English
+seen_before: seen_familiar

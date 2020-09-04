@@ -1,0 +1,6 @@
+feedback: It was not easy to write the characters.
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=19UXKXJOXUBQDMLGQ8UHX0KUJIWR2V
+workerid: A2X598AAI75H90

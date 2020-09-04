@@ -1,0 +1,10 @@
+Summary:
+Calibration:
+551
+Average: 551
+
+
+Tasks:
+Task 0: tagalog, 10, a3m0kt6kjezd1 VS. tagalog, 02, a3mv1jtwep7xn
+Task 0: Right, Are Different
+Task 0 RT: 375

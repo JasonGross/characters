@@ -1,0 +1,23 @@
+
+
+Summary:Short Summary:
+Correct: 5
+Incorrect: 0
+Percent Correct: 100
+
+Same Correct: 2
+Same Incorrect: 0
+Percent Same Correct: 100
+
+Different Correct: 3
+Different Incorrect: 0
+Percent Different Correct: 100
+
+Long Summary:
+Task 0: correctly said that (greek, 1, a6fjbvuzrhm6) and (greek, 1, ay0bjcgydhix) are the same in 1974 ms.
+Task 1: correctly said that (greek, 1, a1z59eb5sfxpy) and (greek, 1, a1umhcrj9zfdp) are the same in 1074 ms.
+Task 2: correctly said that (greek, 1, aljsxt6v0a30) and (latin, 2, awq981npwae0) are not the same in 1210 ms.
+Task 3: correctly said that (hebrew, 10, a19ax8zuyipxm) and (greek, 1, avlbkm6qpb1s) are not the same in 1043 ms.
+Task 4: correctly said that (hebrew, 10, a1umhcrj9zfdp) and (latin, 2, a3pkun3onkucn) are not the same in 1816 ms.
+
+Duration: 0m 51s 242ms

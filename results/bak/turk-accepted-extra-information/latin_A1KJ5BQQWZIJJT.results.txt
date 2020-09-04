@@ -1,0 +1,12 @@
+age: 25
+feedback: I typically have handwritting that is not very leigible.
+input_device: touchpad
+language-read: Spanish
+language-read-write: None
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1N2W49F0UKGYK1X7VIEN1RH1NA1JAH
+workerId: A1KJ5BQQWZIJJT
+workerid: A1KJ5BQQWZIJJT

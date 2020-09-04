@@ -1,0 +1,12 @@
+age: 28
+feedback: 
+input_device: mouse
+language-read: Urdu
+language-read-write: English
+native-language: Hindi
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1X2CC5EBYF9AW2ZRKKVCFNQUB2SY8T
+workerId: ALVG2EY5LCZVX
+workerid: ALVG2EY5LCZVX

@@ -1,0 +1,12 @@
+age: 35
+feedback: A very interesting hit. thank you
+input_device: mouse
+language-read: Hindi
+language-read-write: Telugu
+native-language: English Code
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10LNALZ1APEMHEGZOVKJLDGEWHVIVC
+workerId: A2M9DAR91SGO9U
+workerid: A2M9DAR91SGO9U

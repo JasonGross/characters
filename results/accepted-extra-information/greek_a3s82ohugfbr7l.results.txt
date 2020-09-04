@@ -1,0 +1,12 @@
+age: 34
+feedback: I can read and write HTML but as that is a programming language I was not sure if you were interested in that.  Thanks!
+input_device: mouse
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZFKOCEZXKDJPQOEYSFCIF0CTAFFGT
+workerId: A3S82OHUGFBR7L
+workerid: A3S82OHUGFBR7L

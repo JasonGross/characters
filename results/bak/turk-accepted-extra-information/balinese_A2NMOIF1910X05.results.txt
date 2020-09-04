@@ -1,0 +1,11 @@
+age: 23
+feedback: This is very nice to do.
+input_device: mouse
+language-read: hindi
+language-read-write: English
+native-language: Tamil
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=14UWYLXZACRZLXFIWDFNYT5H9K3QUY
+workerid: A2NMOIF1910X05

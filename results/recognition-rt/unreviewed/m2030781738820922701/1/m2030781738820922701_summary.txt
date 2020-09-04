@@ -1,0 +1,9 @@
+Summary:
+Calibration:
+1147
+Average: 1147
+
+
+Tasks:
+Task 0: myanmar, 01, adc8vbkoocrr VS. myanmar, 01, a1umhcrj9zfdp
+Task 0: Right, Are Same

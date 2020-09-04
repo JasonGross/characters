@@ -1,0 +1,2 @@
+input_device: touchpad
+seen_before: seen_never

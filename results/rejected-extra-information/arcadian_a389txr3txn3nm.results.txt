@@ -1,0 +1,11 @@
+age: 22
+feedback: At least one character was made thicker by going over the strokes multiple times (see http://preview.tinyurl.com/2fmvu6w for the character I am talking about).  The instructions said to not do this.\nTough Symbols
+input_device: mouse
+language-read: 
+language-read-write: English,Hindi
+native-language: Malayalam
+other_input_text: 
+reject: y
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=13WGOY9GNFLDBQSJN89U0U00SVFFFU
+workerid: A389TXR3TXN3NM

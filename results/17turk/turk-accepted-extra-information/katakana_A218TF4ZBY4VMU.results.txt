@@ -1,0 +1,11 @@
+age: 25
+feedback: Interesting!
+input_device: mouse
+language-read: None
+language-read-write: Chinese
+native-language: Cantonese
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10Y5T8FD7ZXIXPXQNMJH311JSSNKON
+workerid: A218TF4ZBY4VMU

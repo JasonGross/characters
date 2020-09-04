@@ -1,0 +1,12 @@
+age: 20
+feedback: I think that i paint it very good
+input_device: mouse
+language-read: French
+language-read-write: English, Serbian
+native-language: Macedonian
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10P9K0PWWBMBZAFW77V53CETRINNLE
+workerId: A2ZGJ7IQC6ZHXE
+workerid: A2ZGJ7IQC6ZHXE

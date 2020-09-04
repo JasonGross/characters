@@ -1,0 +1,12 @@
+age: 20
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: English, Hindi,Tamil, Japanese
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: A2DU3880MJBROV
+workerid: A2DU3880MJBROV

@@ -1,0 +1,12 @@
+age: 50
+feedback: Once again, almost all of them seem to be an unusual font but ordinary alphabet letters.
+input_device: touchpad
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YZRRV8GVRMUO7ZIFBF9KGRBBBIIRJ
+workerId: AY0BJCGY2DHIX
+workerid: AY0BJCGY2DHIX

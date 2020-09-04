@@ -1,0 +1,12 @@
+age: 21
+feedback: Great Task
+input_device: mouse
+language-read: no one
+language-read-write: urdu
+native-language: Hindi
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YZRRV8GVRMUO7ZIFBF9KGRBBBIIRJ
+workerId: A3ODP26HGT9SJO
+workerid: A3ODP26HGT9SJO

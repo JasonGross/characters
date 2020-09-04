@@ -1,0 +1,12 @@
+age: 46
+feedback: Not really sure what the difference is between languages one writes and languages one reads? If you know a language surely you can read and write it? Speaking, however, is a different matter. I can't speak Russian or Greek much these days, but could read out a piece in cyrillic.
+input_device: touchpad
+language-read: 
+language-read-write: French, German, Spanish, Russian, Greek
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=16U6SU2HEB4VSYHVCG1AVMOOUA9T5X
+workerId: A1VZHYP8BYVXKZ
+workerid: A1VZHYP8BYVXKZ

@@ -1,0 +1,12 @@
+age: 42
+feedback: This was very difficult: my hand and arm were definitely cramping up by the end!
+input_device: mouse
+language-read: none
+language-read-write: none
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=13SZHRKHGIP7H35CMBSKNO9EKW4FOE
+workerId: AJU6WTWYV0FDQ
+workerid: AJU6WTWYV0FDQ

@@ -1,0 +1,21 @@
+Summary:
+Calibration:
+349
+Average: 349
+
+
+Tasks:
+Task 0: korean, 28, aj6upe9mlarg VS. inuktitut, 01, a1s3njxhehcip
+Task 0: Right, Are Different
+Task 0 RT: 550
+Task 1: korean, 29, aj6upe9mlarg VS. korean, 29, a5379luit3pc
+Task 1: Wrong, Are Same
+Task 1 RT: 920
+Task 2: korean, 28, aj6upe9mlarg VS. korean, 28, a1manxzopzden
+Task 2: Right, Are Same
+Task 3: tagalog, 05, ajf66jwen7bx VS. atemayar, 10, a2pfktghg1ofp
+Task 3: Right, Are Different
+Task 3 RT: 1586
+Task 4: myanmar, 01, a1j8s7giyto4a VS. inuktitut, 03, a2pfktghg1ofp
+Task 4: Right, Are Different
+Task 4 RT: 910

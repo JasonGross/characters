@@ -1,0 +1,12 @@
+age: 52
+feedback: I know to write in this Kannada Scripts
+input_device: mouse
+language-read: Tamil
+language-read-write: Kannada,  Devan&#257;gar&#299;, English
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1FE2G3IZMD6ZYC4I13PSUF70NRCQVN
+workerId: A1XTEBM29OFNAR
+workerid: A1XTEBM29OFNAR

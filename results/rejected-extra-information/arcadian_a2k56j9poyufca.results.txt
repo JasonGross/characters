@@ -1,0 +1,11 @@
+age: 38
+feedback: Many characters were made thicker by going over the strokes multiple times.  The instructions said to not do this.\nThanks. Hope my work is satisfactory. Drawing/writing with touchpad is a bit difficult, so these characters are not perfect. Sorry.
+input_device: touchpad
+language-read: 
+language-read-write: English, Hindi
+native-language: Gujarati
+other_input_text: 
+reject: y
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=13WGOY9GNFLDBQSJN89U0U00SVFFFU
+workerid: A2K56J9POYUFCA

@@ -1,0 +1,33 @@
+Summary:
+Task 0: GIVEN asomtavruli, 16, a2x598aai75h90
+Task 0: 
+Task 0 duration: 6348
+Task 1: GIVEN asomtavruli, 08, aghrkle9jvf6z
+Task 1: 
+Task 1 duration: 8411
+Task 2: GIVEN asomtavruli, 38, apd0da9xz3zlo
+Task 2: 
+Task 2 duration: 22961
+Task 3: GIVEN avesta, 02, aljsxt6vr0a30
+Task 3: 
+Task 3 duration: 5502
+Task 4: GIVEN balinese, 19, a1v0p79ffynz9j
+Task 4: 
+Task 4 duration: 5905
+Task 5: GIVEN grantha, 33, aav4pzxd7oebd
+Task 5: 
+Task 5 duration: 6122
+Task 6: GIVEN bengali, 43, aoms2ywllwnkg
+Task 6: 
+Task 6 duration: 9623
+Task 7: GIVEN magi, 08, aljsxt6vr0a30
+Task 7: 
+Task 7 duration: 11291
+Task 8: GIVEN atemayar, 15, ax5gghhjd0o6g
+Task 8: 
+Task 8 duration: 6349
+Task 9: GIVEN mkhedruli, 02, a1v0p79ffynz9j
+Task 9: 
+Task 9 duration: 9806
+Duration: 1m 35s 973ms
+Comments: 

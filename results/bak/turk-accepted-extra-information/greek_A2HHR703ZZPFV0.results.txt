@@ -1,0 +1,11 @@
+age: 22
+feedback: great task
+input_device: mouse
+language-read: Ukrainian
+language-read-write: English
+native-language: Hindi
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZFKOCEZXKDJPQOEYSFCIF0CTAFFGT
+workerid: A2HHR703ZZPFV0

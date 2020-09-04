@@ -1,0 +1,6 @@
+feedback: The characters should either be filled in, or drawn as lines, not block letters.  Apologies for not making this clear.\n
+input_device: on
+reject: y
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ECYTD67EKOB4TV1BYP8XSX9YBMU1L
+workerid: A1UMHCRJJ9ZFDP

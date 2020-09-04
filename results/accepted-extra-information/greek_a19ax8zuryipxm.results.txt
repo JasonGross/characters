@@ -1,0 +1,12 @@
+age: 25
+feedback: Some of these characters were familiar, like the symbol for Pi, but others i've never seen.
+input_device: tablet_pen
+language-read: 
+language-read-write: Thai
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZFKOCEZXKDJPQOEYSFCIF0CTAFFGT
+workerId: A19AX8ZURYIPXM
+workerid: A19AX8ZURYIPXM

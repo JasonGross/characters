@@ -1,0 +1,12 @@
+age: 31
+feedback: 
+input_device: touchpad
+language-read: none
+language-read-write: Italian
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1WVEYF5ER3KNKFLP7L6LI6VNY4S5W0
+workerId: A15K0L6NGQXOM0
+workerid: A15K0L6NGQXOM0

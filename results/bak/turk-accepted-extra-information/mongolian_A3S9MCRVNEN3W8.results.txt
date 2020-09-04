@@ -1,0 +1,12 @@
+age: 20
+feedback: Thanks
+input_device: mouse
+language-read: English
+language-read-write: english
+native-language: Tamil
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1HFUL19DOEIAF2VE09G7T62KLG4T7C
+workerId: A3S9MCRVNEN3W8
+workerid: A3S9MCRVNEN3W8

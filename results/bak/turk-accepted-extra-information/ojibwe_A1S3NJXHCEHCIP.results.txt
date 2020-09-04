@@ -1,0 +1,12 @@
+age: 27
+feedback: 
+input_device: mouse
+language-read: 
+language-read-write: Hindi, Tamil
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1GH2MSDCICTFIPGK3NNW3I3SY3EAR8
+workerId: A1S3NJXHCEHCIP
+workerid: A1S3NJXHCEHCIP

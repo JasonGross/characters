@@ -1,0 +1,12 @@
+age: 35
+feedback: A few characters seemed familiar but i dont know all the characters. I used the mouse and tried my best to do as accurate as possible. Thank you.
+input_device: mouse
+language-read: NONE
+language-read-write: English, Hindi, Oriya
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YZRRV8GVRMUO7ZIFBF9KGRBBBIIRJ
+workerId: A2CF5XSGAXA56F
+workerid: A2CF5XSGAXA56F

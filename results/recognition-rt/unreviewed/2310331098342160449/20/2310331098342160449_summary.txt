@@ -1,0 +1,33 @@
+Summary:
+Calibration:
+322
+Average: 322
+
+
+Tasks:
+Task 0: atemayar, 23, a1yovlluv1c9h VS. tagalog, 02, a3m0kt6kjezd1
+Task 0: Right, Are Different
+Task 0 RT: 339
+Task 1: myanmar, 31, a1stvgjqfl5kk VS. myanmar, 31, a1umhcrj9zfdp
+Task 1: Right, Are Same
+Task 2: myanmar, 25, a1stvgjqfl5kk VS. myanmar, 25, ay0bjcgydhix
+Task 2: Right, Are Same
+Task 3: atemayar, 10, a6fjbvuzrhm6 VS. atemayar, 10, a1vzhyp8yvxkz
+Task 3: Right, Are Same
+Task 4: inuktitut, 11, a1j8s7giyto4a VS. inuktitut, 02, a2qnqd7m8zfbo
+Task 4: Right, Are Different
+Task 4 RT: 1328
+Task 5: atemayar, 10, a1z59eb5sfxpy VS. atemayar, 10, a1yovlluv1c9h
+Task 5: Right, Are Same
+Task 6: atemayar, 06, a31xqftzcsia2 VS. inuktitut, 02, a3mv1jtwep7xn
+Task 6: Right, Are Different
+Task 6 RT: 1055
+Task 7: sylheti, 19, a1s3njxhehcip VS. myanmar, 25, aljsxt6v0a30
+Task 7: Right, Are Different
+Task 7 RT: 1021
+Task 8: atemayar, 06, a31xqftzcsia2 VS. tagalog, 05, a1j8s7giyto4a
+Task 8: Right, Are Different
+Task 8 RT: 1603
+Task 9: atemayar, 25, a31xqftzcsia2 VS. myanmar, 32, amynpl5xzw6q
+Task 9: Right, Are Different
+Task 9 RT: 834

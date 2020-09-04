@@ -1,0 +1,11 @@
+age: 35
+feedback: The characters seemed familiar to me but I don't know all characters. Enjoyed working with your hit. Thank you.
+input_device: mouse
+language-read: Marathi
+language-read-write: English, Hindi, Oriya
+native-language: Oriya
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZKKYOIBNS6CD14NRDUOGHQEU0EQWX
+workerid: A2CF5XSGAXA56F

@@ -1,0 +1,6 @@
+age: 21
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+feedback: These characters have so far, been the most difficult to replicate.
+input_device: mouse
+native-language: English
+seen_before: seen_never

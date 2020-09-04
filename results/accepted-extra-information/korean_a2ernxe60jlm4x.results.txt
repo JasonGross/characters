@@ -1,0 +1,12 @@
+age: 19
+feedback: It's Japanese! (I think) :)
+input_device: touchpad
+language-read: French
+language-read-write: Spanish
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerId: A2ERNXE60JLM4X
+workerid: A2ERNXE60JLM4X

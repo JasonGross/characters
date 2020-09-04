@@ -1,0 +1,12 @@
+age: 26
+feedback: ok
+input_device: mouse
+language-read: no
+language-read-write: marathi, hindi, English
+native-language: marathi
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=14UWYLXZACRZLXFIWDFNYT5H9K3QUY
+workerId: ATMPW8DNIXKN2
+workerid: ATMPW8DNIXKN2

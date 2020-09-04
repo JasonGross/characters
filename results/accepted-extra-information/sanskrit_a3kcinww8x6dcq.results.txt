@@ -1,0 +1,11 @@
+age: 30
+feedback: Thanks for such a good work
+input_device: mouse
+language-read: 
+language-read-write: hindi,english,Arabic
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_fluent
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=15DR1EBNFR1S2IZV7Q1633YOGHAABU
+workerid: A3KCINWW8X6DCQ

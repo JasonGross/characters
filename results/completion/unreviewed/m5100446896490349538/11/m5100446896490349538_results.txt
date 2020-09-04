@@ -1,0 +1,33 @@
+duration: 0y 0d 0h 0m 31s 399ms
+form-load-time: 1309909303374
+form-submit-time: 1309909335208
+jQuery.browser.safari: true
+jQuery.browser.version: 535.1
+jQuery.browser.webkit: true
+navigator.appCodeName: Mozilla
+navigator.appName: Netscape
+navigator.appVersion: 5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1
+navigator.platform: Win32
+navigator.userAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1
+navigator.vendor: Google Inc.
+screenAavilHeight: 760
+screenAavilWidth: 1280
+screenHeight: 800
+screenWidth: 1280
+submitButton: Submit
+task-%s-image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQAAAABYmaj5AAAAY0lEQVR4Xu3TMQ6AIBBEUQwFpUfwKBwNEi+23oQjUFqQXdv9jbGUhOleOclMMJf+Xy1p9hpQgwSqUIA2c9LkNSDZX3R41QwVr9PmUITSlIqf216QFCh5NaynQzekkAlkeX36Ae0C2cOKnOiVAAAAAElFTkSuQmCC
+task-0-image: data:image/png;base64,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
+task-0-image-alphabet: mkhedruli
+task-0-image-anonymous_url: https://jgross.scripts.mit.edu/alphabets/results/accepted-images/a3m7lkvchjee4148gkgu.png
+task-0-image-character-number: 41
+task-0-image-id: a37lvcje48gkgu
+task-0-image-show_half: right
+task-0-seen-before: never
+task-0-strokes: [[{'x':51,'y':80,'t':1311378126928},{'x':50,'y':79,'t':1311378126930},{'x':50,'y':79,'t':1311378126935},{'x':49,'y':79,'t':1311378126976},{'x':48,'y':79,'t':1311378127015},{'x':47,'y':79,'t':1311378127040},{'x':45,'y':79,'t':1311378127065},{'x':44,'y':79,'t':1311378127103},{'x':44,'y':78,'t':1311378127116},{'x':43,'y':78,'t':1311378127142},{'x':42,'y':78,'t':1311378127166},{'x':41,'y':78,'t':1311378127204},{'x':40,'y':77,'t':1311378127228},{'x':38,'y':76,'t':1311378127255},{'x':37,'y':75,'t':1311378127279},{'x':36,'y':74,'t':1311378127304},{'x':36,'y':72,'t':1311378127317},{'x':35,'y':71,'t':1311378127342},{'x':35,'y':70,'t':1311378127406},{'x':35,'y':69,'t':1311378127470},{'x':35,'y':68,'t':1311378127481},{'x':35,'y':67,'t':1311378127494},{'x':35,'y':65,'t':1311378127519},{'x':35,'y':64,'t':1311378127532},{'x':35,'y':63,'t':1311378127545},{'x':35,'y':62,'t':1311378127560},{'x':35,'y':61,'t':1311378127569},{'x':35,'y':60,'t':1311378127608},{'x':35,'y':58,'t':1311378127621},{'x':35,'y':58,'t':1311378127702},{'x':35,'y':57,'t':1311378127861},{'x':35,'y':56,'t':1311378127924},{'x':36,'y':42,'t':1311378128368},{'x':36,'y':42,'t':1311378128686},{'x':37,'y':42,'t':1311378128752},{'x':39,'y':42,'t':1311378128782},{'x':39,'y':41,'t':1311378128807},{'x':40,'y':41,'t':1311378128820},{'x':40,'y':40,'t':1311378128850},{'x':41,'y':40,'t':1311378128896},{'x':41,'y':39,'t':1311378128923},{'x':42,'y':39,'t':1311378128973},{'x':42,'y':37,'t':1311378129010},{'x':43,'y':37,'t':1311378129097},{'x':43,'y':36,'t':1311378129124},{'x':44,'y':35,'t':1311378129150},{'x':46,'y':34,'t':1311378129187},{'x':47,'y':34,'t':1311378129264},{'x':48,'y':34,'t':1311378129301},{'x':48,'y':33,'t':1311378129313},{'x':49,'y':33,'t':1311378129351},{'x':55,'y':33,'t':1311378129818}]]
+task-0-time-of-do-task: 1309909306087
+task-0-time-of-finish-task: 1309909332740
+url-parameter-characterSize: 100px
+url-parameter-imageHalf: left,right
+url-parameter-taskCount: 1
+windowHeight: 333
+windowWidth: 1263

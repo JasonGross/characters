@@ -1,0 +1,157 @@
+Summary:
+Task 0: GIVEN ulog, 20, a3qat9qkqumi2, CHOSE ulog, 20, a3ursdgs9sph8
+Task 0: Right
+Task 0 duration: 15362
+Task 1: GIVEN gujarati, 32, azdw6062ia38, CHOSE gujarati, 32, ay0bjcgydhix
+Task 1: Right
+Task 1 duration: 10923
+Task 2: GIVEN armenian, 28, a2pfktghg1ofp, CHOSE armenian, 28, a37lvcje8gkgu
+Task 2: Right
+Task 2 duration: 6898
+Task 3: GIVEN inuktitut, 14, a1qku9mccvl35, CHOSE inuktitut, 14, a3mv1jtwep7xn
+Task 3: Right
+Task 3 duration: 8394
+Task 4: GIVEN aurek_besh, 05, a3qat9qkqumi2, CHOSE aurek_besh, 05, a1yb5s7574uml
+Task 4: Right
+Task 4 duration: 7273
+Task 5: GIVEN armenian, 22, a1ub6rqon1ze6, CHOSE armenian, 22, a38y85uxvakhn
+Task 5: Right
+Task 5 duration: 7555
+Task 6: GIVEN kannada, 31, a17kqnuhbyt4l, CHOSE kannada, 31, aop4ii3omgtc
+Task 6: Right
+Task 6 duration: 9921
+Task 7: GIVEN gujarati, 34, a2o33toruaqe1, CHOSE gujarati, 34, azdw6062ia38
+Task 7: Right
+Task 7 duration: 4986
+Task 8: GIVEN old_cyrillic, 22, a2cf5xsgxa56f, CHOSE old_cyrillic, 22, alvg2ey5czvx
+Task 8: Right
+Task 8 duration: 3264
+Task 9: GIVEN armenian, 19, a3bb99mn3zy37, CHOSE armenian, 19, a1s3njxhehcip
+Task 9: Right
+Task 9 duration: 17487
+Task 10: GIVEN latin, 12, a2du3880jbrov, CHOSE latin, 12, a1v73zoz07asa
+Task 10: Right
+Task 10 duration: 4545
+Task 11: GIVEN magi, 15, amynpl5xzw6q, CHOSE magi, 15, aghrkle9vf6z
+Task 11: Right
+Task 11 duration: 4633
+Task 12: GIVEN manipuri, 21, a3mv1jtwep7xn, CHOSE manipuri, 21, a3qwezeps9sb
+Task 12: Right
+Task 12 duration: 3397
+Task 13: GIVEN atemayar, 20, avlbkm6qpb1s, CHOSE atemayar, 20, a1poymbentexx
+Task 13: Right
+Task 13 duration: 10729
+Task 14: GIVEN atlantean, 03, a1a25pyfoa9ge, CHOSE atlantean, 03, a1clejhbx9yyn
+Task 14: Right
+Task 14 duration: 2318
+Task 15: GIVEN sylheti, 04, a3m0kt6kjezd1, CHOSE sylheti, 04, a2du3880jbrov
+Task 15: Right
+Task 15 duration: 2607
+Task 16: GIVEN korean, 33, a39ivbdm1ekue, CHOSE korean, 33, a1umhcrj9zfdp
+Task 16: Right
+Task 16 duration: 3310
+Task 17: GIVEN gujarati, 40, a2jp5x5m9076e, CHOSE gujarati, 40, a2botjes4s3qc
+Task 17: Right
+Task 17 duration: 18937
+Task 18: GIVEN kannada, 23, a3b031ykwfyfm, CHOSE kannada, 23, aghrkle9vf6z
+Task 18: Right
+Task 18 duration: 2875
+Task 19: GIVEN armenian, 40, a2ja8qb8gyghj, CHOSE armenian, 40, a6fjbvuzrhm6
+Task 19: Right
+Task 19 duration: 7767
+Task 20: GIVEN korean, 04, aj6upe9mlarg, CHOSE korean, 04, a1umhcrj9zfdp
+Task 20: Right
+Task 20 duration: 3107
+Task 21: GIVEN ulog, 17, agst3co6usf8, CHOSE ulog, 17, a1z59eb5sfxpy
+Task 21: Right
+Task 21 duration: 18396
+Task 22: GIVEN manipuri, 26, aj6upe9mlarg, CHOSE manipuri, 26, a1ub6rqon1ze6
+Task 22: Right
+Task 22 duration: 3649
+Task 23: GIVEN tagalog, 17, asu813kb7bv1, CHOSE tagalog, 17, a1s3njxhehcip
+Task 23: Right
+Task 23 duration: 2932
+Task 24: GIVEN gujarati, 43, aghrkle9vf6z, CHOSE gujarati, 43, a3d7xwp0gand5
+Task 24: Right
+Task 24 duration: 6235
+Task 25: GIVEN korean, 40, a1v0p79fynz9j, CHOSE korean, 40, a1manxzopzden
+Task 25: Right
+Task 25 duration: 4339
+Task 26: GIVEN magi, 09, aghrkle9vf6z, CHOSE magi, 09, a315xddd8j4x8
+Task 26: Right
+Task 26 duration: 18267
+Task 27: GIVEN magi, 19, a1manxzopzden, CHOSE magi, 19, a315xddd8j4x8
+Task 27: Right
+Task 27 duration: 5161
+Task 28: GIVEN futhorc, 27, a1w3fo0d7cf5t, CHOSE futhorc, 27, ay0bjcgydhix
+Task 28: Right
+Task 28 duration: 3031
+Task 29: GIVEN arcadian, 22, a1hrne20p7q5k, CHOSE arcadian, 22, aljsxt6v0a30
+Task 29: Right
+Task 29 duration: 6092
+Task 30: GIVEN greek, 08, atvyxlwe5n03, CHOSE greek, 08, a3pkun3onkucn
+Task 30: Right
+Task 30 duration: 3160
+Task 31: GIVEN futhorc, 01, a2cf5xsgxa56f, CHOSE futhorc, 01, a1j8s7giyto4a
+Task 31: Right
+Task 31 duration: 3399
+Task 32: GIVEN tagalog, 07, ay0bjcgydhix, CHOSE tagalog, 07, a1s3njxhehcip
+Task 32: Right
+Task 32 duration: 14600
+Task 33: GIVEN aurek_besh, 11, a3ursdgs9sph8, CHOSE myanmar, 07, a6fjbvuzrhm6
+Task 33: Wrong
+Task 33 duration: 25141
+Task 34: GIVEN greek, 17, a3qat9qkqumi2, CHOSE greek, 17, a2pfktghg1ofp
+Task 34: Right
+Task 34 duration: 3215
+Task 35: GIVEN greek, 18, atvyxlwe5n03, CHOSE greek, 18, ay0bjcgydhix
+Task 35: Right
+Task 35 duration: 3391
+Task 36: GIVEN old_cyrillic, 36, aav4pzxdoebd, CHOSE old_cyrillic, 36, amyau7q7mekh
+Task 36: Right
+Task 36 duration: 2872
+Task 37: GIVEN tagalog, 14, asu813kb7bv1, CHOSE tagalog, 14, a1l2fzyn31zvf
+Task 37: Right
+Task 37 duration: 3179
+Task 38: GIVEN cyrillic, 16, a39600k8anv7m, CHOSE cyrillic, 16, a2pfktghg1ofp
+Task 38: Right
+Task 38 duration: 2606
+Task 39: GIVEN atemayar, 01, a1manxzopzden, CHOSE atemayar, 01, aljsxt6v0a30
+Task 39: Right
+Task 39 duration: 3348
+Task 40: GIVEN latin, 07, a3pkun3onkucn, CHOSE latin, 07, a1j8s7giyto4a
+Task 40: Right
+Task 40 duration: 4376
+Task 41: GIVEN latin, 13, a1j8s7giyto4a, CHOSE latin, 13, a1v73zoz07asa
+Task 41: Right
+Task 41 duration: 5505
+Task 42: GIVEN ulog, 19, a19ax8zuyipxm, CHOSE ulog, 19, a3j1pp96x14u0
+Task 42: Right
+Task 42 duration: 5193
+Task 43: GIVEN futhorc, 11, a1a25pyfoa9ge, CHOSE futhorc, 11, agst3co6usf8
+Task 43: Right
+Task 43 duration: 3189
+Task 44: GIVEN atlantean, 21, a3m0kt6kjezd1, CHOSE atlantean, 21, a6fjbvuzrhm6
+Task 44: Right
+Task 44 duration: 3344
+Task 45: GIVEN gurmukhi, 15, a1v2bhnd3bp7c, CHOSE gurmukhi, 15, a1manxzopzden
+Task 45: Right
+Task 45 duration: 13545
+Task 46: GIVEN mongolian, 18, a1jzp5xitwsqi, CHOSE mongolian, 18, aljsxt6v0a30
+Task 46: Right
+Task 46 duration: 12338
+Task 47: GIVEN myanmar, 07, a1s3njxhehcip, CHOSE myanmar, 07, a1stvgjqfl5kk
+Task 47: Right
+Task 47 duration: 3203
+Task 48: GIVEN gurmukhi, 39, ayn2jagmi8h0, CHOSE gurmukhi, 39, a2b6a8qnlwrg1
+Task 48: Right
+Task 48 duration: 7915
+Task 49: GIVEN gurmukhi, 25, a2enkt85b106w, CHOSE gurmukhi, 25, a1hcjsurc4ngy
+Task 49: Right
+Task 49 duration: 3264
+
+Number Right: 49
+Number Wrong: 1
+Percent Right: 98%
+Duration: 7m 56s 724ms
+Comments: Tasks 18 and 46 are ""broken""; clicking on the correct character doesn't cause the pull down menu to select the appropriate number such that one can continue with the test.  I got around it by typing the numeral in.  

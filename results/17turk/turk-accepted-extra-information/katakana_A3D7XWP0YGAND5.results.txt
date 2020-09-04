@@ -1,0 +1,12 @@
+age: 25
+feedback: 
+input_device: mouse
+language-read: Nepali
+language-read-write: Hindi
+native-language: English Code
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10Y5T8FD7ZXIXPXQNMJH311JSSNKON
+workerId: A3D7XWP0YGAND5
+workerid: A3D7XWP0YGAND5

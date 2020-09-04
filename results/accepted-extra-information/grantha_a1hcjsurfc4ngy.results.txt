@@ -1,0 +1,6 @@
+feedback: Some of the characters in this series resemble the Dravidian language Tamil.
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1CUPW92HIGVPHBJ92ME3JTGU2B4DSE
+workerid: A1HCJSURFC4NGY

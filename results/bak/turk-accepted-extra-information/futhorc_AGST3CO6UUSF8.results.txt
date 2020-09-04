@@ -1,0 +1,12 @@
+age: 29
+feedback: Wow, some of these are hard!
+input_device: mouse
+language-read: N/A
+language-read-write: English, Russian
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YZRRV8GVRMUO7ZIFBF9KGRBBBIIRJ
+workerId: AGST3CO6UUSF8
+workerid: AGST3CO6UUSF8

@@ -1,0 +1,12 @@
+age: 21
+feedback: 
+input_device: touchpad
+language-read: 
+language-read-write: Hindi
+native-language: Bengali, English
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1ZFKOCEZXKDJPQOEYSFCIF0CTAFFGT
+workerId: AGHRKLE9JVF6Z
+workerid: AGHRKLE9JVF6Z

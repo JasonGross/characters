@@ -1,0 +1,12 @@
+age: 21
+feedback: nice hit provide more please
+input_device: mouse
+language-read: 
+language-read-write: english,hindi
+native-language: english
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1YD8E12O3WMRB2H9HZBFNS2OQ5KT6D
+workerId: A39600K8AANV7M
+workerid: A39600K8AANV7M

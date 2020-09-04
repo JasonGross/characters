@@ -1,0 +1,8 @@
+Summary:
+Task 0: GIVEN futurama, 12, a320mrsfl1s1r, CHOSE futurama, 12, a1umhcrj9zfdp
+Task 0: Right
+Task 0 duration: 36332
+
+Number Right: 1
+Number Wrong: 0
+Percent Right: 1

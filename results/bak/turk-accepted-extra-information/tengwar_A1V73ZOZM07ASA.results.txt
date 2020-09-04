@@ -1,0 +1,12 @@
+age: 21
+feedback: please provide more
+input_device: mouse
+language-read: French
+language-read-write: Hindi
+native-language: urdu
+other_input_text: 
+reject: 
+seen_before: seen_know
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1562GWF4BRNNJ8U31C1A8SEIYZPAAZ
+workerId: A1V73ZOZM07ASA
+workerid: A1V73ZOZM07ASA

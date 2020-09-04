@@ -1,0 +1,8 @@
+age: 21
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+feedback: Sometimes hard to do with mouse
+input_device: mouse
+language-read: latin
+language-read-write: spanish
+native-language: English
+seen_before: seen_never

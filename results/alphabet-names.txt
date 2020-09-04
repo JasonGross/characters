@@ -1,0 +1,147 @@
+Bengali: Bengali
+Blackfoot: Blackfoot (Canadian Aboriginal Syllabics)
+EarlyAramaic: Early Aramaic
+Inuktitut: Inuktitut (Canadian Aboriginal Syllabics)
+Jawi: Malay (Jawi - Arabic)
+Korean: Korean
+Manipuri: Manipuri
+Ojibwe: Ojibwe (Canadian Aboriginal Syllabics)
+Sylheti: Sylheti
+Tagalog: Tagalog
+Tagalog_Bikol_Mintz: Tagalog (Bikol Mintz)
+Tagalog_Bisaya_Hervas: Tagalog (Bisaya Hervas)
+Tagalog_Doctrina_1593: Tagalog (Tagalog Doctrina 1593)
+aliaric: Aliaric
+ancients: Ancients
+angelic: Angelic
+arcadian: Arcadian
+armenian: Armenian
+asomtavruli: Asomtavruli (Georgian)
+atemayar: Atemayar Qelisayér
+ath: Ath
+atlantean: Atlantean
+aurek_besh: Aurek-Besh
+avern: Avern
+avesta: Avesta
+avorentas: Avorentas HGV
+balinese: Balinese
+belarian: Bel'Arian
+bokscript: Bokscript
+braille: Braille
+buhid: Buhid
+caralhunan: Caralhunan
+cham: Cham
+chartograph: Chartograph
+chelyesta: Chelyesta
+coptic: Coptic
+cyrillic: Cyrillic
+d_ni: D'ni
+daedric: Daedric
+daikan: Daikan
+dardanian: Dardanian
+deini: Deini
+delason: Delason
+deseret: Deseret
+estrangelo: Syriac (Estrangelo)
+europaphon: Europaphon
+falandril: Falandril
+fingers: Fingers
+futhorc: Anglo-Saxon Futhorc
+futurama: Futurama
+gargish: Gargish
+ge_ez: Ge'ez
+geyinzi: Geyinzi
+glagolitic: Glagolitic
+gnommish: Gnommish
+grantha: Grantha
+greek: Greek
+gujarati: Gujarati
+gurmukhi: Gurmukhi
+handwritten_braille: Handwritten Braille
+hanunoo: Hanunoo
+harta: Harta
+hebrew: Hebrew
+high_huarian: High Huarian
+hiragana: Japanese (hiragana)
+inspired: Inspired
+kannada: Kannada
+katakana: Japanese (katakana)
+kayah_li: Kayah Li
+keble: Keble
+keltic: Keltic
+khmer: Khmer
+kryptonian: Kryptonian
+lao: Lao
+latin: Latin
+library: Library
+limbu: Limbu
+lontara: Lontara
+magi: Alphabet of the Magi
+malachim: Malachim
+malayalam: Malayalam
+martolamme: Martolamme
+mesa: Mesa
+mkhedruli: Mkhedruli (Georgian)
+mongolian: Mongolian
+myanmar: Burmese (Myanmar)
+ndjuka: Ndjuka
+neorunic: Neorunic
+new_akha: New Akha
+new_maori: New Maori
+new_mong: New Mong
+new_tai_lue: New Tai Lue
+nirichaen: Nirichaen
+nko: N'Ko
+ogham: Ogham
+old_cyrillic: Old Church Slavonic (Cyrillic)
+old_hylian: Hylian syllabary (Old)
+old_permic: Old Permic
+old_persian_cuneiform: Old Persian Cuneiform
+oriya: Oriya
+orkhon: Orkhon
+osmanya: Osmanya
+oxidilogi: Oxidilogi
+pattern_script: Pattern Script
+pekrif: Pekrif
+peperklips: Peperklips
+phonogic: Phonogic
+qosta: qosta
+quikscript: Quikscript
+redjang: Redjang
+rirasu: Rirasu
+romulan: Romulan
+sabaean: Sabaean
+sanskrit: Sanskrit
+sarati: Sarati
+serto: Syriac (Serto)
+shan: Shan
+shavian: Shavian
+shiwi: Shiwi
+siddham: Siddham
+spacekees: SpaceKees
+standard_galactic_alphabet: Standard Galactic Alphabet
+sundanese: Sundanese
+sunshee: Sunshee
+tagbanwa: Tagbanwa
+tai_dam: Tai Dam
+tai_le: Tai Le
+tamil: Tamil
+tanar: Tanar
+tciaar: Tciaar
+telugu: Telugu
+tenctonese: Tenctonese
+tengo: Tengo
+tengwar: Tengwar
+thaana: Thaana
+thai: Thai
+theban: Theban
+tibetan: Tibetan
+tifinagh: Tifinagh
+troitrosking: Troitrosking
+ugaritic: Ugaritic
+ulog: ULOG
+vertical_a: Vertical A
+vertical_b: Vertical B
+vinca: Vinca
+wedges: Wedges
+zentlardy: Zentlardy

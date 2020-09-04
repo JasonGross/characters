@@ -1,0 +1,12 @@
+age: 25
+feedback: I recognize these as hebrew characters.
+input_device: tablet_pen
+language-read: 
+language-read-write: Thai
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1L179UJM147UXMCEA644BXCEXS8KM8
+workerId: A19AX8ZURYIPXM
+workerid: A19AX8ZURYIPXM

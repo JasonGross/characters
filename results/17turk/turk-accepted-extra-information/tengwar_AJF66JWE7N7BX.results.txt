@@ -1,0 +1,12 @@
+age: 21
+feedback: good work
+input_device: mouse
+language-read: Sanskrit
+language-read-write: Malayalam
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1562GWF4BRNNJ8U31C1A8SEIYZPAAZ
+workerId: AJF66JWE7N7BX
+workerid: AJF66JWE7N7BX

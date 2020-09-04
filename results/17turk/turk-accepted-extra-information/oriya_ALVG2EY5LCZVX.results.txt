@@ -1,0 +1,12 @@
+age: 22
+feedback: 
+input_device: mouse
+language-read: Arabic
+language-read-write: English
+native-language: English
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=10LNALZ1APEMHEGZOVKJLDGEWHVIVC
+workerId: ALVG2EY5LCZVX
+workerid: ALVG2EY5LCZVX

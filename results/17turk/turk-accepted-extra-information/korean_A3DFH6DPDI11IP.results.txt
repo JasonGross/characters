@@ -1,0 +1,12 @@
+age: 28
+feedback: kindly tell me in your feedback which alphabet is that: Chinese or Korean !\n\nI am sure they are not Japanese
+input_device: touchpad
+language-read: French
+language-read-write: English
+native-language: Arabic
+other_input_text: 
+reject: 
+seen_before: seen_familiar
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1J11L8YY6A1EFG0XAE8D76YFW0AT8Z
+workerId: A3DFH6DPDI11IP
+workerid: A3DFH6DPDI11IP

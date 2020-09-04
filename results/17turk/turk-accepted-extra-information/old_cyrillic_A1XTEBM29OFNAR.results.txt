@@ -1,0 +1,12 @@
+age: 52
+feedback: In between one work disappeared while working after accept the hit.
+input_device: mouse
+language-read: Tamil
+language-read-write: Kannada,  Devan&#257;gar&#299;, English
+native-language: Malayalam
+other_input_text: 
+reject: 
+seen_before: seen_never
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1RVZX1VUNPD6SI4ZFGE908P92840HA
+workerId: A1XTEBM29OFNAR
+workerid: A1XTEBM29OFNAR

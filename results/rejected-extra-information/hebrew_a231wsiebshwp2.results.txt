@@ -1,0 +1,6 @@
+feedback: It was really interesting and challenging.
+input_device: on
+reject: 
+seen_before: on
+viewhit: http://requester.mturk.com/mturk/manageHIT?HITId=1LOOQBLDLT6XZNIMWKBCTR12UYIR7B
+workerid: A231WSIEBSHWP2

@@ -1,0 +1,5 @@
+assignmentId: ASSIGNMENT_ID_NOT_AVAILABLE
+input_device: mouse
+language-read-write: english
+native-language: Slovene
+seen_before: seen_never

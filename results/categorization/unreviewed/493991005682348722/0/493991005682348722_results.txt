@@ -1,0 +1,14 @@
+alphabet-group-0-image-0-time-of-selection: 1281075433395
+alphabet-group-1-image-0-time-of-selection: 1281075742942
+alphabet-group-2-image-0-time-of-selection: 1281075744355
+alphabet-group-3-image-0-time-of-selection: 1281075746223
+alphabet-group-4-image-0-time-of-selection: 1281075745449
+alphabet_group_0_number_test_0: 5
+alphabet_group_1_number_test_0: 13
+alphabet_group_2_number_test_0: 23
+alphabet_group_3_number_test_0: 33
+alphabet_group_4_number_test_0: 43
+duration: 0y 0d 0h 5m 51s 115ms
+form-load-time: 1281075378837
+form-submit-time: 1281075748344
+submitButton: Submit

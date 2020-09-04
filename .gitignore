@@ -5,16 +5,16 @@
 # *.[oa]
 *~
 *.pyc
-*.txt
+#*.txt
 *.txt*.bak
-*.cstroke
-*.png
-*.stroke
-*.mat
-*.tar.bz2
-*.tar.gz
-*.log
-*.m
+#*.cstroke
+#*.png
+#*.stroke
+#*.mat
+#*.tar.bz2
+#*.tar.gz
+#*.log
+#*.m
 *.swp
 *.swo
 *.swn
@@ -36,8 +36,8 @@ scripts/python/MySQLdb*/
 scripts/python/MySQLdb*/*
 scripts/python/MySQL-python-1.2.3/
 scripts/python/MySQL-python-1.2.3/*
-results/*strokes/
-results/*images/
-results/*/unreviewed/*/*/*.html
+#results/*strokes/
+#results/*images/
+#results/*/unreviewed/*/*/*.html
 object-storage/get_*_*_list.obj
 object-storage/get_hashed_images_dict

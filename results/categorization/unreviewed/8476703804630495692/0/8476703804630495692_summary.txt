@@ -1,0 +1,14 @@
+
+
+Summary:
+Wrong: Selected "Old Church Slavonic (Cyrillic)" instead of "Japanese (hiragana)" from options "Balinese", "Mkhedruli (Georgian)", "Burmese (Myanmar)", "Ge'ez", "Sylheti", "Avesta", "Old Church Slavonic (Cyrillic)", "Alphabet of the Magi", "Japanese (hiragana)", "Tibetan"
+Right: Selected "Inuktitut (Canadian Aboriginal Syllabics)" from options "Blackfoot (Canadian Aboriginal Syllabics)", "Tifinagh", "Tagalog", "Oriya", "Inuktitut (Canadian Aboriginal Syllabics)", "Kannada", "Gurmukhi", "Syriac (Serto)", "Ojibwe (Canadian Aboriginal Syllabics)", "Early Aramaic"
+Right: Selected "Latin" from options "Latin", "Angelic", "Gujarati", "Arcadian", "Anglo-Saxon Futhorc", "N'Ko", "Tengwar", "Keble", "Manipuri", "Syriac (Estrangelo)"
+Right: Selected "Atemayar Qelisayer" from options "Glagolitic", "Atlantean", "Greek", "Futurama", "Mongolian", "Hebrew", "Sanskrit", "Atemayar Qelisayer", "Japanese (katakana)", "Aurek-Besh"
+Right: Selected "Korean" from options "ULOG", "Cyrillic", "Braille", "Grantha", "Asomtavruli (Georgian)", "Malay (Jawi - Arabic)", "Armenian", "Malayalam", "Korean", "Bengali"
+
+Totals:
+Correct: 4
+Incorrect: 1
+
+Duration: 1m 8s 221ms
